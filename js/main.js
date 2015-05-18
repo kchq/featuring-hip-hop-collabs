@@ -1,7 +1,11 @@
-var width, height;
-var svg, g;
+$(document).ready(init);
 
-width = document.getElementById('container').offsetWidth;
+d3.select(window).on("resize", throttle);
+
+var width, height, centered;
+var svg, g, gc;
+
+width = document.getElementById('container').scrollWidth;
 height = width * 25.0 / 48.0;  // dimensions taken from http://bl.ocks.org/mbostock/2206340
 
 var projection = d3.geo.albersUsa()
@@ -11,30 +15,40 @@ var projection = d3.geo.albersUsa()
 var path = d3.geo.path()
   .projection(projection);
 
-var zoom = d3.behavior.zoom()
-  .translate(projection.translate())
-  .scale(projection.scale())
-  .scaleExtent([height, 25 * height])
-  .on("zoom", zoomed);
-
-init();
-
 function init() {
+  setup();
+  drawMap();
+  drawRappers();
+}
+
+// creates the svg
+function setup() {
   svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-  g = svg.append("g")
-    .call(zoom);
+  g = svg.append("g");
 
   g.append("rect")
     .attr("class", "background")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height)
+    .on("click", clicked);
 
-  drawMap();
+  gc = svg.append("g").attr("id", "rappers");
 }
 
+function drawRappers() {
+  d3.csv("data/artists.csv", function(err, artists) {
+    artists.forEach(function(artist) {
+      // need to invert longitude because I got values in terms of hemispheres
+      // western hemisphere is negative https://github.com/mbostock/d3/issues/1287
+      addRapper(parseFloat(artist.lat), -1*parseFloat(artist.lon), "");
+    });
+  });
+}
+
+// draws the map in the group 'g' (this must be initialized before calling this function)
 function drawMap() {
   d3.json("data/us.json", function(error, us) {
     g.append("g")
@@ -42,7 +56,8 @@ function drawMap() {
     .selectAll("path")
       .data(topojson.feature(us, us.objects.states).features)
     .enter().append("path")
-      .attr("d", path);
+      .attr("d", path)
+      .on("click", clicked);
 
   g.append("path")
       .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
@@ -51,7 +66,63 @@ function drawMap() {
   });
 }
 
-function zoomed() {
-  projection.translate(d3.event.translate).scale(d3.event.scale);
-  g.selectAll("path").attr("d", path);
+// redraws everything
+function redraw() {
+  width = document.getElementById('container').scrollWidth;
+  height = width * 25.0 / 48.0;
+  d3.select('svg').remove();
+  setup();
+  drawMap();
+  drawRappers();
+}
+
+function addRapper(lat,lon,rapper) {
+  // if not on map, return
+  if (!projection([lon,lat])) {
+    return;
+  }
+  var x = projection([lon,lat])[0];
+  var y = projection([lon,lat])[1];
+
+  var circle = gc.append("svg:circle")
+        .attr("cx", x)
+        .attr("cy", y)
+        .attr("r", 5);
+}
+
+function clicked(d) {
+  console.log(d);
+  var x, y, k;
+
+  if (d && centered !== d) {
+    var centroid = path.centroid(d);
+    x = centroid[0];
+    y = centroid[1];
+    k = 4;
+    centered = d;
+    d3.select("#rappers").remove();
+  } else {
+    x = width / 2;
+    y = height / 2;
+    k = 1;
+    centered = null;
+    gc = svg.append("g").attr("id", "rappers");
+    drawRappers();
+  }
+
+  g.selectAll("path")
+      .classed("active", centered && function(d) { return d === centered; });
+
+  g.transition()
+      .duration(750)
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+      .style("stroke-width", 1.5 / k + "px");
+}
+
+var throttleTimer;
+function throttle() {
+  window.clearTimeout(throttleTimer);
+    throttleTimer = window.setTimeout(function() {
+      redraw();
+    }, 200);
 }
