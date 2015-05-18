@@ -2,6 +2,10 @@ body {
   margin: 0px;
 }
 
+circle {
+  fill: #04CCFF;
+}
+
 .background {
   fill: none;
   pointer-events: all;
