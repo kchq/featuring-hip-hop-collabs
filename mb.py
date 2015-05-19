@@ -98,36 +98,34 @@ for name in rappers:
             # #lol
             collabs = [collab for collab in collabs if len(collab) == 1 and "artist" in collab and "id" in collab["artist"] and collab["artist"]["id"] != id]
             for collab in collabs:
-                if True:
-                    alias = []
-                    if "artist" not in collab:
-                        continue
-                    if "alias-list" in collab["artist"]:
-                        alias = [namez["alias"] for namez in collab["artist"]["alias-list"]]
-                    if "name" in collab["artist"]:
-                        alias.append(collab["artist"]["name"])
-                    for al in alias:
-                        if al.lower() in [a.lower() for a in all_rappers]:
-                            total_records.append(rec)
-                            record_json = {"title": rec["title"], "release_id": rel["id"], "year": rel["date"].split("-")[0]}
-                            addRecord(rec["id"], record_json)
-                            writeRecord(rec["id"], record_json)
-                            if al not in artist_tuples:
-                                artist_tuples[al] = []
-                            artist_tuples[al].append(rec["id"])
-                            break
+                alias = []
+                if "artist" not in collab:
+                    continue
+                if "alias-list" in collab["artist"]:
+                    alias = [namez["alias"] for namez in collab["artist"]["alias-list"]]
+                if "name" in collab["artist"]:
+                    alias.append(collab["artist"]["name"])
+                for al in alias:
+                    if al.lower() in [a.lower() for a in all_rappers]:
+                        total_records.append(rec)
+                        record_json = {"title": rec["title"], "release_id": rel["id"], "year": rel["date"].split("-")[0]}
+                        addRecord(rec["id"], record_json)
+                        writeRecord(rec["id"], record_json)
+                        if al not in artist_tuples:
+                            artist_tuples[al] = {}
+                        artist_tuples[al][rec["id"]] = rec["title"]
+                        break
 
         time.sleep(1.3)
 
-    Rap = namedtuple("Rap", ["ar1", "ar2"])
-
     # note: json can't serialize tuples
-    # {curr_artist -> {collab_artist -> [record_ids]}}
+    # {curr_artist -> {collab_artist -> {record_id -> record_title}}}
     final_collabs = {}
     for k,v in artist_tuples.iteritems():
-        #r = Rap(ar1=name, ar2=k)
-        final_collabs[str(k)] = list(set(v))
+        final_collabs[str(k)] = v
     writeArtistCollabs(name, final_collabs)
     collabs_json[name] = final_collabs
 printOutRecordDictionary("records.json")
 printOutCollabDictionary("collabs.json")
+
+
