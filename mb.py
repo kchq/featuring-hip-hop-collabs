@@ -7,15 +7,28 @@ import json
 from collections import namedtuple
 
 pp = pprint.PrettyPrinter(indent=2)
+
 with open("artists.txt") as f:
+    all_rappers = f.read().splitlines()
+
+# TODO: replace this txt file with the chunk you are running
+# make sure you don't have any files named "records_incremental.json"
+# or "collabs_incremental.json"
+with open("artists_sonja.txt") as f:
     rappers = f.read().splitlines()
 
 musicbrainzngs.set_useragent("Example music app", "0.1", "http://example.com/music")
 
 records_json = {}
 collabs_json = {}
-def addRecord( record, release ):
-    records_json[record["id"]] = {"title": record["title"], "release_id": release["id"], "year": release["date"].split("-")[0]}
+def addRecord( rec_id, record_data ):
+    records_json[rec_id] = record_data
+
+def writeRecord( rec_id, record_data ):
+    with open("records_incremental.json", "a") as outfile:
+        outfile.write("\"" + rec_id + "\": ");
+        json.dump(record_data, outfile, indent=2, separators=(',', ': '))
+        outfile.write(",\n")
 
 def printOutRecordDictionary(filename):
     json.dump(records_json, open(filename, 'w'), indent=2, separators=(',', ': '))
@@ -23,11 +36,16 @@ def printOutRecordDictionary(filename):
 def printOutCollabDictionary(filename):
     json.dump(collabs_json, open(filename, 'w'), indent=2, separators=(',', ': '))
 
-#name = raw_input("Name: ")
+def writeArtistCollabs(name, artist_collabs):
+    with open("collabs_incremental.json", "a") as outfile:
+        outfile.write(name+": ");
+        json.dump(artist_collabs, outfile, indent=2, separators=(',', ': ')) 
+        outfile.write(",\n")
 
-for name in ["Blue Scholars",  "Macklemore", "Ab-Soul"]: # TODO: replace with rappers
+for name in rappers:
     print name
     result = musicbrainzngs.search_artists(artist=name)
+    time.sleep(1.3)
     if result['artist-count'] > 0:
         id = result['artist-list'][0]['id']
     print id
@@ -90,9 +108,11 @@ for name in ["Blue Scholars",  "Macklemore", "Ab-Soul"]: # TODO: replace with ra
                     if "name" in collab["artist"]:
                         alias.append(collab["artist"]["name"])
                     for al in alias:
-                        if al in rappers:
+                        if al in all_rappers:
                             total_records.append(rec)
-                            addRecord(rec, rel)
+                            record_json = {"title": rec["title"], "release_id": rel["id"], "year": rel["date"].split("-")[0]}
+                            addRecord(rec["id"], record_json)
+                            writeRecord(rec["id"], record_json)
                             if al not in artist_tuples:
                                 artist_tuples[al] = []
                             artist_tuples[al].append(rec["id"])
@@ -108,24 +128,7 @@ for name in ["Blue Scholars",  "Macklemore", "Ab-Soul"]: # TODO: replace with ra
     for k,v in artist_tuples.iteritems():
         #r = Rap(ar1=name, ar2=k)
         final_collabs[str(k)] = list(set(v))
+    writeArtistCollabs(name, final_collabs)
     collabs_json[name] = final_collabs
 printOutRecordDictionary("records.json")
 printOutCollabDictionary("collabs.json")
-#print len(total_records)
-#pp.pprint(records_json)
-#print [rec["title"] for rec in total_records]
-
-"""
-recordings = musicbrainzngs.get_artist_by_id(id, includes=["recordings", "releases"])
-recording_list = recordings["artist"]["recording-list"]
-rec_ids = [rec["id"] for rec in recording_list]
-
-for k, v in recordings["artist"].iteritems():
-    print k
-    print v
-
-releases = [rel for rel in recordings["artist"]["release-list"]]
-print len(releases)
-#print len(recording_list)
-#print rec_ids
-"""
