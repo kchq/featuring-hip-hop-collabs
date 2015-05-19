@@ -11,6 +11,8 @@ pp = pprint.PrettyPrinter(indent=2)
 with open("artists.txt") as f:
     all_rappers = f.read().splitlines()
 
+with open("artist_ids.json") as f:
+    artist_ids = json.load(f)
 # TODO: replace this txt file with the chunk you are running
 # make sure you don't have any files named "records_incremental.json"
 # or "collabs_incremental.json"
@@ -43,11 +45,8 @@ def writeArtistCollabs(name, artist_collabs):
         outfile.write(",\n")
 
 for name in rappers:
+    id = artist_ids[name]
     print name
-    result = musicbrainzngs.search_artists(artist=name)
-    time.sleep(1.3)
-    if result['artist-count'] > 0:
-        id = result['artist-list'][0]['id']
     print id
 
     offset = 0 # need to loop as we are limited to 100 results per call
@@ -108,7 +107,7 @@ for name in rappers:
                     if "name" in collab["artist"]:
                         alias.append(collab["artist"]["name"])
                     for al in alias:
-                        if al in all_rappers:
+                        if al.lower() in [a.lower() for a in all_rappers]:
                             total_records.append(rec)
                             record_json = {"title": rec["title"], "release_id": rel["id"], "year": rel["date"].split("-")[0]}
                             addRecord(rec["id"], record_json)
