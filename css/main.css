@@ -23,3 +23,10 @@ circle {
   stroke-linecap: round;
   pointer-events: none;
 }
+
+#sliderContainer {
+  margin: 50px;
+}
+#slider {
+  width: 80%;
+}
