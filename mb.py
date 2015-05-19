@@ -11,6 +11,8 @@ pp = pprint.PrettyPrinter(indent=2)
 with open("artists.txt") as f:
     all_rappers = f.read().splitlines()
 
+with open("artist_ids.json") as f:
+    artist_ids = json.load(f)
 # TODO: replace this txt file with the chunk you are running
 # make sure you don't have any files named "records_incremental.json"
 # or "collabs_incremental.json"
@@ -42,12 +44,9 @@ def writeArtistCollabs(name, artist_collabs):
         json.dump(artist_collabs, outfile, indent=2, separators=(',', ': ')) 
         outfile.write(",\n")
 
-for name in rappers:
+for name in ["Danny Brown"]:
+    id = artist_ids[name]
     print name
-    result = musicbrainzngs.search_artists(artist=name)
-    time.sleep(1.3)
-    if result['artist-count'] > 0:
-        id = result['artist-list'][0]['id']
     print id
 
     offset = 0 # need to loop as we are limited to 100 results per call
