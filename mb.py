@@ -107,7 +107,7 @@ for name in rappers:
                     if "name" in collab["artist"]:
                         alias.append(collab["artist"]["name"])
                     for al in alias:
-                        if al in all_rappers:
+                        if al.lower() in [a.lower() for a in all_rappers]:
                             total_records.append(rec)
                             record_json = {"title": rec["title"], "release_id": rel["id"], "year": rel["date"].split("-")[0]}
                             addRecord(rec["id"], record_json)
