@@ -44,7 +44,7 @@ def writeArtistCollabs(name, artist_collabs):
         json.dump(artist_collabs, outfile, indent=2, separators=(',', ': ')) 
         outfile.write(",\n")
 
-for name in ["Danny Brown"]:
+for name in rappers:
     id = artist_ids[name]
     print name
     print id
