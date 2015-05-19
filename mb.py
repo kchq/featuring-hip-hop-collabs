@@ -38,7 +38,7 @@ def printOutCollabDictionary(filename):
 
 def writeArtistCollabs(name, artist_collabs):
     with open("collabs_incremental.json", "a") as outfile:
-        outfile.write(name+": ");
+        outfile.write("\"" + name + "\": ");
         json.dump(artist_collabs, outfile, indent=2, separators=(',', ': ')) 
         outfile.write(",\n")
 
