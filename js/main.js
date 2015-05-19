@@ -3,7 +3,7 @@ $(document).ready(init);
 d3.select(window).on("resize", throttle);
 
 var width, height, centered, time_slider, currentYear;
-var svg, g, gc, washington, midWest, northEast, southCalifornia, northCaliforniaX, south, time_slider;
+var svg, g, gc, washington, midWest, northEast, southCalifornia, northCalifornia, south, time_slider;
 
 width = document.getElementById('container').scrollWidth;
 height = width * 25.0 / 48.0;  // dimensions taken from http://bl.ocks.org/mbostock/2206340
@@ -54,54 +54,27 @@ function drawSlider() {
   currentYear = 1950;
 }
 
+// sets up and draws the region circles
 function drawRegions() {
-  var washingtonX = projection([-1*parseFloat(122.3331), parseFloat(47.609)])[0];
-  var washingtonY = projection([-1*parseFloat(122.3331), parseFloat(47.609)])[1];
-  washington = gc.append("svg:circle")
-                     .attr("cx", washingtonX)
-                     .attr("cy", washingtonY)
-                     .attr("r", 0)
-                     .attr("numArtists", 0);
+  washington = drawRegion(122.3331, 47.609);
+  northEast = drawRegion(74.0059, 40.7127);
+  northCalifornia = drawRegion(121.4689, 38.5556);
+  southCalifornia = drawRegion(117, 35);
+  south = drawRegion(85, 32);
+  midWest = drawRegion(87.6847, 40);
+}
 
-  var northEastX = projection([-1*parseFloat(74.0059), parseFloat(40.7127)])[0];
-  var northEastY = projection([-1*parseFloat(74.0059), parseFloat(40.7127)])[1];
-  northEast = gc.append("svg:circle")
-                     .attr("cx", northEastX)
-                     .attr("cy", northEastY)
+// helper function to draw a single region
+function drawRegion(lon, lat) {
+  var region;
+  var regionX = projection([-1*parseFloat(lon), parseFloat(lat)])[0];
+  var regionY = projection([-1*parseFloat(lon), parseFloat(lat)])[1];
+  region = gc.append("svg:circle")
+                     .attr("cx", regionX)
+                     .attr("cy", regionY)
                      .attr("r", 0)
                      .attr("numArtists", 0);
-
-  var southCaliforniaX = projection([-1*parseFloat(117), parseFloat(35)])[0];
-  var southCaliforniaY = projection([-1*parseFloat(117), parseFloat(35)])[1];
-  southCalifornia = gc.append("svg:circle")
-                     .attr("cx", southCaliforniaX)
-                     .attr("cy", southCaliforniaY)
-                     .attr("r", 0)
-                     .attr("numArtists", 0);
-
-  var northCaliforniaX = projection([-1*parseFloat(121.4689), parseFloat(38.5556)])[0];
-  var northCaliforniaY = projection([-1*parseFloat(121.4689), parseFloat(38.5556)])[1];
-  northCalifornia = gc.append("svg:circle")
-                     .attr("cx", northCaliforniaX)
-                     .attr("cy", northCaliforniaY)
-                     .attr("r", 0)
-                     .attr("numArtists", 0);
-
-  var southX = projection([-1*parseFloat(85), parseFloat(32)])[0];
-  var southY = projection([-1*parseFloat(85), parseFloat(32)])[1];
-  south = gc.append("svg:circle")
-                     .attr("cx", southX)
-                     .attr("cy", southY)
-                     .attr("r", 0)
-                     .attr("numArtists", 0);
-
-  var midWestX = projection([-1*parseFloat(87.6847), parseFloat(40)])[0];
-  var midWestY = projection([-1*parseFloat(87.6847), parseFloat(40)])[1];
-  midWest = gc.append("svg:circle")
-                     .attr("cx", midWestX)
-                     .attr("cy", midWestY)
-                     .attr("r", 0)
-                     .attr("numArtists", 0);
+  return region;
 }
 
 function drawRappers() {
@@ -161,7 +134,6 @@ function redraw() {
 
 function addRapper(region, rapper, startYear) {
 
-  console.log(parseInt(startYear) + " " + currentYear);
   //if (startYear !== "" && parseInt(startYear) <= currentYear) {
      var regionNode;
     if (region === "W") {
