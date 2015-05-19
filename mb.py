@@ -72,7 +72,7 @@ for name in rappers:
         countries = []
         for r in res:
             if "country" in r and "date" in r:
-                if r["country"] == "US" or r["country"] == "us":
+                if r["country"] == "US" or r["country"] == "us" or r["country"] == "XW" or r["country"] == "xw":
                     countries.append(r)
         if len(countries) > 0:
             best = countries[0]
