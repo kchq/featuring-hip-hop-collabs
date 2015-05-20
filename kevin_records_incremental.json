@@ -58,6 +58,11 @@
   "year": "1998",
   "title": "Da Goodness"
 },
+"9946593c-9671-4e44-8d2b-4227e5af710f": {
+  "release_id": "684bd1d3-54e1-43c6-a723-93a4ede2f0f6",
+  "year": "2004",
+  "title": "I.C. Dead People"
+},
 "28cc5da4-52cb-4368-8ee5-fc647865a1c0": {
   "release_id": "f868cf16-c6dd-417e-b1e6-e946122414d4",
   "year": "2010",
@@ -87,6 +92,11 @@
   "release_id": "0ba3de1a-115d-44ec-995a-64f448bd31c9",
   "year": "1996",
   "title": "Do What Ya Feel"
+},
+"8021c241-9b28-4076-8adc-1bda7fca9d61": {
+  "release_id": "3b3c4a64-7d65-4d0c-9924-2f7bc48e4016",
+  "year": "2013",
+  "title": "The Devil Is a Lie"
 },
 "20123b8e-4a07-4e6c-8fd4-2e891b82744e": {
   "release_id": "661d72c9-fa70-41a9-bfb8-add3c38034d7",
@@ -298,6 +308,11 @@
   "year": "2012",
   "title": "Bag of Money"
 },
+"51f46aa2-15df-4c3b-8f5e-25438d858311": {
+  "release_id": "c9cbcb51-eb4c-47dd-a0a2-3f515764b47c",
+  "year": "2014",
+  "title": "Movin' Bass"
+},
 "31ca5076-f561-42a8-a4f9-4ffeb8600fcc": {
   "release_id": "c9cbcb51-eb4c-47dd-a0a2-3f515764b47c",
   "year": "2014",
@@ -383,6 +398,11 @@
   "year": "2006",
   "title": "I\u2019m a G"
 },
+"267584fb-c0fb-4d91-9484-ec504257035a": {
+  "release_id": "71f55f85-7d28-4346-b029-9dce4d49f784",
+  "year": "2014",
+  "title": "The Devil Is a Lie"
+},
 "a1df24ab-6048-4db5-ba6b-0b480ea1d93b": {
   "release_id": "71f55f85-7d28-4346-b029-9dce4d49f784",
   "year": "2014",
@@ -442,11 +462,6 @@
   "release_id": "ccc9399c-0e70-46e9-80a5-6acc1b6fd9ab",
   "year": "2006",
   "title": "Holla at Me Baby!"
-},
-"4b98ae50-2c68-43a6-9f8b-e4edd234ea9f": {
-  "release_id": "8b019140-334f-4e2a-a9e1-39960ba9397c",
-  "year": "2010",
-  "title": "Veteran's Day"
 },
 "e23df49e-c281-4382-ba60-92edd68eec3e": {
   "release_id": "c79475f9-f489-4cc8-adfc-07c880289a94",
@@ -508,11 +523,6 @@
   "year": "2012",
   "title": "MMG The World Is Ours"
 },
-"88592fb1-b2a3-4124-8c3e-9759b25e3b7e": {
-  "release_id": "30e57f7a-fdd1-4f42-a84f-8dfcfb35b9ec",
-  "year": "2012",
-  "title": "Triple Beam Dreams"
-},
 "5f3adaef-8def-4b8b-b21d-348a47463d7f": {
   "release_id": "30e57f7a-fdd1-4f42-a84f-8dfcfb35b9ec",
   "year": "2012",
@@ -527,6 +537,16 @@
   "release_id": "30e57f7a-fdd1-4f42-a84f-8dfcfb35b9ec",
   "year": "2012",
   "title": "Fuck Em"
+},
+"88592fb1-b2a3-4124-8c3e-9759b25e3b7e": {
+  "release_id": "30e57f7a-fdd1-4f42-a84f-8dfcfb35b9ec",
+  "year": "2012",
+  "title": "Triple Beam Dreams"
+},
+"4b98ae50-2c68-43a6-9f8b-e4edd234ea9f": {
+  "release_id": "8b019140-334f-4e2a-a9e1-39960ba9397c",
+  "year": "2010",
+  "title": "Veteran's Day"
 },
 "34d1ac7b-7198-471a-8156-60db5c29a43c": {
   "release_id": "5c88331c-36f8-409b-8eb9-57f52e6def60",
@@ -563,6 +583,11 @@
   "year": "2011",
   "title": "Druggys Wit Hoes"
 },
+"f019fdcb-311d-49fa-a031-32fd3384dd18": {
+  "release_id": "6b3944ec-9cd9-4da5-b034-bb4b56123d7e",
+  "year": "2011",
+  "title": "WHat's tHe Word"
+},
 "c5a32f0c-3e64-43d3-8fe6-76f918b971eb": {
   "release_id": "6b3944ec-9cd9-4da5-b034-bb4b56123d7e",
   "year": "2011",
@@ -573,11 +598,6 @@
   "year": "2011",
   "title": "LigHt Years AHead (Sky HigH)"
 },
-"d3991659-440e-467f-84c9-ea901e540061": {
-  "release_id": "7d48bbf8-6ce7-4fe8-be42-c5dc8ddfa5ae",
-  "year": "2012",
-  "title": "Druggys Wit Hoes Again"
-},
 "995a898c-ea91-4d86-b5cc-27d329483d82": {
   "release_id": "7d48bbf8-6ce7-4fe8-be42-c5dc8ddfa5ae",
   "year": "2012",
@@ -587,6 +607,16 @@
   "release_id": "7d48bbf8-6ce7-4fe8-be42-c5dc8ddfa5ae",
   "year": "2012",
   "title": "Grooveline, Part 1"
+},
+"5b184079-bee6-4631-affa-4cb8c0d8891c": {
+  "release_id": "7d48bbf8-6ce7-4fe8-be42-c5dc8ddfa5ae",
+  "year": "2012",
+  "title": "2 Raw"
+},
+"d3991659-440e-467f-84c9-ea901e540061": {
+  "release_id": "7d48bbf8-6ce7-4fe8-be42-c5dc8ddfa5ae",
+  "year": "2012",
+  "title": "Druggys Wit Hoes Again"
 },
 "15e7dbbf-e2b3-4706-bb91-9473e929383a": {
   "release_id": "2bc96797-1723-4790-914c-8f5548b868d4",
@@ -607,6 +637,11 @@
   "release_id": "5716931b-af50-4610-af4c-c2f17f1c0208",
   "year": "2014",
   "title": "Blind Threats"
+},
+"f5c42ef4-d88b-4e9e-a84a-991da5ce2917": {
+  "release_id": "5716931b-af50-4610-af4c-c2f17f1c0208",
+  "year": "2014",
+  "title": "Los Awesome"
 },
 "34e3c370-be27-492e-b8f1-c8cfb4cce23b": {
   "release_id": "c165cf7d-2112-4f90-9efc-9e460def3a2b",
@@ -638,6 +673,11 @@
   "year": "1999",
   "title": "Frozen"
 },
+"8336c629-3652-4790-b635-d9fd9062ae72": {
+  "release_id": "8f5658c1-e500-47cb-a05e-61316ddf0059",
+  "year": "1999",
+  "title": "Street Talkin\u2019"
+},
 "721d4b44-08cb-4a16-a558-e93101dfeb18": {
   "release_id": "0bdfbf57-5e2b-44f8-938c-c30c76de4bad",
   "year": "1999",
@@ -652,6 +692,11 @@
   "release_id": "7d05c8ec-09e1-48de-9f22-eb11ec65db36",
   "year": "2004",
   "title": "Oh No"
+},
+"0213130a-0a2d-43a4-b8c8-98d38751c584": {
+  "release_id": "c2ba46aa-d5db-4530-8f3d-80f2351a87c3",
+  "year": "2010",
+  "title": "4 tha Hustlas"
 },
 "0213130a-0a2d-43a4-b8c8-98d38751c584": {
   "release_id": "c2ba46aa-d5db-4530-8f3d-80f2351a87c3",
@@ -708,10 +753,15 @@
   "year": "2006",
   "title": "Runnin Yo Mouth"
 },
+"5b26eb01-d8df-453e-8d19-3b1f9683e199": {
+  "release_id": "d1405524-1c03-4697-a7eb-0db212f8552e",
+  "year": "2006",
+  "title": "Just Watchin"
+},
 "34ac581c-6885-46f7-a58e-5be714ef1164": {
   "release_id": "54930045-8cae-4e69-8883-cd09c6e8cfee",
   "year": "2008",
-  "title": "Life of Da Party"
+  "title": "Life of da Party"
 },
 "2ccd9adc-a575-4e2a-8cd1-64694db3f088": {
   "release_id": "d61e6e9a-a898-4553-b794-5caf2038b5e8",
@@ -793,6 +843,11 @@
   "year": "2001",
   "title": "The Wash (clean)"
 },
+"78afc5cc-feb1-41f9-9e91-f62b543f5aae": {
+  "release_id": "e5a8cf7e-fddc-40fc-aa14-c3ca7a66d48d",
+  "year": "2011",
+  "title": "Platinum (remix)"
+},
 "c6c110f9-3907-4521-882d-a45b3bd9a09b": {
   "release_id": "33fa81cc-550b-43aa-9050-c2acd15a9f5f",
   "year": "2011",
@@ -808,10 +863,10 @@
   "year": "2013",
   "title": "Let Me Explain"
 },
-"78afc5cc-feb1-41f9-9e91-f62b543f5aae": {
-  "release_id": "e5a8cf7e-fddc-40fc-aa14-c3ca7a66d48d",
-  "year": "2011",
-  "title": "Platinum (remix)"
+"75355944-0f18-4214-8b1a-79d4a9ad1178": {
+  "release_id": "bb758b41-5870-4a0b-a989-12688a2d9d38",
+  "year": "2003",
+  "title": "\"Snoop\" Dogg 'n' the Wax"
 },
 "50200bef-a1c5-48b7-802b-d40885604c25": {
   "release_id": "777ed453-209f-4132-9d0b-f7e69134af56",
@@ -873,20 +928,20 @@
   "year": "1992",
   "title": "Deep Cover (instrumental)"
 },
-"7db54274-2d53-444b-bb0e-66f4b46d1878": {
-  "release_id": "23e6261a-fd20-40f5-ac8c-f0572b20c760",
-  "year": "2006",
-  "title": "Keep Bouncin' (clean)"
-},
 "e3b52b55-18a8-412f-90d0-c56747c4383f": {
   "release_id": "23e6261a-fd20-40f5-ac8c-f0572b20c760",
   "year": "2006",
-  "title": "Keep Bouncin' (instrumental)"
+  "title": "Keep Bouncin\u2019 (instrumental)"
 },
 "51cbba94-6755-4673-be9e-6706e4002b11": {
   "release_id": "23e6261a-fd20-40f5-ac8c-f0572b20c760",
   "year": "2006",
-  "title": "Keep Bouncin'"
+  "title": "Keep Bouncin\u2019"
+},
+"7db54274-2d53-444b-bb0e-66f4b46d1878": {
+  "release_id": "23e6261a-fd20-40f5-ac8c-f0572b20c760",
+  "year": "2006",
+  "title": "Keep Bouncin\u2019 (clean)"
 },
 "c6c110f9-3907-4521-882d-a45b3bd9a09b": {
   "release_id": "110ec4df-2ecd-4a55-b905-ec3c929d5782",
@@ -968,11 +1023,6 @@
   "year": "2007",
   "title": "Hurt"
 },
-"9636077f-bcb9-48e7-b27e-8830c3413296": {
-  "release_id": "6cbaba3c-eac0-499e-b35d-d23e42ebf968",
-  "year": "2012",
-  "title": "G Season"
-},
 "ff6e4162-d981-40e8-948e-2e004c664b5d": {
   "release_id": "6cbaba3c-eac0-499e-b35d-d23e42ebf968",
   "year": "2012",
@@ -987,6 +1037,11 @@
   "release_id": "6cbaba3c-eac0-499e-b35d-d23e42ebf968",
   "year": "2012",
   "title": "Ball"
+},
+"9636077f-bcb9-48e7-b27e-8830c3413296": {
+  "release_id": "6cbaba3c-eac0-499e-b35d-d23e42ebf968",
+  "year": "2012",
+  "title": "G Season"
 },
 "88faefff-f94c-493b-bab0-66c7b79e08e2": {
   "release_id": "72c72772-da8b-4488-b098-330e9dca1c7a",
@@ -1103,11 +1158,6 @@
   "year": "2011",
   "title": "I'm Flexin'"
 },
-"9636077f-bcb9-48e7-b27e-8830c3413296": {
-  "release_id": "2bda7e07-e0e0-4a3e-abe3-eef508453499",
-  "year": "2012",
-  "title": "G Season"
-},
 "ff6e4162-d981-40e8-948e-2e004c664b5d": {
   "release_id": "2bda7e07-e0e0-4a3e-abe3-eef508453499",
   "year": "2012",
@@ -1122,6 +1172,11 @@
   "release_id": "2bda7e07-e0e0-4a3e-abe3-eef508453499",
   "year": "2012",
   "title": "Ball"
+},
+"9636077f-bcb9-48e7-b27e-8830c3413296": {
+  "release_id": "2bda7e07-e0e0-4a3e-abe3-eef508453499",
+  "year": "2012",
+  "title": "G Season"
 },
 "7ac61d91-eee9-488d-894c-834fb43c5bea": {
   "release_id": "5ffaa3f4-71cd-4fdb-b3f4-d9604389ed9d",
@@ -1147,6 +1202,21 @@
   "release_id": "bc2a02c0-97a4-42ce-bb64-6a9773391cf0",
   "year": "2007",
   "title": "In the Mood"
+},
+"4d3a5517-0722-4b34-871f-8a3a18b132d5": {
+  "release_id": "9d0b65d1-3d7a-3664-ac02-af49db51394f",
+  "year": "2007",
+  "title": "Soul Music"
+},
+"bbb86fd0-5cf3-4c62-aa71-6c69964c53f0": {
+  "release_id": "9d0b65d1-3d7a-3664-ac02-af49db51394f",
+  "year": "2007",
+  "title": "The Function"
+},
+"2ebc209b-3e6a-40bb-b202-6c957231da19": {
+  "release_id": "9d0b65d1-3d7a-3664-ac02-af49db51394f",
+  "year": "2007",
+  "title": "What Can I Do"
 },
 "ccbe14c8-1f25-42f2-bb0c-21561e4e115d": {
   "release_id": "9d0b65d1-3d7a-3664-ac02-af49db51394f",
@@ -1178,21 +1248,6 @@
   "year": "2007",
   "title": "Over the Counter"
 },
-"4d3a5517-0722-4b34-871f-8a3a18b132d5": {
-  "release_id": "9d0b65d1-3d7a-3664-ac02-af49db51394f",
-  "year": "2007",
-  "title": "Soul Music"
-},
-"bbb86fd0-5cf3-4c62-aa71-6c69964c53f0": {
-  "release_id": "9d0b65d1-3d7a-3664-ac02-af49db51394f",
-  "year": "2007",
-  "title": "The Function"
-},
-"2ebc209b-3e6a-40bb-b202-6c957231da19": {
-  "release_id": "9d0b65d1-3d7a-3664-ac02-af49db51394f",
-  "year": "2007",
-  "title": "What Can I Do"
-},
 "a743fbe6-6b7e-4bd7-bae9-ada25a196692": {
   "release_id": "39b975ca-e947-40e0-a629-3ad43c325c49",
   "year": "2004",
@@ -1212,6 +1267,11 @@
   "release_id": "028f11e9-3ef0-47aa-9958-baf8d326c6b5",
   "year": "2005",
   "title": "Subwaysurfin"
+},
+"dad559d3-86cc-4604-9d59-9396eb9af21d": {
+  "release_id": "ee56a60c-f61e-4bfb-ae06-fa53da899d8a",
+  "year": "2012",
+  "title": "The Corner"
 },
 "9d4af704-1507-4209-bc27-d9396f3b9cb3": {
   "release_id": "ee56a60c-f61e-4bfb-ae06-fa53da899d8a",
@@ -1338,16 +1398,6 @@
   "year": "2002",
   "title": "Joy"
 },
-"d8c5d20c-be66-4e4c-ad26-ba80c118e9ca": {
-  "release_id": "7c9d137a-c338-4524-b976-eec376c38e6e",
-  "year": "2015",
-  "title": "Bass Ackwards"
-},
-"19f38c4a-6a1d-4f35-b3e4-36045ea0017d": {
-  "release_id": "7c9d137a-c338-4524-b976-eec376c38e6e",
-  "year": "2015",
-  "title": "No K"
-},
 "6cfbca18-fdc4-4f1f-809e-033c4000abd5": {
   "release_id": "7c9d137a-c338-4524-b976-eec376c38e6e",
   "year": "2015",
@@ -1358,15 +1408,15 @@
   "year": "2015",
   "title": "Speedom (Worldwide Choppers 2)"
 },
-"011a1691-4db1-4ce2-b57d-61106419a31a": {
-  "release_id": "4f554eb2-aa0d-407e-a10c-bb2cd7427115",
-  "year": "2013",
-  "title": "Fragile"
+"d8c5d20c-be66-4e4c-ad26-ba80c118e9ca": {
+  "release_id": "7c9d137a-c338-4524-b976-eec376c38e6e",
+  "year": "2015",
+  "title": "Bass Ackwards"
 },
-"a9b5cf34-cf87-4f54-b40b-4556e731ed19": {
-  "release_id": "4f554eb2-aa0d-407e-a10c-bb2cd7427115",
-  "year": "2013",
-  "title": "Thizzles"
+"19f38c4a-6a1d-4f35-b3e4-36045ea0017d": {
+  "release_id": "7c9d137a-c338-4524-b976-eec376c38e6e",
+  "year": "2015",
+  "title": "No K"
 },
 "921cdf19-bdbd-4064-b2fc-d5159a76cfad": {
   "release_id": "4f554eb2-aa0d-407e-a10c-bb2cd7427115",
@@ -1377,6 +1427,16 @@
   "release_id": "4f554eb2-aa0d-407e-a10c-bb2cd7427115",
   "year": "2013",
   "title": "That\u2019s My Kid"
+},
+"011a1691-4db1-4ce2-b57d-61106419a31a": {
+  "release_id": "4f554eb2-aa0d-407e-a10c-bb2cd7427115",
+  "year": "2013",
+  "title": "Fragile"
+},
+"a9b5cf34-cf87-4f54-b40b-4556e731ed19": {
+  "release_id": "4f554eb2-aa0d-407e-a10c-bb2cd7427115",
+  "year": "2013",
+  "title": "Thizzles"
 },
 "0e3afad3-a87f-4779-abf8-fa21a2148c6d": {
   "release_id": "2ad6da9c-fc31-474c-9b89-d8da3c0cfb4b",
@@ -1403,6 +1463,11 @@
   "year": "2011",
   "title": "Fuck Food"
 },
+"af2d4450-03dc-47da-89b8-c454871c660e": {
+  "release_id": "2ad6da9c-fc31-474c-9b89-d8da3c0cfb4b",
+  "year": "2011",
+  "title": "You Owe Like Pookie"
+},
 "9004e8c7-1156-40ae-b816-688234eeace9": {
   "release_id": "2ad6da9c-fc31-474c-9b89-d8da3c0cfb4b",
   "year": "2011",
@@ -1423,10 +1488,35 @@
   "year": "2006",
   "title": "Jellysickle"
 },
+"741f75e6-0202-4039-82b9-a4e03a26107a": {
+  "release_id": "fb1f16f3-65e6-4977-b3a6-ea8ab942125d",
+  "year": "2011",
+  "title": "Down for the Block"
+},
+"62304c01-08b5-456c-895e-876d82e5644d": {
+  "release_id": "e9c31db2-0fca-423d-a63e-b163b30c4b39",
+  "year": "2010",
+  "title": "Paper With Brian B Shynin (intro)"
+},
+"2a8e0ad6-4b96-4176-a8e5-c312eaeba2d2": {
+  "release_id": "ea923335-5db2-4bda-a9bb-1c365d6e2bee",
+  "year": "2011",
+  "title": "Kocky"
+},
+"1ebb9b25-d753-4d6e-aef5-be979ae5897c": {
+  "release_id": "ea923335-5db2-4bda-a9bb-1c365d6e2bee",
+  "year": "2011",
+  "title": "EMJ"
+},
 "e4209dd6-af26-4723-a09c-28d22f741f42": {
   "release_id": "f59b4af5-ed1d-46ef-8fa4-64d4b92a0dc3",
   "year": "2014",
   "title": "Hard (A Monster Made It)"
+},
+"774e4765-af8e-4349-b906-f9df5f76bf11": {
+  "release_id": "f59b4af5-ed1d-46ef-8fa4-64d4b92a0dc3",
+  "year": "2014",
+  "title": "Red Rags"
 },
 "06fb60cc-1c96-4928-a2ed-0b3498c3e490": {
   "release_id": "f59b4af5-ed1d-46ef-8fa4-64d4b92a0dc3",
@@ -1438,6 +1528,601 @@
   "year": "2014",
   "title": "Which One"
 },
+"cb8edeeb-dd83-43da-a400-fc844106c68e": {
+  "release_id": "732055ac-f25e-4281-9525-cae9e19f66bf",
+  "year": "2014",
+  "title": "Best Head Ever"
+},
+"7adeccd6-3ae2-43f4-b904-04d8deaad05f": {
+  "release_id": "732055ac-f25e-4281-9525-cae9e19f66bf",
+  "year": "2014",
+  "title": "Or Nah"
+},
+"089735f5-ee1b-4f32-8c39-fc13f7fca3de": {
+  "release_id": "732055ac-f25e-4281-9525-cae9e19f66bf",
+  "year": "2014",
+  "title": "Take That"
+},
+"9a220862-ce06-41b6-a3c8-e6a2a0eaf31f": {
+  "release_id": "732055ac-f25e-4281-9525-cae9e19f66bf",
+  "year": "2014",
+  "title": "Black on Black"
+},
+"9a220862-ce06-41b6-a3c8-e6a2a0eaf31f": {
+  "release_id": "732055ac-f25e-4281-9525-cae9e19f66bf",
+  "year": "2014",
+  "title": "Black on Black"
+},
+"79f81f3e-ce69-4b5f-949f-a47bf51b8729": {
+  "release_id": "732055ac-f25e-4281-9525-cae9e19f66bf",
+  "year": "2014",
+  "title": "Really"
+},
+"00fd835d-0924-45d5-be09-01bbb7cdcfc7": {
+  "release_id": "732055ac-f25e-4281-9525-cae9e19f66bf",
+  "year": "2014",
+  "title": "Fuck Yo Feelings"
+},
+"8ae9c4f3-876f-4de0-95c2-a69623fb3441": {
+  "release_id": "54ac2739-4082-4cb8-9b85-80b4da9ad3ba",
+  "year": "2011",
+  "title": "Undefeated"
+},
+"ee374a64-dc58-4c3c-842b-0ad6d829eddf": {
+  "release_id": "e76c2536-31b1-4b5e-8b4f-a5095bc70c69",
+  "year": "2011",
+  "title": "Drug Test"
+},
+"ee374a64-dc58-4c3c-842b-0ad6d829eddf": {
+  "release_id": "e76c2536-31b1-4b5e-8b4f-a5095bc70c69",
+  "year": "2011",
+  "title": "Drug Test"
+},
+"2ae5cbac-33d4-482d-ad34-68d2877842ec": {
+  "release_id": "e76c2536-31b1-4b5e-8b4f-a5095bc70c69",
+  "year": "2011",
+  "title": "Red"
+},
+"9fda8b89-b5bd-4bc0-bfdc-881b8b8b3028": {
+  "release_id": "e76c2536-31b1-4b5e-8b4f-a5095bc70c69",
+  "year": "2011",
+  "title": "Can You Believe It"
+},
+"d1227083-d9fe-45be-997c-db95ad2197e2": {
+  "release_id": "b7ecdcdc-8ea6-405e-bca1-cf221dab95ad",
+  "year": "2005",
+  "title": "Like Father, Like Son"
+},
+"f9abecc8-f8d4-46e6-98f8-72ee82ab3649": {
+  "release_id": "b7ecdcdc-8ea6-405e-bca1-cf221dab95ad",
+  "year": "2005",
+  "title": "We Ain't"
+},
+"492fe5d7-f37c-4956-aec1-4cab50de8f3f": {
+  "release_id": "b7ecdcdc-8ea6-405e-bca1-cf221dab95ad",
+  "year": "2005",
+  "title": "How We Do (Fresh '83)"
+},
+"9debf252-888a-4ef9-a80c-cfefc3c9c391": {
+  "release_id": "b7ecdcdc-8ea6-405e-bca1-cf221dab95ad",
+  "year": "2005",
+  "title": "Westside Story"
+},
+"e608c965-ee42-47c0-b17c-7e36c0799fac": {
+  "release_id": "b7ecdcdc-8ea6-405e-bca1-cf221dab95ad",
+  "year": "2005",
+  "title": "Hate It or Love It"
+},
+"c2c7f67f-bb2d-482c-af01-3a36336596f2": {
+  "release_id": "5705599b-eae1-4ca6-94b8-e7b89fb9307d",
+  "year": "2006",
+  "title": "Intro"
+},
+"e2321200-d856-454a-9ae3-a7c1316c670b": {
+  "release_id": "5705599b-eae1-4ca6-94b8-e7b89fb9307d",
+  "year": "2006",
+  "title": "Not Gunna"
+},
+"676dc404-ac8e-4fb2-9877-227b0ead2c2b": {
+  "release_id": "5705599b-eae1-4ca6-94b8-e7b89fb9307d",
+  "year": "2006",
+  "title": "1970 Sumthin'"
+},
+"06b8a58e-290a-4508-b5fa-853f6d3407fc": {
+  "release_id": "5705599b-eae1-4ca6-94b8-e7b89fb9307d",
+  "year": "2006",
+  "title": "My Lowrider"
+},
+"06b8a58e-290a-4508-b5fa-853f6d3407fc": {
+  "release_id": "5705599b-eae1-4ca6-94b8-e7b89fb9307d",
+  "year": "2006",
+  "title": "My Lowrider"
+},
+"e86b624d-f334-457d-8c19-ce2db3692085": {
+  "release_id": "3980f4db-289e-4dfc-a1e0-572c9861485d",
+  "year": "2010",
+  "title": "Cold Blood"
+},
+"7faecfef-27ae-49b5-b0e1-b4ef073f4f84": {
+  "release_id": "3980f4db-289e-4dfc-a1e0-572c9861485d",
+  "year": "2010",
+  "title": "Brake Lights"
+},
+"0f717420-cf00-4527-9f6a-ca9f3facf0d5": {
+  "release_id": "3980f4db-289e-4dfc-a1e0-572c9861485d",
+  "year": "2010",
+  "title": "Trading Places"
+},
+"bc896bd9-e8cf-4007-8dda-ec1d3b957dd3": {
+  "release_id": "3980f4db-289e-4dfc-a1e0-572c9861485d",
+  "year": "2010",
+  "title": "Stop"
+},
+"f6acb8a9-1e4f-4d21-83bf-c2ecb2b289c0": {
+  "release_id": "3980f4db-289e-4dfc-a1e0-572c9861485d",
+  "year": "2010",
+  "title": "Street Riders"
+},
+"8e2bb957-f551-44fc-aeae-4d3636f369cc": {
+  "release_id": "3980f4db-289e-4dfc-a1e0-572c9861485d",
+  "year": "2010",
+  "title": "Pushin' It"
+},
+"85a7a02f-e177-4bc0-b78d-92af787fa02d": {
+  "release_id": "7b6ea9e8-fb23-47ab-9a4d-b2a0f527949b",
+  "year": "2013",
+  "title": "Astronaut Pussy - Welcome to California"
+},
+"85a7a02f-e177-4bc0-b78d-92af787fa02d": {
+  "release_id": "7b6ea9e8-fb23-47ab-9a4d-b2a0f527949b",
+  "year": "2013",
+  "title": "Astronaut Pussy - Welcome to California"
+},
+"7056be67-784e-4613-949c-bc06dc41404f": {
+  "release_id": "7b6ea9e8-fb23-47ab-9a4d-b2a0f527949b",
+  "year": "2013",
+  "title": "F.I.V.E."
+},
+"8e183889-0622-4c2c-8327-e34bca51a597": {
+  "release_id": "7b6ea9e8-fb23-47ab-9a4d-b2a0f527949b",
+  "year": "2013",
+  "title": "Super Throwed"
+},
+"6f44c87b-4602-4f17-9cee-1fbca7b3b8c6": {
+  "release_id": "8300bc2a-ca04-4003-91f8-ecfb4ed973ad",
+  "year": "2012",
+  "title": "Lehhhgooo (Explicit)"
+},
+"8255d7a1-6def-49e0-b763-c00bba3cdac4": {
+  "release_id": "8300bc2a-ca04-4003-91f8-ecfb4ed973ad",
+  "year": "2012",
+  "title": "Lehhhgooo (Clean)"
+},
+"96734db1-0df8-4533-8497-c840334ab099": {
+  "release_id": "b20859eb-a4e2-4ccd-bcfe-b09ad8efe1b0",
+  "year": "2012",
+  "title": "Celebration"
+},
+"96734db1-0df8-4533-8497-c840334ab099": {
+  "release_id": "b20859eb-a4e2-4ccd-bcfe-b09ad8efe1b0",
+  "year": "2012",
+  "title": "Celebration"
+},
+"9fc739dc-705b-477b-80d4-9c7ca9fc377d": {
+  "release_id": "e275cd5e-46e8-4030-9b0b-5b51d57d26a3",
+  "year": "2011",
+  "title": "Drug Test"
+},
+"9fc739dc-705b-477b-80d4-9c7ca9fc377d": {
+  "release_id": "e275cd5e-46e8-4030-9b0b-5b51d57d26a3",
+  "year": "2011",
+  "title": "Drug Test"
+},
+"3f311d60-3b24-4443-8c24-3697aafcb3ac": {
+  "release_id": "e275cd5e-46e8-4030-9b0b-5b51d57d26a3",
+  "year": "2011",
+  "title": "Speakers on Blast"
+},
+"3f311d60-3b24-4443-8c24-3697aafcb3ac": {
+  "release_id": "e275cd5e-46e8-4030-9b0b-5b51d57d26a3",
+  "year": "2011",
+  "title": "Speakers on Blast"
+},
+"6bc0dc95-4bb7-4070-b203-6c5f47da3ab6": {
+  "release_id": "e275cd5e-46e8-4030-9b0b-5b51d57d26a3",
+  "year": "2011",
+  "title": "The City"
+},
+"5ff91ff0-3879-441b-b41f-55c1f0112f5a": {
+  "release_id": "e275cd5e-46e8-4030-9b0b-5b51d57d26a3",
+  "year": "2011",
+  "title": "Red Nation"
+},
+"490395c9-f8f1-413f-87ff-7e74405e1fd1": {
+  "release_id": "e275cd5e-46e8-4030-9b0b-5b51d57d26a3",
+  "year": "2011",
+  "title": "Good Girls Gone Bad"
+},
+"0f371da4-1814-445f-9c95-89799ec293dc": {
+  "release_id": "e275cd5e-46e8-4030-9b0b-5b51d57d26a3",
+  "year": "2011",
+  "title": "Paramedics"
+},
+"56824b78-448e-45a5-902c-3d9d5eb5dfe8": {
+  "release_id": "e275cd5e-46e8-4030-9b0b-5b51d57d26a3",
+  "year": "2011",
+  "title": "Heavy Artillery"
+},
+"e5c77c5f-2fd2-47a5-95db-34dad7e1c207": {
+  "release_id": "e275cd5e-46e8-4030-9b0b-5b51d57d26a3",
+  "year": "2011",
+  "title": "Martians vs. Goblins"
+},
+"788c70db-6232-40bd-b7b5-1e7c5bf9ab82": {
+  "release_id": "e275cd5e-46e8-4030-9b0b-5b51d57d26a3",
+  "year": "2011",
+  "title": "All the Way Gone"
+},
+"e851d873-a643-4972-af70-1797019c24b9": {
+  "release_id": "acb52d2b-8674-44ea-b5e0-03c81c88a204",
+  "year": "2012",
+  "title": "Jesus Piece"
+},
+"e851d873-a643-4972-af70-1797019c24b9": {
+  "release_id": "acb52d2b-8674-44ea-b5e0-03c81c88a204",
+  "year": "2012",
+  "title": "Jesus Piece"
+},
+"c3a7e456-b778-4fb3-83fd-4bae2d35fb00": {
+  "release_id": "acb52d2b-8674-44ea-b5e0-03c81c88a204",
+  "year": "2012",
+  "title": "Pray"
+},
+"c58ddc71-641d-4902-bcb4-a3c6d083c85e": {
+  "release_id": "acb52d2b-8674-44ea-b5e0-03c81c88a204",
+  "year": "2012",
+  "title": "See No Evil"
+},
+"e978d86d-3722-43c7-a8ca-02cee44a073d": {
+  "release_id": "acb52d2b-8674-44ea-b5e0-03c81c88a204",
+  "year": "2012",
+  "title": "Name Me King"
+},
+"c8c68887-97f5-445b-8867-aced3dbdacd7": {
+  "release_id": "acb52d2b-8674-44ea-b5e0-03c81c88a204",
+  "year": "2012",
+  "title": "Celebration"
+},
+"c8c68887-97f5-445b-8867-aced3dbdacd7": {
+  "release_id": "acb52d2b-8674-44ea-b5e0-03c81c88a204",
+  "year": "2012",
+  "title": "Celebration"
+},
+"387064dd-0690-4ecb-acd9-2e2fccbb4ce7": {
+  "release_id": "acb52d2b-8674-44ea-b5e0-03c81c88a204",
+  "year": "2012",
+  "title": "I Remember"
+},
+"c3240cf1-a1c3-423d-982b-42f9d9750586": {
+  "release_id": "acb52d2b-8674-44ea-b5e0-03c81c88a204",
+  "year": "2012",
+  "title": "Scared Now"
+},
+"56912e6a-7476-4749-8972-02f11bacebd8": {
+  "release_id": "acb52d2b-8674-44ea-b5e0-03c81c88a204",
+  "year": "2012",
+  "title": "All That (Lady)"
+},
+"56912e6a-7476-4749-8972-02f11bacebd8": {
+  "release_id": "acb52d2b-8674-44ea-b5e0-03c81c88a204",
+  "year": "2012",
+  "title": "All That (Lady)"
+},
+"f4243e55-bbd6-4396-bffb-a66721849aa3": {
+  "release_id": "acb52d2b-8674-44ea-b5e0-03c81c88a204",
+  "year": "2012",
+  "title": "Ali Bomaye"
+},
+"3f798fdb-45b8-4186-9135-f1f347e174ad": {
+  "release_id": "705f3a34-ef96-4c27-9265-8d82bc48bd46",
+  "year": "2006",
+  "title": "The Cypha"
+},
+"34d0f6d7-e59b-4510-93d9-26f2737ccb2c": {
+  "release_id": "705f3a34-ef96-4c27-9265-8d82bc48bd46",
+  "year": "2006",
+  "title": "Lights Camera Action"
+},
+"8055f07b-b98b-4982-ab5c-2bed40b9c48d": {
+  "release_id": "987a7411-5555-49c6-93cb-0b529042ea64",
+  "year": "2006",
+  "title": "High (remix)"
+},
+"8055f07b-b98b-4982-ab5c-2bed40b9c48d": {
+  "release_id": "987a7411-5555-49c6-93cb-0b529042ea64",
+  "year": "2006",
+  "title": "High (remix)"
+},
+"6edb8e5f-df54-4bd5-8476-5616e1fe7437": {
+  "release_id": "987a7411-5555-49c6-93cb-0b529042ea64",
+  "year": "2006",
+  "title": "Not Gunna"
+},
+"f1efc9f2-e553-4788-9c0e-921cbf09ce82": {
+  "release_id": "987a7411-5555-49c6-93cb-0b529042ea64",
+  "year": "2006",
+  "title": "Tell Me When to Go (remix)"
+},
+"900c8a90-a9a1-47bd-b56a-99c291404fd6": {
+  "release_id": "d94859d5-f48b-4a91-92e2-23f4cc2a7b45",
+  "year": "2012",
+  "title": "HVN4GNGSTA"
+},
+"9a6d3fe3-24bd-4966-8c1a-92c07d189b9c": {
+  "release_id": "d94859d5-f48b-4a91-92e2-23f4cc2a7b45",
+  "year": "2012",
+  "title": "Celebration (Bone Thugs remix)"
+},
+"4f4f9d57-a810-490b-b3cd-fee18e002f6d": {
+  "release_id": "d94859d5-f48b-4a91-92e2-23f4cc2a7b45",
+  "year": "2012",
+  "title": "Rollin'"
+},
+"4f4f9d57-a810-490b-b3cd-fee18e002f6d": {
+  "release_id": "d94859d5-f48b-4a91-92e2-23f4cc2a7b45",
+  "year": "2012",
+  "title": "Rollin'"
+},
+"a90e6d1e-21c0-4da0-ba85-d28619431513": {
+  "release_id": "d94859d5-f48b-4a91-92e2-23f4cc2a7b45",
+  "year": "2012",
+  "title": "Stripper"
+},
+"573e00f7-a422-4556-af57-9784c63f07d0": {
+  "release_id": "d94859d5-f48b-4a91-92e2-23f4cc2a7b45",
+  "year": "2012",
+  "title": "Murder"
+},
+"bc1ed277-6201-4ea7-890a-514ca750852b": {
+  "release_id": "7a54e840-bfdb-4176-8af2-4d8de47cc267",
+  "year": "2006",
+  "title": "Doctor's Advocate"
+},
+"9ffc87cd-3b40-4952-9a71-acea7a633746": {
+  "release_id": "7a54e840-bfdb-4176-8af2-4d8de47cc267",
+  "year": "2006",
+  "title": "Why You Hate the Game"
+},
+"400115ce-8ba0-4655-829f-c5ff71568a57": {
+  "release_id": "7a54e840-bfdb-4176-8af2-4d8de47cc267",
+  "year": "2006",
+  "title": "Wouldn't Get Far"
+},
+"2456bd68-6556-4fbe-8cb5-7a98e7cb5834": {
+  "release_id": "7a54e840-bfdb-4176-8af2-4d8de47cc267",
+  "year": "2006",
+  "title": "California Vacation"
+},
+"2acb4412-df19-4838-a224-a4873817e1ef": {
+  "release_id": "bf9d0958-7b93-4d5b-8231-3fd603d48bf3",
+  "year": "2011",
+  "title": "Can a Drummer Get Some"
+},
+"2acb4412-df19-4838-a224-a4873817e1ef": {
+  "release_id": "bf9d0958-7b93-4d5b-8231-3fd603d48bf3",
+  "year": "2011",
+  "title": "Can a Drummer Get Some"
+},
+"0f6f7e02-a4bc-40d7-8598-a9a6bb8a7412": {
+  "release_id": "bf9d0958-7b93-4d5b-8231-3fd603d48bf3",
+  "year": "2011",
+  "title": "History"
+},
+"355fec0c-8cfc-4e62-b504-96d7acc42a8b": {
+  "release_id": "bf9d0958-7b93-4d5b-8231-3fd603d48bf3",
+  "year": "2011",
+  "title": "In My '64"
+},
+"548439e1-68c8-455c-b526-5bbab6febbd2": {
+  "release_id": "bf9d0958-7b93-4d5b-8231-3fd603d48bf3",
+  "year": "2011",
+  "title": "The Ocean"
+},
+"4d505d2a-2a55-45a6-bf03-ba988428d2ad": {
+  "release_id": "bf9d0958-7b93-4d5b-8231-3fd603d48bf3",
+  "year": "2011",
+  "title": "Soo Woo"
+},
+"d789ce33-f580-4e95-8faa-082c5a10ed19": {
+  "release_id": "bf9d0958-7b93-4d5b-8231-3fd603d48bf3",
+  "year": "2011",
+  "title": "Purp & Yellow (Skeetox remix)"
+},
+"81bdedbb-b879-4c27-ba84-896cc04d2ff5": {
+  "release_id": "b3d8866f-e447-4cde-aa68-fa72d9844393",
+  "year": "2010",
+  "title": "It Must Be Me"
+},
+"aede6549-b6ea-4502-993c-8f87ea0cf7ad": {
+  "release_id": "b3d8866f-e447-4cde-aa68-fa72d9844393",
+  "year": "2010",
+  "title": "Everything Red"
+},
+"3fd2efff-9a19-4ee3-bf69-1071182c016b": {
+  "release_id": "b3d8866f-e447-4cde-aa68-fa72d9844393",
+  "year": "2010",
+  "title": "Lowrider"
+},
+"2ddf25c0-9d44-4dce-b752-83ff21afe4b3": {
+  "release_id": "e9fa2e2a-7962-4135-a7e0-ee34f810be31",
+  "year": "2007",
+  "title": "Cali Niggaz"
+},
+"a05718e7-9609-47b3-996b-871665828633": {
+  "release_id": "e9fa2e2a-7962-4135-a7e0-ee34f810be31",
+  "year": "2007",
+  "title": "My 6-4"
+},
+"6aadc05c-5630-4b3e-8de4-ea7bfca9db1e": {
+  "release_id": "e9fa2e2a-7962-4135-a7e0-ee34f810be31",
+  "year": "2007",
+  "title": "Hustler's"
+},
+"2e8201eb-7ab8-438a-b81d-550a6f59b2e2": {
+  "release_id": "e9fa2e2a-7962-4135-a7e0-ee34f810be31",
+  "year": "2007",
+  "title": "Why You Hate the Game"
+},
+"4ccb9941-3465-4b4e-8bd2-50433f51fc66": {
+  "release_id": "e9fa2e2a-7962-4135-a7e0-ee34f810be31",
+  "year": "2007",
+  "title": "Colors"
+},
+"1781690d-0044-48dd-abee-139ecf368032": {
+  "release_id": "2e6f1ba8-18dc-4471-b94f-9410f757b345",
+  "year": "2009",
+  "title": "Flashback Memories"
+},
+"a4af5d90-4bce-44d7-8afb-b6e709465429": {
+  "release_id": "2e6f1ba8-18dc-4471-b94f-9410f757b345",
+  "year": "2009",
+  "title": "Mafia Music (remix)"
+},
+"1205ce52-978e-4869-af77-5b82f71847d3": {
+  "release_id": "2e6f1ba8-18dc-4471-b94f-9410f757b345",
+  "year": "2009",
+  "title": "Red Magic"
+},
+"700774bc-9f5a-4130-be1f-c32157ca9c9a": {
+  "release_id": "2e6f1ba8-18dc-4471-b94f-9410f757b345",
+  "year": "2009",
+  "title": "Creepin' (Solo) (Revised)"
+},
+"ce9b5606-39af-4a2a-8e38-07b141c9e465": {
+  "release_id": "2e6f1ba8-18dc-4471-b94f-9410f757b345",
+  "year": "2009",
+  "title": "Pussy Monsters"
+},
+"6271580c-7103-4ed2-bf31-3c7b64c34460": {
+  "release_id": "2e6f1ba8-18dc-4471-b94f-9410f757b345",
+  "year": "2009",
+  "title": "All My Life (Revised)"
+},
+"6271580c-7103-4ed2-bf31-3c7b64c34460": {
+  "release_id": "2e6f1ba8-18dc-4471-b94f-9410f757b345",
+  "year": "2009",
+  "title": "All My Life (Revised)"
+},
+"8ce00e36-e9df-4db9-b312-95dffb1c305d": {
+  "release_id": "2e6f1ba8-18dc-4471-b94f-9410f757b345",
+  "year": "2009",
+  "title": "No Love"
+},
+"73cb48b7-685c-4b35-8362-3f528c0c91a9": {
+  "release_id": "dfdf4b83-35a8-47aa-b258-2ae44250b0ec",
+  "year": "2005",
+  "title": "Stay Strapped"
+},
+"e12a9e95-8904-42cb-acc6-4eb4e9b49a15": {
+  "release_id": "dfdf4b83-35a8-47aa-b258-2ae44250b0ec",
+  "year": "2005",
+  "title": "Don't Body Yourself (remix)"
+},
+"873bea4c-f7e8-47f2-9df9-94d09ed6ac87": {
+  "release_id": "dfdf4b83-35a8-47aa-b258-2ae44250b0ec",
+  "year": "2005",
+  "title": "Here We Go Again"
+},
+"011e3172-cc79-440c-9659-bcb573e56852": {
+  "release_id": "dfdf4b83-35a8-47aa-b258-2ae44250b0ec",
+  "year": "2005",
+  "title": "Crack Music (remix)"
+},
+"0b32279d-fd8f-498d-ba39-e6a468075bb2": {
+  "release_id": "c0fc1c56-53f9-4982-bf96-de017a0eb82d",
+  "year": "2008",
+  "title": "Intro"
+},
+"53c797de-9e33-4b09-a87a-957249beec1e": {
+  "release_id": "c0fc1c56-53f9-4982-bf96-de017a0eb82d",
+  "year": "2008",
+  "title": "Angel"
+},
+"390c6fbd-3f6e-4faf-a26f-a930ec70e17b": {
+  "release_id": "c0fc1c56-53f9-4982-bf96-de017a0eb82d",
+  "year": "2008",
+  "title": "Outro"
+},
+"b7a617f3-1359-4462-913e-804a4b7a3cc1": {
+  "release_id": "c0fc1c56-53f9-4982-bf96-de017a0eb82d",
+  "year": "2008",
+  "title": "Letter to the King"
+},
+"c4208c30-f3d3-4581-b134-01d5ee784be3": {
+  "release_id": "c0fc1c56-53f9-4982-bf96-de017a0eb82d",
+  "year": "2008",
+  "title": "Ya Heard"
+},
+"c5fc870f-04b5-4b1c-83e4-eb6c52480d81": {
+  "release_id": "c0fc1c56-53f9-4982-bf96-de017a0eb82d",
+  "year": "2008",
+  "title": "State of Emergency"
+},
+"ade70f04-6594-4cd0-8704-8e230db7d966": {
+  "release_id": "c0fc1c56-53f9-4982-bf96-de017a0eb82d",
+  "year": "2008",
+  "title": "My Life"
+},
+"b3552a7a-70ce-4833-b55a-cf046f8cc9a6": {
+  "release_id": "c0fc1c56-53f9-4982-bf96-de017a0eb82d",
+  "year": "2008",
+  "title": "Bulletproof Diaries"
+},
+"6856bd55-96c1-41cc-830a-c4edf06479da": {
+  "release_id": "deeb9396-6102-40f4-a4ac-76c0411b2e38",
+  "year": "2012",
+  "title": "Bottles and Rockin J's (remix)"
+},
+"6856bd55-96c1-41cc-830a-c4edf06479da": {
+  "release_id": "deeb9396-6102-40f4-a4ac-76c0411b2e38",
+  "year": "2012",
+  "title": "Bottles and Rockin J's (remix)"
+},
+"340879cd-c5ac-4dc2-8120-ede5db79dc5d": {
+  "release_id": "deeb9396-6102-40f4-a4ac-76c0411b2e38",
+  "year": "2012",
+  "title": "The Drill"
+},
+"4931ee41-8981-44e4-9e0c-f9f24721d4b7": {
+  "release_id": "deeb9396-6102-40f4-a4ac-76c0411b2e38",
+  "year": "2012",
+  "title": "Red Bottom Boss"
+},
+"b981eb79-5adf-417a-8b4c-91561c0fbf06": {
+  "release_id": "deeb9396-6102-40f4-a4ac-76c0411b2e38",
+  "year": "2012",
+  "title": "Now That I'm Paid"
+},
+"524a8526-9d14-41a0-8626-cfd816195998": {
+  "release_id": "deeb9396-6102-40f4-a4ac-76c0411b2e38",
+  "year": "2012",
+  "title": "When My Niggas Come Home"
+},
+"0ce57107-dd26-493b-b111-b9c8afdf299e": {
+  "release_id": "deeb9396-6102-40f4-a4ac-76c0411b2e38",
+  "year": "2012",
+  "title": "Roll My Shit"
+},
+"3a9e7f2c-c778-497c-9b41-9627c98f46de": {
+  "release_id": "deeb9396-6102-40f4-a4ac-76c0411b2e38",
+  "year": "2012",
+  "title": "Come Up"
+},
+"773007b3-4ac9-4c63-b7ef-f3fd7496e4fd": {
+  "release_id": "548a6596-8fa1-4c47-85ff-cd8c77969346",
+  "year": "2012",
+  "title": "Do It All"
+},
 "2a44129f-3ea7-432f-ac5f-65476fd6da81": {
   "release_id": "5ca11d91-064f-4ad8-9af5-27639ded7ea7",
   "year": "2013",
@@ -1447,6 +2132,276 @@
   "release_id": "cb1d9f28-eb4c-4a3b-9791-1b1256eec58c",
   "year": "2013",
   "title": "One of Those Nights"
+},
+"253703d8-97aa-4d9d-9671-054239fb6a5c": {
+  "release_id": "756282d2-f0d1-4af2-9d8b-a0c27d3cc772",
+  "year": "2012",
+  "title": "Respect the Pimpin"
+},
+"0ae22ab5-0c03-438d-8b33-ad4729faa47f": {
+  "release_id": "756282d2-f0d1-4af2-9d8b-a0c27d3cc772",
+  "year": "2012",
+  "title": "Money on the Floor"
+},
+"44089133-f115-48c5-bf57-f251b97a87ed": {
+  "release_id": "756282d2-f0d1-4af2-9d8b-a0c27d3cc772",
+  "year": "2012",
+  "title": "I'm A Stop"
+},
+"1c6b30dc-8c81-47ae-9c16-030b9267c8f7": {
+  "release_id": "fba42168-cb01-44ac-92fb-21ed8bd9427a",
+  "year": "2000",
+  "title": "Just Like Dope"
+},
+"8528edc4-6dff-468c-ab35-83e1ec8febd8": {
+  "release_id": "dabddefc-9793-4049-ad86-e66fc3285fd2",
+  "year": "2006",
+  "title": "I'm a Pimp"
+},
+"de41b233-7c51-4075-8852-894beb0127f4": {
+  "release_id": "dabddefc-9793-4049-ad86-e66fc3285fd2",
+  "year": "2006",
+  "title": "Keep It Real Hoe"
+},
+"e0a0787e-c079-44af-b7cb-bd8b2b8d87cd": {
+  "release_id": "dabddefc-9793-4049-ad86-e66fc3285fd2",
+  "year": "2006",
+  "title": "Cootie Cootie Coo"
+},
+"8fdd9ec3-c5b4-4daf-84b2-8462d47cb521": {
+  "release_id": "9868d4d6-bbb8-41e6-aa5a-14198be0b3db",
+  "year": "2007",
+  "title": "This My One"
+},
+"40f923c3-abdb-46aa-935b-bae708b8e84f": {
+  "release_id": "3db9c2ee-8973-4158-a6b2-b95f722484d1",
+  "year": "2012",
+  "title": "Street Money"
+},
+"ed055109-d76d-48c3-8079-986cfa6b7309": {
+  "release_id": "3db9c2ee-8973-4158-a6b2-b95f722484d1",
+  "year": "2012",
+  "title": "I Don't Work for Nobody"
+},
+"dd6de3ae-eeb9-49bf-87e7-12ee3c96b53c": {
+  "release_id": "3db9c2ee-8973-4158-a6b2-b95f722484d1",
+  "year": "2012",
+  "title": "If We Ain't Fuckin'"
+},
+"629e3607-addc-46da-8958-63409f4c592d": {
+  "release_id": "3db9c2ee-8973-4158-a6b2-b95f722484d1",
+  "year": "2012",
+  "title": "Stressin'"
+},
+"d0d54412-81b3-45bf-8f24-926a7003b55e": {
+  "release_id": "3db9c2ee-8973-4158-a6b2-b95f722484d1",
+  "year": "2012",
+  "title": "Ballin' Is Fun"
+},
+"20c8f75c-af0d-4227-b15c-eb564ebb0001": {
+  "release_id": "3db9c2ee-8973-4158-a6b2-b95f722484d1",
+  "year": "2012",
+  "title": "Do You Remember?"
+},
+"71c7442d-ded5-4275-86c4-9ca00e692fd7": {
+  "release_id": "3db9c2ee-8973-4158-a6b2-b95f722484d1",
+  "year": "2012",
+  "title": "Ask About Me"
+},
+"d5c9e591-308d-408d-9f51-840e82f944a5": {
+  "release_id": "3db9c2ee-8973-4158-a6b2-b95f722484d1",
+  "year": "2012",
+  "title": "Gang of 'em"
+},
+"1a0225ea-76bd-433b-9f12-e021005c0aef": {
+  "release_id": "3db9c2ee-8973-4158-a6b2-b95f722484d1",
+  "year": "2012",
+  "title": "We Are the Pioneers"
+},
+"1604f450-6c08-489b-99e6-80035af9a328": {
+  "release_id": "3db9c2ee-8973-4158-a6b2-b95f722484d1",
+  "year": "2012",
+  "title": "Ride With Me"
+},
+"17ab3298-9e50-4bdb-965d-319d80a8cc27": {
+  "release_id": "3db9c2ee-8973-4158-a6b2-b95f722484d1",
+  "year": "2012",
+  "title": "My Stapler"
+},
+"669f9edd-b9d9-43ae-9201-4b1c4027030e": {
+  "release_id": "3db9c2ee-8973-4158-a6b2-b95f722484d1",
+  "year": "2012",
+  "title": "Sheesh"
+},
+"8203fe92-fda7-4d0a-baa6-3220f5b5740a": {
+  "release_id": "3db9c2ee-8973-4158-a6b2-b95f722484d1",
+  "year": "2012",
+  "title": "Fire Fighter"
+},
+"72f558f8-678f-4403-99c8-548fcbbefe64": {
+  "release_id": "3db9c2ee-8973-4158-a6b2-b95f722484d1",
+  "year": "2012",
+  "title": "Whip Out"
+},
+"8924c05b-9c7a-4fc3-9c6b-5c5ffb3a600c": {
+  "release_id": "3db9c2ee-8973-4158-a6b2-b95f722484d1",
+  "year": "2012",
+  "title": "Money Motivated"
+},
+"893bafb6-3e4e-44d2-9e24-49a44ab11a14": {
+  "release_id": "3db9c2ee-8973-4158-a6b2-b95f722484d1",
+  "year": "2012",
+  "title": "Knockin' A Bitch"
+},
+"ab484da8-0ee8-4a64-9a49-056ef71357a6": {
+  "release_id": "3db9c2ee-8973-4158-a6b2-b95f722484d1",
+  "year": "2012",
+  "title": "Poncherellos"
+},
+"96933620-b854-4a4a-b8c9-3809fed7edd6": {
+  "release_id": "22a477a2-dca0-371b-9a36-01a1bc5fb54f",
+  "year": "1990",
+  "title": "Ain\u2019t Nothin\u2019 but a Word to Me"
+},
+"808b8aeb-3b79-4d5c-86ac-a7b4f5dabf10": {
+  "release_id": "8d44a80a-318b-47e7-91ee-44a3f12221eb",
+  "year": "2012",
+  "title": "Smoke That Shit"
+},
+"ec51ec5a-7eef-4943-ba77-8ef5c563a73b": {
+  "release_id": "8d44a80a-318b-47e7-91ee-44a3f12221eb",
+  "year": "2012",
+  "title": "Dump Truck"
+},
+"f15b401d-1323-41c0-a2a2-9f5ea857def3": {
+  "release_id": "8d44a80a-318b-47e7-91ee-44a3f12221eb",
+  "year": "2012",
+  "title": "West Coast Shit"
+},
+"f15b401d-1323-41c0-a2a2-9f5ea857def3": {
+  "release_id": "8d44a80a-318b-47e7-91ee-44a3f12221eb",
+  "year": "2012",
+  "title": "West Coast Shit"
+},
+"aa193635-0802-43c8-8371-93453f3a5007": {
+  "release_id": "8d44a80a-318b-47e7-91ee-44a3f12221eb",
+  "year": "2012",
+  "title": "Toasted"
+},
+"fee18831-d50e-4b3c-89bc-8ea2649bc21b": {
+  "release_id": "8d44a80a-318b-47e7-91ee-44a3f12221eb",
+  "year": "2012",
+  "title": "Slide Through"
+},
+"fee18831-d50e-4b3c-89bc-8ea2649bc21b": {
+  "release_id": "8d44a80a-318b-47e7-91ee-44a3f12221eb",
+  "year": "2012",
+  "title": "Slide Through"
+},
+"530dc486-1e6b-4f5c-91ef-ec4d879358a9": {
+  "release_id": "8d44a80a-318b-47e7-91ee-44a3f12221eb",
+  "year": "2012",
+  "title": "Lemme See You Twerk"
+},
+"706c2d98-3766-4458-84a3-55b5d093d2fb": {
+  "release_id": "8d44a80a-318b-47e7-91ee-44a3f12221eb",
+  "year": "2012",
+  "title": "Let's Have a Party"
+},
+"28c4eb2c-4f81-4941-85ff-42664845d8c4": {
+  "release_id": "8d44a80a-318b-47e7-91ee-44a3f12221eb",
+  "year": "2012",
+  "title": "Entrepreneur"
+},
+"26a76ddd-9523-4f7c-801a-15a053570815": {
+  "release_id": "8d44a80a-318b-47e7-91ee-44a3f12221eb",
+  "year": "2012",
+  "title": "Bout My Money"
+},
+"5e231205-9339-41e4-8bd2-9c7b6169b11b": {
+  "release_id": "8d44a80a-318b-47e7-91ee-44a3f12221eb",
+  "year": "2012",
+  "title": "Singles"
+},
+"e5100ff4-4dd2-4c60-95f7-164abedfd14b": {
+  "release_id": "8d44a80a-318b-47e7-91ee-44a3f12221eb",
+  "year": "2012",
+  "title": "Say I"
+},
+"a97f1b6d-04df-41c9-81cd-de251c9cbdb2": {
+  "release_id": "8d44a80a-318b-47e7-91ee-44a3f12221eb",
+  "year": "2012",
+  "title": "Check That Bitch"
+},
+"24151ee1-c002-4b78-b205-f7914f38e621": {
+  "release_id": "8d44a80a-318b-47e7-91ee-44a3f12221eb",
+  "year": "2012",
+  "title": "Everyday"
+},
+"86afb2ee-d2ed-482f-a1b9-9ceeae7cd2db": {
+  "release_id": "8d44a80a-318b-47e7-91ee-44a3f12221eb",
+  "year": "2012",
+  "title": "Cali"
+},
+"6c427dfd-e104-4e27-8b3d-4d3603380006": {
+  "release_id": "8d44a80a-318b-47e7-91ee-44a3f12221eb",
+  "year": "2012",
+  "title": "This Shit Pound"
+},
+"678b20b5-ecdd-4a62-af88-440198e65bf1": {
+  "release_id": "8d44a80a-318b-47e7-91ee-44a3f12221eb",
+  "year": "2012",
+  "title": "Workin' the Trunk"
+},
+"fbdbfb36-6358-4127-b220-5c9ab8dd8f9c": {
+  "release_id": "8d44a80a-318b-47e7-91ee-44a3f12221eb",
+  "year": "2012",
+  "title": "One Foot"
+},
+"529f11e4-96ab-405d-9b1f-6c8295585810": {
+  "release_id": "ee5acba3-c6f0-4683-a7be-1f3a3ee7c110",
+  "year": "2007",
+  "title": "This My One"
+},
+"2ea1087f-a035-42d7-a85c-5703f056d694": {
+  "release_id": "0c3ca459-7435-4128-a8dd-cde83d59fa07",
+  "year": "2012",
+  "title": "First Date"
+},
+"51cbba94-6755-4673-be9e-6706e4002b11": {
+  "release_id": "23e6261a-fd20-40f5-ac8c-f0572b20c760",
+  "year": "2006",
+  "title": "Keep Bouncin\u2019"
+},
+"7db54274-2d53-444b-bb0e-66f4b46d1878": {
+  "release_id": "23e6261a-fd20-40f5-ac8c-f0572b20c760",
+  "year": "2006",
+  "title": "Keep Bouncin\u2019 (clean)"
+},
+"6ce27712-8b6c-4df5-8239-549594954bee": {
+  "release_id": "6e680a0f-eb11-42b1-9b46-82e8ebc3d125",
+  "year": "2001",
+  "title": "Domestic Violence"
+},
+"f380a944-6da4-4f9e-bfc3-5f99584c8af7": {
+  "release_id": "45b8a5d3-d398-4c2f-b7df-9efe415c2257",
+  "year": "2006",
+  "title": "I Want You Girl"
+},
+"4a00e134-8cce-4a14-b0cf-9e4a5a80d710": {
+  "release_id": "45b8a5d3-d398-4c2f-b7df-9efe415c2257",
+  "year": "2006",
+  "title": "Keep Bouncin' (Street)"
+},
+"b14de427-553b-4df5-a3bc-d2508536e2c0": {
+  "release_id": "45b8a5d3-d398-4c2f-b7df-9efe415c2257",
+  "year": "2006",
+  "title": "Money Maker"
+},
+"b14de427-553b-4df5-a3bc-d2508536e2c0": {
+  "release_id": "45b8a5d3-d398-4c2f-b7df-9efe415c2257",
+  "year": "2006",
+  "title": "Money Maker"
 },
 "0ee4dc16-8b4c-468d-b2a3-9de1b430b2be": {
   "release_id": "d4ed4a67-0b02-4b2b-b599-0a9adc889248",
@@ -1482,6 +2437,271 @@
   "release_id": "39226c79-28ca-4f49-91b6-c5171e1955db",
   "year": "2003",
   "title": "One, Two, S**t"
+},
+"54b2d7ba-24f5-4ffb-b769-bc1e9cae43dc": {
+  "release_id": "0714749b-ac8f-43c6-a8d1-10170f3e9ed2",
+  "year": "2006",
+  "title": "I'm A G"
+},
+"e652c665-4c63-4d11-bed9-2818de2266ab": {
+  "release_id": "0714749b-ac8f-43c6-a8d1-10170f3e9ed2",
+  "year": "2006",
+  "title": "Loyal To The Game"
+},
+"dc6ad211-3764-48a1-868c-abe6ffbfef4c": {
+  "release_id": "0c7a44f8-020b-464f-b2b8-d482be61f9c4",
+  "year": "2006",
+  "title": "Watch Me!"
+},
+"4a975720-ef20-4eab-b9ea-a4b20777a78a": {
+  "release_id": "0c7a44f8-020b-464f-b2b8-d482be61f9c4",
+  "year": "2006",
+  "title": "Throw Ya Gunz Up!"
+},
+"3f963e27-06b6-45c5-8544-9536df5d9428": {
+  "release_id": "0c7a44f8-020b-464f-b2b8-d482be61f9c4",
+  "year": "2006",
+  "title": "West Coast Gangsta Team"
+},
+"85cec240-4647-468a-adfe-b2a5b06012d7": {
+  "release_id": "1cb5362f-92ac-4618-a032-922f27bacb30",
+  "year": "2006",
+  "title": "My Block"
+},
+"9a6d37f9-16ec-431e-838c-807dcc110d89": {
+  "release_id": "1cb5362f-92ac-4618-a032-922f27bacb30",
+  "year": "2006",
+  "title": "When We Ride on Our Enemies"
+},
+"aeb98ae3-ce7e-4702-aa59-8f094163384d": {
+  "release_id": "1cb5362f-92ac-4618-a032-922f27bacb30",
+  "year": "2006",
+  "title": "Change the World"
+},
+"b625abf1-1ab2-4e96-bf6b-e49334d0519d": {
+  "release_id": "a827263e-0ddb-4f57-9863-41f1ba15f2e2",
+  "year": "1997",
+  "title": "Street Life"
+},
+"f58c8bb1-be26-48ba-8e5e-c7e3ff09c85d": {
+  "release_id": "6260527c-0866-4ab5-99f7-132072882773",
+  "year": "2005",
+  "title": "Be the Realist"
+},
+"b224ec21-4c97-4f40-bae0-7415f0b114fd": {
+  "release_id": "6260527c-0866-4ab5-99f7-132072882773",
+  "year": "2005",
+  "title": "Runnin'"
+},
+"d269c891-54fa-4d20-84c8-1d24d378ae8f": {
+  "release_id": "6260527c-0866-4ab5-99f7-132072882773",
+  "year": "2005",
+  "title": "The Fatha Figga"
+},
+"79c6d3ed-4743-47df-92bf-5e0bdb450f0c": {
+  "release_id": "6260527c-0866-4ab5-99f7-132072882773",
+  "year": "2005",
+  "title": "Dogg Pound Gangstaville"
+},
+"e1334086-add2-4187-9043-1b01d9541b6b": {
+  "release_id": "6260527c-0866-4ab5-99f7-132072882773",
+  "year": "2005",
+  "title": "Friends"
+},
+"031f5063-edad-4ecc-ab92-d57cd7581c2c": {
+  "release_id": "6260527c-0866-4ab5-99f7-132072882773",
+  "year": "2005",
+  "title": "California Love"
+},
+"7800775e-27f5-4702-9032-3ba00c62769e": {
+  "release_id": "6260527c-0866-4ab5-99f7-132072882773",
+  "year": "2005",
+  "title": "Wanted Dead or Alive"
+},
+"21103868-3c73-496e-9500-aaa07f6c5faa": {
+  "release_id": "2c79dcb5-cfbc-45ab-a57f-783f7420885c",
+  "year": "2003",
+  "title": "Revolution"
+},
+"ec6e5a94-1b64-44dc-a1be-1d772d80f903": {
+  "release_id": "2c79dcb5-cfbc-45ab-a57f-783f7420885c",
+  "year": "2003",
+  "title": "Gunz on My Side"
+},
+"37749af5-18b9-4a08-9f5f-29caad996c8b": {
+  "release_id": "2c79dcb5-cfbc-45ab-a57f-783f7420885c",
+  "year": "2003",
+  "title": "Homeboyz (remix)"
+},
+"2b676e50-0c68-4fab-b333-53db843ad650": {
+  "release_id": "2dc2bb49-d560-4356-835c-3c3f9c0701a8",
+  "year": "2002",
+  "title": "Out The Moon"
+},
+"85270309-7d79-471b-a425-f58c1b824c12": {
+  "release_id": "2dc2bb49-d560-4356-835c-3c3f9c0701a8",
+  "year": "2002",
+  "title": "Dusted 'n' Disgusted"
+},
+"154e73f8-62eb-43a2-b446-b80def7bbeaa": {
+  "release_id": "ca815a03-8bae-4961-94ef-5c7c698eab03",
+  "year": "1996",
+  "title": "Got My Mind Made Up"
+},
+"154e73f8-62eb-43a2-b446-b80def7bbeaa": {
+  "release_id": "ca815a03-8bae-4961-94ef-5c7c698eab03",
+  "year": "1996",
+  "title": "Got My Mind Made Up"
+},
+"702f1375-c16a-4f8b-8eec-517d4e03603a": {
+  "release_id": "ca815a03-8bae-4961-94ef-5c7c698eab03",
+  "year": "1996",
+  "title": "California Love (remix)"
+},
+"6ac60d29-2a75-43c0-a02f-6ded45380bbd": {
+  "release_id": "ca815a03-8bae-4961-94ef-5c7c698eab03",
+  "year": "1996",
+  "title": "Ain\u2019t Hard 2 Find"
+},
+"031f5063-edad-4ecc-ab92-d57cd7581c2c": {
+  "release_id": "c8fc0057-f0a4-3b20-9de5-e0e621c03932",
+  "year": "2003",
+  "title": "California Love"
+},
+"7800775e-27f5-4702-9032-3ba00c62769e": {
+  "release_id": "c8fc0057-f0a4-3b20-9de5-e0e621c03932",
+  "year": "2003",
+  "title": "Wanted Dead or Alive"
+},
+"53cb3f23-1670-4f21-abde-32ae4865a617": {
+  "release_id": "382d5c3c-fd71-41d9-9533-fea712b9fd1d",
+  "year": "2007",
+  "title": "California Love (original mix)"
+},
+"f3419114-060f-4465-9eec-1b26c7977304": {
+  "release_id": "bdaa6d16-644a-41bf-8020-589027819730",
+  "year": "1995",
+  "title": "California Love (album version)"
+},
+"597298e6-144c-45fc-9c82-b0651e977e30": {
+  "release_id": "bdaa6d16-644a-41bf-8020-589027819730",
+  "year": "1995",
+  "title": "California Love (remix)"
+},
+"c644c69b-7473-436a-b558-2da4105d934b": {
+  "release_id": "cb1e3731-84b7-43ec-b38d-ef1760f10aaf",
+  "year": "2006",
+  "title": "Whatz Next"
+},
+"a2c8115a-39b3-4356-94c1-710dc10fabcd": {
+  "release_id": "cb1e3731-84b7-43ec-b38d-ef1760f10aaf",
+  "year": "2006",
+  "title": "Playa Cardz Right (Male)"
+},
+"0b96a82d-7037-412a-ac72-e5d7765a541f": {
+  "release_id": "cb1e3731-84b7-43ec-b38d-ef1760f10aaf",
+  "year": "2006",
+  "title": "Pac\u2019s Life (remix)"
+},
+"0b96a82d-7037-412a-ac72-e5d7765a541f": {
+  "release_id": "cb1e3731-84b7-43ec-b38d-ef1760f10aaf",
+  "year": "2006",
+  "title": "Pac\u2019s Life (remix)"
+},
+"75c216e4-24cf-404b-a2de-f7bceaf6ec58": {
+  "release_id": "cb1e3731-84b7-43ec-b38d-ef1760f10aaf",
+  "year": "2006",
+  "title": "Pac\u2019s Life"
+},
+"119d34b2-4771-47ff-853b-42b4b45cb4f9": {
+  "release_id": "5f0758f8-b503-4511-8a8b-8391d8e385f6",
+  "year": "1993",
+  "title": "Last Wordz"
+},
+"119d34b2-4771-47ff-853b-42b4b45cb4f9": {
+  "release_id": "5f0758f8-b503-4511-8a8b-8391d8e385f6",
+  "year": "1993",
+  "title": "Last Wordz"
+},
+"77de516e-e660-44b4-a757-3adaeb45135d": {
+  "release_id": "4809668f-a519-4cb7-81d5-037b3ec5dee6",
+  "year": "2004",
+  "title": "Black Cotton"
+},
+"f05e3cb6-f109-4a28-b800-524532a570d5": {
+  "release_id": "4809668f-a519-4cb7-81d5-037b3ec5dee6",
+  "year": "2004",
+  "title": "Soldier Like Me (Return of the Soulja)"
+},
+"efbde9d8-f691-49dd-97ab-8e27b47afb6d": {
+  "release_id": "1330994e-157e-4b93-90fd-f74ecfc556aa",
+  "year": "2009",
+  "title": "Dunwich"
+},
+"188ac088-7428-4b0c-a907-99bd4f729697": {
+  "release_id": "1330994e-157e-4b93-90fd-f74ecfc556aa",
+  "year": "2009",
+  "title": "Phantasm"
+},
+"d74bc2d4-15a9-46f9-a9f6-b0969b442758": {
+  "release_id": "1330994e-157e-4b93-90fd-f74ecfc556aa",
+  "year": "2009",
+  "title": "Halloween, Part II"
+},
+"29e78741-fbb2-4f6a-939d-ece02f341854": {
+  "release_id": "1330994e-157e-4b93-90fd-f74ecfc556aa",
+  "year": "2009",
+  "title": "The Fog"
+},
+"12b1696d-7cc7-4165-86ba-c6eec1d58d24": {
+  "release_id": "1330994e-157e-4b93-90fd-f74ecfc556aa",
+  "year": "2009",
+  "title": "Land of the Dead"
+},
+"09ec2477-7e4a-41a0-845a-5e49eed83e83": {
+  "release_id": "13e1bc22-0647-48f2-a7f9-374a3fd4a795",
+  "year": "2002",
+  "title": "Thugz Mansion (acoustic)"
+},
+"b6e88638-7f64-4d00-b447-ff39fd5305ae": {
+  "release_id": "14206220-8c8b-4118-bb90-e7a92435727e",
+  "year": "2007",
+  "title": "Wanted Dead or Alive (Gangsta Party Mixx)"
+},
+"6dc1ad20-8250-432b-9d0f-7ba62695da33": {
+  "release_id": "2ca55fc1-e5e4-4c3e-b4e8-be3c9b24d03e",
+  "year": "2006",
+  "title": "Snoop (interlude)"
+},
+"aac046ce-34fd-439c-b0d3-2a018152b482": {
+  "release_id": "2ca55fc1-e5e4-4c3e-b4e8-be3c9b24d03e",
+  "year": "2006",
+  "title": "2 of Amerikas Most Wanted"
+},
+"c9117e03-9177-4b9e-baea-8e89851c5cce": {
+  "release_id": "e7fa46f7-e4d3-404e-8472-3eae49c50731",
+  "year": "2006",
+  "title": "Let's Fight / Pusherman (Blend)"
+},
+"c9117e03-9177-4b9e-baea-8e89851c5cce": {
+  "release_id": "e7fa46f7-e4d3-404e-8472-3eae49c50731",
+  "year": "2006",
+  "title": "Let's Fight / Pusherman (Blend)"
+},
+"002f372b-613f-4083-a47b-38ab1defeccc": {
+  "release_id": "c81f0312-719c-41a7-b512-0fe8a1cb0a96",
+  "year": "2003",
+  "title": "Runnin\u2019 (Dying to Live)"
+},
+"019f003e-adc5-4a9a-971f-a76fcaa2ccee": {
+  "release_id": "c81f0312-719c-41a7-b512-0fe8a1cb0a96",
+  "year": "2003",
+  "title": "One Day at a Time"
+},
+"c803c4be-0006-4ec0-8768-a7d24d59cd59": {
+  "release_id": "c81f0312-719c-41a7-b512-0fe8a1cb0a96",
+  "year": "2003",
+  "title": "The Realist Killaz"
 },
 "f17fb13d-fea6-4cf7-a5cc-0b1749025580": {
   "release_id": "78a0508a-5757-497f-bc6e-725b50840d20",
@@ -1583,6 +2803,11 @@
   "year": "2010",
   "title": "Loyalty"
 },
+"771fc238-8002-4af1-85d8-bdfd899eeddd": {
+  "release_id": "4d2dcd1a-720a-4b4c-93bb-0b342c55fb34",
+  "year": "2012",
+  "title": "Still Got It"
+},
 "f2ea79c5-90f7-4831-9c68-a30386807b68": {
   "release_id": "4d2dcd1a-720a-4b4c-93bb-0b342c55fb34",
   "year": "2012",
@@ -1623,10 +2848,10 @@
   "year": "2012",
   "title": "Faded"
 },
-"771fc238-8002-4af1-85d8-bdfd899eeddd": {
+"32979c4d-f20e-4434-b157-15457e3070af": {
   "release_id": "4d2dcd1a-720a-4b4c-93bb-0b342c55fb34",
   "year": "2012",
-  "title": "Still Got It"
+  "title": "Let It Show"
 },
 "96734db1-0df8-4533-8497-c840334ab099": {
   "release_id": "b20859eb-a4e2-4ccd-bcfe-b09ad8efe1b0",
@@ -1709,22 +2934,22 @@
   "title": "Good Day"
 },
 "3c60095e-f693-4fae-8a43-faf07dc0b7a6": {
-  "release_id": "28b3139a-1905-4978-9004-9a170b1b64c6",
+  "release_id": "1fc4529e-5a5f-49d1-a907-2c0af4fdf08f",
   "year": "2013",
   "title": "Rusty"
 },
 "852282b2-f9d8-4956-b91a-d4a5e84cc7a1": {
-  "release_id": "28b3139a-1905-4978-9004-9a170b1b64c6",
+  "release_id": "1fc4529e-5a5f-49d1-a907-2c0af4fdf08f",
   "year": "2013",
   "title": "IFHY"
 },
 "3c60095e-f693-4fae-8a43-faf07dc0b7a6": {
-  "release_id": "28b3139a-1905-4978-9004-9a170b1b64c6",
+  "release_id": "1fc4529e-5a5f-49d1-a907-2c0af4fdf08f",
   "year": "2013",
   "title": "Rusty"
 },
 "852282b2-f9d8-4956-b91a-d4a5e84cc7a1": {
-  "release_id": "28b3139a-1905-4978-9004-9a170b1b64c6",
+  "release_id": "1fc4529e-5a5f-49d1-a907-2c0af4fdf08f",
   "year": "2013",
   "title": "IFHY"
 },
@@ -1743,6 +2968,131 @@
   "year": "2013",
   "title": "Holy Holy"
 },
+"7d2abe26-7733-4bb7-bc34-32895f1eb8d7": {
+  "release_id": "cabee5ec-293f-449a-a962-195b7020f14e",
+  "year": "2010",
+  "title": "No Hands"
+},
+"55a57538-f653-4380-8a4b-dd82dac66480": {
+  "release_id": "c33578bb-bd09-41af-aa97-ef3de1cdbd36",
+  "year": "2013",
+  "title": "Stay Hood"
+},
+"e795ceb5-e59b-4dd7-ba1a-91f295d1e645": {
+  "release_id": "c33578bb-bd09-41af-aa97-ef3de1cdbd36",
+  "year": "2013",
+  "title": "Fell"
+},
+"f54b5250-e2ca-43f9-95ba-38f5d5c04744": {
+  "release_id": "82b5b0c5-57ec-41ec-8d97-7f411a9560f6",
+  "year": "2012",
+  "title": "Turnt"
+},
+"92047809-c7d8-4f78-80b1-c864a9f723fc": {
+  "release_id": "82b5b0c5-57ec-41ec-8d97-7f411a9560f6",
+  "year": "2012",
+  "title": "Murda"
+},
+"455fb026-38ba-4032-ab25-35400d7d4f6b": {
+  "release_id": "c2dc5b27-1598-437a-81f7-b4880f3fbd46",
+  "year": "2013",
+  "title": "50K (remix)"
+},
+"6e8fe7c1-5e3f-469e-b1a9-c0e0e7e005fe": {
+  "release_id": "c2dc5b27-1598-437a-81f7-b4880f3fbd46",
+  "year": "2013",
+  "title": "Come Around"
+},
+"3fb5c4fa-cbb6-49e1-9960-300ff20f8d09": {
+  "release_id": "500b461d-da59-45f3-b8d2-7b882cc63fa9",
+  "year": "2013",
+  "title": "50K Remix"
+},
+"01bab2ad-815c-406e-992d-a95957cb3690": {
+  "release_id": "b787111f-c34c-487b-a245-798de5eef61d",
+  "year": "2012",
+  "title": "Let Dem Guns Blam"
+},
+"b9e8f0e7-d348-463a-9839-99d400a943a4": {
+  "release_id": "b787111f-c34c-487b-a245-798de5eef61d",
+  "year": "2012",
+  "title": "Round of Applause"
+},
+"24f95b4e-f577-401b-818d-6a813d4f9156": {
+  "release_id": "b787111f-c34c-487b-a245-798de5eef61d",
+  "year": "2012",
+  "title": "Candy Paint & Gold Teeth"
+},
+"642bdcd6-a973-4858-8164-966946a586db": {
+  "release_id": "b787111f-c34c-487b-a245-798de5eef61d",
+  "year": "2012",
+  "title": "Get Low"
+},
+"642bdcd6-a973-4858-8164-966946a586db": {
+  "release_id": "b787111f-c34c-487b-a245-798de5eef61d",
+  "year": "2012",
+  "title": "Get Low"
+},
+"6f44c87b-4602-4f17-9cee-1fbca7b3b8c6": {
+  "release_id": "8300bc2a-ca04-4003-91f8-ecfb4ed973ad",
+  "year": "2012",
+  "title": "Lehhhgooo (Explicit)"
+},
+"6f44c87b-4602-4f17-9cee-1fbca7b3b8c6": {
+  "release_id": "8300bc2a-ca04-4003-91f8-ecfb4ed973ad",
+  "year": "2012",
+  "title": "Lehhhgooo (Explicit)"
+},
+"8255d7a1-6def-49e0-b763-c00bba3cdac4": {
+  "release_id": "8300bc2a-ca04-4003-91f8-ecfb4ed973ad",
+  "year": "2012",
+  "title": "Lehhhgooo (Clean)"
+},
+"8255d7a1-6def-49e0-b763-c00bba3cdac4": {
+  "release_id": "8300bc2a-ca04-4003-91f8-ecfb4ed973ad",
+  "year": "2012",
+  "title": "Lehhhgooo (Clean)"
+},
+"50f69fa2-4826-47c1-a0dd-06b360bb7ae6": {
+  "release_id": "27ede94d-5cba-43d0-9319-ddd1d96df753",
+  "year": "2014",
+  "title": "Ain't No Problems"
+},
+"887efb7a-26c5-4bb0-b946-3fd8e526d636": {
+  "release_id": "27ede94d-5cba-43d0-9319-ddd1d96df753",
+  "year": "2014",
+  "title": "Real Nigga Love"
+},
+"12a29efe-f5a4-4478-b2d1-7d75c0ac751f": {
+  "release_id": "a712372c-a605-4eeb-98e2-182e82153273",
+  "year": "2011",
+  "title": "Round of Applause"
+},
+"f71de454-7137-4e5c-8a3e-f2f3931d0bad": {
+  "release_id": "7050a464-ed11-4b1c-aa3c-a32b4baae211",
+  "year": "2010",
+  "title": "No Hands"
+},
+"026b1dc4-ae81-4fd9-ac9f-10a3cd5af3e3": {
+  "release_id": "30d47b96-80e9-45dd-8804-399b562eac66",
+  "year": "2015",
+  "title": "What I Do"
+},
+"642bdcd6-a973-4858-8164-966946a586db": {
+  "release_id": "c46af09e-0dea-4f1d-aec4-a416b6e2841c",
+  "year": "2012",
+  "title": "Get Low"
+},
+"642bdcd6-a973-4858-8164-966946a586db": {
+  "release_id": "c46af09e-0dea-4f1d-aec4-a416b6e2841c",
+  "year": "2012",
+  "title": "Get Low"
+},
+"029d1cf6-da74-48a3-bd11-a3e4f8657a9c": {
+  "release_id": "1ab7838c-ee53-4408-b3c5-479374057bd5",
+  "year": "2011",
+  "title": "Round of Applause"
+},
 "683747c8-8abb-449a-8467-91c5d4fc2a03": {
   "release_id": "aa2631a7-f7c3-4bea-892e-664bc3fd7f39",
   "year": "2012",
@@ -1758,20 +3108,25 @@
   "year": "2013",
   "title": "Heaven's Afternoon"
 },
+"22a24b36-7757-49cc-a701-dda8dd6fcd67": {
+  "release_id": "ee36999c-f3e1-4c69-bc5b-1dcc2818ad0d",
+  "year": "2013",
+  "title": "Clappers"
+},
+"22a24b36-7757-49cc-a701-dda8dd6fcd67": {
+  "release_id": "ee36999c-f3e1-4c69-bc5b-1dcc2818ad0d",
+  "year": "2013",
+  "title": "Clappers"
+},
 "848b2549-9c81-4bef-8bf2-33542285f4eb": {
   "release_id": "ee36999c-f3e1-4c69-bc5b-1dcc2818ad0d",
   "year": "2013",
   "title": "Tired of Dreaming"
 },
-"22a24b36-7757-49cc-a701-dda8dd6fcd67": {
-  "release_id": "ee36999c-f3e1-4c69-bc5b-1dcc2818ad0d",
-  "year": "2013",
-  "title": "Clappers"
-},
-"22a24b36-7757-49cc-a701-dda8dd6fcd67": {
-  "release_id": "ee36999c-f3e1-4c69-bc5b-1dcc2818ad0d",
-  "year": "2013",
-  "title": "Clappers"
+"8cf1d00b-4d97-4722-9f50-ca1934d36b79": {
+  "release_id": "f31ac3a9-1601-4c4d-ab2d-5760b3a24370",
+  "year": "2015",
+  "title": "The Pessimist"
 },
 "4b6c8499-6896-46b7-b598-05fde13b4b88": {
   "release_id": "2b34c62b-3783-4f76-a203-79a84413949e",
@@ -1827,6 +3182,11 @@
   "release_id": "686e498f-1afa-4c64-898b-f351da9445fd",
   "year": "2013",
   "title": "No Games (remix)"
+},
+"d44788f2-8b35-4553-bef2-5dfb545021fa": {
+  "release_id": "7fe11570-db06-4d5a-8e53-d841c8cc6b37",
+  "year": "2009",
+  "title": "Beautiful Bliss"
 },
 "e21b771a-b89b-45b7-bbc5-f1d0c911ff9c": {
   "release_id": "abfd787a-f60d-4050-bfe9-cddaa27e8df9",
@@ -2043,16 +3403,6 @@
   "year": "2008",
   "title": "Incarcerated Scarfaces"
 },
-"e5419d9d-8320-4f24-b7a2-3f4e0b3b1b12": {
-  "release_id": "f34b9643-9749-443a-ac7b-0fa7dfae8ea2",
-  "year": "2007",
-  "title": "On the Real"
-},
-"9588b388-5762-42e3-9449-eaf142a36cdc": {
-  "release_id": "f34b9643-9749-443a-ac7b-0fa7dfae8ea2",
-  "year": "2007",
-  "title": "Whatever Comes"
-},
 "bf7c8a98-91da-469a-b909-1d574ccc079f": {
   "release_id": "f34b9643-9749-443a-ac7b-0fa7dfae8ea2",
   "year": "2007",
@@ -2172,6 +3522,16 @@
   "release_id": "f34b9643-9749-443a-ac7b-0fa7dfae8ea2",
   "year": "2007",
   "title": "Track 46"
+},
+"e5419d9d-8320-4f24-b7a2-3f4e0b3b1b12": {
+  "release_id": "f34b9643-9749-443a-ac7b-0fa7dfae8ea2",
+  "year": "2007",
+  "title": "On the Real"
+},
+"9588b388-5762-42e3-9449-eaf142a36cdc": {
+  "release_id": "f34b9643-9749-443a-ac7b-0fa7dfae8ea2",
+  "year": "2007",
+  "title": "Whatever Comes"
 },
 "28e7186a-e520-448e-9fdd-f1087f175d96": {
   "release_id": "28499eb1-c06f-4288-b35a-68e3c53ac4fc",
@@ -2378,16 +3738,6 @@
   "year": "2013",
   "title": "The Monument"
 },
-"0f6d024e-22b4-4c25-bec5-cac953f0ef9b": {
-  "release_id": "5a216f06-5ed1-4ad4-a876-c1d5145ea6c8",
-  "year": "2007",
-  "title": "Wu Banga (remix)"
-},
-"6a69e097-aee4-41e1-b358-df115aa19d62": {
-  "release_id": "5a216f06-5ed1-4ad4-a876-c1d5145ea6c8",
-  "year": "2007",
-  "title": "Maxine (remix)"
-},
 "024515a8-f83e-4006-88c2-304a1955502a": {
   "release_id": "5a216f06-5ed1-4ad4-a876-c1d5145ea6c8",
   "year": "2007",
@@ -2407,6 +3757,16 @@
   "release_id": "5a216f06-5ed1-4ad4-a876-c1d5145ea6c8",
   "year": "2007",
   "title": "Da \u201cN\u201d (remix)"
+},
+"0f6d024e-22b4-4c25-bec5-cac953f0ef9b": {
+  "release_id": "5a216f06-5ed1-4ad4-a876-c1d5145ea6c8",
+  "year": "2007",
+  "title": "Wu Banga (remix)"
+},
+"6a69e097-aee4-41e1-b358-df115aa19d62": {
+  "release_id": "5a216f06-5ed1-4ad4-a876-c1d5145ea6c8",
+  "year": "2007",
+  "title": "Maxine (remix)"
 },
 "8810de06-5686-49d2-b02e-82392b913bdd": {
   "release_id": "809f9cd5-48fd-45f8-a584-e33efed9acfb",
@@ -2468,6 +3828,16 @@
   "year": "2012",
   "title": "Function (Remix)"
 },
+"ee161555-a02e-46f2-ac12-e85bc6fe1f9c": {
+  "release_id": "9baafdee-6f70-46e0-9d61-c3f60f3ffcda",
+  "year": "2009",
+  "title": "I'm Goin' In"
+},
+"ee161555-a02e-46f2-ac12-e85bc6fe1f9c": {
+  "release_id": "9baafdee-6f70-46e0-9d61-c3f60f3ffcda",
+  "year": "2009",
+  "title": "I'm Goin' In"
+},
 "f7005bdd-5bbb-4471-8704-5cd5f59424d8": {
   "release_id": "a5ee3578-757a-4242-ba96-0f9a76253dd5",
   "year": "2011",
@@ -2508,16 +3878,6 @@
   "year": "2006",
   "title": "I Got Money"
 },
-"ee161555-a02e-46f2-ac12-e85bc6fe1f9c": {
-  "release_id": "9baafdee-6f70-46e0-9d61-c3f60f3ffcda",
-  "year": "2009",
-  "title": "I'm Goin' In"
-},
-"ee161555-a02e-46f2-ac12-e85bc6fe1f9c": {
-  "release_id": "9baafdee-6f70-46e0-9d61-c3f60f3ffcda",
-  "year": "2009",
-  "title": "I'm Goin' In"
-},
 "fbb211d8-13f9-4b14-8b61-8722e794967a": {
   "release_id": "db19ea96-b277-4274-a9cf-d64caad5dbbf",
   "year": "2013",
@@ -2548,30 +3908,10 @@
   "year": "2012",
   "title": "Westside, Right On Time"
 },
-"d8e48b03-ccfd-44c1-857e-0715aa700375": {
-  "release_id": "ca6c19b7-bb52-4b6b-9cf2-473e257e58ec",
-  "year": "2013",
-  "title": "Pour It Up (remix)"
-},
-"d8e48b03-ccfd-44c1-857e-0715aa700375": {
-  "release_id": "ca6c19b7-bb52-4b6b-9cf2-473e257e58ec",
-  "year": "2013",
-  "title": "Pour It Up (remix)"
-},
-"d8e48b03-ccfd-44c1-857e-0715aa700375": {
-  "release_id": "ca6c19b7-bb52-4b6b-9cf2-473e257e58ec",
-  "year": "2013",
-  "title": "Pour It Up (remix)"
-},
 "90127fb8-b6db-4ffc-bc1d-bb367ff3e3bb": {
   "release_id": "f11c26cc-3cf1-4096-a422-f6289284144a",
   "year": "2013",
   "title": "All Gold Everything (remix)"
-},
-"672e7476-c097-4546-832c-333d7f1ee123": {
-  "release_id": "a4bd3c77-6db1-4a86-9e1c-68308be71d0f",
-  "year": "2012",
-  "title": "Work Hard Play Hard (Remix)"
 },
 "4b7a0f6f-8745-47e2-9734-b8b99c8f11a0": {
   "release_id": "da9ad62b-24e5-4e10-abce-875b4fc9cf85",
@@ -2583,6 +3923,11 @@
   "year": "2008",
   "title": "Put On"
 },
+"51eeae5e-0b66-418b-9efe-1e3b2b5f8543": {
+  "release_id": "9bf63521-8010-4e17-b822-d2a4bb1e7bb3",
+  "year": "2014",
+  "title": "Seen It All"
+},
 "47818395-673c-4746-85be-84127d3bb2e5": {
   "release_id": "9bf63521-8010-4e17-b822-d2a4bb1e7bb3",
   "year": "2014",
@@ -2612,6 +3957,26 @@
   "release_id": "405453d8-7d6f-4315-96b6-102f15cb8c57",
   "year": "2012",
   "title": "Rack City (Remix)"
+},
+"d8e48b03-ccfd-44c1-857e-0715aa700375": {
+  "release_id": "ca6c19b7-bb52-4b6b-9cf2-473e257e58ec",
+  "year": "2013",
+  "title": "Pour It Up (remix)"
+},
+"d8e48b03-ccfd-44c1-857e-0715aa700375": {
+  "release_id": "ca6c19b7-bb52-4b6b-9cf2-473e257e58ec",
+  "year": "2013",
+  "title": "Pour It Up (remix)"
+},
+"d8e48b03-ccfd-44c1-857e-0715aa700375": {
+  "release_id": "ca6c19b7-bb52-4b6b-9cf2-473e257e58ec",
+  "year": "2013",
+  "title": "Pour It Up (remix)"
+},
+"672e7476-c097-4546-832c-333d7f1ee123": {
+  "release_id": "a4bd3c77-6db1-4a86-9e1c-68308be71d0f",
+  "year": "2012",
+  "title": "Work Hard Play Hard (Remix)"
 },
 "8f27f512-9475-422d-bfb2-c6faa89c4c28": {
   "release_id": "2fc6bab5-a800-426a-90ec-c9036e0e84d1",
