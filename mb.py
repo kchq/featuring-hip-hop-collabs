@@ -13,6 +13,10 @@ with open("artists.txt") as f:
 
 with open("artist_ids.json") as f:
     artist_ids = json.load(f)
+
+with open("ids_artist.json") as f:
+    ids_artist = json.load(f)
+
 # TODO: replace this txt file with the chunk you are running
 # make sure you don't have any files named "records_incremental.json"
 # or "collabs_incremental.json"
@@ -21,19 +25,12 @@ with open("artists_sonja.txt") as f:
 
 musicbrainzngs.set_useragent("Example music app", "0.1", "http://example.com/music")
 
+# store urls here so we don't have to query if we already have it
+# release_id -> cover_url
+release_art = {}
+
 records_json = {}
 collabs_json = {}
-def addRecord( rec_id, record_data ):
-    records_json[rec_id] = record_data
-
-def writeRecord( rec_id, record_data ):
-    with open("records_incremental.json", "a") as outfile:
-        outfile.write("\"" + rec_id + "\": ");
-        json.dump(record_data, outfile, indent=2, separators=(',', ': '))
-        outfile.write(",\n")
-
-def printOutRecordDictionary(filename):
-    json.dump(records_json, open(filename, 'w'), indent=2, separators=(',', ': '))
 
 def printOutCollabDictionary(filename):
     json.dump(collabs_json, open(filename, 'w'), indent=2, separators=(',', ': '))
@@ -43,6 +40,25 @@ def writeArtistCollabs(name, artist_collabs):
         outfile.write("\"" + name + "\": ");
         json.dump(artist_collabs, outfile, indent=2, separators=(',', ': ')) 
         outfile.write(",\n")
+
+def getCoverArt(release_id):
+    if release_id in release_art:
+        return release_art[release_id]
+    try:
+        images = caa.get_image_list(str(release_id))
+    except:
+        # there was no cover art :(
+        return None
+       
+    # throttle the calls, we are rate limited to ~50 a minute
+    time.sleep(1.3)
+    cover_url = None
+    for image in images["images"]:
+        if "Front" in image["types"] and image["approved"]:
+            cover_url = image["thumbnails"]["small"]
+            break
+    release_art[release_id] = cover_url
+    return cover_url
 
 for name in rappers:
     id = artist_ids[name]
@@ -92,29 +108,43 @@ for name in rappers:
             if "artist-credit" not in rec:
                 continue
             collabs = rec["artist-credit"]
-            added = False
+            add = False
             
             #verify that only collaborator isnt the artist themself
             # #lol
+            collaborating_artists = []
+            collaborating_artists.append(name)
+            collaborating_artists_in_list = []
             collabs = [collab for collab in collabs if len(collab) == 1 and "artist" in collab and "id" in collab["artist"] and collab["artist"]["id"] != id]
             for collab in collabs:
                 alias = []
                 if "artist" not in collab:
                     continue
-                if "alias-list" in collab["artist"]:
-                    alias = [namez["alias"] for namez in collab["artist"]["alias-list"]]
-                if "name" in collab["artist"]:
-                    alias.append(collab["artist"]["name"])
-                for al in alias:
-                    if al.lower() in [a.lower() for a in all_rappers]:
-                        total_records.append(rec)
-                        record_json = {"title": rec["title"], "release_id": rel["id"], "year": rel["date"].split("-")[0]}
-                        addRecord(rec["id"], record_json)
-                        writeRecord(rec["id"], record_json)
-                        if al not in artist_tuples:
-                            artist_tuples[al] = {}
-                        artist_tuples[al][rec["id"]] = rec["title"]
-                        break
+                if "id" not in collab["artist"] or "name" not in collab["artist"]:
+                    continue
+                if collab["artist"]["id"] in ids_artist.keys():
+                    add = True
+                    # this ensures we have the same name as what's in our list
+                    collaborating_artists.append(ids_artist[collab["artist"]["id"]])
+                    # this is the list to loop over later to add the information for
+                    collaborating_artists_in_list.append(ids_artist[collab["artist"]["id"]])
+                else:
+                    collaborating_artists.append(collab["artist"]["name"])
+            if add:
+                total_records.append(rec)
+                record_json = {
+                    "id" : rec["id"],
+                    "title" : rec["title"],
+                    "artist_credit" : collaborating_artists,
+                    "release_id" : rel["id"],
+                    "release_title" : rel["title"],
+                    "release_year" : rel["date"].split("-")[0],
+                    "cover_url" : getCoverArt(rel["id"]),
+                }
+                for collaborating_artist in collaborating_artists_in_list:
+                    if collaborating_artist not in artist_tuples:
+                        artist_tuples[collaborating_artist] = []
+                    artist_tuples[collaborating_artist].append(record_json)
 
         time.sleep(1.3)
 
@@ -125,7 +155,6 @@ for name in rappers:
         final_collabs[str(k)] = v
     writeArtistCollabs(name, final_collabs)
     collabs_json[name] = final_collabs
-printOutRecordDictionary("records.json")
 printOutCollabDictionary("collabs.json")
 
 
