@@ -32,11 +32,9 @@ release_art = {}
 records_json = {}
 collabs_json = {}
 
-def printOutCollabDictionary(filename):
-    json.dump(collabs_json, open(filename, 'w'), indent=2, separators=(',', ': '))
-
+# TODO: change file to your name!
 def writeArtistCollabs(name, artist_collabs):
-    with open("collabs_incremental.json", "a") as outfile:
+    with open("sonja_collabs.json", "a") as outfile:
         outfile.write("\"" + name + "\": ");
         json.dump(artist_collabs, outfile, indent=2, separators=(',', ': ')) 
         outfile.write(",\n")
@@ -155,6 +153,5 @@ for name in rappers:
         final_collabs[str(k)] = v
     writeArtistCollabs(name, final_collabs)
     collabs_json[name] = final_collabs
-printOutCollabDictionary("collabs.json")
 
 
