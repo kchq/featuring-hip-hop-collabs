@@ -1,1931 +1,2044 @@
 "De la Soul": {
-  "Slick Rick": [
-    "fe111daa-e413-48f3-a8cd-ea9bf428b404"
-  ],
-  "Busta Rhymes": [
-    "db6af985-f4eb-4bc2-a453-2a2c1f8ee7ee",
-    "834627d9-53ab-4559-8dfb-102063016b02"
-  ],
-  "Tribe Called Quest": [
-    "1747b1ab-85ef-4cb1-8c15-4f15c4a0cc6b"
-  ],
-  "Chuck D": [
-    "4743e7e1-b14e-4b79-b4ca-38eab983c79a"
-  ],
-  "MF DOOM": [
-    "86c2aa0b-b0ab-4794-933d-c37b5cbe3f68",
-    "fd688a3e-51fa-4f03-9747-fc60e8d90cf6",
-    "42e5d76b-2518-404f-9018-17420b4b7a85",
-    "32feb37d-97a9-465f-932e-10ffeab7b2c3"
-  ],
-  "Nas": [
-    "1be4d70b-5380-4694-9263-0dba18456057"
-  ],
-  "Common": [
-    "0723460b-62d1-4123-8c83-514848b82a68",
-    "3bac78f3-fb5e-4a47-9931-9a3a956fe943",
-    "a938629f-4fd9-4d0b-bcab-5f94b7ca9e4d",
-    "4fb0304e-fe86-43e2-97e3-ab1203439e77",
-    "3b839f69-bba6-4fd9-974d-0644783e8b63"
-  ],
-  "Mos Def": [
-    "cf2868bf-7cac-4dde-a5f2-61e26449b109",
-    "0c139033-ea5e-4444-a871-a6d8cb1a86f7",
-    "cf989669-088c-473d-afbe-2db556706720"
-  ],
-  "Redman": [
-    "cb258da3-f9ed-43d1-9eac-03d7f44dfd81",
-    "46f050cc-363c-429e-af3e-1c3c6fb1a096"
-  ]
+  "Slick Rick": {
+    "fe111daa-e413-48f3-a8cd-ea9bf428b404": "What We Do (for Love)"
+  },
+  "Busta Rhymes": {
+    "db6af985-f4eb-4bc2-a453-2a2c1f8ee7ee": "I.C. Y\u2019All",
+    "834627d9-53ab-4559-8dfb-102063016b02": "I.C. Y\u2019all"
+  },
+  "Tribe Called Quest": {
+    "1747b1ab-85ef-4cb1-8c15-4f15c4a0cc6b": "Sh.Fe.MC\u2019s"
+  },
+  "Chuck D": {
+    "4743e7e1-b14e-4b79-b4ca-38eab983c79a": "The People"
+  },
+  "MF DOOM": {
+    "86c2aa0b-b0ab-4794-933d-c37b5cbe3f68": "Rock Co.Kane Flow (a cappella)",
+    "fd688a3e-51fa-4f03-9747-fc60e8d90cf6": "Rock Co.Kane Flow",
+    "42e5d76b-2518-404f-9018-17420b4b7a85": "Rock Co.Kane Flow",
+    "32feb37d-97a9-465f-932e-10ffeab7b2c3": "Rock Co.Kane Flow (clean)"
+  },
+  "Nas": {
+    "1be4d70b-5380-4694-9263-0dba18456057": "God It"
+  },
+  "Common": {
+    "0723460b-62d1-4123-8c83-514848b82a68": "The Bizness",
+    "3bac78f3-fb5e-4a47-9931-9a3a956fe943": "The Bizness",
+    "a938629f-4fd9-4d0b-bcab-5f94b7ca9e4d": "The Bizness",
+    "4fb0304e-fe86-43e2-97e3-ab1203439e77": "Days of Our Lives",
+    "3b839f69-bba6-4fd9-974d-0644783e8b63": "The Bitch in Yoo"
+  },
+  "Mos Def": {
+    "cf2868bf-7cac-4dde-a5f2-61e26449b109": "Big Brother Beat",
+    "0c139033-ea5e-4444-a871-a6d8cb1a86f7": "Stakes Is High (remix)",
+    "cf989669-088c-473d-afbe-2db556706720": "Big Brother Beat"
+  },
+  "Redman": {
+    "cb258da3-f9ed-43d1-9eac-03d7f44dfd81": "Who",
+    "46f050cc-363c-429e-af3e-1c3c6fb1a096": "Oooh"
+  }
 },
-"Del the Funky Homosapien": {},
+"Del the Funky Homosapien": {
+  "EL-P": {
+    "a31ddb05-daf2-4cb0-a84a-f5c18f7bf333": "Offspring"
+  }
+},
 "DJ Kool Herc": {},
 "DMX": {
-  "Mase": [
-    "67fa1f8b-284f-4c4d-89e9-33c6511b16df"
-  ],
-  "Busta Rhymes": [
-    "73f781b5-5006-480d-82c9-4594edf26acd",
-    "6f916f76-6a82-4fcc-9eb3-0e0476ee9e75",
-    "e0ce294e-e317-47b4-b789-906cb0a3a57f",
-    "3b2bf3f9-ae13-4a3e-836c-eb7d75bea8de"
-  ],
-  "50 Cent": [
-    "2ebadd8b-b7f1-4d4b-9773-788987a6f0a0"
-  ],
-  "Nas": [
-    "90309de5-7be9-4c09-b9da-a66223510bb2",
-    "18270c07-c703-42bd-b97a-e70ab46eaa9e",
-    "2dbff2d7-804d-453c-ad76-7479f274092c"
-  ],
-  "Method Man": [
-    "90309de5-7be9-4c09-b9da-a66223510bb2",
-    "219ad463-f16d-412a-a99e-289ed9ba46b1",
-    "18270c07-c703-42bd-b97a-e70ab46eaa9e",
-    "2dbff2d7-804d-453c-ad76-7479f274092c"
-  ],
-  "Redman": [
-    "219ad463-f16d-412a-a99e-289ed9ba46b1"
-  ]
+  "Mase": {
+    "67fa1f8b-284f-4c4d-89e9-33c6511b16df": "Niggaz Done Started Something"
+  },
+  "Redman": {
+    "219ad463-f16d-412a-a99e-289ed9ba46b1": "4321"
+  },
+  "50 Cent": {
+    "2ebadd8b-b7f1-4d4b-9773-788987a6f0a0": "Shot Down"
+  },
+  "Nas": {
+    "90309de5-7be9-4c09-b9da-a66223510bb2": "The Grand Finale (TV Track)",
+    "18270c07-c703-42bd-b97a-e70ab46eaa9e": "The Grand Finale (radio edit)",
+    "2dbff2d7-804d-453c-ad76-7479f274092c": "The Grand Finale (LP version)"
+  },
+  "Method Man": {
+    "90309de5-7be9-4c09-b9da-a66223510bb2": "The Grand Finale (TV Track)",
+    "219ad463-f16d-412a-a99e-289ed9ba46b1": "4321",
+    "18270c07-c703-42bd-b97a-e70ab46eaa9e": "The Grand Finale (radio edit)",
+    "2dbff2d7-804d-453c-ad76-7479f274092c": "The Grand Finale (LP version)"
+  },
+  "LL Cool J": {
+    "219ad463-f16d-412a-a99e-289ed9ba46b1": "4321"
+  },
+  "Busta Rhymes": {
+    "73f781b5-5006-480d-82c9-4594edf26acd": "Touch It (remix)",
+    "6f916f76-6a82-4fcc-9eb3-0e0476ee9e75": "Come Thru (Move)",
+    "e0ce294e-e317-47b4-b789-906cb0a3a57f": "Ya'll Don't Really Know",
+    "3b2bf3f9-ae13-4a3e-836c-eb7d75bea8de": "Y\u2019all Don\u2019t Really Know"
+  }
 },
 "Dr. Dre": {
-  "Rakim": [
-    "24f664db-f815-4114-afe3-0f557175265f",
-    "86b0316b-cf59-4f65-9748-231ff2b8c2e2"
-  ],
-  "Busta Rhymes": [
-    "04185a2f-4b5c-400c-be8d-d374915664f4"
-  ],
-  "50 Cent": [
-    "7832cc6c-6d61-4ec4-b603-b699e42fb930",
-    "4cbbb830-f72b-47ff-947a-5b5b3b1b5d7b",
-    "ad214ce1-c949-4ddd-b913-023892f3e0ad",
-    "c588114d-ced2-45a9-a312-26c990ca462b",
-    "addddc72-e284-4aac-a79c-c58a275454ea",
-    "084513db-0a0c-43b9-8460-6666fa4056ad",
-    "b8f928be-9d3a-4722-963f-85cc35848219",
-    "1cba4905-06b8-4cb0-8cc1-63d7248f6ba4",
-    "84b3e89b-f9a2-4c04-9705-4d5a464ca9e6",
-    "532e6f4d-0e2a-4b9d-80b6-aca99e50abec",
-    "d69bf21b-9919-40f8-8357-828b66351f25",
-    "5fc82d8b-8a8e-4ad7-9584-11a0e4ac4ac7"
-  ],
-  "Eminem": [
-    "7832cc6c-6d61-4ec4-b603-b699e42fb930",
-    "df5996f3-8b2e-4787-b147-fe287c50e295",
-    "4cbbb830-f72b-47ff-947a-5b5b3b1b5d7b",
-    "ad214ce1-c949-4ddd-b913-023892f3e0ad",
-    "c588114d-ced2-45a9-a312-26c990ca462b",
-    "084513db-0a0c-43b9-8460-6666fa4056ad",
-    "b8f928be-9d3a-4722-963f-85cc35848219",
-    "2c939a2e-040c-4488-a8f1-7f40d335bf9d",
-    "84b3e89b-f9a2-4c04-9705-4d5a464ca9e6",
-    "532e6f4d-0e2a-4b9d-80b6-aca99e50abec",
-    "d69bf21b-9919-40f8-8357-828b66351f25",
-    "70b858f3-da52-4d26-8dd8-0d5aa55dfe66",
-    "bade4979-ae5f-494b-ba4c-1748ce03653d",
-    "1cba4905-06b8-4cb0-8cc1-63d7248f6ba4",
-    "2d8e5678-29a1-468a-842a-8e1a9d8f517f"
-  ],
-  "Nas": [
-    "da958313-87e4-45cb-8938-6e1a00f7ff20",
-    "6e1777d5-ad20-4edd-be2e-86e141be09cf"
-  ],
-  "Snoop Dogg": [
-    "e9e419f3-a36d-46e0-83d0-b97bea8957eb",
-    "d45dcb43-04ef-4b3c-adfa-c2b6734e3f12",
-    "1721bd4e-45ba-4fe0-8c8c-3a9378ce43f1",
-    "1541196d-2812-434b-89cd-0d24cd617ad6",
-    "2ccd9adc-a575-4e2a-8cd1-64694db3f088",
-    "0e32542e-451c-49aa-a95e-618d9f0beab1",
-    "6f04fbf3-e036-403d-b6a0-840460c44b71",
-    "f6fc33a9-56b0-43b4-bc22-4b355a10748f",
-    "e037cda1-2d92-44fb-860d-ad8d6bdf1661",
-    "c7237bf7-910f-4959-af6d-0f0f8ebdaa20",
-    "980ebced-fb3f-400a-b8c2-6a1a3c2d2b7e",
-    "a4b81d1f-0617-427b-82d4-e21991afb4a8",
-    "cbae7171-b079-4073-b127-7f40b118ba7d",
-    "35116ac4-8879-48a0-b012-af7c83913e5b",
-    "99e8a7a3-15ff-4796-a731-d70691da11e8",
-    "364ca276-aad9-4ea5-ad3a-08cef4e74ec0",
-    "db81e2a4-a756-47da-9307-c601a37b6f00",
-    "596370af-71b7-45e7-8fa7-2c41499fa7e1",
-    "f80d83e0-062e-4e3b-aa59-71e426e43a0c",
-    "26dc3abd-d1cc-4f3e-b527-cdac34b4244f",
-    "c6c742bb-9509-4622-aeea-2941bc3665e0",
-    "d3c24619-0370-4d44-a6dc-4fcc1254ee64",
-    "9fabc043-38f2-408b-af74-b1f1d137046a",
-    "2267c5a5-ce4d-4970-807d-e259cf421a7e",
-    "0f2dc751-27ea-4ff8-ac3e-37b30c801fcb",
-    "c2ae613d-0969-4963-a547-1fcbf59a3755",
-    "00749366-e4ca-4564-b15a-e8d484e1b975",
-    "9f93db94-36c7-4fc7-9381-cef8e3a459ce",
-    "19e2fd7a-5e03-4e0a-8128-89f5c65a7b44",
-    "6ac14b55-0441-4397-b51f-01945e7735b5",
-    "e088654e-e70a-4cbc-ad26-04ab74069ecf",
-    "e5a446f9-a221-409a-a299-ddb33d455779",
-    "f4db3fcf-20e8-4e72-abc6-fe74c35222a6",
-    "22f9ee5e-60bc-46b2-b5e7-45fddf7c663f",
-    "d5afd0c0-6eca-4fb4-bd66-79d574db5b62",
-    "89159f93-82dc-4536-8b1b-9a7a23d516f7",
-    "d9108a14-6542-4bc9-b6b2-5e2849f24e0d",
-    "b1ccbd7a-8283-4234-a1c0-69c5fa29d187",
-    "eb03be0f-2576-4690-88ef-836729ff6b30"
-  ],
-  "Ice Cube": [
-    "30639af5-ef49-4d9e-a125-301f9e47c84e",
-    "5593a092-c03f-4b5f-a691-11f576af9ed7",
-    "fd514e89-3e45-4a73-bdf6-86e29a4c2f09",
-    "a4905324-e6ae-4a90-b958-1b9e04b0e21a",
-    "6933c1ba-6ee9-4583-992d-88302a4efd26",
-    "fd542d7f-15d1-466d-bd35-8192a1445f05",
-    "edec8b78-030b-4f07-b59a-5365636640e6"
-  ],
-  "Too Short": [
-    "fd514e89-3e45-4a73-bdf6-86e29a4c2f09"
-  ],
-  "Kendrick Lamar": [
-    "7655d366-57d4-4bd3-9030-8de9b1efa5e1"
-  ],
-  "Method Man": [
-    "b66d6c4c-d935-435a-ae2e-6c2d2cf8efc6"
-  ]
+  "Rakim": {
+    "24f664db-f815-4114-afe3-0f557175265f": "After You Die",
+    "86b0316b-cf59-4f65-9748-231ff2b8c2e2": "After U Die"
+  },
+  "Snoop Dogg": {
+    "e9e419f3-a36d-46e0-83d0-b97bea8957eb": "The Next Episode",
+    "d45dcb43-04ef-4b3c-adfa-c2b6734e3f12": "Fuck You",
+    "1721bd4e-45ba-4fe0-8c8c-3a9378ce43f1": "Zoom (remix)",
+    "1541196d-2812-434b-89cd-0d24cd617ad6": "Bitch Niggaz",
+    "2ccd9adc-a575-4e2a-8cd1-64694db3f088": "Still D.R.E. (LP version)",
+    "0e32542e-451c-49aa-a95e-618d9f0beab1": "Still D.R.E.",
+    "6f04fbf3-e036-403d-b6a0-840460c44b71": "The Wash (clean)",
+    "f6fc33a9-56b0-43b4-bc22-4b355a10748f": "Still D.R.E. (a cappella version)",
+    "e037cda1-2d92-44fb-860d-ad8d6bdf1661": "Nuthin but a 'G' Thang",
+    "c7237bf7-910f-4959-af6d-0f0f8ebdaa20": "Still D.R.E.",
+    "980ebced-fb3f-400a-b8c2-6a1a3c2d2b7e": "Deep Cover",
+    "a4b81d1f-0617-427b-82d4-e21991afb4a8": "The Wash (LP)",
+    "cbae7171-b079-4073-b127-7f40b118ba7d": "Poor Young Dave",
+    "35116ac4-8879-48a0-b012-af7c83913e5b": "The Wash (instrumental)",
+    "99e8a7a3-15ff-4796-a731-d70691da11e8": "Murder Was the Case",
+    "364ca276-aad9-4ea5-ad3a-08cef4e74ec0": "Deep Cover",
+    "db81e2a4-a756-47da-9307-c601a37b6f00": "Nuthin' but a G Thang (remix)",
+    "596370af-71b7-45e7-8fa7-2c41499fa7e1": "The Next Episode",
+    "f80d83e0-062e-4e3b-aa59-71e426e43a0c": "Still D.R.E. (instrumental version)",
+    "26dc3abd-d1cc-4f3e-b527-cdac34b4244f": "Dre Day (extended club mix)",
+    "c6c742bb-9509-4622-aeea-2941bc3665e0": "Would You Ride",
+    "d3c24619-0370-4d44-a6dc-4fcc1254ee64": "Ain't No Fun",
+    "9fabc043-38f2-408b-af74-b1f1d137046a": "There They Go",
+    "2267c5a5-ce4d-4970-807d-e259cf421a7e": "Touchdown",
+    "0f2dc751-27ea-4ff8-ac3e-37b30c801fcb": "It's You I Adore",
+    "c2ae613d-0969-4963-a547-1fcbf59a3755": "One Eight Seven",
+    "00749366-e4ca-4564-b15a-e8d484e1b975": "Nuthin' but a \"G\" Thang",
+    "9f93db94-36c7-4fc7-9381-cef8e3a459ce": "Puppy Love",
+    "19e2fd7a-5e03-4e0a-8128-89f5c65a7b44": "Dogg Collar",
+    "6ac14b55-0441-4397-b51f-01945e7735b5": "Gin and Juice",
+    "e088654e-e70a-4cbc-ad26-04ab74069ecf": "Smoke Enough Bud",
+    "e5a446f9-a221-409a-a299-ddb33d455779": "Kush (instrumental)",
+    "f4db3fcf-20e8-4e72-abc6-fe74c35222a6": "Deep Cover (remix) (alternate lyrics)",
+    "22f9ee5e-60bc-46b2-b5e7-45fddf7c663f": "Kush (main)",
+    "d5afd0c0-6eca-4fb4-bd66-79d574db5b62": "Afro Puffs, Part 2",
+    "89159f93-82dc-4536-8b1b-9a7a23d516f7": "Murder Was the Case",
+    "d9108a14-6542-4bc9-b6b2-5e2849f24e0d": "Dre Day (radio mix)",
+    "b1ccbd7a-8283-4234-a1c0-69c5fa29d187": "Still D.R.E. (radio edit)",
+    "eb03be0f-2576-4690-88ef-836729ff6b30": "Dre Day"
+  },
+  "ICE T": {
+    "b7f66920-34af-450e-acba-2335100dfe2f": "Roll Wit Gee's"
+  },
+  "Busta Rhymes": {
+    "04185a2f-4b5c-400c-be8d-d374915664f4": "We Up to No Good"
+  },
+  "50 Cent": {
+    "7832cc6c-6d61-4ec4-b603-b699e42fb930": "Encore (instrumental)",
+    "4cbbb830-f72b-47ff-947a-5b5b3b1b5d7b": "Encore (clean)",
+    "ad214ce1-c949-4ddd-b913-023892f3e0ad": "Encore (a cappella)",
+    "c588114d-ced2-45a9-a312-26c990ca462b": "Numb Encore",
+    "addddc72-e284-4aac-a79c-c58a275454ea": "The Way We Came Up",
+    "084513db-0a0c-43b9-8460-6666fa4056ad": "Encore (a cappella)",
+    "b8f928be-9d3a-4722-963f-85cc35848219": "Encore",
+    "1cba4905-06b8-4cb0-8cc1-63d7248f6ba4": "Encore (instrumental)",
+    "84b3e89b-f9a2-4c04-9705-4d5a464ca9e6": "Encore (clean)",
+    "532e6f4d-0e2a-4b9d-80b6-aca99e50abec": "Crack a Bottle",
+    "d69bf21b-9919-40f8-8357-828b66351f25": "Encore",
+    "5fc82d8b-8a8e-4ad7-9584-11a0e4ac4ac7": "New Day"
+  },
+  "Eminem": {
+    "7832cc6c-6d61-4ec4-b603-b699e42fb930": "Encore (instrumental)",
+    "df5996f3-8b2e-4787-b147-fe287c50e295": "Forgot About Dre",
+    "4cbbb830-f72b-47ff-947a-5b5b3b1b5d7b": "Encore (clean)",
+    "ad214ce1-c949-4ddd-b913-023892f3e0ad": "Encore (a cappella)",
+    "c588114d-ced2-45a9-a312-26c990ca462b": "Numb Encore",
+    "084513db-0a0c-43b9-8460-6666fa4056ad": "Encore (a cappella)",
+    "b8f928be-9d3a-4722-963f-85cc35848219": "Encore",
+    "2c939a2e-040c-4488-a8f1-7f40d335bf9d": "I Need a Doctor",
+    "84b3e89b-f9a2-4c04-9705-4d5a464ca9e6": "Encore (clean)",
+    "532e6f4d-0e2a-4b9d-80b6-aca99e50abec": "Crack a Bottle",
+    "d69bf21b-9919-40f8-8357-828b66351f25": "Encore",
+    "70b858f3-da52-4d26-8dd8-0d5aa55dfe66": "What\u2019s the Difference",
+    "bade4979-ae5f-494b-ba4c-1748ce03653d": "Hellbound",
+    "1cba4905-06b8-4cb0-8cc1-63d7248f6ba4": "Encore (instrumental)",
+    "2d8e5678-29a1-468a-842a-8e1a9d8f517f": "Bad Guys Always Die"
+  },
+  "Nas": {
+    "da958313-87e4-45cb-8938-6e1a00f7ff20": "Don't Stop",
+    "6e1777d5-ad20-4edd-be2e-86e141be09cf": "Everyday Thang"
+  },
+  "Method Man": {
+    "b66d6c4c-d935-435a-ae2e-6c2d2cf8efc6": "Take the Heat"
+  },
+  "2Pac": {
+    "702f1375-c16a-4f8b-8eec-517d4e03603a": "California Love (remix)",
+    "3bfbecf3-5c40-456b-9e73-88627e8e3724": "California Love"
+  },
+  "LL Cool J": {
+    "63fd6001-3ed2-47d3-a065-0ffa13b3275a": "Mind Made Up"
+  },
+  "Too Short": {
+    "fd514e89-3e45-4a73-bdf6-86e29a4c2f09": "Game Over"
+  },
+  "Kendrick Lamar": {
+    "7655d366-57d4-4bd3-9030-8de9b1efa5e1": "The Recipe"
+  },
+  "Ice Cube": {
+    "30639af5-ef49-4d9e-a125-301f9e47c84e": "Natural Born Killaz (LP version)",
+    "5593a092-c03f-4b5f-a691-11f576af9ed7": "Natural Born Killaz (video edit)",
+    "fd514e89-3e45-4a73-bdf6-86e29a4c2f09": "Game Over",
+    "a4905324-e6ae-4a90-b958-1b9e04b0e21a": "Cabbage Patch",
+    "6933c1ba-6ee9-4583-992d-88302a4efd26": "What Would You Do? (Tha Dogg Pound)",
+    "fd542d7f-15d1-466d-bd35-8192a1445f05": "Natural Born Killaz (radio edit)",
+    "edec8b78-030b-4f07-b59a-5365636640e6": "Natural Born Killaz"
+  }
 },
 "Drake": {
-  "Lil Wayne": [
-    "873e03cb-63db-416d-9989-d2ec850b4ffd",
-    "96ca7acf-758b-4e13-b826-eb2b97f07a71",
-    "b937fd6d-797c-4b12-9b91-7cebe8930197",
-    "01caadf2-7d03-42bd-a55e-a0608f5e57a0",
-    "ab623318-89a1-4b01-ba0e-1cd3a83a4a13",
-    "7e1c2fb6-9e68-42ff-ad6e-3c55f7151779",
-    "eaa576cd-89f6-4d46-bbf1-042c62ef69c0",
-    "68d5801a-d77d-4d4c-8bbf-f488168b373e",
-    "9d8ab764-c12a-4a66-b4a7-5f03e5617352",
-    "105902ba-e7f3-431a-8519-76d8ef2ba72c",
-    "3974d2d6-e351-415d-9959-9e59496f1f8d",
-    "e1e2dd04-a819-4c71-90bd-b4810b4421d0",
-    "a9261ca1-eb42-40cb-870d-0eac9a1fb13d",
-    "3d5fcf1d-2eb5-4563-a6bd-19cd99938250",
-    "df7435ba-8f47-4775-9792-353a63f8013e",
-    "0a738bdb-1a41-4676-8373-ab587fababfc",
-    "e1060d8f-d790-4a91-a1ac-80430123abf1",
-    "3c66e72a-5e2b-441d-be6a-96cdca0e077d",
-    "ae58c01e-fafe-4cf7-be4f-c6d47d3f15e7",
-    "054f2ced-0efc-41cc-869b-c902da7462c9",
-    "a212995d-3301-471b-9aee-7527a20283a7",
-    "824a0ed7-1af1-4c29-b491-707c2604d997",
-    "9e32410d-116a-41d9-a402-8ba3d7558921",
-    "b877f4f9-73dc-41f5-a293-d36d00130ba7",
-    "47ad90b5-db6d-4a47-8c2d-cd4694619040",
-    "eef021ac-9df7-4351-b004-04c79decf78a",
-    "57a71584-775e-4224-881e-c5653c4c5085",
-    "8c4c3a41-aa0c-4e09-b262-e9df82f880fa",
-    "ea73b3ca-f9ab-4dd7-af90-f0f189215fa8",
-    "a9bdbade-6be4-4de2-8b4a-16287b2314d2",
-    "46ff89bd-cc78-48f6-b911-d07cb54202d2",
-    "658c8918-4159-45fd-aa4c-662938aba842",
-    "01916add-ebdd-4cf2-bb94-eb44c9b93103",
-    "0873cb96-aa99-463a-af5f-947fce4ef8af",
-    "7de5343b-6499-4508-bb0d-5763c36523cc",
-    "54c0f950-b904-4bfd-8ee5-34ea742bee8f",
-    "1329c092-f512-49e1-be63-b1a54cf80632",
-    "b968afd5-89e9-4ce6-8b0d-ffa0e3ba0513",
-    "04ce66e6-4483-4852-a670-a4ab430693b0",
-    "aef4e796-f87c-41d2-aec9-bd2a1aeb2e2c",
-    "2e8b4525-9efb-4962-9b0b-7bcbf20a5848",
-    "e48c820a-3002-4a45-99b4-e5909865a17e",
-    "de5cfcd1-6001-4b5f-80e4-1f57605cebd1",
-    "0bbfefa5-4835-4cfd-93c6-fd4b7eec3a6e",
-    "e6d5efbc-d987-4970-9fa4-61d98f74b244",
-    "3ee72be2-a890-4690-8617-d96bdb860a08",
-    "eb8d675c-ac20-4a6c-80a9-e432f1b60853",
-    "30ce7320-5b24-4707-b712-63556b5c5b65",
-    "f904f686-faf7-4726-ac43-e0b7dda0804f",
-    "5102dbe0-29d9-476c-ac58-64027d3bf740",
-    "1e35e16f-2975-4f23-86f3-a9ed66c143a5",
-    "7cbc988f-7d82-4ae3-a464-1cc993b10bc1",
-    "5bea17f8-821d-4219-8081-2cf99ccfa279",
-    "f41748fd-2452-4e1d-aa24-0af6ff831aa9",
-    "aa7ce712-878b-42ad-a912-f6dbdc2e8e42",
-    "c698498e-882a-4cd3-be79-7cde23faeb6f",
-    "29eeb589-6c63-430d-b588-f7c9d51adc4d",
-    "77eaaeb0-acaa-40f6-b6db-00c61f649d30",
-    "e41ec009-daad-428b-92ef-e693308daca3",
-    "19a6b924-2907-445f-9c5f-ba62b8bc40ec",
-    "68d5619a-cd3b-4a83-a615-77a874e2cea4",
-    "76cd51f2-1860-44dc-9834-e58b7b323bfc",
-    "9d7c9ba9-d8e0-4b25-bbc3-ba21c9269d3d",
-    "523c62fc-2106-4320-bc80-ef894f843ab0",
-    "d927c101-8488-49d6-aec0-9191aedfd3de",
-    "17241244-7dff-4ab6-a5be-059ea6e668cb",
-    "37458f0b-7160-4914-9124-9f74370e3a1c",
-    "5475b1b7-5947-428d-a688-7dd8365336f9",
-    "76f5b06e-8c44-450d-8315-265bff00f904",
-    "5f2d75aa-e46f-4cc5-bb4c-5087a09941d1",
-    "4650c8b4-f22a-4d1a-af21-0e1c6e833819",
-    "eb1a3488-87b3-4cb2-b977-ea8370620b78",
-    "fb6c78f7-0a36-4a56-a990-bb51e24c39ce",
-    "ba6d07ff-b536-4292-b945-0ff55008b3da",
-    "88890e39-085c-4cbe-8caf-662a2e5ded53"
-  ],
-  "Currensy": [
-    "7e1c2fb6-9e68-42ff-ad6e-3c55f7151779"
-  ],
-  "Kanye West": [
-    "61c217e2-a75c-48c1-a3cf-528d92d3e772",
-    "ab623318-89a1-4b01-ba0e-1cd3a83a4a13",
-    "b937fd6d-797c-4b12-9b91-7cebe8930197",
-    "30ce7320-5b24-4707-b712-63556b5c5b65",
-    "ea73b3ca-f9ab-4dd7-af90-f0f189215fa8",
-    "df7435ba-8f47-4775-9792-353a63f8013e",
-    "f41748fd-2452-4e1d-aa24-0af6ff831aa9",
-    "e1060d8f-d790-4a91-a1ac-80430123abf1",
-    "52a80462-3003-48d0-916e-f4023cca40ee",
-    "54c0f950-b904-4bfd-8ee5-34ea742bee8f"
-  ],
-  "Notorious B.I.G.": [
-    "c033e9bd-1366-4bdf-91b1-9cd53166da2a"
-  ],
-  "Andre 3000": [
-    "e6d5efbc-d987-4970-9fa4-61d98f74b244"
-  ],
-  "Young Jeezy": [
-    "c9b3bec5-bc31-4e4c-8a77-c2ee3f0b9bc1",
-    "5102dbe0-29d9-476c-ac58-64027d3bf740",
-    "17241244-7dff-4ab6-a5be-059ea6e668cb",
-    "46ff89bd-cc78-48f6-b911-d07cb54202d2",
-    "383a72c1-c5a4-4b8b-be83-b61a461b1306",
-    "32d23efe-3256-4973-8221-ef47b5c38013"
-  ],
-  "Ludacris": [
-    "fdfee7df-1c23-4d7b-b395-64b2311f55d2"
-  ],
-  "A$AP Rocky": [
-    "c62bf94c-b8ad-40b3-b357-265f91e6fbe5"
-  ],
-  "Eminem": [
-    "b937fd6d-797c-4b12-9b91-7cebe8930197",
-    "30ce7320-5b24-4707-b712-63556b5c5b65",
-    "ea73b3ca-f9ab-4dd7-af90-f0f189215fa8",
-    "df7435ba-8f47-4775-9792-353a63f8013e",
-    "f41748fd-2452-4e1d-aa24-0af6ff831aa9",
-    "e1060d8f-d790-4a91-a1ac-80430123abf1",
-    "54c0f950-b904-4bfd-8ee5-34ea742bee8f"
-  ],
-  "Rick Ross": [
-    "41a5f9eb-ff54-4bd6-b044-108bbe6e0bcd",
-    "1df6291e-d5f4-434f-85ff-89b1656ca929",
-    "5475b1b7-5947-428d-a688-7dd8365336f9",
-    "bef7e31a-e044-4710-8746-204642241d10",
-    "c3c5868c-0402-46ac-b98a-38642dfb2895",
-    "a83fa8f4-a723-4361-909d-f4276238a804",
-    "235c0bcc-0671-4c5d-9077-b36d56527e48"
-  ],
-  "T.I.": [
-    "3d2d0b3c-c037-4a49-b03c-31977809e6af",
-    "d8e02942-de75-4e8a-b0c8-7d8c7fcb8a33"
-  ],
-  "The Weeknd": [
-    "a8cae555-95ce-46dd-a611-8b26753cad81",
-    "e6b7d6ca-9fd5-4bcd-b300-1cec69a77aec"
-  ],
-  "Meek Mill": [
-    "8a96673b-c86d-41d6-9dcc-81a4d7f31bd0",
-    "4b548f24-7656-4ad9-a777-7f4e659567b2"
-  ],
-  "Nicki Minaj": [
-    "0e33b3ea-b66f-4b7d-b72c-ced1ff6a6601",
-    "93f7feee-8581-4132-8f75-6c73561912fb",
-    "5f2d75aa-e46f-4cc5-bb4c-5087a09941d1",
-    "4650c8b4-f22a-4d1a-af21-0e1c6e833819",
-    "4fbe060d-7f40-49c2-b085-ffe67b368d2d",
-    "7e63934c-f99f-4e5f-845d-b248ff5057cf",
-    "1329c092-f512-49e1-be63-b1a54cf80632"
-  ],
-  "Big Sean": [
-    "105902ba-e7f3-431a-8519-76d8ef2ba72c",
-    "97d97816-4ce9-4458-a7d8-aa3d333803f9",
-    "63a5be40-2fdb-4c4f-bf14-b12b8bc55239"
-  ],
-  "Tyga": [
-    "4b548f24-7656-4ad9-a777-7f4e659567b2"
-  ],
-  "Kendrick Lamar": [
-    "42ac8919-965a-42f9-a487-45e8b85836bf",
-    "c62bf94c-b8ad-40b3-b357-265f91e6fbe5"
-  ]
+  "Lil Wayne": {
+    "873e03cb-63db-416d-9989-d2ec850b4ffd": "Unstoppable (Got Now remix)",
+    "96ca7acf-758b-4e13-b826-eb2b97f07a71": "Lets Talk Money",
+    "b937fd6d-797c-4b12-9b91-7cebe8930197": "Forever (clean)",
+    "01caadf2-7d03-42bd-a55e-a0608f5e57a0": "Stunt Hard",
+    "ab623318-89a1-4b01-ba0e-1cd3a83a4a13": "Deuces",
+    "7e1c2fb6-9e68-42ff-ad6e-3c55f7151779": "Miami Vice",
+    "eaa576cd-89f6-4d46-bbf1-042c62ef69c0": "Man of the Year",
+    "68d5801a-d77d-4d4c-8bbf-f488168b373e": "So Good",
+    "9d8ab764-c12a-4a66-b4a7-5f03e5617352": "Im From the South",
+    "105902ba-e7f3-431a-8519-76d8ef2ba72c": "All of the Lights (remix)",
+    "3974d2d6-e351-415d-9959-9e59496f1f8d": "Spit in Your Face",
+    "e1e2dd04-a819-4c71-90bd-b4810b4421d0": "Man of the Year",
+    "a9261ca1-eb42-40cb-870d-0eac9a1fb13d": "What the 380 Said",
+    "3d5fcf1d-2eb5-4563-a6bd-19cd99938250": "Every Girl",
+    "df7435ba-8f47-4775-9792-353a63f8013e": "Forever",
+    "0a738bdb-1a41-4676-8373-ab587fababfc": "Miss Me",
+    "e1060d8f-d790-4a91-a1ac-80430123abf1": "Forever (Tyler Blue Drumstep remix)",
+    "3c66e72a-5e2b-441d-be6a-96cdca0e077d": "Forever",
+    "ae58c01e-fafe-4cf7-be4f-c6d47d3f15e7": "Uptown",
+    "054f2ced-0efc-41cc-869b-c902da7462c9": "Unstoppable",
+    "a212995d-3301-471b-9aee-7527a20283a7": "Successful",
+    "824a0ed7-1af1-4c29-b491-707c2604d997": "Uptown",
+    "9e32410d-116a-41d9-a402-8ba3d7558921": "Maybach Music 2",
+    "b877f4f9-73dc-41f5-a293-d36d00130ba7": "First Place Winner",
+    "47ad90b5-db6d-4a47-8c2d-cd4694619040": "Brand New (remix)",
+    "eef021ac-9df7-4351-b004-04c79decf78a": "Conglomerate",
+    "57a71584-775e-4224-881e-c5653c4c5085": "I'm Not Human",
+    "8c4c3a41-aa0c-4e09-b262-e9df82f880fa": "Workin on Her Visa",
+    "ea73b3ca-f9ab-4dd7-af90-f0f189215fa8": "Forever (radio edit)",
+    "a9bdbade-6be4-4de2-8b4a-16287b2314d2": "Brand New (remix)",
+    "46ff89bd-cc78-48f6-b911-d07cb54202d2": "I'm Goin' In",
+    "658c8918-4159-45fd-aa4c-662938aba842": "Stunt Hard",
+    "01916add-ebdd-4cf2-bb94-eb44c9b93103": "Does What She Does",
+    "0873cb96-aa99-463a-af5f-947fce4ef8af": "Ransom",
+    "7de5343b-6499-4508-bb0d-5763c36523cc": "I Want This Forever",
+    "54c0f950-b904-4bfd-8ee5-34ea742bee8f": "Forever",
+    "1329c092-f512-49e1-be63-b1a54cf80632": "I Get Crazy",
+    "b968afd5-89e9-4ce6-8b0d-ffa0e3ba0513": "Damage Is Done",
+    "04ce66e6-4483-4852-a670-a4ab430693b0": "Miss Me",
+    "aef4e796-f87c-41d2-aec9-bd2a1aeb2e2c": "Roller Riders",
+    "2e8b4525-9efb-4962-9b0b-7bcbf20a5848": "One Arm",
+    "e48c820a-3002-4a45-99b4-e5909865a17e": "Right Above It",
+    "de5cfcd1-6001-4b5f-80e4-1f57605cebd1": "HYFR (Hell Ya Fuckin\u2019 Right)",
+    "0bbfefa5-4835-4cfd-93c6-fd4b7eec3a6e": "Die Happy",
+    "e6d5efbc-d987-4970-9fa4-61d98f74b244": "The Real Her",
+    "3ee72be2-a890-4690-8617-d96bdb860a08": "Politics",
+    "eb8d675c-ac20-4a6c-80a9-e432f1b60853": "Money to Blow",
+    "30ce7320-5b24-4707-b712-63556b5c5b65": "Forever (a cappella)",
+    "f904f686-faf7-4726-ac43-e0b7dda0804f": "November 18th",
+    "5102dbe0-29d9-476c-ac58-64027d3bf740": "I\u2019m Goin In",
+    "1e35e16f-2975-4f23-86f3-a9ed66c143a5": "Successful",
+    "7cbc988f-7d82-4ae3-a464-1cc993b10bc1": "I Want This Forever",
+    "5bea17f8-821d-4219-8081-2cf99ccfa279": "Ignant Shit",
+    "f41748fd-2452-4e1d-aa24-0af6ff831aa9": "Forever (instrumental)",
+    "aa7ce712-878b-42ad-a912-f6dbdc2e8e42": "I Feel Me",
+    "c698498e-882a-4cd3-be79-7cde23faeb6f": "Miss Me",
+    "29eeb589-6c63-430d-b588-f7c9d51adc4d": "Ignorant Shit",
+    "77eaaeb0-acaa-40f6-b6db-00c61f649d30": "Man of the Year",
+    "e41ec009-daad-428b-92ef-e693308daca3": "I Told Ya'll",
+    "19a6b924-2907-445f-9c5f-ba62b8bc40ec": "Im a Go Getta",
+    "68d5619a-cd3b-4a83-a615-77a874e2cea4": "Try Harder",
+    "76cd51f2-1860-44dc-9834-e58b7b323bfc": "My Darlin Baby",
+    "9d7c9ba9-d8e0-4b25-bbc3-ba21c9269d3d": "T-Wayne",
+    "523c62fc-2106-4320-bc80-ef894f843ab0": "Yes",
+    "d927c101-8488-49d6-aec0-9191aedfd3de": "Ransom",
+    "17241244-7dff-4ab6-a5be-059ea6e668cb": "I'm Going In",
+    "37458f0b-7160-4914-9124-9f74370e3a1c": "Love Me",
+    "5475b1b7-5947-428d-a688-7dd8365336f9": "Pop That",
+    "76f5b06e-8c44-450d-8315-265bff00f904": "Every Girl",
+    "5f2d75aa-e46f-4cc5-bb4c-5087a09941d1": "Go Hard",
+    "4650c8b4-f22a-4d1a-af21-0e1c6e833819": "Only",
+    "eb1a3488-87b3-4cb2-b977-ea8370620b78": "I Want This Forever",
+    "fb6c78f7-0a36-4a56-a990-bb51e24c39ce": "By Myself",
+    "ba6d07ff-b536-4292-b945-0ff55008b3da": "Take Your Girl",
+    "88890e39-085c-4cbe-8caf-662a2e5ded53": "Look at Me (Got Now remix)"
+  },
+  "Currensy": {
+    "7e1c2fb6-9e68-42ff-ad6e-3c55f7151779": "Miami Vice"
+  },
+  "Kanye West": {
+    "61c217e2-a75c-48c1-a3cf-528d92d3e772": "Digital Girl",
+    "ab623318-89a1-4b01-ba0e-1cd3a83a4a13": "Deuces",
+    "b937fd6d-797c-4b12-9b91-7cebe8930197": "Forever (clean)",
+    "30ce7320-5b24-4707-b712-63556b5c5b65": "Forever (a cappella)",
+    "ea73b3ca-f9ab-4dd7-af90-f0f189215fa8": "Forever (radio edit)",
+    "df7435ba-8f47-4775-9792-353a63f8013e": "Forever",
+    "f41748fd-2452-4e1d-aa24-0af6ff831aa9": "Forever (instrumental)",
+    "e1060d8f-d790-4a91-a1ac-80430123abf1": "Forever (Tyler Blue Drumstep remix)",
+    "52a80462-3003-48d0-916e-f4023cca40ee": "Digital Girl (remix)",
+    "54c0f950-b904-4bfd-8ee5-34ea742bee8f": "Forever"
+  },
+  "Andre 3000": {
+    "e6d5efbc-d987-4970-9fa4-61d98f74b244": "The Real Her"
+  },
+  "Young Jeezy": {
+    "c9b3bec5-bc31-4e4c-8a77-c2ee3f0b9bc1": "Unforgettable",
+    "5102dbe0-29d9-476c-ac58-64027d3bf740": "I\u2019m Goin In",
+    "17241244-7dff-4ab6-a5be-059ea6e668cb": "I'm Going In",
+    "46ff89bd-cc78-48f6-b911-d07cb54202d2": "I'm Goin' In",
+    "383a72c1-c5a4-4b8b-be83-b61a461b1306": "Unforgettable",
+    "32d23efe-3256-4973-8221-ef47b5c38013": "Unforgettable"
+  },
+  "Ludacris": {
+    "fdfee7df-1c23-4d7b-b395-64b2311f55d2": "Show Me a Good Time"
+  },
+  "2Pac": {
+    "65996a00-ddc4-486a-a669-4f4284f443ef": "Karaoke"
+  },
+  "A$AP Rocky": {
+    "c62bf94c-b8ad-40b3-b357-265f91e6fbe5": "Fuckin' Problems"
+  },
+  "Eminem": {
+    "b937fd6d-797c-4b12-9b91-7cebe8930197": "Forever (clean)",
+    "30ce7320-5b24-4707-b712-63556b5c5b65": "Forever (a cappella)",
+    "ea73b3ca-f9ab-4dd7-af90-f0f189215fa8": "Forever (radio edit)",
+    "df7435ba-8f47-4775-9792-353a63f8013e": "Forever",
+    "f41748fd-2452-4e1d-aa24-0af6ff831aa9": "Forever (instrumental)",
+    "e1060d8f-d790-4a91-a1ac-80430123abf1": "Forever (Tyler Blue Drumstep remix)",
+    "54c0f950-b904-4bfd-8ee5-34ea742bee8f": "Forever"
+  },
+  "Rick Ross": {
+    "41a5f9eb-ff54-4bd6-b044-108bbe6e0bcd": "Free Spirit",
+    "1df6291e-d5f4-434f-85ff-89b1656ca929": "Made Men",
+    "5475b1b7-5947-428d-a688-7dd8365336f9": "Pop That",
+    "bef7e31a-e044-4710-8746-204642241d10": "Lord Knows",
+    "c3c5868c-0402-46ac-b98a-38642dfb2895": "Stay Schemin",
+    "a83fa8f4-a723-4361-909d-f4276238a804": "Find Your Love",
+    "235c0bcc-0671-4c5d-9077-b36d56527e48": "Find Your Love"
+  },
+  "T.I.": {
+    "3d2d0b3c-c037-4a49-b03c-31977809e6af": "Fancy",
+    "d8e02942-de75-4e8a-b0c8-7d8c7fcb8a33": "Poppin Bottles"
+  },
+  "The Weeknd": {
+    "a8cae555-95ce-46dd-a611-8b26753cad81": "Crew Love",
+    "e6b7d6ca-9fd5-4bcd-b300-1cec69a77aec": "The Ride"
+  },
+  "Kendrick Lamar": {
+    "42ac8919-965a-42f9-a487-45e8b85836bf": "Marvins Room / Buried Alive (interlude)",
+    "c62bf94c-b8ad-40b3-b357-265f91e6fbe5": "Fuckin' Problems"
+  },
+  "Nicki Minaj": {
+    "0e33b3ea-b66f-4b7d-b72c-ced1ff6a6601": "Up All Night",
+    "93f7feee-8581-4132-8f75-6c73561912fb": "Up All Night",
+    "5f2d75aa-e46f-4cc5-bb4c-5087a09941d1": "Go Hard",
+    "4650c8b4-f22a-4d1a-af21-0e1c6e833819": "Only",
+    "4fbe060d-7f40-49c2-b085-ffe67b368d2d": "Moment 4 Life",
+    "7e63934c-f99f-4e5f-845d-b248ff5057cf": "Make Me Proud",
+    "1329c092-f512-49e1-be63-b1a54cf80632": "I Get Crazy"
+  },
+  "Big Sean": {
+    "105902ba-e7f3-431a-8519-76d8ef2ba72c": "All of the Lights (remix)",
+    "97d97816-4ce9-4458-a7d8-aa3d333803f9": "All Me",
+    "63a5be40-2fdb-4c4f-bf14-b12b8bc55239": "All Me"
+  },
+  "J. Cole": {
+    "55591d3e-b508-4422-b05b-7a4f861a5261": "In the Morning"
+  },
+  "Jay Z": {
+    "aa7cd00a-a101-489a-8576-4105ed023c4c": "Pound Cake / Paris Morton Music 2"
+  },
+  "Tyga": {
+    "4b548f24-7656-4ad9-a777-7f4e659567b2": "Versace"
+  },
+  "Notorious B.I.G.": {
+    "c033e9bd-1366-4bdf-91b1-9cd53166da2a": "Light Up"
+  },
+  "Meek Mill": {
+    "8a96673b-c86d-41d6-9dcc-81a4d7f31bd0": "Amen",
+    "4b548f24-7656-4ad9-a777-7f4e659567b2": "Versace"
+  }
 },
 "E-40": {
-  "Lil Wayne": [
-    "0daa97b5-5b83-4362-9a0b-de8acc6b0c17"
-  ],
-  "Busta Rhymes": [
-    "f3e4445c-22d5-4900-a470-93d4c551176c"
-  ],
-  "Juvenile": [
-    "0daa97b5-5b83-4362-9a0b-de8acc6b0c17"
-  ],
-  "Juicy J": [
-    "d46deb2e-ce26-4a27-914e-57374733ccc4"
-  ],
-  "Ludacris": [
-    "59330420-cc68-4c00-9f6b-a269ce447a96",
-    "eb2172fd-b180-40b4-bb02-1f9302f5ef39"
-  ],
-  "Young Jeezy": [
-    "3b15457a-5109-4f9a-add1-6383e879b887"
-  ],
-  "The Game": [
-    "8542051f-7285-40bd-a454-6b0049d3b45e"
-  ],
-  "Snoop Dogg": [
-    "5ec9c874-9688-4e22-9af6-b1f60b92f5d5",
-    "8542051f-7285-40bd-a454-6b0049d3b45e",
-    "13c231e9-1b7d-48a1-904d-47d0c4833484"
-  ],
-  "Pimp C": [
-    "9275d4c8-3339-4c5a-9bda-0ba8b16b03ad",
-    "368f2bfd-18a7-46d2-bb82-38fa1cb367db"
-  ],
-  "Twista": [
-    "8f994b08-8eea-441d-a311-eef54789daab"
-  ],
-  "Tech N9ne": [
-    "1f5e165f-7ce8-4d11-82ba-222bf24e5999",
-    "79f327b8-1d5b-40a1-b643-b1b9f4154902"
-  ],
-  "Master P": [
-    "43b5a559-255f-492f-8b63-e6953ba93d6a"
-  ],
-  "Too Short": [
-    "629e3607-addc-46da-8958-63409f4c592d",
-    "9aa070f8-15b8-4584-9bf7-8271d327e992",
-    "893bafb6-3e4e-44d2-9e24-49a44ab11a14",
-    "1d9de225-b314-4ca7-9350-69b92de38afd",
-    "5e231205-9339-41e4-8bd2-9c7b6169b11b",
-    "808b8aeb-3b79-4d5c-86ac-a7b4f5dabf10",
-    "d5c9e591-308d-408d-9f51-840e82f944a5",
-    "1ae89a26-e6d8-44c3-84d1-e845f318f3a3",
-    "a97f1b6d-04df-41c9-81cd-de251c9cbdb2",
-    "1604f450-6c08-489b-99e6-80035af9a328",
-    "fee18831-d50e-4b3c-89bc-8ea2649bc21b",
-    "24151ee1-c002-4b78-b205-f7914f38e621",
-    "8203fe92-fda7-4d0a-baa6-3220f5b5740a",
-    "d0d54412-81b3-45bf-8f24-926a7003b55e",
-    "85d91ddb-a724-48c4-8e75-2c631c8e2131",
-    "678b20b5-ecdd-4a62-af88-440198e65bf1",
-    "28c4eb2c-4f81-4941-85ff-42664845d8c4",
-    "17ab3298-9e50-4bdb-965d-319d80a8cc27",
-    "8ae29cd8-3d7b-4fec-9c81-103154372950",
-    "ec51ec5a-7eef-4943-ba77-8ef5c563a73b",
-    "ab484da8-0ee8-4a64-9a49-056ef71357a6",
-    "fb84c654-ed89-4d2a-9432-e74d93838f8c",
-    "40f923c3-abdb-46aa-935b-bae708b8e84f",
-    "29affa99-c05f-461f-a5ea-9f223155c5e3",
-    "aa193635-0802-43c8-8371-93453f3a5007",
-    "13c231e9-1b7d-48a1-904d-47d0c4833484",
-    "1a0225ea-76bd-433b-9f12-e021005c0aef",
-    "e5100ff4-4dd2-4c60-95f7-164abedfd14b",
-    "86afb2ee-d2ed-482f-a1b9-9ceeae7cd2db",
-    "c82d08b1-08d4-4a18-bcb0-bb03c2de163e",
-    "72f558f8-678f-4403-99c8-548fcbbefe64",
-    "706c2d98-3766-4458-84a3-55b5d093d2fb",
-    "26a76ddd-9523-4f7c-801a-15a053570815",
-    "6c427dfd-e104-4e27-8b3d-4d3603380006",
-    "669f9edd-b9d9-43ae-9201-4b1c4027030e",
-    "20c8f75c-af0d-4227-b15c-eb564ebb0001",
-    "71c7442d-ded5-4275-86c4-9ca00e692fd7",
-    "f15b401d-1323-41c0-a2a2-9f5ea857def3",
-    "fbdbfb36-6358-4127-b220-5c9ab8dd8f9c",
-    "530dc486-1e6b-4f5c-91ef-ec4d879358a9",
-    "dd6de3ae-eeb9-49bf-87e7-12ee3c96b53c",
-    "8924c05b-9c7a-4fc3-9c6b-5c5ffb3a600c",
-    "ed055109-d76d-48c3-8079-986cfa6b7309"
-  ],
-  "Tyga": [
-    "fee18831-d50e-4b3c-89bc-8ea2649bc21b"
-  ],
-  "Kendrick Lamar": [
-    "f9f774f8-5d5c-4ce6-8a42-bdbbeebcc6f5"
-  ],
-  "Ice Cube": [
-    "f15b401d-1323-41c0-a2a2-9f5ea857def3",
-    "ce40bfb9-ccc5-4df5-b420-2df68302c99e"
-  ]
+  "Lil Wayne": {
+    "0daa97b5-5b83-4362-9a0b-de8acc6b0c17": "Look at Me"
+  },
+  "Busta Rhymes": {
+    "f3e4445c-22d5-4900-a470-93d4c551176c": "Do It to Me"
+  },
+  "Juvenile": {
+    "0daa97b5-5b83-4362-9a0b-de8acc6b0c17": "Look at Me"
+  },
+  "ICE T": {
+    "0d4633c2-b812-4651-8680-171272206fdf": "Earl"
+  },
+  "Juicy J": {
+    "d46deb2e-ce26-4a27-914e-57374733ccc4": "They Point"
+  },
+  "Ludacris": {
+    "59330420-cc68-4c00-9f6b-a269ce447a96": "Sleep",
+    "eb2172fd-b180-40b4-bb02-1f9302f5ef39": "Sleep"
+  },
+  "Young Jeezy": {
+    "3b15457a-5109-4f9a-add1-6383e879b887": "Function (Remix)"
+  },
+  "Snoop Dogg": {
+    "5ec9c874-9688-4e22-9af6-b1f60b92f5d5": "What You Smoking On",
+    "8542051f-7285-40bd-a454-6b0049d3b45e": "Pain No More",
+    "13c231e9-1b7d-48a1-904d-47d0c4833484": "Can't Stop the Boss"
+  },
+  "The Game": {
+    "8542051f-7285-40bd-a454-6b0049d3b45e": "Pain No More"
+  },
+  "Kendrick Lamar": {
+    "f9f774f8-5d5c-4ce6-8a42-bdbbeebcc6f5": "Catch a Fade"
+  },
+  "Pimp C": {
+    "9275d4c8-3339-4c5a-9bda-0ba8b16b03ad": "Doin' the Fool",
+    "368f2bfd-18a7-46d2-bb82-38fa1cb367db": "White Gurl"
+  },
+  "Twista": {
+    "8f994b08-8eea-441d-a311-eef54789daab": "Tryna Get It"
+  },
+  "Tech N9ne": {
+    "1f5e165f-7ce8-4d11-82ba-222bf24e5999": "Scorpio",
+    "79f327b8-1d5b-40a1-b643-b1b9f4154902": "Zombie"
+  },
+  "Master P": {
+    "43b5a559-255f-492f-8b63-e6953ba93d6a": "Back Against the Wall"
+  },
+  "Too Short": {
+    "629e3607-addc-46da-8958-63409f4c592d": "Stressin'",
+    "9aa070f8-15b8-4584-9bf7-8271d327e992": "Over Here",
+    "893bafb6-3e4e-44d2-9e24-49a44ab11a14": "Knockin' A Bitch",
+    "1d9de225-b314-4ca7-9350-69b92de38afd": "Yee",
+    "5e231205-9339-41e4-8bd2-9c7b6169b11b": "Singles",
+    "808b8aeb-3b79-4d5c-86ac-a7b4f5dabf10": "Smoke That Shit",
+    "d5c9e591-308d-408d-9f51-840e82f944a5": "Gang of 'em",
+    "1ae89a26-e6d8-44c3-84d1-e845f318f3a3": "Sliding Down the Pole",
+    "a97f1b6d-04df-41c9-81cd-de251c9cbdb2": "Check That Bitch",
+    "1604f450-6c08-489b-99e6-80035af9a328": "Ride With Me",
+    "fee18831-d50e-4b3c-89bc-8ea2649bc21b": "Slide Through",
+    "24151ee1-c002-4b78-b205-f7914f38e621": "Everyday",
+    "8203fe92-fda7-4d0a-baa6-3220f5b5740a": "Fire Fighter",
+    "d0d54412-81b3-45bf-8f24-926a7003b55e": "Ballin' Is Fun",
+    "85d91ddb-a724-48c4-8e75-2c631c8e2131": "Show Me What You Workin Wit",
+    "678b20b5-ecdd-4a62-af88-440198e65bf1": "Workin' the Trunk",
+    "28c4eb2c-4f81-4941-85ff-42664845d8c4": "Entrepreneur",
+    "17ab3298-9e50-4bdb-965d-319d80a8cc27": "My Stapler",
+    "8ae29cd8-3d7b-4fec-9c81-103154372950": "Earl That's Yo'Life",
+    "ec51ec5a-7eef-4943-ba77-8ef5c563a73b": "Dump Truck",
+    "ab484da8-0ee8-4a64-9a49-056ef71357a6": "Poncherellos",
+    "fb84c654-ed89-4d2a-9432-e74d93838f8c": "Same Since '88",
+    "40f923c3-abdb-46aa-935b-bae708b8e84f": "Street Money",
+    "29affa99-c05f-461f-a5ea-9f223155c5e3": "Be You",
+    "aa193635-0802-43c8-8371-93453f3a5007": "Toasted",
+    "13c231e9-1b7d-48a1-904d-47d0c4833484": "Can't Stop the Boss",
+    "1a0225ea-76bd-433b-9f12-e021005c0aef": "We Are the Pioneers",
+    "e5100ff4-4dd2-4c60-95f7-164abedfd14b": "Say I",
+    "86afb2ee-d2ed-482f-a1b9-9ceeae7cd2db": "Cali",
+    "c82d08b1-08d4-4a18-bcb0-bb03c2de163e": "Bitch",
+    "72f558f8-678f-4403-99c8-548fcbbefe64": "Whip Out",
+    "706c2d98-3766-4458-84a3-55b5d093d2fb": "Let's Have a Party",
+    "26a76ddd-9523-4f7c-801a-15a053570815": "Bout My Money",
+    "6c427dfd-e104-4e27-8b3d-4d3603380006": "This Shit Pound",
+    "669f9edd-b9d9-43ae-9201-4b1c4027030e": "Sheesh",
+    "20c8f75c-af0d-4227-b15c-eb564ebb0001": "Do You Remember?",
+    "71c7442d-ded5-4275-86c4-9ca00e692fd7": "Ask About Me",
+    "f15b401d-1323-41c0-a2a2-9f5ea857def3": "West Coast Shit",
+    "fbdbfb36-6358-4127-b220-5c9ab8dd8f9c": "One Foot",
+    "530dc486-1e6b-4f5c-91ef-ec4d879358a9": "Lemme See You Twerk",
+    "dd6de3ae-eeb9-49bf-87e7-12ee3c96b53c": "If We Ain't Fuckin'",
+    "8924c05b-9c7a-4fc3-9c6b-5c5ffb3a600c": "Money Motivated",
+    "ed055109-d76d-48c3-8079-986cfa6b7309": "I Don't Work for Nobody"
+  },
+  "Tyga": {
+    "fee18831-d50e-4b3c-89bc-8ea2649bc21b": "Slide Through"
+  },
+  "2Pac": {
+    "9cf8525c-78a3-4e10-ab28-cc3934d18a0a": "Dusted 'n' Disgusted"
+  },
+  "Ice Cube": {
+    "f15b401d-1323-41c0-a2a2-9f5ea857def3": "West Coast Shit",
+    "ce40bfb9-ccc5-4df5-b420-2df68302c99e": "Behind Gates"
+  }
 },
 "Earl Sweatshirt": {
-  "Mac Miller": [
-    "e36c9aad-af57-4885-a115-cf6a6882b871"
-  ]
+  "Mac Miller": {
+    "e36c9aad-af57-4885-a115-cf6a6882b871": "Guild"
+  }
 },
 "Eazy-E": {
-  "Bone Thugs N' Harmony": [
-    "406a9fb3-3431-4f22-9738-3d9fd993b43a"
-  ]
+  "Bone Thugs N' Harmony": {
+    "406a9fb3-3431-4f22-9738-3d9fd993b43a": "Foe tha Love of $"
+  }
 },
 "El-P": {
-  "Aesop Rock": [
-    "1664a609-8c34-42d5-b925-5628180f76ad",
-    "a0fc8a49-d20c-43ec-bdae-141ca8381e3b",
-    "bb6e08bb-314e-4dbf-95f7-44ffbff338d5",
-    "c708d8e1-1102-434e-9064-8aa6c9fd17aa",
-    "27f8fd0e-bed0-4f2a-8400-179bf237afca"
-  ],
-  "Killer Mike": [
-    "6fa2c199-0d1c-43eb-b3ba-04ef04f6e544",
-    "cc44f398-9c5f-4683-a9e4-e34599aa946b"
-  ],
-  "Danny Brown": [
-    "0787c63f-80ba-48df-b1b4-9d035e13c4b4"
-  ]
+  "Aesop Rock": {
+    "1664a609-8c34-42d5-b925-5628180f76ad": "Train Buffer (clean)",
+    "a0fc8a49-d20c-43ec-bdae-141ca8381e3b": "Train Buffer (dirty)",
+    "bb6e08bb-314e-4dbf-95f7-44ffbff338d5": "We're Still Standin' Here",
+    "c708d8e1-1102-434e-9064-8aa6c9fd17aa": "Run the Numbers",
+    "27f8fd0e-bed0-4f2a-8400-179bf237afca": "Train Buffer (instrumental)"
+  },
+  "Killer Mike": {
+    "6fa2c199-0d1c-43eb-b3ba-04ef04f6e544": "Stay Down",
+    "cc44f398-9c5f-4683-a9e4-e34599aa946b": "Tougher Colder Killer"
+  },
+  "Danny Brown": {
+    "0787c63f-80ba-48df-b1b4-9d035e13c4b4": "Oh Hail No"
+  }
 },
 "Eminem": {
-  "Lil Wayne": [
-    "39968d71-3717-4c26-b4fb-400851316046",
-    "c2375a62-fdad-4fd1-b1cf-bf3d11fc3fad",
-    "0799103f-88e8-4368-a03d-bd79cf015132",
-    "e7ba544b-74c3-462b-b3dc-d26fa17a9a5e",
-    "b937fd6d-797c-4b12-9b91-7cebe8930197",
-    "f33166a8-dc47-4e36-b972-1a128ea12708",
-    "052277e0-299e-40f3-9c1f-56eac03e546b",
-    "30ce7320-5b24-4707-b712-63556b5c5b65",
-    "ea73b3ca-f9ab-4dd7-af90-f0f189215fa8",
-    "1468532f-7963-4d6a-9206-f018f08b6e51",
-    "06b14373-9f82-4991-ac60-733931a9cbe3",
-    "19808677-58a8-4cfa-9551-05dcdbacdd92",
-    "82f4fc63-b49e-408b-998c-74f0a241fb33",
-    "f41748fd-2452-4e1d-aa24-0af6ff831aa9",
-    "e1060d8f-d790-4a91-a1ac-80430123abf1",
-    "54c0f950-b904-4bfd-8ee5-34ea742bee8f",
-    "34ab17c4-9cb0-444f-82b9-8a3ad0474a03",
-    "ab9a5fbf-c5bf-4768-9334-6d59649ca54e"
-  ],
-  "Busta Rhymes": [
-    "87975e1b-3c87-41fc-b9c2-555f9206e665",
-    "e7eb991f-4db8-4962-b968-7bdd6268dc72"
-  ],
-  "Nicki Minaj": [
-    "6d29c1dd-2c4a-4804-9b0f-467f2321fb44",
-    "8d27a12d-d3e0-4ea8-a9ec-0a285b6b0505"
-  ],
-  "50 Cent": [
-    "ae2f13da-dcc7-4674-8bf5-43e0436753b4",
-    "f163caa2-f4ab-4442-954c-a19ec0bcdf84",
-    "a57d0664-9c20-49a0-a611-45b26b3f156c",
-    "d1efd0b5-6af4-409b-8580-1606433fbd96",
-    "6e966663-9979-4944-a809-3f1589012ffd",
-    "5c78c691-03ea-4e47-9098-31d25098e405",
-    "9874737b-1a3a-4adf-999d-1bdf1fa7b0cb",
-    "fea050ec-851b-4b98-89df-cfe1058a84d5",
-    "efa78ccc-9d42-44e6-aabd-0afd55438749",
-    "dbb33be5-57bd-4d73-9b27-a9245cde49c4",
-    "6688538b-ac29-4403-ba01-c83ade5b58b6",
-    "2a00f50a-e814-4807-87a1-ea3c609013eb",
-    "d271c756-4f2a-44a0-9863-3c9325b49a80",
-    "1e0c8d3a-3136-4f7b-a9d7-9ee775b4d5c9",
-    "ac6e2cd6-9116-4cd8-ba3c-ae84bf97ad74",
-    "128d9c41-dfa6-4b5e-8456-565bdddbac8c",
-    "f30fcdb0-c066-422e-a474-d0de83f56f80",
-    "f3d2a543-f774-47ae-bfe9-f580d63bd822",
-    "c9373f7b-16ee-45ef-90b2-70084a34a5ee",
-    "dd1ba76b-780f-46f1-b3cb-600edd4af26e",
-    "044a19a4-f81d-4a41-99db-ba19a03bea11",
-    "66545fe7-09e1-4574-a7ac-e5c44d9093e7",
-    "c178af07-ddc1-419d-aa45-03dd915382fa",
-    "b95f2e8b-08a8-46ff-9a02-7b981329f836",
-    "ff6db57e-5730-42bb-92f8-3bf75341080d",
-    "3f381e17-8919-4193-96fc-a50cb2e2ae8a",
-    "ba1520d9-c460-4978-8ef2-943e203d4a95",
-    "2c38873b-05b0-48c1-93e2-b70f463fd7d7",
-    "187bd91c-cb6f-4921-bfa0-5701dc87b688",
-    "4280ec1f-b31d-4696-bca7-43cbdcf2a3e2",
-    "532e6f4d-0e2a-4b9d-80b6-aca99e50abec",
-    "fa76f39e-d964-48fe-a420-a94ba66640b6",
-    "2241c890-ade8-4c57-be7d-8f864e1feea1",
-    "07787dfd-67cb-496b-a9f0-51cb443b564a",
-    "e9bb2368-6d8e-4b09-a0d8-73eb33f68f78",
-    "c39578e4-0837-45e1-b001-a85d47dffe35",
-    "fbbd17a6-36b4-42bc-83d0-29d4ff8b982f",
-    "155df626-9536-4341-ab25-bb4f044aa918",
-    "1e7d5762-7a6c-461c-9d59-545cebc0d454",
-    "ba570dce-6df0-4ac3-acb8-a715dafac307",
-    "378e9f32-4634-4464-bde4-5995147c1df1",
-    "87975e1b-3c87-41fc-b9c2-555f9206e665",
-    "70311107-1b7e-42a6-8734-c6ff80d16bf6",
-    "961463ad-acca-432c-8939-2d50ffb17c50",
-    "c643bba9-03db-4281-a78e-935565f9f165",
-    "d214c185-3b6c-4df2-a5a4-283fbe29eef5",
-    "b91c54da-b02b-4491-b384-5677609c881b"
-  ],
-  "Mobb Deep": [
-    "5f9f14c7-4fff-4bf0-a28c-2e47fbfa9401"
-  ],
-  "Mos Def": [
-    "14e2b8d8-709a-486c-8b38-ced367720eb2"
-  ],
-  "Missy Elliot": [
-    "79c219c4-f6df-4c6e-aefd-b1705e1b318c",
-    "76ea348a-1ddf-49dd-872d-d0f5b843d6aa"
-  ],
-  "Notorious B.I.G.": [
-    "20bb5658-fa09-4aa5-9d5d-7a8ab07713d4",
-    "4e6ca6b3-1b7a-4b53-ad7a-821f3465ba9c",
-    "3e21aafa-e770-4f06-8efe-5a6a44146c84",
-    "6500f3c4-d5e2-4170-ba5a-d9aa0de6782b"
-  ],
-  "Redman": [
-    "8f6ae841-bd2d-4e6b-915a-6915f7c3e2cd"
-  ],
-  "Canibus": [
-    "c74c7e48-b946-4eae-9b1a-bdee29ad6982"
-  ],
-  "Dr. Dre": [
-    "26875020-d0f4-49b7-ab6c-884db2012e4c",
-    "ca1cf056-47b2-42e5-bb56-e382f05100c8",
-    "f163caa2-f4ab-4442-954c-a19ec0bcdf84",
-    "a3c91144-cddb-4709-9fd8-c4d11ff570f2",
-    "9874737b-1a3a-4adf-999d-1bdf1fa7b0cb",
-    "0c2fc9e9-d9b9-431b-80a0-aeced2c5e187",
-    "2c939a2e-040c-4488-a8f1-7f40d335bf9d",
-    "25a0e0c0-ba49-4dbb-9cd7-6d969803f724",
-    "b4dc0952-2b24-4c09-9c84-81015e4ef08c",
-    "6688538b-ac29-4403-ba01-c83ade5b58b6",
-    "f5a447a2-4b49-4574-9a00-059142c75bf4",
-    "57395e69-1cb9-4de0-987b-1915d7ae9977",
-    "434292f2-0e89-4708-9acf-b7c93cda2d3b",
-    "1ec0e255-f0bf-4615-8019-33c419b95e11",
-    "b2ab2077-54cc-4d0c-a70a-57832901cc73",
-    "d17703e2-fcc4-4c52-b04c-15ec81217f7e",
-    "84a67530-8dc2-455c-95db-ebd4c7b60518",
-    "9a9e670d-0663-43b8-a6b3-3da0f7c4036a",
-    "3d6847d5-0119-46c1-acce-c8e6ffcfbc4c",
-    "7fa8bbef-8575-4068-89c0-3fa8464740b7",
-    "8513f59b-1341-45a6-ad9a-010a75c2c1d9",
-    "c9373f7b-16ee-45ef-90b2-70084a34a5ee",
-    "60d8786c-b9f4-420e-87e3-92a5c7c1cbe0",
-    "520c8cbc-fd63-4f0d-8a88-9cf4586c43ba",
-    "378b08bf-7bf6-4fd2-a0e9-66904bf1e565",
-    "f43a23bf-e695-41ca-b10e-a0d950f6da00",
-    "ff11d656-2dc2-4246-9968-064fc4f04967",
-    "a5c2f55b-72ed-42f8-9baa-86f7a84ae78e",
-    "cd0bcf11-d6af-409a-afcf-4340b48b8576",
-    "dd2a4506-a4d0-42de-9183-f34c96a74be5",
-    "2a3c4d45-41af-4bef-8259-3070792c9d3c",
-    "a2dcc6a1-7f9a-4d8b-b089-cf6daf5968f3",
-    "f2950e3d-bc4f-46d6-8f29-cdb53ba6fcb4",
-    "1aeef0cb-0346-4a22-b33e-b71b67ff9670",
-    "e9bb2368-6d8e-4b09-a0d8-73eb33f68f78",
-    "6c41be1d-012b-41c7-b33f-1c0ad1d658d2",
-    "eb13cf90-0aa2-4088-aa36-0b0a4f1544e4",
-    "70311107-1b7e-42a6-8734-c6ff80d16bf6",
-    "881dfc5c-d4ff-4d57-8d16-fef18f642f2e",
-    "c84bc4a4-54e7-4822-ad74-f5925e1cfa4e",
-    "532e6f4d-0e2a-4b9d-80b6-aca99e50abec",
-    "776ac3ca-51fe-4fac-b78f-82b587a34832",
-    "3137332b-852b-4d74-a610-aa104df62df6",
-    "945d7911-6397-4339-8131-25094b39cd92",
-    "e7d5f941-848b-4080-97d5-bb42515f343e",
-    "bef04963-0300-445d-8bf6-2717cbc68b77",
-    "1629c8ab-ee28-4a78-8174-a6ebfedfcfe9",
-    "48298b2b-711f-4788-842d-a7f9cc9af296"
-  ],
-  "Nas": [
-    "14e2b8d8-709a-486c-8b38-ced367720eb2",
-    "973c646a-b31a-476a-8bab-6cf69d012088",
-    "02bcfcf3-c904-475f-99b6-b80e01c77df7",
-    "b752c71a-67e9-4ada-8447-17d72c60a877"
-  ],
-  "Kendrick Lamar": [
-    "ecf228d7-39cb-414b-8ee8-20ff5d2a97aa"
-  ],
-  "Danny Brown": [
-    "43c2722a-2aad-4a1f-9e7e-1a2520b15952",
-    "67329a0a-8495-4a7d-a106-7bcf2d4ab8c9"
-  ],
-  "Drake": [
-    "b937fd6d-797c-4b12-9b91-7cebe8930197",
-    "30ce7320-5b24-4707-b712-63556b5c5b65",
-    "ea73b3ca-f9ab-4dd7-af90-f0f189215fa8",
-    "f41748fd-2452-4e1d-aa24-0af6ff831aa9",
-    "e1060d8f-d790-4a91-a1ac-80430123abf1",
-    "54c0f950-b904-4bfd-8ee5-34ea742bee8f"
-  ],
-  "Kid Cudi": [
-    "9467cade-6e70-4b98-ac6c-14a9c63e190c"
-  ],
-  "T.I.": [
-    "82f4fc63-b49e-408b-998c-74f0a241fb33",
-    "42915c82-8cdf-4242-99a0-aed5618499fb",
-    "e7ba544b-74c3-462b-b3dc-d26fa17a9a5e"
-  ],
-  "Tech N9ne": [
-    "d2c0ac60-7fb4-43f1-8e80-7f6035ec22b6"
-  ],
-  "Snoop Dogg": [
-    "a3c91144-cddb-4709-9fd8-c4d11ff570f2",
-    "a2dcc6a1-7f9a-4d8b-b089-cf6daf5968f3",
-    "ff11d656-2dc2-4246-9968-064fc4f04967",
-    "dd2a4506-a4d0-42de-9183-f34c96a74be5",
-    "b4dc0952-2b24-4c09-9c84-81015e4ef08c"
-  ],
-  "Kanye West": [
-    "5b4f610c-562c-4a63-ac7d-8a4d0343b6f5",
-    "e7ba544b-74c3-462b-b3dc-d26fa17a9a5e",
-    "b937fd6d-797c-4b12-9b91-7cebe8930197",
-    "30ce7320-5b24-4707-b712-63556b5c5b65",
-    "ea73b3ca-f9ab-4dd7-af90-f0f189215fa8",
-    "bf9916c4-17ac-4ca7-855d-b4a489b3f1b8",
-    "82f4fc63-b49e-408b-998c-74f0a241fb33",
-    "f41748fd-2452-4e1d-aa24-0af6ff831aa9",
-    "e1060d8f-d790-4a91-a1ac-80430123abf1",
-    "54c0f950-b904-4bfd-8ee5-34ea742bee8f",
-    "34ab17c4-9cb0-444f-82b9-8a3ad0474a03"
-  ],
-  "Ludacris": [
-    "e997bc5b-c12b-425a-8de8-8f17f649b195",
-    "c7e530a9-5afc-43a1-9aeb-d74d31892c5a"
-  ],
-  "Talib Kweli": [
-    "68d89eba-d2f1-4e76-9374-b861ca0709dc"
-  ],
-  "Asher Roth": [
-    "6c3c1f69-6be5-43a8-bc5f-5504fdd8e604"
-  ],
-  "Big Sean": [
-    "43c2722a-2aad-4a1f-9e7e-1a2520b15952",
-    "67329a0a-8495-4a7d-a106-7bcf2d4ab8c9"
-  ],
-  "Twista": [
-    "0799103f-88e8-4368-a03d-bd79cf015132"
-  ],
-  "DMX": [
-    "9345defa-eb3f-4147-9b9e-9f825b36d3d3",
-    "739e4b20-29d3-4417-bc66-2e0aaaae6cf6"
-  ]
+  "Lil Wayne": {
+    "39968d71-3717-4c26-b4fb-400851316046": "Salute (Massive Trip Xclsv remix)",
+    "c2375a62-fdad-4fd1-b1cf-bf3d11fc3fad": "Drop the World",
+    "0799103f-88e8-4368-a03d-bd79cf015132": "Life Ain't",
+    "e7ba544b-74c3-462b-b3dc-d26fa17a9a5e": "You Aint Neva Gotta Ask",
+    "b937fd6d-797c-4b12-9b91-7cebe8930197": "Forever (clean)",
+    "f33166a8-dc47-4e36-b972-1a128ea12708": "No Love",
+    "052277e0-299e-40f3-9c1f-56eac03e546b": "Drop the World",
+    "30ce7320-5b24-4707-b712-63556b5c5b65": "Forever (a cappella)",
+    "ea73b3ca-f9ab-4dd7-af90-f0f189215fa8": "Forever (radio edit)",
+    "1468532f-7963-4d6a-9206-f018f08b6e51": "Eminem - Drop the World",
+    "06b14373-9f82-4991-ac60-733931a9cbe3": "Pistol X2 (Screamixx)",
+    "19808677-58a8-4cfa-9551-05dcdbacdd92": "No Love",
+    "82f4fc63-b49e-408b-998c-74f0a241fb33": "The Best",
+    "f41748fd-2452-4e1d-aa24-0af6ff831aa9": "Forever (instrumental)",
+    "e1060d8f-d790-4a91-a1ac-80430123abf1": "Forever (Tyler Blue Drumstep remix)",
+    "54c0f950-b904-4bfd-8ee5-34ea742bee8f": "Forever",
+    "34ab17c4-9cb0-444f-82b9-8a3ad0474a03": "They Come They Go",
+    "ab9a5fbf-c5bf-4768-9334-6d59649ca54e": "Drop the World"
+  },
+  "Busta Rhymes": {
+    "87975e1b-3c87-41fc-b9c2-555f9206e665": "Hail Mary",
+    "e7eb991f-4db8-4962-b968-7bdd6268dc72": "Follow Me (Stackhouse Recordings mix)"
+  },
+  "Nicki Minaj": {
+    "6d29c1dd-2c4a-4804-9b0f-467f2321fb44": "Roman\u2019s Revenge (alternate version)",
+    "8d27a12d-d3e0-4ea8-a9ec-0a285b6b0505": "Roman\u2019s Revenge"
+  },
+  "50 Cent": {
+    "ae2f13da-dcc7-4674-8bf5-43e0436753b4": "Dark Knight (Freestyle)",
+    "f163caa2-f4ab-4442-954c-a19ec0bcdf84": "Crack a Bottle",
+    "a57d0664-9c20-49a0-a611-45b26b3f156c": "Patiently Waiting",
+    "d1efd0b5-6af4-409b-8580-1606433fbd96": "The Re-Up",
+    "6e966663-9979-4944-a809-3f1589012ffd": "You Don\u2019t Know",
+    "5c78c691-03ea-4e47-9098-31d25098e405": "Eminem - Psycho",
+    "9874737b-1a3a-4adf-999d-1bdf1fa7b0cb": "Syllables",
+    "fea050ec-851b-4b98-89df-cfe1058a84d5": "I Get Money",
+    "efa78ccc-9d42-44e6-aabd-0afd55438749": "Hustlers Ambition & One Step Closer (Special Shady Park version)",
+    "dbb33be5-57bd-4d73-9b27-a9245cde49c4": "The Realest (remix)",
+    "6688538b-ac29-4403-ba01-c83ade5b58b6": "Crack a Bottle",
+    "2a00f50a-e814-4807-87a1-ea3c609013eb": "My Life",
+    "d271c756-4f2a-44a0-9863-3c9325b49a80": "Jimmy Crack Corn",
+    "1e0c8d3a-3136-4f7b-a9d7-9ee775b4d5c9": "Pistol Pistol",
+    "ac6e2cd6-9116-4cd8-ba3c-ae84bf97ad74": "Never Enough",
+    "128d9c41-dfa6-4b5e-8456-565bdddbac8c": "Fiya",
+    "f30fcdb0-c066-422e-a474-d0de83f56f80": "Nigga",
+    "f3d2a543-f774-47ae-bfe9-f580d63bd822": "Warriors, Part 2",
+    "c9373f7b-16ee-45ef-90b2-70084a34a5ee": "Encore",
+    "dd1ba76b-780f-46f1-b3cb-600edd4af26e": "Wanksta",
+    "044a19a4-f81d-4a41-99db-ba19a03bea11": "Rap Game",
+    "66545fe7-09e1-4574-a7ac-e5c44d9093e7": "Don't Push Me",
+    "c178af07-ddc1-419d-aa45-03dd915382fa": "You Don't Know (instrumental)",
+    "b95f2e8b-08a8-46ff-9a02-7b981329f836": "Luv Me",
+    "ff6db57e-5730-42bb-92f8-3bf75341080d": "Love Me",
+    "3f381e17-8919-4193-96fc-a50cb2e2ae8a": "8 More Miles",
+    "ba1520d9-c460-4978-8ef2-943e203d4a95": "In Control (Stackhouse Recordings mix)",
+    "2c38873b-05b0-48c1-93e2-b70f463fd7d7": "Psycho",
+    "187bd91c-cb6f-4921-bfa0-5701dc87b688": "King Hustle",
+    "4280ec1f-b31d-4696-bca7-43cbdcf2a3e2": "Love",
+    "532e6f4d-0e2a-4b9d-80b6-aca99e50abec": "Crack a Bottle",
+    "fa76f39e-d964-48fe-a420-a94ba66640b6": "P.I.M.P.",
+    "2241c890-ade8-4c57-be7d-8f864e1feea1": "Ludacris & Lil Wayne (Ludacris & Lil Wayne diss)",
+    "07787dfd-67cb-496b-a9f0-51cb443b564a": "Love Me",
+    "e9bb2368-6d8e-4b09-a0d8-73eb33f68f78": "Crack a Bottle",
+    "c39578e4-0837-45e1-b001-a85d47dffe35": "Bump Heads",
+    "fbbd17a6-36b4-42bc-83d0-29d4ff8b982f": "You Don't Know",
+    "155df626-9536-4341-ab25-bb4f044aa918": "You Don't Know (edited)",
+    "1e7d5762-7a6c-461c-9d59-545cebc0d454": "Love Me",
+    "ba570dce-6df0-4ac3-acb8-a715dafac307": "Psycho",
+    "378e9f32-4634-4464-bde4-5995147c1df1": "In da Club",
+    "87975e1b-3c87-41fc-b9c2-555f9206e665": "Hail Mary",
+    "70311107-1b7e-42a6-8734-c6ff80d16bf6": "Encore / (Curtains)",
+    "961463ad-acca-432c-8939-2d50ffb17c50": "Waiting",
+    "c643bba9-03db-4281-a78e-935565f9f165": "Spend Some Time",
+    "d214c185-3b6c-4df2-a5a4-283fbe29eef5": "Pretty Waiting (skit)",
+    "b91c54da-b02b-4491-b384-5677609c881b": "Rap Game (unedited version)"
+  },
+  "Mobb Deep": {
+    "5f9f14c7-4fff-4bf0-a28c-2e47fbfa9401": "Comin Out Swingin (remix)"
+  },
+  "Mos Def": {
+    "14e2b8d8-709a-486c-8b38-ced367720eb2": "Beef"
+  },
+  "Missy Elliot": {
+    "79c219c4-f6df-4c6e-aefd-b1705e1b318c": "Buss a Rhyme",
+    "76ea348a-1ddf-49dd-872d-d0f5b843d6aa": "Busa Rhyme"
+  },
+  "Kendrick Lamar": {
+    "ecf228d7-39cb-414b-8ee8-20ff5d2a97aa": "Love Game"
+  },
+  "Redman": {
+    "8f6ae841-bd2d-4e6b-915a-6915f7c3e2cd": "No Matter What"
+  },
+  "Canibus": {
+    "c74c7e48-b946-4eae-9b1a-bdee29ad6982": "U Didn't Care (Eminem diss)"
+  },
+  "Ludacris": {
+    "e997bc5b-c12b-425a-8de8-8f17f649b195": "Black Amerika (Stackhouse Recordings mix)",
+    "c7e530a9-5afc-43a1-9aeb-d74d31892c5a": "Its Nothin"
+  },
+  "Dr. Dre": {
+    "26875020-d0f4-49b7-ab6c-884db2012e4c": "Forgot About Dre",
+    "ca1cf056-47b2-42e5-bb56-e382f05100c8": "Hell Breaks Loose",
+    "f163caa2-f4ab-4442-954c-a19ec0bcdf84": "Crack a Bottle",
+    "a3c91144-cddb-4709-9fd8-c4d11ff570f2": "Bitch Please II",
+    "9874737b-1a3a-4adf-999d-1bdf1fa7b0cb": "Syllables",
+    "0c2fc9e9-d9b9-431b-80a0-aeced2c5e187": "Guilty Conscience",
+    "2c939a2e-040c-4488-a8f1-7f40d335bf9d": "I Need a Doctor",
+    "25a0e0c0-ba49-4dbb-9cd7-6d969803f724": "What You Gonna Do",
+    "b4dc0952-2b24-4c09-9c84-81015e4ef08c": "Bitch Please II",
+    "6688538b-ac29-4403-ba01-c83ade5b58b6": "Crack a Bottle",
+    "f5a447a2-4b49-4574-9a00-059142c75bf4": "If I Get Locked Up Tonight",
+    "57395e69-1cb9-4de0-987b-1915d7ae9977": "Guilty Conscience",
+    "434292f2-0e89-4708-9acf-b7c93cda2d3b": "Say What You Say",
+    "1ec0e255-f0bf-4615-8019-33c419b95e11": "Forgot About Dre",
+    "b2ab2077-54cc-4d0c-a70a-57832901cc73": "Business",
+    "d17703e2-fcc4-4c52-b04c-15ec81217f7e": "What U Gonna Do (The Clipse) & Jay-Z) (Stackhouse Recordings mix)",
+    "84a67530-8dc2-455c-95db-ebd4c7b60518": "Hell Breaks Loose",
+    "9a9e670d-0663-43b8-a6b3-3da0f7c4036a": "Guilty Conscience",
+    "3d6847d5-0119-46c1-acce-c8e6ffcfbc4c": "Bad Guys Always Die",
+    "7fa8bbef-8575-4068-89c0-3fa8464740b7": "Conscience",
+    "8513f59b-1341-45a6-ad9a-010a75c2c1d9": "Hell Breaks Loose",
+    "c9373f7b-16ee-45ef-90b2-70084a34a5ee": "Encore",
+    "60d8786c-b9f4-420e-87e3-92a5c7c1cbe0": "Say What You Say",
+    "520c8cbc-fd63-4f0d-8a88-9cf4586c43ba": "Guilty Conscience (radio version with gunshots)",
+    "378b08bf-7bf6-4fd2-a0e9-66904bf1e565": "Can't Forget U (Stackhouse Recordings mix)",
+    "f43a23bf-e695-41ca-b10e-a0d950f6da00": "I Need a Doctor",
+    "ff11d656-2dc2-4246-9968-064fc4f04967": "Bitch Please II",
+    "a5c2f55b-72ed-42f8-9baa-86f7a84ae78e": "Forgot About Dre",
+    "cd0bcf11-d6af-409a-afcf-4340b48b8576": "Whats the Difference",
+    "dd2a4506-a4d0-42de-9183-f34c96a74be5": "Bitch Please II",
+    "2a3c4d45-41af-4bef-8259-3070792c9d3c": "Flawless Victory (Screamixx)",
+    "a2dcc6a1-7f9a-4d8b-b089-cf6daf5968f3": "Bling Bling (remix)",
+    "f2950e3d-bc4f-46d6-8f29-cdb53ba6fcb4": "If I Get Locked Up Tonight",
+    "1aeef0cb-0346-4a22-b33e-b71b67ff9670": "Eminem - Hell Breaks Loose",
+    "e9bb2368-6d8e-4b09-a0d8-73eb33f68f78": "Crack a Bottle",
+    "6c41be1d-012b-41c7-b33f-1c0ad1d658d2": "What's the Difference",
+    "eb13cf90-0aa2-4088-aa36-0b0a4f1544e4": "Old Time's Sake",
+    "70311107-1b7e-42a6-8734-c6ff80d16bf6": "Encore / (Curtains)",
+    "881dfc5c-d4ff-4d57-8d16-fef18f642f2e": "My Conscience (Stackhouse Recordings mix)",
+    "c84bc4a4-54e7-4822-ad74-f5925e1cfa4e": "Say What You Say",
+    "532e6f4d-0e2a-4b9d-80b6-aca99e50abec": "Crack a Bottle",
+    "776ac3ca-51fe-4fac-b78f-82b587a34832": "Old Time's Sake",
+    "3137332b-852b-4d74-a610-aa104df62df6": "The Watchmen (Screamixx)",
+    "945d7911-6397-4339-8131-25094b39cd92": "Old Time\u2019s Sake",
+    "e7d5f941-848b-4080-97d5-bb42515f343e": "Do It Again (Stackhouse Recordings mix)",
+    "bef04963-0300-445d-8bf6-2717cbc68b77": "My Mentor & I (Stackhouse Recordings mix)",
+    "1629c8ab-ee28-4a78-8174-a6ebfedfcfe9": "What's the Difference",
+    "48298b2b-711f-4788-842d-a7f9cc9af296": "Forgot About Dre (Screamixx)"
+  },
+  "Notorious B.I.G.": {
+    "20bb5658-fa09-4aa5-9d5d-7a8ab07713d4": "Mix'em Up",
+    "4e6ca6b3-1b7a-4b53-ad7a-821f3465ba9c": "Dead Wrong (remix)",
+    "3e21aafa-e770-4f06-8efe-5a6a44146c84": "Dead Wrong",
+    "6500f3c4-d5e2-4170-ba5a-d9aa0de6782b": "Dead Wrong"
+  },
+  "2Pac": {
+    "6543f66e-36e9-430b-896c-80e1744c69ae": "One Day at a Time",
+    "20bb5658-fa09-4aa5-9d5d-7a8ab07713d4": "Mix'em Up"
+  },
+  "Danny Brown": {
+    "43c2722a-2aad-4a1f-9e7e-1a2520b15952": "Detroit Vs. Everybody",
+    "67329a0a-8495-4a7d-a106-7bcf2d4ab8c9": "Detroit vs. Everbody"
+  },
+  "Drake": {
+    "b937fd6d-797c-4b12-9b91-7cebe8930197": "Forever (clean)",
+    "30ce7320-5b24-4707-b712-63556b5c5b65": "Forever (a cappella)",
+    "ea73b3ca-f9ab-4dd7-af90-f0f189215fa8": "Forever (radio edit)",
+    "f41748fd-2452-4e1d-aa24-0af6ff831aa9": "Forever (instrumental)",
+    "e1060d8f-d790-4a91-a1ac-80430123abf1": "Forever (Tyler Blue Drumstep remix)",
+    "54c0f950-b904-4bfd-8ee5-34ea742bee8f": "Forever"
+  },
+  "Kid Cudi": {
+    "9467cade-6e70-4b98-ac6c-14a9c63e190c": "I Keep Stressin"
+  },
+  "T.I.": {
+    "82f4fc63-b49e-408b-998c-74f0a241fb33": "The Best",
+    "42915c82-8cdf-4242-99a0-aed5618499fb": "All She Wrote",
+    "e7ba544b-74c3-462b-b3dc-d26fa17a9a5e": "You Aint Neva Gotta Ask"
+  },
+  "Tech N9ne": {
+    "d2c0ac60-7fb4-43f1-8e80-7f6035ec22b6": "The Anthem"
+  },
+  "Jay Z": {
+    "3afb6dd5-fa86-4d68-878f-8851dda9e379": "Brooklyn (We Go Hard)",
+    "3e95d483-0841-4c58-b997-eb1b76d36269": "Jockin' Jay-Z (Travis Barker remix)",
+    "88c7f76e-a981-4b43-a042-31772ccc43b4": "When the Money Goes",
+    "b94011ad-dbf9-4d96-a247-ce90062e8017": "Maybe",
+    "0e1472c5-6ee2-4f10-8737-e0690ee0fb31": "Renegades (intro)",
+    "60342325-1c87-4d00-9ddf-6280b13e79b0": "D.O. A (Death of Autotune)",
+    "5a2efcb8-8b87-4c8a-a15a-b4df887e8f59": "Customer Service (Screamixx)",
+    "ce063edb-6c0f-4eb7-9ade-61d79ce01aef": "Renegade (live at the Wiltern, LA)",
+    "1a2443f3-a673-4374-9563-829b82ca4a3c": "Superman Meets Wonder Woman (Screamixx)",
+    "a56b5bc0-73e5-4e22-a2b3-6a7a9b879c35": "Renegade",
+    "e7ba544b-74c3-462b-b3dc-d26fa17a9a5e": "You Aint Neva Gotta Ask",
+    "3137332b-852b-4d74-a610-aa104df62df6": "The Watchmen (Screamixx)",
+    "a4fa039c-fda4-42ac-bde8-948fc5cc95c8": "3am (Screamixx)",
+    "547fa554-c902-40a1-ae58-a44d034e313d": "History (dub Floyd Screamixx)",
+    "82f4fc63-b49e-408b-998c-74f0a241fb33": "The Best",
+    "f4e72ce1-2991-4a9c-8569-fcd85f9a2d7d": "Ain't I",
+    "973c646a-b31a-476a-8bab-6cf69d012088": "Heaven (Screamixx)",
+    "a7faf502-b1e4-4adf-b4ed-acab0ad330c2": "Renegades"
+  },
+  "Snoop Dogg": {
+    "a3c91144-cddb-4709-9fd8-c4d11ff570f2": "Bitch Please II",
+    "a2dcc6a1-7f9a-4d8b-b089-cf6daf5968f3": "Bling Bling (remix)",
+    "ff11d656-2dc2-4246-9968-064fc4f04967": "Bitch Please II",
+    "dd2a4506-a4d0-42de-9183-f34c96a74be5": "Bitch Please II",
+    "b4dc0952-2b24-4c09-9c84-81015e4ef08c": "Bitch Please II"
+  },
+  "Kanye West": {
+    "5b4f610c-562c-4a63-ac7d-8a4d0343b6f5": "Love Me (Stackhouse Recordings mix)",
+    "e7ba544b-74c3-462b-b3dc-d26fa17a9a5e": "You Aint Neva Gotta Ask",
+    "b937fd6d-797c-4b12-9b91-7cebe8930197": "Forever (clean)",
+    "30ce7320-5b24-4707-b712-63556b5c5b65": "Forever (a cappella)",
+    "ea73b3ca-f9ab-4dd7-af90-f0f189215fa8": "Forever (radio edit)",
+    "bf9916c4-17ac-4ca7-855d-b4a489b3f1b8": "Shady's Boom Boom Boom (Screamixx)",
+    "82f4fc63-b49e-408b-998c-74f0a241fb33": "The Best",
+    "f41748fd-2452-4e1d-aa24-0af6ff831aa9": "Forever (instrumental)",
+    "e1060d8f-d790-4a91-a1ac-80430123abf1": "Forever (Tyler Blue Drumstep remix)",
+    "54c0f950-b904-4bfd-8ee5-34ea742bee8f": "Forever",
+    "34ab17c4-9cb0-444f-82b9-8a3ad0474a03": "They Come They Go"
+  },
+  "Nas": {
+    "14e2b8d8-709a-486c-8b38-ced367720eb2": "Beef",
+    "973c646a-b31a-476a-8bab-6cf69d012088": "Heaven (Screamixx)",
+    "02bcfcf3-c904-475f-99b6-b80e01c77df7": "Who Else (Stackhouse Recordings mix)",
+    "b752c71a-67e9-4ada-8447-17d72c60a877": "Topless"
+  },
+  "Talib Kweli": {
+    "68d89eba-d2f1-4e76-9374-b861ca0709dc": "Marshall Law (Screamixx)"
+  },
+  "Asher Roth": {
+    "6c3c1f69-6be5-43a8-bc5f-5504fdd8e604": "Take Me (Stackhouse Recordings mix)"
+  },
+  "Big Sean": {
+    "43c2722a-2aad-4a1f-9e7e-1a2520b15952": "Detroit Vs. Everybody",
+    "67329a0a-8495-4a7d-a106-7bcf2d4ab8c9": "Detroit vs. Everbody"
+  },
+  "Twista": {
+    "0799103f-88e8-4368-a03d-bd79cf015132": "Life Ain't"
+  },
+  "DMX": {
+    "9345defa-eb3f-4147-9b9e-9f825b36d3d3": "Go to Sleep",
+    "739e4b20-29d3-4417-bc66-2e0aaaae6cf6": "Go to Sleep"
+  }
 },
 "Eyedea": {
-  "Murs": [
-    "7418e721-0dd3-4a58-81e0-b7fcbf325842"
-  ]
+  "Murs": {
+    "7418e721-0dd3-4a58-81e0-b7fcbf325842": "Throw Up"
+  }
 },
 "Geto Boys": {},
 "Ghostface Killa": {
-  "Lil Wayne": [
-    "99129cc2-aeec-4fb1-a16f-589a2ab7b941",
-    "1be88685-30d8-42c0-88ef-9f61581da415"
-  ],
-  "Slick Rick": [
-    "9611a6e7-f794-4a58-9661-2b12f5e17b83",
-    "133d5086-7477-4a24-b90c-2184cd1bf400"
-  ],
-  "Busta Rhymes": [
-    "31e7bdb7-3ef5-4910-bed6-bd4e06fa0fb6",
-    "3e08a787-6d53-4cf7-9507-16ba539de614"
-  ],
-  "Ludacris": [
-    "32a34061-40c8-4d5a-a3f1-292e9307d453"
-  ],
-  "Big Daddy Kane": [
-    "cadeba14-7bc2-4b56-944b-8e646350a0a4"
-  ],
-  "Missy Elliot": [
-    "92273c80-913d-410c-b752-9c95f73b09a1"
-  ],
-  "Danny Brown": [
-    "6d8984f0-942a-4b61-addb-1be1a9faa59c"
-  ],
-  "Raekwon": [
-    "2fae06e7-3c07-431a-a02b-20d4633aeb87",
-    "cadeba14-7bc2-4b56-944b-8e646350a0a4",
-    "dbd29c56-3a96-4784-80f5-8a852d562274",
-    "bb657c86-e425-4226-91c1-671004031547",
-    "76e88198-2b56-4d31-b556-bf2bcf4e7170",
-    "9cfc137c-2640-481f-9443-5f3ee856c8f3",
-    "cfc67b3b-d05d-4073-94a9-37ea469959d4",
-    "c5eb4aef-1b83-423b-9023-a7440b688404",
-    "25ec2d1c-bb65-4fe0-99d6-c8201fa78747",
-    "a5d21ba1-46a5-46b2-9617-6be924e304b8",
-    "185f2a25-5933-43a5-a29e-d9518445a662",
-    "78e49f40-6fed-4aab-95e4-d28233366105",
-    "c8ca24fb-c3ff-479c-9b8d-b6f74b4c4d2a",
-    "3c053063-f49f-459b-8ad6-fb6c77f62dd1",
-    "d9e858df-b1fa-451b-9cf5-99aa6cebd3d0",
-    "897144f8-6dff-4799-83e6-2265b760772d",
-    "38b4d9cd-8c76-4f12-a67d-3cdf0b1899a2",
-    "b70e7b8a-0a67-449e-b1c7-aa3488dccecb",
-    "39405c71-b94d-4b1f-94af-fd70e84e462e",
-    "1b64c5a9-8533-4e00-8a3c-ba3806172edf",
-    "35608182-85e9-498b-b000-5455c47946ce",
-    "c5f5de12-24dd-4bce-a5db-4c1eca736892",
-    "59383bc8-36c3-4fa1-8e7d-8ede4b64a223",
-    "2b16966e-59e0-4280-9673-9812068c14da",
-    "92e021bb-9aca-49d4-b872-29c9df3010d4",
-    "78fce464-ca5f-437f-8693-96242e81460b",
-    "0d815547-ed74-43fa-8201-4c62c5035141",
-    "99b3a3ab-f407-4829-ad7a-ad9a3098439d",
-    "967dc743-51f3-4d77-86f9-323da28ba4f7",
-    "cc2886f4-8c32-4577-be8b-92c4f5fd60f6",
-    "9d3b10e5-d9b4-43d4-b8e7-fbdcbdfde114",
-    "c6941ed5-dd16-4042-bd03-3198d775733e",
-    "c7e0bf41-e404-45a1-bc42-df6da0c6096d",
-    "39acb2ef-75af-4976-80f8-85ebbedb24d7",
-    "4b21aa36-3d7f-48cf-b1a9-8fc75e08eb68",
-    "1be88685-30d8-42c0-88ef-9f61581da415",
-    "133d5086-7477-4a24-b90c-2184cd1bf400",
-    "76cfb914-2417-436a-842d-dd37582749fa",
-    "3eb4915c-52a0-493c-a624-8b0f5d395fc3",
-    "2338cb5e-a374-4cdb-bc7c-0605c47046a3",
-    "3c34ecdc-2732-4d03-bd8c-591ceaf7b834",
-    "6e3f37eb-2e5f-44fd-b73f-046a335e6777",
-    "3bc6f25e-3acc-46fa-b10b-73e0d08ca481",
-    "fefc27f6-594a-4d40-8b4d-0ca10f903a55",
-    "4af9e709-b143-47d3-ba64-131368b457bf",
-    "904aa60a-a383-4d7f-8bfa-5cfc172ec1e0",
-    "4c5f26ba-9e72-48b3-9649-b002a1b2e5fc",
-    "4310db60-0b3b-4d71-8e34-4233b2b9cdba",
-    "9611a6e7-f794-4a58-9661-2b12f5e17b83",
-    "e0045de2-6be1-4db4-8b21-3f84e63d63ed",
-    "d3874df2-246e-4b00-89ca-db820c6ebedc",
-    "11314f19-5697-4e8c-b4e2-d642740021ee",
-    "137d6f3c-35e2-490f-8c72-451248267b7a",
-    "f00dd33b-e8b1-42c8-a518-378ce4abb5b8",
-    "3744a0c3-118f-4d21-b900-21e788f582b6",
-    "910e29ea-d273-4610-a04f-00df920926ea",
-    "fcb2beab-a1f8-4e6b-a976-309cfe4777fb",
-    "135942e0-f865-4233-b500-29eacd60ec2a",
-    "668d9d46-50c1-4537-be7b-09bdc5ccba96",
-    "bd3b3dc3-d718-401a-a5d4-a17e14a90045",
-    "55ca7777-f0ca-47c2-9e48-94567a8d5ddc",
-    "73f3b9e4-b16c-4cbc-ad2b-00fecd1f1977",
-    "ee9f19b0-6600-42f7-8753-5ea4425792e2",
-    "4c2b95f1-9af6-47ac-9eca-8cd81a34da18",
-    "a3b51648-4a1c-4321-86ba-d805d9eece42",
-    "8b756ab5-cfbd-4976-a992-c537ebeb325c",
-    "0685ea22-4eae-403b-a58a-999cdbdda9ad",
-    "0f6fd82c-b3f6-4b9a-a6a2-bc99a7435fb9",
-    "b117b6d3-d040-40bf-89a9-fc297591021c",
-    "01b4df3d-6cef-4bea-9f67-72dc410a644b",
-    "36350648-d51d-438f-9f61-65191c452652",
-    "45a3d2c6-3f53-4710-9b90-90c3fdb9bb08",
-    "cf779258-caf8-4eb2-a19f-6ce355d3c704",
-    "e779a965-068f-45c0-8e00-57ce59cbfd75",
-    "e9268d26-f953-4eec-94da-8b600c2ba592",
-    "7005fac5-5f42-4866-a94d-dd7743d64914",
-    "4ca2c6e7-7d0d-4012-802d-445ec8727410",
-    "4a255d0a-1a80-4d16-97de-72592f8979a0",
-    "e81399a4-730d-4f4b-816a-eabf0bc69f00",
-    "6e9f04fd-6e0b-4418-adb9-21981e8e1f0a",
-    "9ac94db5-7fbc-48fe-b21e-9790b5bf4688",
-    "db646a78-9c2b-4792-8de3-e5ed9e6be0c0",
-    "cc88e2be-4eec-4368-99db-1428c6e89ab4",
-    "7b258364-5376-48e7-aeaf-8f3b8cd869e0",
-    "c2d13736-d001-4ac9-972a-88905b123f2e",
-    "6aef2a51-f0d7-4263-8e52-ce891b66645c",
-    "77aab96e-57f8-4c9d-b9ba-fb94c883e6f4",
-    "ba50fc68-f772-4584-b5a2-8121a9739bec",
-    "63c80862-d30e-4d1d-aa92-bfd41446ad6f",
-    "d8e9b363-e9fa-4032-83b5-84faf70a046a",
-    "4ac7c29e-caea-47d3-b570-3abe2db94f1f",
-    "19e7a2aa-00ea-4977-b8bd-066d4070c887",
-    "5fa18170-a805-49c9-8b59-c61799ec8284",
-    "cd070362-b17c-4183-9980-f11984da3569",
-    "b6d251c6-3f08-4686-905b-f8f231a2b1fb",
-    "05014d74-bdef-476f-88e9-bd12ac525545",
-    "9d5d5971-f306-4f99-b3a0-437353f72b6a",
-    "ff8d9d3a-0894-4c7b-a198-0f36dc1fca44",
-    "3532d398-13d2-42b2-b0da-98d4fa104247",
-    "65867f3c-7915-4c5f-bbda-580ef6747739",
-    "52197891-023e-47c8-baa9-733883c61507",
-    "ca6a9681-cbaf-4589-9a80-a0062562c739",
-    "b876d103-7aff-4831-8e87-96e52aeb4a97",
-    "9fd711e5-df20-4830-922e-7ffb4500c41a",
-    "828f8429-b445-40ef-80f8-95f4fa848622",
-    "95d8e7dc-e6a9-47b1-be9f-25cf4473fb84",
-    "c932b7f1-8778-4f9a-af1c-9a34503a5474",
-    "c1f0690b-ef49-4f96-95c0-dd500613fc0e",
-    "18585d38-f1ab-4ad1-8ec4-e6e1d98d3d7c"
-  ],
-  "GZA": [
-    "89dc40b5-07b8-4a68-8b16-5c18a593de47",
-    "c5f5de12-24dd-4bce-a5db-4c1eca736892"
-  ],
-  "Nas": [
-    "35608182-85e9-498b-b000-5455c47946ce"
-  ],
-  "Mos Def": [
-    "1c5c6470-e68d-4318-9ef2-fe8c0429a6c5"
-  ],
-  "Kanye West": [
-    "52527f35-ea50-4f46-b9d5-59fc18476b97",
-    "8dbb79ae-e11a-4fde-b219-ee564d1f302e"
-  ],
-  "Wu Tang Clan": [
-    "a7e9d040-679d-42ea-820e-8795ebab863b",
-    "e7843609-9044-4e20-b172-865e52dd1ccb"
-  ],
-  "Method Man": [
-    "9ac94db5-7fbc-48fe-b21e-9790b5bf4688",
-    "2fae06e7-3c07-431a-a02b-20d4633aeb87",
-    "3744a0c3-118f-4d21-b900-21e788f582b6",
-    "910e29ea-d273-4610-a04f-00df920926ea",
-    "daf19ae4-4e65-4057-a7c4-dd000171db6f",
-    "7b258364-5376-48e7-aeaf-8f3b8cd869e0",
-    "76e88198-2b56-4d31-b556-bf2bcf4e7170",
-    "9cfc137c-2640-481f-9443-5f3ee856c8f3",
-    "c6941ed5-dd16-4042-bd03-3198d775733e",
-    "135942e0-f865-4233-b500-29eacd60ec2a",
-    "6aef2a51-f0d7-4263-8e52-ce891b66645c",
-    "78fce464-ca5f-437f-8693-96242e81460b",
-    "668d9d46-50c1-4537-be7b-09bdc5ccba96",
-    "25ec2d1c-bb65-4fe0-99d6-c8201fa78747",
-    "77aab96e-57f8-4c9d-b9ba-fb94c883e6f4",
-    "012ca917-7f09-4e72-8fc2-f980df9218ad",
-    "18153eee-1480-4966-8a62-f2d0ac762303",
-    "4c5f26ba-9e72-48b3-9649-b002a1b2e5fc",
-    "63c80862-d30e-4d1d-aa92-bfd41446ad6f",
-    "73f3b9e4-b16c-4cbc-ad2b-00fecd1f1977",
-    "d8e9b363-e9fa-4032-83b5-84faf70a046a",
-    "4c2b95f1-9af6-47ac-9eca-8cd81a34da18",
-    "0431b70c-4d5e-4c7a-ac11-40b7119e0b6a",
-    "bb657c86-e425-4226-91c1-671004031547",
-    "99b3a3ab-f407-4829-ad7a-ad9a3098439d",
-    "3c053063-f49f-459b-8ad6-fb6c77f62dd1",
-    "3eb4915c-52a0-493c-a624-8b0f5d395fc3",
-    "cf779258-caf8-4eb2-a19f-6ce355d3c704",
-    "ec6d0536-afe0-494b-8f69-427f01212ffa",
-    "8b756ab5-cfbd-4976-a992-c537ebeb325c",
-    "8fb50d74-27fd-4eb8-8666-3a47d3b8bb39",
-    "2338cb5e-a374-4cdb-bc7c-0605c47046a3",
-    "b6d251c6-3f08-4686-905b-f8f231a2b1fb",
-    "0f6fd82c-b3f6-4b9a-a6a2-bc99a7435fb9",
-    "3c34ecdc-2732-4d03-bd8c-591ceaf7b834",
-    "ff8d9d3a-0894-4c7b-a198-0f36dc1fca44",
-    "b117b6d3-d040-40bf-89a9-fc297591021c",
-    "01b4df3d-6cef-4bea-9f67-72dc410a644b",
-    "52197891-023e-47c8-baa9-733883c61507",
-    "7f3621c5-4a82-44bf-93e0-04e97eb81c30",
-    "5fa18170-a805-49c9-8b59-c61799ec8284",
-    "1b64c5a9-8533-4e00-8a3c-ba3806172edf",
-    "904aa60a-a383-4d7f-8bfa-5cfc172ec1e0",
-    "4ac7c29e-caea-47d3-b570-3abe2db94f1f",
-    "e779a965-068f-45c0-8e00-57ce59cbfd75",
-    "e9268d26-f953-4eec-94da-8b600c2ba592",
-    "402b0dee-2d68-47c0-a898-091ae1ff1df6",
-    "59383bc8-36c3-4fa1-8e7d-8ede4b64a223",
-    "39acb2ef-75af-4976-80f8-85ebbedb24d7",
-    "897144f8-6dff-4799-83e6-2265b760772d",
-    "cfc67b3b-d05d-4073-94a9-37ea469959d4",
-    "e0045de2-6be1-4db4-8b21-3f84e63d63ed",
-    "d3874df2-246e-4b00-89ca-db820c6ebedc",
-    "c1f0690b-ef49-4f96-95c0-dd500613fc0e",
-    "4a255d0a-1a80-4d16-97de-72592f8979a0",
-    "95d8e7dc-e6a9-47b1-be9f-25cf4473fb84",
-    "65867f3c-7915-4c5f-bbda-580ef6747739",
-    "6e3f37eb-2e5f-44fd-b73f-046a335e6777",
-    "e81399a4-730d-4f4b-816a-eabf0bc69f00",
-    "137d6f3c-35e2-490f-8c72-451248267b7a",
-    "39d6e9c0-d10e-44e8-ba41-28770c6ddfb4",
-    "0d815547-ed74-43fa-8201-4c62c5035141",
-    "bd3b3dc3-d718-401a-a5d4-a17e14a90045",
-    "967dc743-51f3-4d77-86f9-323da28ba4f7",
-    "4ca2c6e7-7d0d-4012-802d-445ec8727410",
-    "828f8429-b445-40ef-80f8-95f4fa848622",
-    "18585d38-f1ab-4ad1-8ec4-e6e1d98d3d7c",
-    "6e9f04fd-6e0b-4418-adb9-21981e8e1f0a"
-  ],
-  "Ice Cube": [
-    "de819ecc-5645-4b52-a7f1-bbd1233aaa93"
-  ],
-  "MF DOOM": [
-    "5c2bcd44-f55f-4d9a-b59a-d0d4e9a55f98"
-  ],
-  "Notorious B.I.G.": [
-    "0685ea22-4eae-403b-a58a-999cdbdda9ad"
-  ],
-  "Redman": [
-    "18153eee-1480-4966-8a62-f2d0ac762303",
-    "ed5be0a3-dd42-4083-9d53-4efee82edf28",
-    "78fce464-ca5f-437f-8693-96242e81460b",
-    "12d7b6d6-e8d1-49d7-a3dd-8c08a4f0f560"
-  ]
+  "Lil Wayne": {
+    "99129cc2-aeec-4fb1-a16f-589a2ab7b941": "Run (remix)",
+    "1be88685-30d8-42c0-88ef-9f61581da415": "Run (remix)"
+  },
+  "Slick Rick": {
+    "9611a6e7-f794-4a58-9661-2b12f5e17b83": "The Sun",
+    "133d5086-7477-4a24-b90c-2184cd1bf400": "The Sun"
+  },
+  "Busta Rhymes": {
+    "31e7bdb7-3ef5-4910-bed6-bd4e06fa0fb6": "Blow His Head Off",
+    "3e08a787-6d53-4cf7-9507-16ba539de614": "Superstar"
+  },
+  "Ludacris": {
+    "32a34061-40c8-4d5a-a3f1-292e9307d453": "Poo-Poo Burglars (Mick Boogie mix)"
+  },
+  "Big Daddy Kane": {
+    "cadeba14-7bc2-4b56-944b-8e646350a0a4": "5 Deadly Venoms"
+  },
+  "Missy Elliot": {
+    "92273c80-913d-410c-b752-9c95f73b09a1": "Tush"
+  },
+  "Danny Brown": {
+    "6d8984f0-942a-4b61-addb-1be1a9faa59c": "Six Degrees"
+  },
+  "Raekwon": {
+    "2fae06e7-3c07-431a-a02b-20d4633aeb87": "The Turn",
+    "cadeba14-7bc2-4b56-944b-8e646350a0a4": "5 Deadly Venoms",
+    "dbd29c56-3a96-4784-80f5-8a852d562274": "Never Be the Same Again / Teddy (skit)",
+    "bb657c86-e425-4226-91c1-671004031547": "Rush 2",
+    "76e88198-2b56-4d31-b556-bf2bcf4e7170": "It's Yours (Mathematics mix)",
+    "9cfc137c-2640-481f-9443-5f3ee856c8f3": "Four Minutes to Lock Down",
+    "cfc67b3b-d05d-4073-94a9-37ea469959d4": "Dangerous",
+    "c5eb4aef-1b83-423b-9023-a7440b688404": "Freek 'n U",
+    "25ec2d1c-bb65-4fe0-99d6-c8201fa78747": "Newcomer",
+    "a5d21ba1-46a5-46b2-9617-6be924e304b8": "Maxine",
+    "185f2a25-5933-43a5-a29e-d9518445a662": "Roosevelts",
+    "78e49f40-6fed-4aab-95e4-d28233366105": "Motherless Child",
+    "c8ca24fb-c3ff-479c-9b8d-b6f74b4c4d2a": "Black Jesus",
+    "3c053063-f49f-459b-8ad6-fb6c77f62dd1": "Cash Still Rules / Scary Hours",
+    "d9e858df-b1fa-451b-9cf5-99aa6cebd3d0": "Belt Holders",
+    "897144f8-6dff-4799-83e6-2265b760772d": "10 Bricks",
+    "38b4d9cd-8c76-4f12-a67d-3cdf0b1899a2": "Criminology (LP version)",
+    "b70e7b8a-0a67-449e-b1c7-aa3488dccecb": "Never Be the Same (9th Wonder remix)",
+    "39405c71-b94d-4b1f-94af-fd70e84e462e": "Fish",
+    "1b64c5a9-8533-4e00-8a3c-ba3806172edf": "Wu-Tangs 1st Radio Appearance WBIA",
+    "35608182-85e9-498b-b000-5455c47946ce": "Verbal Intercourse 2006 (Mick Boogie mix)",
+    "c5f5de12-24dd-4bce-a5db-4c1eca736892": "Wu Banga 101",
+    "59383bc8-36c3-4fa1-8e7d-8ede4b64a223": "Block Rock",
+    "2b16966e-59e0-4280-9673-9812068c14da": "Crockett & Tubbs",
+    "92e021bb-9aca-49d4-b872-29c9df3010d4": "Apollo Kids",
+    "78fce464-ca5f-437f-8693-96242e81460b": "Troublemakers",
+    "0d815547-ed74-43fa-8201-4c62c5035141": "Mef Vs. Chef",
+    "99b3a3ab-f407-4829-ad7a-ad9a3098439d": "Mef vs. Chef 2",
+    "967dc743-51f3-4d77-86f9-323da28ba4f7": "Afterparty",
+    "cc2886f4-8c32-4577-be8b-92c4f5fd60f6": "The Forest",
+    "9d3b10e5-d9b4-43d4-b8e7-fbdcbdfde114": "Never Be the Same Again",
+    "c6941ed5-dd16-4042-bd03-3198d775733e": "Criminology 2.5",
+    "c7e0bf41-e404-45a1-bc42-df6da0c6096d": "Glaciers of Ice (LP version)",
+    "4b21aa36-3d7f-48cf-b1a9-8fc75e08eb68": "The Watch",
+    "1be88685-30d8-42c0-88ef-9f61581da415": "Run (remix)",
+    "133d5086-7477-4a24-b90c-2184cd1bf400": "The Sun",
+    "76cfb914-2417-436a-842d-dd37582749fa": "Kilo (remix)",
+    "0f6fd82c-b3f6-4b9a-a6a2-bc99a7435fb9": "Murda Goons",
+    "3eb4915c-52a0-493c-a624-8b0f5d395fc3": "Iron God Chamber",
+    "2338cb5e-a374-4cdb-bc7c-0605c47046a3": "Paisley Darts",
+    "3c34ecdc-2732-4d03-bd8c-591ceaf7b834": "Black Cream My Guitar",
+    "6e3f37eb-2e5f-44fd-b73f-046a335e6777": "Miranda",
+    "3bc6f25e-3acc-46fa-b10b-73e0d08ca481": "Rec-Room Therapy",
+    "fefc27f6-594a-4d40-8b4d-0ca10f903a55": "Iron Maiden",
+    "4af9e709-b143-47d3-ba64-131368b457bf": "Criminology (instrumental)",
+    "904aa60a-a383-4d7f-8bfa-5cfc172ec1e0": "Fast Shadow",
+    "4c5f26ba-9e72-48b3-9649-b002a1b2e5fc": "It's What It Is",
+    "4310db60-0b3b-4d71-8e34-4233b2b9cdba": "The Forest",
+    "9611a6e7-f794-4a58-9661-2b12f5e17b83": "The Sun",
+    "e0045de2-6be1-4db4-8b21-3f84e63d63ed": "Eye for a Eye",
+    "d3874df2-246e-4b00-89ca-db820c6ebedc": "One (Mathematics mix)",
+    "11314f19-5697-4e8c-b4e2-d642740021ee": "Coke and Bitches (Mick Boogie mix)",
+    "137d6f3c-35e2-490f-8c72-451248267b7a": "Diz Iz 4 All My Smokers",
+    "f00dd33b-e8b1-42c8-a518-378ce4abb5b8": "R.A.G.U.",
+    "3744a0c3-118f-4d21-b900-21e788f582b6": "Deadly Venoms",
+    "910e29ea-d273-4610-a04f-00df920926ea": "Our Dreams",
+    "fcb2beab-a1f8-4e6b-a976-309cfe4777fb": "The Roosevelts",
+    "135942e0-f865-4233-b500-29eacd60ec2a": "Right Back at You",
+    "668d9d46-50c1-4537-be7b-09bdc5ccba96": "For This",
+    "bd3b3dc3-d718-401a-a5d4-a17e14a90045": "Drummer",
+    "55ca7777-f0ca-47c2-9e48-94567a8d5ddc": "Clientele",
+    "73f3b9e4-b16c-4cbc-ad2b-00fecd1f1977": "Cuban Chronicles",
+    "ee9f19b0-6600-42f7-8753-5ea4425792e2": "New York",
+    "4c2b95f1-9af6-47ac-9eca-8cd81a34da18": "Goldmine",
+    "a3b51648-4a1c-4321-86ba-d805d9eece42": "Apollo Kids",
+    "8b756ab5-cfbd-4976-a992-c537ebeb325c": "Intro",
+    "0685ea22-4eae-403b-a58a-999cdbdda9ad": "Three Bricks",
+    "39acb2ef-75af-4976-80f8-85ebbedb24d7": "Ghostface Freestyle Live on the Radio",
+    "b117b6d3-d040-40bf-89a9-fc297591021c": "Rush (Mathematics mix)",
+    "01b4df3d-6cef-4bea-9f67-72dc410a644b": "Where Your Heat At?",
+    "36350648-d51d-438f-9f61-65191c452652": "Kilo",
+    "45a3d2c6-3f53-4710-9b90-90c3fdb9bb08": "Camay",
+    "cf779258-caf8-4eb2-a19f-6ce355d3c704": "Yolanda's House",
+    "e779a965-068f-45c0-8e00-57ce59cbfd75": "[silence]",
+    "e9268d26-f953-4eec-94da-8b600c2ba592": "260thy",
+    "7005fac5-5f42-4866-a94d-dd7743d64914": "Assassination Day",
+    "4ca2c6e7-7d0d-4012-802d-445ec8727410": "Where It Started At",
+    "4a255d0a-1a80-4d16-97de-72592f8979a0": "Paisley Darts",
+    "e81399a4-730d-4f4b-816a-eabf0bc69f00": "Extortion",
+    "6e9f04fd-6e0b-4418-adb9-21981e8e1f0a": "Box in Hand",
+    "9ac94db5-7fbc-48fe-b21e-9790b5bf4688": "Method Man PLO Freestyle",
+    "db646a78-9c2b-4792-8de3-e5ed9e6be0c0": "Apollo Kids",
+    "cc88e2be-4eec-4368-99db-1428c6e89ab4": "The Rich",
+    "7b258364-5376-48e7-aeaf-8f3b8cd869e0": "Watch Your Mouth",
+    "c2d13736-d001-4ac9-972a-88905b123f2e": "Shakey Dog Starring Lolita",
+    "6aef2a51-f0d7-4263-8e52-ce891b66645c": "House of Flying Daggers",
+    "77aab96e-57f8-4c9d-b9ba-fb94c883e6f4": "About Me",
+    "ba50fc68-f772-4584-b5a2-8121a9739bec": "Glaciers of Ice (instrumental)",
+    "63c80862-d30e-4d1d-aa92-bfd41446ad6f": "Raekwon & Ghostface Live Radio Freestyle",
+    "d8e9b363-e9fa-4032-83b5-84faf70a046a": "Flowers",
+    "4ac7c29e-caea-47d3-b570-3abe2db94f1f": "St. Ides Commercial",
+    "19e7a2aa-00ea-4977-b8bd-066d4070c887": "260",
+    "5fa18170-a805-49c9-8b59-c61799ec8284": "7th Chamber, Part 2",
+    "cd070362-b17c-4183-9980-f11984da3569": "Ghetto",
+    "b6d251c6-3f08-4686-905b-f8f231a2b1fb": "The General",
+    "05014d74-bdef-476f-88e9-bd12ac525545": "Kilo",
+    "9d5d5971-f306-4f99-b3a0-437353f72b6a": "The Watch",
+    "ff8d9d3a-0894-4c7b-a198-0f36dc1fca44": "Ya Moms Skit",
+    "3532d398-13d2-42b2-b0da-98d4fa104247": "Good Times",
+    "65867f3c-7915-4c5f-bbda-580ef6747739": "The M.E.T.H.",
+    "52197891-023e-47c8-baa9-733883c61507": "Flowers",
+    "ca6a9681-cbaf-4589-9a80-a0062562c739": "The Hilton",
+    "b876d103-7aff-4831-8e87-96e52aeb4a97": "Daytona 500",
+    "9fd711e5-df20-4830-922e-7ffb4500c41a": "Dogs of War",
+    "c1f0690b-ef49-4f96-95c0-dd500613fc0e": "Tony Montana",
+    "95d8e7dc-e6a9-47b1-be9f-25cf4473fb84": "Wu-Gambinos",
+    "c932b7f1-8778-4f9a-af1c-9a34503a5474": "The Faster Blade",
+    "828f8429-b445-40ef-80f8-95f4fa848622": "Miranda",
+    "18585d38-f1ab-4ad1-8ec4-e6e1d98d3d7c": "All Flowers"
+  },
+  "GZA": {
+    "89dc40b5-07b8-4a68-8b16-5c18a593de47": "Liquid Swords",
+    "c5f5de12-24dd-4bce-a5db-4c1eca736892": "Wu Banga 101"
+  },
+  "Nas": {
+    "35608182-85e9-498b-b000-5455c47946ce": "Verbal Intercourse 2006 (Mick Boogie mix)"
+  },
+  "Mos Def": {
+    "1c5c6470-e68d-4318-9ef2-fe8c0429a6c5": "Mrs. Fat Booty (remix)"
+  },
+  "Kanye West": {
+    "52527f35-ea50-4f46-b9d5-59fc18476b97": "Back Like That (remix) (instrumental)",
+    "8dbb79ae-e11a-4fde-b219-ee564d1f302e": "Back Like That (remix)"
+  },
+  "Wu Tang Clan": {
+    "a7e9d040-679d-42ea-820e-8795ebab863b": "Watch Your Mouth",
+    "e7843609-9044-4e20-b172-865e52dd1ccb": "9 mm"
+  },
+  "Method Man": {
+    "9ac94db5-7fbc-48fe-b21e-9790b5bf4688": "Method Man PLO Freestyle",
+    "2fae06e7-3c07-431a-a02b-20d4633aeb87": "The Turn",
+    "3744a0c3-118f-4d21-b900-21e788f582b6": "Deadly Venoms",
+    "910e29ea-d273-4610-a04f-00df920926ea": "Our Dreams",
+    "daf19ae4-4e65-4057-a7c4-dd000171db6f": "93 Freestyle",
+    "bb657c86-e425-4226-91c1-671004031547": "Rush 2",
+    "76e88198-2b56-4d31-b556-bf2bcf4e7170": "It's Yours (Mathematics mix)",
+    "9cfc137c-2640-481f-9443-5f3ee856c8f3": "Four Minutes to Lock Down",
+    "c6941ed5-dd16-4042-bd03-3198d775733e": "Criminology 2.5",
+    "135942e0-f865-4233-b500-29eacd60ec2a": "Right Back at You",
+    "6aef2a51-f0d7-4263-8e52-ce891b66645c": "House of Flying Daggers",
+    "78fce464-ca5f-437f-8693-96242e81460b": "Troublemakers",
+    "668d9d46-50c1-4537-be7b-09bdc5ccba96": "For This",
+    "25ec2d1c-bb65-4fe0-99d6-c8201fa78747": "Newcomer",
+    "bd3b3dc3-d718-401a-a5d4-a17e14a90045": "Drummer",
+    "012ca917-7f09-4e72-8fc2-f980df9218ad": "Drummer",
+    "18153eee-1480-4966-8a62-f2d0ac762303": "Buck 50",
+    "59383bc8-36c3-4fa1-8e7d-8ede4b64a223": "Block Rock",
+    "63c80862-d30e-4d1d-aa92-bfd41446ad6f": "Raekwon & Ghostface Live Radio Freestyle",
+    "73f3b9e4-b16c-4cbc-ad2b-00fecd1f1977": "Cuban Chronicles",
+    "d8e9b363-e9fa-4032-83b5-84faf70a046a": "Flowers",
+    "4c2b95f1-9af6-47ac-9eca-8cd81a34da18": "Goldmine",
+    "0431b70c-4d5e-4c7a-ac11-40b7119e0b6a": "Box in Hand",
+    "7b258364-5376-48e7-aeaf-8f3b8cd869e0": "Watch Your Mouth",
+    "99b3a3ab-f407-4829-ad7a-ad9a3098439d": "Mef vs. Chef 2",
+    "3c053063-f49f-459b-8ad6-fb6c77f62dd1": "Cash Still Rules / Scary Hours",
+    "3eb4915c-52a0-493c-a624-8b0f5d395fc3": "Iron God Chamber",
+    "5fa18170-a805-49c9-8b59-c61799ec8284": "7th Chamber, Part 2",
+    "ec6d0536-afe0-494b-8f69-427f01212ffa": "Gunshowers",
+    "8b756ab5-cfbd-4976-a992-c537ebeb325c": "Intro",
+    "8fb50d74-27fd-4eb8-8666-3a47d3b8bb39": "Killa Lipstick",
+    "2338cb5e-a374-4cdb-bc7c-0605c47046a3": "Paisley Darts",
+    "b6d251c6-3f08-4686-905b-f8f231a2b1fb": "The General",
+    "39acb2ef-75af-4976-80f8-85ebbedb24d7": "Ghostface Freestyle Live on the Radio",
+    "3c34ecdc-2732-4d03-bd8c-591ceaf7b834": "Black Cream My Guitar",
+    "ff8d9d3a-0894-4c7b-a198-0f36dc1fca44": "Ya Moms Skit",
+    "b117b6d3-d040-40bf-89a9-fc297591021c": "Rush (Mathematics mix)",
+    "01b4df3d-6cef-4bea-9f67-72dc410a644b": "Where Your Heat At?",
+    "52197891-023e-47c8-baa9-733883c61507": "Flowers",
+    "7f3621c5-4a82-44bf-93e0-04e97eb81c30": "It's That Wu Shit",
+    "1b64c5a9-8533-4e00-8a3c-ba3806172edf": "Wu-Tangs 1st Radio Appearance WBIA",
+    "904aa60a-a383-4d7f-8bfa-5cfc172ec1e0": "Fast Shadow",
+    "4ac7c29e-caea-47d3-b570-3abe2db94f1f": "St. Ides Commercial",
+    "e779a965-068f-45c0-8e00-57ce59cbfd75": "[silence]",
+    "e9268d26-f953-4eec-94da-8b600c2ba592": "260thy",
+    "402b0dee-2d68-47c0-a898-091ae1ff1df6": "Smooth Sailing (remix)",
+    "4c5f26ba-9e72-48b3-9649-b002a1b2e5fc": "It's What It Is",
+    "cf779258-caf8-4eb2-a19f-6ce355d3c704": "Yolanda's House",
+    "0f6fd82c-b3f6-4b9a-a6a2-bc99a7435fb9": "Murda Goons",
+    "897144f8-6dff-4799-83e6-2265b760772d": "10 Bricks",
+    "cfc67b3b-d05d-4073-94a9-37ea469959d4": "Dangerous",
+    "e0045de2-6be1-4db4-8b21-3f84e63d63ed": "Eye for a Eye",
+    "d3874df2-246e-4b00-89ca-db820c6ebedc": "One (Mathematics mix)",
+    "828f8429-b445-40ef-80f8-95f4fa848622": "Miranda",
+    "4a255d0a-1a80-4d16-97de-72592f8979a0": "Paisley Darts",
+    "95d8e7dc-e6a9-47b1-be9f-25cf4473fb84": "Wu-Gambinos",
+    "65867f3c-7915-4c5f-bbda-580ef6747739": "The M.E.T.H.",
+    "6e3f37eb-2e5f-44fd-b73f-046a335e6777": "Miranda",
+    "e81399a4-730d-4f4b-816a-eabf0bc69f00": "Extortion",
+    "137d6f3c-35e2-490f-8c72-451248267b7a": "Diz Iz 4 All My Smokers",
+    "39d6e9c0-d10e-44e8-ba41-28770c6ddfb4": "When You Walk",
+    "0d815547-ed74-43fa-8201-4c62c5035141": "Mef Vs. Chef",
+    "77aab96e-57f8-4c9d-b9ba-fb94c883e6f4": "About Me",
+    "967dc743-51f3-4d77-86f9-323da28ba4f7": "Afterparty",
+    "4ca2c6e7-7d0d-4012-802d-445ec8727410": "Where It Started At",
+    "c1f0690b-ef49-4f96-95c0-dd500613fc0e": "Tony Montana",
+    "18585d38-f1ab-4ad1-8ec4-e6e1d98d3d7c": "All Flowers",
+    "6e9f04fd-6e0b-4418-adb9-21981e8e1f0a": "Box in Hand"
+  },
+  "Ice Cube": {
+    "de819ecc-5645-4b52-a7f1-bbd1233aaa93": "Be Easy (remix)"
+  },
+  "MF DOOM": {
+    "5c2bcd44-f55f-4d9a-b59a-d0d4e9a55f98": "Angels"
+  },
+  "Notorious B.I.G.": {
+    "0685ea22-4eae-403b-a58a-999cdbdda9ad": "Three Bricks"
+  },
+  "Redman": {
+    "18153eee-1480-4966-8a62-f2d0ac762303": "Buck 50",
+    "ed5be0a3-dd42-4083-9d53-4efee82edf28": "Greedy Bitches",
+    "78fce464-ca5f-437f-8693-96242e81460b": "Troublemakers",
+    "12d7b6d6-e8d1-49d7-a3dd-8c08a4f0f560": "Greedy Bitches"
+  }
 },
 "Grandmaster Flash": {
-  "Melle Mel": [
-    "4212d43e-57d7-451a-8fb1-f93a0340f8a5",
-    "8a57e0de-faa9-465c-9652-484a75c5a039",
-    "d54825cd-ed12-4a50-aa7b-6396495d9c54",
-    "ebb85f32-30ee-4f73-b3a3-b68297d2ab7d",
-    "17b026eb-f265-47c1-82c2-dae3f687c338",
-    "851b1c82-bd63-4136-b18e-d1ae2d235a71",
-    "6e66fa2d-a29e-49c9-a151-dd0d2a68c745",
-    "8a1c3e01-d4d0-47e5-b007-234ccc8ee005",
-    "f2678f1a-f273-423c-9177-f265603c6de2",
-    "a395811d-f5e3-4fef-9f66-281761ed800d"
-  ],
-  "Sugar Hill Gang": [
-    "b501f483-d77b-4ea2-8b14-dad8eb88af09"
-  ]
+  "Melle Mel": {
+    "4212d43e-57d7-451a-8fb1-f93a0340f8a5": "Pump Me Up",
+    "8a57e0de-faa9-465c-9652-484a75c5a039": "Beat Street",
+    "d54825cd-ed12-4a50-aa7b-6396495d9c54": "World War III",
+    "ebb85f32-30ee-4f73-b3a3-b68297d2ab7d": "Step Off Megamix",
+    "17b026eb-f265-47c1-82c2-dae3f687c338": "Internationally Known",
+    "851b1c82-bd63-4136-b18e-d1ae2d235a71": "We Don't Work for Free",
+    "6e66fa2d-a29e-49c9-a151-dd0d2a68c745": "World War III",
+    "8a1c3e01-d4d0-47e5-b007-234ccc8ee005": "Message II (Survival)",
+    "f2678f1a-f273-423c-9177-f265603c6de2": "The Message II (Survival)",
+    "a395811d-f5e3-4fef-9f66-281761ed800d": "Jesse"
+  },
+  "Sugar Hill Gang": {
+    "b501f483-d77b-4ea2-8b14-dad8eb88af09": "Showdown"
+  }
 },
 "GZA": {},
 "Ice Cube": {
-  "Young Jeezy": [
-    "f6723ee2-5dea-4f03-9208-df17bba18b7e"
-  ],
-  "Master P": [
-    "5f71c4b9-75eb-43d3-9bde-d046898629f1"
-  ],
-  "Chuck D": [
-    "545f5a28-7d4e-44d5-90d5-f689f8a00900",
-    "12bcc64a-27a1-4b1e-a49a-d85b752cc1ca",
-    "78668ace-a8c1-4a99-ac83-24c30a05adee",
-    "35c047cd-da9c-4c2d-8673-0d23d9093da8"
-  ],
-  "Dr. Dre": [
-    "444c1293-943c-4b4f-a0c0-0f65c23974dc",
-    "30639af5-ef49-4d9e-a125-301f9e47c84e",
-    "a14275b5-9ada-4660-9856-56f5a77ae964",
-    "a8e11b75-891f-40f6-b9b2-b8efa1dadc44",
-    "6933c1ba-6ee9-4583-992d-88302a4efd26",
-    "fd542d7f-15d1-466d-bd35-8192a1445f05",
-    "5593a092-c03f-4b5f-a691-11f576af9ed7"
-  ],
-  "Snoop Dogg": [
-    "c90d35c9-7ba2-4524-89a5-b0fc0dfbcf75",
-    "ab0f7fa3-0c6a-4b58-b3c6-fb912fb898d0",
-    "97949d9d-5118-48b9-9525-a14b6d86be0d"
-  ]
+  "Young Jeezy": {
+    "f6723ee2-5dea-4f03-9208-df17bba18b7e": "I Got My Locs On"
+  },
+  "Master P": {
+    "5f71c4b9-75eb-43d3-9bde-d046898629f1": "You Know I'm a Ho"
+  },
+  "Chuck D": {
+    "545f5a28-7d4e-44d5-90d5-f689f8a00900": "Endangered Species (Tales From the Darkside)",
+    "12bcc64a-27a1-4b1e-a49a-d85b752cc1ca": "Endangered Species (Tales From the Darkside) (remix)",
+    "78668ace-a8c1-4a99-ac83-24c30a05adee": "Endangered Species (Tales From the Darkside)",
+    "35c047cd-da9c-4c2d-8673-0d23d9093da8": "Endangered Species (Tales From the Darkside)"
+  },
+  "Dr. Dre": {
+    "444c1293-943c-4b4f-a0c0-0f65c23974dc": "Natural Born Killaz",
+    "30639af5-ef49-4d9e-a125-301f9e47c84e": "Natural Born Killaz (LP version)",
+    "a14275b5-9ada-4660-9856-56f5a77ae964": "Hello",
+    "a8e11b75-891f-40f6-b9b2-b8efa1dadc44": "Natural Born Killaz",
+    "6933c1ba-6ee9-4583-992d-88302a4efd26": "What Would You Do? (Tha Dogg Pound)",
+    "fd542d7f-15d1-466d-bd35-8192a1445f05": "Natural Born Killaz (radio edit)",
+    "5593a092-c03f-4b5f-a691-11f576af9ed7": "Natural Born Killaz (video edit)"
+  },
+  "Snoop Dogg": {
+    "c90d35c9-7ba2-4524-89a5-b0fc0dfbcf75": "Go to Church",
+    "ab0f7fa3-0c6a-4b58-b3c6-fb912fb898d0": "Go to Church",
+    "97949d9d-5118-48b9-9525-a14b6d86be0d": "You Gotta Lotta That"
+  }
 },
 "Ice T": {},
 "Immortal Technique": {
-  "Mos Def": [
-    "b87dee78-dfe7-4ae5-acd8-0a425808a0c3",
-    "a58a77f9-eb14-48af-9090-599291333748",
-    "9ddb47f4-9a7b-496a-a371-e95223043672"
-  ],
-  "Chuck D": [
-    "f79ffa29-3b7a-40a5-b1dd-911040ab3dab",
-    "af7ef77a-722d-4a30-974d-1f7a3e8af1fe",
-    "3e403355-7801-414c-9c14-802ea88c8fe8",
-    "85c84557-2833-4cd8-845d-9feecfd72d63"
-  ],
-  "Brother Ali": [
-    "f79ffa29-3b7a-40a5-b1dd-911040ab3dab"
-  ],
-  "Killer Mike": [
-    "f79ffa29-3b7a-40a5-b1dd-911040ab3dab"
-  ]
+  "Mos Def": {
+    "b87dee78-dfe7-4ae5-acd8-0a425808a0c3": "Bin Laden",
+    "a58a77f9-eb14-48af-9090-599291333748": "Bin Laden (dirty)",
+    "9ddb47f4-9a7b-496a-a371-e95223043672": "Bin Laden (clean)"
+  },
+  "Chuck D": {
+    "f79ffa29-3b7a-40a5-b1dd-911040ab3dab": "Civil War",
+    "af7ef77a-722d-4a30-974d-1f7a3e8af1fe": "Bin Laden Remix (Bin Laden, Part 2) (dirty)",
+    "3e403355-7801-414c-9c14-802ea88c8fe8": "Bin Laden Remix",
+    "85c84557-2833-4cd8-845d-9feecfd72d63": "Bin Laden Remix (Bin Laden, Part 2) (clean)"
+  },
+  "Brother Ali": {
+    "f79ffa29-3b7a-40a5-b1dd-911040ab3dab": "Civil War"
+  },
+  "Killer Mike": {
+    "f79ffa29-3b7a-40a5-b1dd-911040ab3dab": "Civil War"
+  }
 },
-"J Cole": {
-  "Wale": [
-    "8fda6bdd-48ae-4a98-8bbb-f830cd371e12",
-    "e32255ee-7729-43c1-83a0-ee38cbdc5582"
-  ],
-  "Kanye West": [
-    "433f4f4a-32e0-4de7-ab52-7f449c3a2407",
-    "2128c8ac-9bbd-4274-8f6a-ca967d173293",
-    "929c789b-56f2-48ac-bece-cf2fdf49b4fb",
-    "b6bc122f-1252-4ec1-941d-1c0fb4905afe"
-  ],
-  "Talib Kweli": [
-    "53b739d9-3cd2-4e1a-aa4e-6c2854c01ddd"
-  ],
-  "Nicki Minaj": [
-    "b6bc122f-1252-4ec1-941d-1c0fb4905afe"
-  ],
-  "Drake": [
-    "27cab0a4-ee48-44c8-b5c4-ad091bce6ffa",
-    "59077830-78ef-4168-8e80-e14dcc57e652"
-  ],
-  "Mos Def": [
-    "53b739d9-3cd2-4e1a-aa4e-6c2854c01ddd",
-    "f8dc65a5-e183-4d1b-90a0-aee48b9d0143"
-  ],
-  "Rick Ross": [
-    "b6bc122f-1252-4ec1-941d-1c0fb4905afe"
-  ],
-  "Kid Cudi": [
-    "929c789b-56f2-48ac-bece-cf2fdf49b4fb"
-  ],
-  "Big Sean": [
-    "2128c8ac-9bbd-4274-8f6a-ca967d173293"
-  ],
-  "Missy Elliot": [
-    "882cef15-66a8-4d48-ba98-bb4e2d16a1b0"
-  ],
-  "Jay Electronica": [
-    "f8dc65a5-e183-4d1b-90a0-aee48b9d0143",
-    "c748d436-c06d-4bf9-9d4b-111f9538eb1c",
-    "53b739d9-3cd2-4e1a-aa4e-6c2854c01ddd",
-    "92339af1-1b43-4b0d-928f-eaed1a2773cb",
-    "e679784e-6967-4e1e-b23e-1741556e35c6",
-    "f6672b78-cb4b-4f29-b902-a2c7fda7658c",
-    "e296ba04-3505-4a32-bc43-4bef6736398d",
-    "faee50d2-0980-49aa-94bd-4f14f53e7fd5"
-  ],
-  "Kendrick Lamar": [
-    "fdebc7bc-27df-4316-b944-f0187235c617"
-  ],
-  "Pusha T": [
-    "2128c8ac-9bbd-4274-8f6a-ca967d173293"
-  ]
+"J. Cole": {
+  "Wale": {
+    "8fda6bdd-48ae-4a98-8bbb-f830cd371e12": "You Got It",
+    "e32255ee-7729-43c1-83a0-ee38cbdc5582": "Look in the Mirror (remix)"
+  },
+  "Kanye West": {
+    "433f4f4a-32e0-4de7-ab52-7f449c3a2407": "So Appalled",
+    "2128c8ac-9bbd-4274-8f6a-ca967d173293": "Looking for Trouble",
+    "929c789b-56f2-48ac-bece-cf2fdf49b4fb": "The Joy",
+    "b6bc122f-1252-4ec1-941d-1c0fb4905afe": "Monster"
+  },
+  "Talib Kweli": {
+    "53b739d9-3cd2-4e1a-aa4e-6c2854c01ddd": "Just Begun"
+  },
+  "Nicki Minaj": {
+    "b6bc122f-1252-4ec1-941d-1c0fb4905afe": "Monster"
+  },
+  "Drake": {
+    "27cab0a4-ee48-44c8-b5c4-ad091bce6ffa": "In the Morning",
+    "59077830-78ef-4168-8e80-e14dcc57e652": "In the Morning"
+  },
+  "Mos Def": {
+    "53b739d9-3cd2-4e1a-aa4e-6c2854c01ddd": "Just Begun",
+    "f8dc65a5-e183-4d1b-90a0-aee48b9d0143": "Prowler"
+  },
+  "Rick Ross": {
+    "b6bc122f-1252-4ec1-941d-1c0fb4905afe": "Monster"
+  },
+  "Kid Cudi": {
+    "929c789b-56f2-48ac-bece-cf2fdf49b4fb": "The Joy"
+  },
+  "Big Sean": {
+    "2128c8ac-9bbd-4274-8f6a-ca967d173293": "Looking for Trouble"
+  },
+  "Missy Elliot": {
+    "882cef15-66a8-4d48-ba98-bb4e2d16a1b0": "Nobody's Perfect"
+  },
+  "Jay Electronica": {
+    "f8dc65a5-e183-4d1b-90a0-aee48b9d0143": "Prowler",
+    "c748d436-c06d-4bf9-9d4b-111f9538eb1c": "Shiny Suit Theory",
+    "53b739d9-3cd2-4e1a-aa4e-6c2854c01ddd": "Just Begun",
+    "92339af1-1b43-4b0d-928f-eaed1a2773cb": "Jazzmatazz (Guru Tribute)",
+    "e679784e-6967-4e1e-b23e-1741556e35c6": "Ghost of Christopher Wallace",
+    "f6672b78-cb4b-4f29-b902-a2c7fda7658c": "Higher",
+    "e296ba04-3505-4a32-bc43-4bef6736398d": "Exhibit C",
+    "faee50d2-0980-49aa-94bd-4f14f53e7fd5": "The Announcement"
+  },
+  "Kendrick Lamar": {
+    "fdebc7bc-27df-4316-b944-f0187235c617": "Forbidden Fruit"
+  },
+  "Pusha T": {
+    "2128c8ac-9bbd-4274-8f6a-ca967d173293": "Looking for Trouble"
+  }
 },
 "Jay Electronica": {
-  "Wale": [
-    "8fda6bdd-48ae-4a98-8bbb-f830cd371e12",
-    "e32255ee-7729-43c1-83a0-ee38cbdc5582"
-  ],
-  "Kanye West": [
-    "433f4f4a-32e0-4de7-ab52-7f449c3a2407",
-    "929c789b-56f2-48ac-bece-cf2fdf49b4fb",
-    "b6bc122f-1252-4ec1-941d-1c0fb4905afe"
-  ],
-  "Talib Kweli": [
-    "53b739d9-3cd2-4e1a-aa4e-6c2854c01ddd",
-    "ed124789-1e12-4c65-8197-0b00cc2013ca"
-  ],
-  "Nicki Minaj": [
-    "b6bc122f-1252-4ec1-941d-1c0fb4905afe"
-  ],
-  "Drake": [
-    "59077830-78ef-4168-8e80-e14dcc57e652"
-  ],
-  "Mobb Deep": [
-    "e709243b-8e60-4c73-addb-872bb64ef6be",
-    "9d40d4c6-1d6d-4950-bf66-6b961386978c"
-  ],
-  "Nas": [
-    "ab9e7ecc-21c1-4bf4-b2d1-9487c97a6401"
-  ],
-  "Paul Wall": [
-    "d0739762-a438-4ecc-8a34-b1461546920b"
-  ],
-  "Rick Ross": [
-    "b6bc122f-1252-4ec1-941d-1c0fb4905afe"
-  ],
-  "Raekwon": [
-    "d0739762-a438-4ecc-8a34-b1461546920b"
-  ],
-  "The Game": [
-    "e5502083-2307-4eb4-91a1-f3d1b2d1360c"
-  ],
-  "Mos Def": [
-    "fc4d8e04-3e33-44df-aafd-0673198ecc88",
-    "53b739d9-3cd2-4e1a-aa4e-6c2854c01ddd",
-    "af5e36d9-af7f-4c45-b139-9575b8e502d3",
-    "ed124789-1e12-4c65-8197-0b00cc2013ca",
-    "f92659c5-5470-4248-a7f5-aa6371748050",
-    "f8dc65a5-e183-4d1b-90a0-aee48b9d0143",
-    "7f0002d4-3baf-45a9-ae30-cf8d58fe5eeb",
-    "ffa20b1c-1cd9-4197-b9fb-cbd3e2e1ac03",
-    "d7d5c7fe-1c28-4beb-9d63-ee13875eb519"
-  ],
-  "Currensy": [
-    "ffa20b1c-1cd9-4197-b9fb-cbd3e2e1ac03"
-  ],
-  "Kendrick Lamar": [
-    "66782909-7543-4398-be3f-89c027074c11"
-  ],
-  "Kid Cudi": [
-    "929c789b-56f2-48ac-bece-cf2fdf49b4fb"
-  ]
+  "Wale": {
+    "8fda6bdd-48ae-4a98-8bbb-f830cd371e12": "You Got It",
+    "e32255ee-7729-43c1-83a0-ee38cbdc5582": "Look in the Mirror (remix)"
+  },
+  "Kanye West": {
+    "433f4f4a-32e0-4de7-ab52-7f449c3a2407": "So Appalled",
+    "929c789b-56f2-48ac-bece-cf2fdf49b4fb": "The Joy",
+    "b6bc122f-1252-4ec1-941d-1c0fb4905afe": "Monster"
+  },
+  "Talib Kweli": {
+    "53b739d9-3cd2-4e1a-aa4e-6c2854c01ddd": "Just Begun",
+    "ed124789-1e12-4c65-8197-0b00cc2013ca": "Just Begun"
+  },
+  "J. Cole": {
+    "8fda6bdd-48ae-4a98-8bbb-f830cd371e12": "You Got It",
+    "8f280b53-4245-4a88-a4ce-a540a5e8e8d0": "Back to the Topic",
+    "831c1c44-2145-48bd-979c-cb024d34496a": "I\u2019m Coming Home",
+    "53b739d9-3cd2-4e1a-aa4e-6c2854c01ddd": "Just Begun",
+    "4a6155cf-1170-4fdc-a9eb-729d51b0fb9e": "2 Face",
+    "811dc698-30b0-48f2-a26b-143679aa2a49": "Villematic",
+    "59077830-78ef-4168-8e80-e14dcc57e652": "In the Morning",
+    "e32255ee-7729-43c1-83a0-ee38cbdc5582": "Look in the Mirror (remix)",
+    "343fe512-8000-40c6-a9e3-eb02859468a0": "Meddafore",
+    "67d87f40-9b5c-43eb-b86c-2cfad633f20d": "Leave Me Alone",
+    "ed124789-1e12-4c65-8197-0b00cc2013ca": "Just Begun"
+  },
+  "Raekwon": {
+    "d0739762-a438-4ecc-8a34-b1461546920b": "Live It"
+  },
+  "Mobb Deep": {
+    "e709243b-8e60-4c73-addb-872bb64ef6be": "Call of Duty MW3",
+    "9d40d4c6-1d6d-4950-bf66-6b961386978c": "Call of Duty MW3"
+  },
+  "Nas": {
+    "ab9e7ecc-21c1-4bf4-b2d1-9487c97a6401": "Walking (J. Period remix)"
+  },
+  "Rick Ross": {
+    "b6bc122f-1252-4ec1-941d-1c0fb4905afe": "Monster"
+  },
+  "Paul Wall": {
+    "d0739762-a438-4ecc-8a34-b1461546920b": "Live It"
+  },
+  "Drake": {
+    "59077830-78ef-4168-8e80-e14dcc57e652": "In the Morning"
+  },
+  "Nicki Minaj": {
+    "b6bc122f-1252-4ec1-941d-1c0fb4905afe": "Monster"
+  },
+  "The Game": {
+    "e5502083-2307-4eb4-91a1-f3d1b2d1360c": "Higher"
+  },
+  "Mos Def": {
+    "fc4d8e04-3e33-44df-aafd-0673198ecc88": "The Day (abridged)",
+    "53b739d9-3cd2-4e1a-aa4e-6c2854c01ddd": "Just Begun",
+    "af5e36d9-af7f-4c45-b139-9575b8e502d3": "Prowler 2",
+    "ed124789-1e12-4c65-8197-0b00cc2013ca": "Just Begun",
+    "f92659c5-5470-4248-a7f5-aa6371748050": "Transformations II",
+    "f8dc65a5-e183-4d1b-90a0-aee48b9d0143": "Prowler",
+    "7f0002d4-3baf-45a9-ae30-cf8d58fe5eeb": "Holiday",
+    "ffa20b1c-1cd9-4197-b9fb-cbd3e2e1ac03": "The Day",
+    "d7d5c7fe-1c28-4beb-9d63-ee13875eb519": "Exhibit B (Exhibit A remix)"
+  },
+  "Currensy": {
+    "ffa20b1c-1cd9-4197-b9fb-cbd3e2e1ac03": "The Day"
+  },
+  "Kendrick Lamar": {
+    "66782909-7543-4398-be3f-89c027074c11": "Dear Moleskine (remix)"
+  },
+  "Kid Cudi": {
+    "929c789b-56f2-48ac-bece-cf2fdf49b4fb": "The Joy"
+  }
 },
-"Jay-Rock": {},
-"Jay-Z": {
-  "Lil Wayne": [
-    "82f4fc63-b49e-408b-998c-74f0a241fb33",
-    "06b14373-9f82-4991-ac60-733931a9cbe3",
-    "e7ba544b-74c3-462b-b3dc-d26fa17a9a5e",
-    "073fafb7-00c5-4426-a529-e5703961f438",
-    "a9dde4fd-6286-47de-be20-1ae330f09261"
-  ],
-  "Nicki Minaj": [
-    "2beff74d-69fe-4e53-9a47-26f29b64c6d4",
-    "b6bc122f-1252-4ec1-941d-1c0fb4905afe"
-  ],
-  "50 Cent": [
-    "2e8a97c5-edb1-4f13-a895-9a19196faa8e",
-    "a6582625-1819-4f12-bceb-3ef9da7901ef",
-    "e9bb2368-6d8e-4b09-a0d8-73eb33f68f78",
-    "293df4e9-fb41-479e-a266-6d6f1187a52e",
-    "d1efd0b5-6af4-409b-8580-1606433fbd96"
-  ],
-  "Mos Def": [
-    "53b739d9-3cd2-4e1a-aa4e-6c2854c01ddd",
-    "f8dc65a5-e183-4d1b-90a0-aee48b9d0143"
-  ],
-  "DMX": [
-    "04519cbe-ccc5-429b-abee-f9859852e43b",
-    "7cb9b486-ae7f-41f3-a29f-78e11ad9a8f9",
-    "2b17a398-8e9a-4e03-a731-daa78f4a6fee"
-  ],
-  "Big Boi": [
-    "f49082e1-a043-43fa-abe9-1ff7112331fe"
-  ],
-  "Kendrick Lamar": [
-    "128bd614-963d-4648-9de7-eb2ccdccef43"
-  ],
-  "Dr. Dre": [
-    "e9bb2368-6d8e-4b09-a0d8-73eb33f68f78",
-    "2f704178-cfe2-46f2-a03c-07a30ed0bb77",
-    "2a3c4d45-41af-4bef-8259-3070792c9d3c",
-    "19715386-147a-4492-9775-61f3fa479b35",
-    "3137332b-852b-4d74-a610-aa104df62df6",
-    "60d8786c-b9f4-420e-87e3-92a5c7c1cbe0",
-    "514d20cf-82a0-46c4-90bc-bbe64522d166",
-    "3d6847d5-0119-46c1-acce-c8e6ffcfbc4c",
-    "48298b2b-711f-4788-842d-a7f9cc9af296"
-  ],
-  "Andre 3000": [
-    "8b547dc2-9568-456a-9cb3-1fa4822016ac"
-  ],
-  "Pusha T": [
-    "467eb310-bf65-4922-a5ac-82587b55ff3d"
-  ],
-  "Eminem": [
-    "0d7e6699-5883-41e7-8517-aa1e8746ccdd",
-    "5ba3480e-2b13-4db9-9bba-a5ec21d335db",
-    "d1efd0b5-6af4-409b-8580-1606433fbd96",
-    "0e1472c5-6ee2-4f10-8737-e0690ee0fb31",
-    "228a16f3-906c-432f-8203-62ed359d67a7",
-    "0e7450e3-fc2d-4035-bc6c-680994b106ac",
-    "878398a0-d1cd-4d34-aadb-28ba9267bd52",
-    "ea728e5e-d60c-4e7c-b909-9e593969a992",
-    "bf9916c4-17ac-4ca7-855d-b4a489b3f1b8",
-    "3d6847d5-0119-46c1-acce-c8e6ffcfbc4c",
-    "102cc2b1-e761-4dfb-af37-cf19aee577fe",
-    "40857d12-c3a9-44b1-bf94-59aa3d19466a",
-    "427ee9b2-1e5d-4ccb-91d6-bbd3badac80a",
-    "1a2443f3-a673-4374-9563-829b82ca4a3c",
-    "a4fa039c-fda4-42ac-bde8-948fc5cc95c8",
-    "60d8786c-b9f4-420e-87e3-92a5c7c1cbe0",
-    "49a06eab-9664-4152-9432-74d73766343d",
-    "71a883d9-dc19-4083-b4f9-77f7fdb4112a",
-    "ce063edb-6c0f-4eb7-9ade-61d79ce01aef",
-    "8988222e-e5fc-4405-af5c-9fac2da61f79",
-    "2a3c4d45-41af-4bef-8259-3070792c9d3c",
-    "f207eac0-829f-41e5-9dc9-d7c3263de3ed",
-    "11264a8b-2755-422a-aa87-e964a859c8f6",
-    "06b14373-9f82-4991-ac60-733931a9cbe3",
-    "e9bb2368-6d8e-4b09-a0d8-73eb33f68f78",
-    "d953f560-b029-4ed8-8949-5e0e00dd4461",
-    "a94c71d5-95ae-4f76-9a1b-d2caf9cf7e65",
-    "cf262239-b2cd-4a6a-870e-e1153a71c8c3",
-    "68d89eba-d2f1-4e76-9374-b861ca0709dc",
-    "a56b5bc0-73e5-4e22-a2b3-6a7a9b879c35",
-    "3137332b-852b-4d74-a610-aa104df62df6",
-    "da3945a9-5523-499b-b5f6-59b7b3098e85",
-    "561b87d7-1da2-4039-88eb-80b82eb456ea",
-    "48298b2b-711f-4788-842d-a7f9cc9af296"
-  ],
-  "Nas": [
-    "934bae94-e492-4e69-8124-953244521962",
-    "d9ad19ff-cd09-4ae7-b25f-0702be678b11",
-    "c655103b-1412-46c8-afe1-619b1893b6cc",
-    "94a40bf6-7c17-4238-83d9-495fc8a94a84",
-    "10a1e043-7fc6-4f34-b4b3-df52e66c07e9",
-    "12989536-2b47-4ee6-9d1c-7cf05543a4fe",
-    "d42a86e4-cdc2-473b-a0ce-8d06f4ba94b4",
-    "748c4a58-b8a4-4e87-8da8-65535a80bf88",
-    "00e0ce8d-5dcb-4370-91dc-c2854912789b",
-    "b656b962-3cfe-4294-b007-97092e756723",
-    "a31f4b8c-17fa-403f-9a15-38e40ef13e5d",
-    "f03cba50-2027-4a1b-bb39-71268ba647f2",
-    "46261de3-6e64-46bd-b815-20a289de7f56",
-    "dce85331-959f-4406-b667-cc8757e03f6b",
-    "a5afe60a-ecc4-43c5-82b0-367f351c6528",
-    "8943dc1d-d331-41ad-96e0-1c2bf5103878",
-    "880ec560-c8da-444f-8471-a30bd66b648c",
-    "fb61531c-0d86-4a9f-961e-84c4b9055596",
-    "d8155b4b-8148-482e-8ed8-c1a45a50f889",
-    "428e17dc-45a9-4235-8fdb-aa1c882544e5",
-    "d72f8f51-8814-491b-9c56-18ae262a1b86",
-    "a0f6682d-0684-4ea4-a249-802756498e81",
-    "deaa9403-8d85-4c2d-a822-50c6b1fad6bd",
-    "d2dd7cfb-7e3e-4045-b430-a5affce0b41a",
-    "973c646a-b31a-476a-8bab-6cf69d012088",
-    "d2e2d584-2192-4607-b5c9-a98e7b791e14",
-    "de169867-3698-4b43-999e-187951d52eaa",
-    "d2c56881-208d-4f39-ad35-e41064c29d3d",
-    "5b105c33-e0ce-4ecc-b872-19b60680e97b",
-    "a0c9f947-01be-4990-aa2c-96bfd76ef071",
-    "e4180125-25ab-4a9f-a245-8e8e9c3ae507",
-    "45bdec87-7b4e-4df9-a75b-167a21e02034",
-    "82a7501a-66c5-43db-a748-52b8f04ba7b8",
-    "c4135013-f312-46d3-8f6e-e895e9a8c86b",
-    "bb841349-d39f-49c5-841b-219d6d4a0b2a"
-  ],
-  "Notorious B.I.G.": [
-    "5629cc33-2157-4da3-91e7-be921f554f12",
-    "17477376-40d7-42b9-ac72-95bf15a81278",
-    "69e7e8a6-386d-4d36-bca2-7b44c9ca3bd2",
-    "beb2b87b-cf8e-4688-9407-35271cec7109",
-    "b5691b50-8ba2-47bb-bb60-3ab6961235aa",
-    "dc65520e-cbb2-4e10-afde-5b197f7eade2",
-    "363b2e41-b358-43bf-84d0-c3be97c5cced",
-    "1ea8da03-164b-4111-b4f5-d3fef9c7f475",
-    "74a85233-a960-45e6-8a11-9f8399bf3132",
-    "d80c8c01-9379-4430-bd49-419c30268e4c",
-    "e90d875f-c3db-4a0a-8f19-a0bd716f5b2b",
-    "2f704178-cfe2-46f2-a03c-07a30ed0bb77",
-    "b656b962-3cfe-4294-b007-97092e756723",
-    "82373cfc-1096-421c-acd2-022471ea6883",
-    "a73a85de-cb99-47bf-8cca-8bc9f51705fc",
-    "1fc493c4-edc7-4795-9a90-b2777b077986",
-    "b28b925b-d476-4ee6-8f7b-990d84b89fe6",
-    "82d99b4b-d790-494f-8390-e53f56395d31",
-    "9f0d2807-7b50-4215-8368-6c68e2997f29",
-    "8509c655-bda9-4299-a36b-3fd3c65c13b4",
-    "04519cbe-ccc5-429b-abee-f9859852e43b",
-    "98f8fcd1-9fec-456a-adff-14d8de709932",
-    "7ff31215-12ff-4615-b8d7-d1a53dd0f4ca",
-    "97bf345d-82fd-40d2-9ea4-5468943ab375",
-    "efdda2e1-073a-428c-9be2-3e94f0c08d12",
-    "725ace76-4170-4ca1-82d8-6af7ce13b6a8"
-  ],
-  "Rakim": [
-    "514d20cf-82a0-46c4-90bc-bbe64522d166",
-    "74a85233-a960-45e6-8a11-9f8399bf3132"
-  ],
-  "Mase": [
-    "82373cfc-1096-421c-acd2-022471ea6883"
-  ],
-  "Slick Rick": [
-    "da1721db-bb74-4013-a59a-ddd3d88e560e"
-  ],
-  "Young Jeezy": [
-    "eae47b76-e9bf-4114-9d96-3def76ca166e",
-    "7fb178da-3336-40b8-9304-e90ab329a941"
-  ],
-  "Drake": [
-    "dbc771ba-f9bd-4c5c-98b3-593341825b38",
-    "59077830-78ef-4168-8e80-e14dcc57e652"
-  ],
-  "Ice Cube": [
-    "8b547dc2-9568-456a-9cb3-1fa4822016ac"
-  ],
-  "Kid Cudi": [
-    "3310fd2f-7204-4aea-beea-6969230aebea",
-    "929c789b-56f2-48ac-bece-cf2fdf49b4fb",
-    "9eff08f8-e8cf-46f9-b948-dc2bf57b6f42"
-  ],
-  "Killer Mike": [
-    "f49082e1-a043-43fa-abe9-1ff7112331fe"
-  ],
-  "T.I.": [
-    "82f4fc63-b49e-408b-998c-74f0a241fb33",
-    "e7ba544b-74c3-462b-b3dc-d26fa17a9a5e"
-  ],
-  "Jay Electronica": [
-    "f8dc65a5-e183-4d1b-90a0-aee48b9d0143",
-    "c748d436-c06d-4bf9-9d4b-111f9538eb1c",
-    "53b739d9-3cd2-4e1a-aa4e-6c2854c01ddd",
-    "92339af1-1b43-4b0d-928f-eaed1a2773cb",
-    "e679784e-6967-4e1e-b23e-1741556e35c6",
-    "f6672b78-cb4b-4f29-b902-a2c7fda7658c",
-    "e296ba04-3505-4a32-bc43-4bef6736398d",
-    "faee50d2-0980-49aa-94bd-4f14f53e7fd5"
-  ],
-  "Snoop Dogg": [
-    "5434f413-0a26-403e-84bf-7ae45cc76282",
-    "3c752693-14cd-47c5-86f9-26c306490ff9",
-    "19f4743a-0b29-4a92-8199-5c527da8c36d",
-    "2f704178-cfe2-46f2-a03c-07a30ed0bb77",
-    "45664484-ebaf-4531-b1a9-9c32704c6777"
-  ],
-  "Wale": [
-    "8fda6bdd-48ae-4a98-8bbb-f830cd371e12",
-    "e32255ee-7729-43c1-83a0-ee38cbdc5582"
-  ],
-  "Juvenile": [
-    "0eb77a07-b2f1-4670-bf80-9487476d1d9b"
-  ],
-  "Kanye West": [
-    "e8182a34-9e4a-489e-b613-42cabbe7dfe5",
-    "ff740436-528d-41b7-b36f-71439d63f0ab",
-    "b6bc122f-1252-4ec1-941d-1c0fb4905afe",
-    "bf9916c4-17ac-4ca7-855d-b4a489b3f1b8",
-    "2beff74d-69fe-4e53-9a47-26f29b64c6d4",
-    "25c83eb9-96e0-4093-b2a7-9248313767be",
-    "2c9a5439-73cf-4375-a300-c94a52fd7235",
-    "5493af9b-1c17-4746-a8c0-267d63e4902b",
-    "d75d6e31-9d60-4aeb-9530-31b7e8d333aa",
-    "467eb310-bf65-4922-a5ac-82587b55ff3d",
-    "6a8d3a5f-e57b-4dd2-9681-55b8fa1e754b",
-    "ebaf2042-3a96-483f-9876-221f8ff512b8",
-    "9585b676-9880-4c61-a69b-b931080ceea6",
-    "fe956479-9ec4-43a6-8fd8-f597fa9ab438",
-    "c857137c-b09b-4ed5-8006-961624e27854",
-    "39263422-5af1-47c5-a05b-9b53af3a72d8",
-    "433f4f4a-32e0-4de7-ab52-7f449c3a2407",
-    "baa41267-29bf-4c88-a5f1-635e73b6f964",
-    "a3f72678-85a6-4c55-89a1-4c4c7c75daaa",
-    "e7ba544b-74c3-462b-b3dc-d26fa17a9a5e",
-    "e67985c1-4e31-4d7b-b2af-1f97931df3cc",
-    "5212a44f-799d-4de9-a569-373632bfa616",
-    "659af419-4562-4c86-9815-2111eaa4e75c",
-    "f18d4025-2cbd-482c-b471-99dd3a8a728a",
-    "38cc6e44-c2da-4189-915b-9370072c4dbe",
-    "8b393866-9876-48a5-a891-b9786ef4809e",
-    "f26027cf-73d9-4db6-8429-a7bd316713e1",
-    "82f4fc63-b49e-408b-998c-74f0a241fb33",
-    "9eff08f8-e8cf-46f9-b948-dc2bf57b6f42",
-    "929c789b-56f2-48ac-bece-cf2fdf49b4fb"
-  ],
-  "Rick Ross": [
-    "59a39f25-dcd0-4fa9-909a-b749de0cac1e",
-    "7f9072a9-a15f-460a-8576-235f9a4e6914",
-    "8021c241-9b28-4076-8adc-1bda7fca9d61",
-    "2beff74d-69fe-4e53-9a47-26f29b64c6d4",
-    "b6bc122f-1252-4ec1-941d-1c0fb4905afe"
-  ],
-  "Big Daddy Kane": [
-    "1fc493c4-edc7-4795-9a90-b2777b077986"
-  ],
-  "Talib Kweli": [
-    "53b739d9-3cd2-4e1a-aa4e-6c2854c01ddd",
-    "68d89eba-d2f1-4e76-9374-b861ca0709dc"
-  ],
-  "Big Sean": [
-    "ebaf2042-3a96-483f-9876-221f8ff512b8"
-  ],
-  "Twista": [
-    "f855ea74-6703-4b7a-bcb2-196c72f22b09",
-    "a80a07fa-a3e9-41c9-a45f-9a91efd2792e",
-    "f49082e1-a043-43fa-abe9-1ff7112331fe"
-  ],
-  "Too Short": [
-    "9e235382-0f4b-472c-9a25-c1a9cf8ef591",
-    "18e5d79c-aa00-41d2-a9fc-83b7a86e5912"
-  ]
+"Jay Rock": {},
+"Jay Z": {
+  "Lil Wayne": {
+    "82f4fc63-b49e-408b-998c-74f0a241fb33": "The Best",
+    "06b14373-9f82-4991-ac60-733931a9cbe3": "Pistol X2 (Screamixx)",
+    "e7ba544b-74c3-462b-b3dc-d26fa17a9a5e": "You Aint Neva Gotta Ask",
+    "073fafb7-00c5-4426-a529-e5703961f438": "Hello Brooklyn 2.0",
+    "a9dde4fd-6286-47de-be20-1ae330f09261": "Mr. Carter"
+  },
+  "Nicki Minaj": {
+    "2beff74d-69fe-4e53-9a47-26f29b64c6d4": "Monster",
+    "b6bc122f-1252-4ec1-941d-1c0fb4905afe": "Monster"
+  },
+  "50 Cent": {
+    "2e8a97c5-edb1-4f13-a895-9a19196faa8e": "Reebok Kicks",
+    "a6582625-1819-4f12-bceb-3ef9da7901ef": "I Get Money",
+    "e9bb2368-6d8e-4b09-a0d8-73eb33f68f78": "Crack a Bottle",
+    "293df4e9-fb41-479e-a266-6d6f1187a52e": "I Get Money (Forbes 1, 2, 3 remix)",
+    "d1efd0b5-6af4-409b-8580-1606433fbd96": "The Re-Up"
+  },
+  "Mos Def": {
+    "53b739d9-3cd2-4e1a-aa4e-6c2854c01ddd": "Just Begun",
+    "f8dc65a5-e183-4d1b-90a0-aee48b9d0143": "Prowler"
+  },
+  "DMX": {
+    "04519cbe-ccc5-429b-abee-f9859852e43b": "If You",
+    "7cb9b486-ae7f-41f3-a29f-78e11ad9a8f9": "Money, Cash, Hoes (remix)",
+    "2b17a398-8e9a-4e03-a731-daa78f4a6fee": "Money, Cash, Hoes"
+  },
+  "Big Boi": {
+    "f49082e1-a043-43fa-abe9-1ff7112331fe": "Poppin' Tags"
+  },
+  "Kendrick Lamar": {
+    "128bd614-963d-4648-9de7-eb2ccdccef43": "Bitch, Don't Kill My Vibe (remix)"
+  },
+  "Dr. Dre": {
+    "e9bb2368-6d8e-4b09-a0d8-73eb33f68f78": "Crack a Bottle",
+    "2f704178-cfe2-46f2-a03c-07a30ed0bb77": "Cruisin'",
+    "2a3c4d45-41af-4bef-8259-3070792c9d3c": "Flawless Victory (Screamixx)",
+    "19715386-147a-4492-9775-61f3fa479b35": "Watch Me",
+    "3137332b-852b-4d74-a610-aa104df62df6": "The Watchmen (Screamixx)",
+    "60d8786c-b9f4-420e-87e3-92a5c7c1cbe0": "Say What You Say",
+    "514d20cf-82a0-46c4-90bc-bbe64522d166": "The Watcher 2",
+    "3d6847d5-0119-46c1-acce-c8e6ffcfbc4c": "Bad Guys Always Die",
+    "48298b2b-711f-4788-842d-a7f9cc9af296": "Forgot About Dre (Screamixx)"
+  },
+  "Andre 3000": {
+    "8b547dc2-9568-456a-9cb3-1fa4822016ac": "30 Something (remix)"
+  },
+  "Pusha T": {
+    "467eb310-bf65-4922-a5ac-82587b55ff3d": "So Appalled"
+  },
+  "Eminem": {
+    "0d7e6699-5883-41e7-8517-aa1e8746ccdd": "Public Enemy No 1",
+    "5ba3480e-2b13-4db9-9bba-a5ec21d335db": "Soldier",
+    "d1efd0b5-6af4-409b-8580-1606433fbd96": "The Re-Up",
+    "0e1472c5-6ee2-4f10-8737-e0690ee0fb31": "Renegades (intro)",
+    "228a16f3-906c-432f-8203-62ed359d67a7": "Chemical Warfare",
+    "0e7450e3-fc2d-4035-bc6c-680994b106ac": "My Darling",
+    "878398a0-d1cd-4d34-aadb-28ba9267bd52": "Chonkyfire/ Swag Juice [Freestyle]",
+    "ea728e5e-d60c-4e7c-b909-9e593969a992": "Taking My Ball",
+    "bf9916c4-17ac-4ca7-855d-b4a489b3f1b8": "Shady's Boom Boom Boom (Screamixx)",
+    "3d6847d5-0119-46c1-acce-c8e6ffcfbc4c": "Bad Guys Always Die",
+    "102cc2b1-e761-4dfb-af37-cf19aee577fe": "Careful What You Wish For",
+    "40857d12-c3a9-44b1-bf94-59aa3d19466a": "Underground (Screamixx)",
+    "427ee9b2-1e5d-4ccb-91d6-bbd3badac80a": "Rabbit Run",
+    "1a2443f3-a673-4374-9563-829b82ca4a3c": "Superman Meets Wonder Woman (Screamixx)",
+    "a4fa039c-fda4-42ac-bde8-948fc5cc95c8": "3am (Screamixx)",
+    "60d8786c-b9f4-420e-87e3-92a5c7c1cbe0": "Say What You Say",
+    "49a06eab-9664-4152-9432-74d73766343d": "Alchemist / Microphone",
+    "71a883d9-dc19-4083-b4f9-77f7fdb4112a": "3am (Travis Barker remix)",
+    "ce063edb-6c0f-4eb7-9ade-61d79ce01aef": "Renegade (live at the Wiltern, LA)",
+    "8988222e-e5fc-4405-af5c-9fac2da61f79": "One Shot 2 Shot",
+    "2a3c4d45-41af-4bef-8259-3070792c9d3c": "Flawless Victory (Screamixx)",
+    "f207eac0-829f-41e5-9dc9-d7c3263de3ed": "Lose Yourself",
+    "11264a8b-2755-422a-aa87-e964a859c8f6": "Pun Intended (Screamixx)",
+    "06b14373-9f82-4991-ac60-733931a9cbe3": "Pistol X2 (Screamixx)",
+    "e9bb2368-6d8e-4b09-a0d8-73eb33f68f78": "Crack a Bottle",
+    "d953f560-b029-4ed8-8949-5e0e00dd4461": "Get U Mad",
+    "a94c71d5-95ae-4f76-9a1b-d2caf9cf7e65": "Hey Lady",
+    "cf262239-b2cd-4a6a-870e-e1153a71c8c3": "Renegade",
+    "68d89eba-d2f1-4e76-9374-b861ca0709dc": "Marshall Law (Screamixx)",
+    "a56b5bc0-73e5-4e22-a2b3-6a7a9b879c35": "Renegade",
+    "3137332b-852b-4d74-a610-aa104df62df6": "The Watchmen (Screamixx)",
+    "da3945a9-5523-499b-b5f6-59b7b3098e85": "Say Goodbye To Hollywood",
+    "561b87d7-1da2-4039-88eb-80b82eb456ea": "Respect My Conglomerate (Freestyle)",
+    "48298b2b-711f-4788-842d-a7f9cc9af296": "Forgot About Dre (Screamixx)"
+  },
+  "Nas": {
+    "934bae94-e492-4e69-8124-953244521962": "Analyze This",
+    "d9ad19ff-cd09-4ae7-b25f-0702be678b11": "Interlude",
+    "c655103b-1412-46c8-afe1-619b1893b6cc": "Faithful (Terry Urban mix)",
+    "94a40bf6-7c17-4238-83d9-495fc8a94a84": "In Between Us (MB mix)",
+    "10a1e043-7fc6-4f34-b4b3-df52e66c07e9": "Either/Or (JF mix)",
+    "12989536-2b47-4ee6-9d1c-7cf05543a4fe": "Black Republicans",
+    "d42a86e4-cdc2-473b-a0ce-8d06f4ba94b4": "The Rulers",
+    "748c4a58-b8a4-4e87-8da8-65535a80bf88": "Outro",
+    "00e0ce8d-5dcb-4370-91dc-c2854912789b": "Interlude",
+    "b656b962-3cfe-4294-b007-97092e756723": "Can't Fade Us",
+    "a31f4b8c-17fa-403f-9a15-38e40ef13e5d": "Classic Freestyle (MB mix)",
+    "f03cba50-2027-4a1b-bb39-71268ba647f2": "What's Beef?",
+    "46261de3-6e64-46bd-b815-20a289de7f56": "Haters (JF mix)",
+    "dce85331-959f-4406-b667-cc8757e03f6b": "Be Like Us (JF mix)",
+    "a5afe60a-ecc4-43c5-82b0-367f351c6528": "Two Sides to Every Story (MB mix)",
+    "8943dc1d-d331-41ad-96e0-1c2bf5103878": "24 Years to Life (MB mix)",
+    "880ec560-c8da-444f-8471-a30bd66b648c": "United Nations (interlude)",
+    "fb61531c-0d86-4a9f-961e-84c4b9055596": "Back on the Block (MB mix)",
+    "d8155b4b-8148-482e-8ed8-c1a45a50f889": "The Life (MB mix)",
+    "428e17dc-45a9-4235-8fdb-aa1c882544e5": "Kill at Will",
+    "d72f8f51-8814-491b-9c56-18ae262a1b86": "Success",
+    "a0f6682d-0684-4ea4-a249-802756498e81": "Most Incredible (DJ Jon mix)",
+    "deaa9403-8d85-4c2d-a822-50c6b1fad6bd": "Success",
+    "d2dd7cfb-7e3e-4045-b430-a5affce0b41a": "Style (MB mix)",
+    "973c646a-b31a-476a-8bab-6cf69d012088": "Heaven (Screamixx)",
+    "d2e2d584-2192-4607-b5c9-a98e7b791e14": "Dead Presidents (live)",
+    "de169867-3698-4b43-999e-187951d52eaa": "Major League (MB/Lil Raskal mix)",
+    "d2c56881-208d-4f39-ad35-e41064c29d3d": "The World Is Yours (live)",
+    "5b105c33-e0ce-4ecc-b872-19b60680e97b": "Intro",
+    "a0c9f947-01be-4990-aa2c-96bfd76ef071": "Interlude",
+    "e4180125-25ab-4a9f-a245-8e8e9c3ae507": "Gunplay (DJ Lennox mix)",
+    "45bdec87-7b4e-4df9-a75b-167a21e02034": "Customer Satisfaction (Wally Sparks mix)",
+    "82a7501a-66c5-43db-a748-52b8f04ba7b8": "Pimp by Blood (JF mix)",
+    "c4135013-f312-46d3-8f6e-e895e9a8c86b": "The General, the President and the Senator (MB mix)",
+    "bb841349-d39f-49c5-841b-219d6d4a0b2a": "Interlude"
+  },
+  "Notorious B.I.G.": {
+    "5629cc33-2157-4da3-91e7-be921f554f12": "Brooklyn's Finest",
+    "17477376-40d7-42b9-ac72-95bf15a81278": "Brooklyn's Finest",
+    "69e7e8a6-386d-4d36-bca2-7b44c9ca3bd2": "Intro / New York, New York",
+    "beb2b87b-cf8e-4688-9407-35271cec7109": "A Dream",
+    "b5691b50-8ba2-47bb-bb60-3ab6961235aa": "I Dare You",
+    "dc65520e-cbb2-4e10-afde-5b197f7eade2": "Interlude (Makin' of BK's Finest)",
+    "363b2e41-b358-43bf-84d0-c3be97c5cced": "Young Gangsters",
+    "1ea8da03-164b-4111-b4f5-d3fef9c7f475": "I Love the Dough",
+    "74a85233-a960-45e6-8a11-9f8399bf3132": "Can't Stop the Reign",
+    "d80c8c01-9379-4430-bd49-419c30268e4c": "A Dream",
+    "e90d875f-c3db-4a0a-8f19-a0bd716f5b2b": "Outro",
+    "2f704178-cfe2-46f2-a03c-07a30ed0bb77": "Cruisin'",
+    "b656b962-3cfe-4294-b007-97092e756723": "Can't Fade Us",
+    "82373cfc-1096-421c-acd2-022471ea6883": "Players",
+    "a73a85de-cb99-47bf-8cca-8bc9f51705fc": "Interlude (Comin' Up With Kane)",
+    "1fc493c4-edc7-4795-9a90-b2777b077986": "Makin' Moves",
+    "b28b925b-d476-4ee6-8f7b-990d84b89fe6": "The Commission",
+    "82d99b4b-d790-494f-8390-e53f56395d31": "Feel It in a Dream",
+    "9f0d2807-7b50-4215-8368-6c68e2997f29": "Roamin' Thru NY",
+    "8509c655-bda9-4299-a36b-3fd3c65c13b4": "Oh My Lord",
+    "04519cbe-ccc5-429b-abee-f9859852e43b": "If You",
+    "98f8fcd1-9fec-456a-adff-14d8de709932": "Ride",
+    "7ff31215-12ff-4615-b8d7-d1a53dd0f4ca": "Interlude (When Biggie Died)",
+    "97bf345d-82fd-40d2-9ea4-5468943ab375": "Interlude (Battlin' DMX)",
+    "efdda2e1-073a-428c-9be2-3e94f0c08d12": "Interlude (The Commission Takeover)",
+    "725ace76-4170-4ca1-82d8-6af7ce13b6a8": "Interlude (RIP Aaliyah)"
+  },
+  "2Pac": {
+    "74a85233-a960-45e6-8a11-9f8399bf3132": "Can't Stop the Reign"
+  },
+  "Rakim": {
+    "514d20cf-82a0-46c4-90bc-bbe64522d166": "The Watcher 2",
+    "74a85233-a960-45e6-8a11-9f8399bf3132": "Can't Stop the Reign"
+  },
+  "Mase": {
+    "82373cfc-1096-421c-acd2-022471ea6883": "Players"
+  },
+  "Slick Rick": {
+    "da1721db-bb74-4013-a59a-ddd3d88e560e": "The Return (remix)"
+  },
+  "Young Jeezy": {
+    "eae47b76-e9bf-4114-9d96-3def76ca166e": "Real as It Gets",
+    "7fb178da-3336-40b8-9304-e90ab329a941": "Put On"
+  },
+  "Drake": {
+    "dbc771ba-f9bd-4c5c-98b3-593341825b38": "Off That",
+    "59077830-78ef-4168-8e80-e14dcc57e652": "In the Morning"
+  },
+  "Ice Cube": {
+    "8b547dc2-9568-456a-9cb3-1fa4822016ac": "30 Something (remix)"
+  },
+  "Kid Cudi": {
+    "3310fd2f-7204-4aea-beea-6969230aebea": "Already Home",
+    "929c789b-56f2-48ac-bece-cf2fdf49b4fb": "The Joy",
+    "9eff08f8-e8cf-46f9-b948-dc2bf57b6f42": "The Joy"
+  },
+  "Killer Mike": {
+    "f49082e1-a043-43fa-abe9-1ff7112331fe": "Poppin' Tags"
+  },
+  "T.I.": {
+    "82f4fc63-b49e-408b-998c-74f0a241fb33": "The Best",
+    "e7ba544b-74c3-462b-b3dc-d26fa17a9a5e": "You Aint Neva Gotta Ask"
+  },
+  "Jay Electronica": {
+    "f8dc65a5-e183-4d1b-90a0-aee48b9d0143": "Prowler",
+    "c748d436-c06d-4bf9-9d4b-111f9538eb1c": "Shiny Suit Theory",
+    "53b739d9-3cd2-4e1a-aa4e-6c2854c01ddd": "Just Begun",
+    "92339af1-1b43-4b0d-928f-eaed1a2773cb": "Jazzmatazz (Guru Tribute)",
+    "e679784e-6967-4e1e-b23e-1741556e35c6": "Ghost of Christopher Wallace",
+    "f6672b78-cb4b-4f29-b902-a2c7fda7658c": "Higher",
+    "e296ba04-3505-4a32-bc43-4bef6736398d": "Exhibit C",
+    "faee50d2-0980-49aa-94bd-4f14f53e7fd5": "The Announcement"
+  },
+  "Snoop Dogg": {
+    "5434f413-0a26-403e-84bf-7ae45cc76282": "Get Your Mind Right Mami",
+    "3c752693-14cd-47c5-86f9-26c306490ff9": "Drop It Like It's Hot (Startrak remix instrumental)",
+    "19f4743a-0b29-4a92-8199-5c527da8c36d": "Drop It Like It's Hot (Neptunes remix)",
+    "2f704178-cfe2-46f2-a03c-07a30ed0bb77": "Cruisin'",
+    "45664484-ebaf-4531-b1a9-9c32704c6777": "Drop It Like It's Hot (Startrak remix)"
+  },
+  "Wale": {
+    "8fda6bdd-48ae-4a98-8bbb-f830cd371e12": "You Got It",
+    "e32255ee-7729-43c1-83a0-ee38cbdc5582": "Look in the Mirror (remix)"
+  },
+  "Juvenile": {
+    "0eb77a07-b2f1-4670-bf80-9487476d1d9b": "Snoopy Track"
+  },
+  "Kanye West": {
+    "e8182a34-9e4a-489e-b613-42cabbe7dfe5": "No Church in the Wild",
+    "ff740436-528d-41b7-b36f-71439d63f0ab": "Why I Love You",
+    "b6bc122f-1252-4ec1-941d-1c0fb4905afe": "Monster",
+    "bf9916c4-17ac-4ca7-855d-b4a489b3f1b8": "Shady's Boom Boom Boom (Screamixx)",
+    "2beff74d-69fe-4e53-9a47-26f29b64c6d4": "Monster",
+    "25c83eb9-96e0-4093-b2a7-9248313767be": "Who Gon Stop Me",
+    "2c9a5439-73cf-4375-a300-c94a52fd7235": "That\u2019s My Bitch",
+    "5493af9b-1c17-4746-a8c0-267d63e4902b": "Welcome to the Jungle",
+    "d75d6e31-9d60-4aeb-9530-31b7e8d333aa": "Made in America",
+    "467eb310-bf65-4922-a5ac-82587b55ff3d": "So Appalled",
+    "6a8d3a5f-e57b-4dd2-9681-55b8fa1e754b": "Hate",
+    "ebaf2042-3a96-483f-9876-221f8ff512b8": "Clique",
+    "9585b676-9880-4c61-a69b-b931080ceea6": "Niggas In Paris",
+    "fe956479-9ec4-43a6-8fd8-f597fa9ab438": "New Day",
+    "c857137c-b09b-4ed5-8006-961624e27854": "Otis",
+    "39263422-5af1-47c5-a05b-9b53af3a72d8": "H\u2022A\u2022M",
+    "433f4f4a-32e0-4de7-ab52-7f449c3a2407": "So Appalled",
+    "baa41267-29bf-4c88-a5f1-635e73b6f964": "Gotta Have It",
+    "a3f72678-85a6-4c55-89a1-4c4c7c75daaa": "Murder to Excellence",
+    "e7ba544b-74c3-462b-b3dc-d26fa17a9a5e": "You Aint Neva Gotta Ask",
+    "e67985c1-4e31-4d7b-b2af-1f97931df3cc": "Otis",
+    "5212a44f-799d-4de9-a569-373632bfa616": "Niggas in Paris",
+    "659af419-4562-4c86-9815-2111eaa4e75c": "Run This Town",
+    "f18d4025-2cbd-482c-b471-99dd3a8a728a": "Power (remix)",
+    "38cc6e44-c2da-4189-915b-9370072c4dbe": "The Bounce",
+    "8b393866-9876-48a5-a891-b9786ef4809e": "Run This Town",
+    "f26027cf-73d9-4db6-8429-a7bd316713e1": "Lift Off",
+    "82f4fc63-b49e-408b-998c-74f0a241fb33": "The Best",
+    "9eff08f8-e8cf-46f9-b948-dc2bf57b6f42": "The Joy",
+    "929c789b-56f2-48ac-bece-cf2fdf49b4fb": "The Joy"
+  },
+  "Rick Ross": {
+    "59a39f25-dcd0-4fa9-909a-b749de0cac1e": "FuckWithMeYouKnowIGotIt",
+    "7f9072a9-a15f-460a-8576-235f9a4e6914": "Maybach Music",
+    "8021c241-9b28-4076-8adc-1bda7fca9d61": "The Devil Is a Lie",
+    "2beff74d-69fe-4e53-9a47-26f29b64c6d4": "Monster",
+    "b6bc122f-1252-4ec1-941d-1c0fb4905afe": "Monster"
+  },
+  "J. Cole": {
+    "8fda6bdd-48ae-4a98-8bbb-f830cd371e12": "You Got It",
+    "8f280b53-4245-4a88-a4ce-a540a5e8e8d0": "Back to the Topic",
+    "831c1c44-2145-48bd-979c-cb024d34496a": "I\u2019m Coming Home",
+    "0ffc75ce-158c-41c6-950d-ab9625455392": "A Star Is Born",
+    "53b739d9-3cd2-4e1a-aa4e-6c2854c01ddd": "Just Begun",
+    "4a6155cf-1170-4fdc-a9eb-729d51b0fb9e": "2 Face",
+    "811dc698-30b0-48f2-a26b-143679aa2a49": "Villematic",
+    "59077830-78ef-4168-8e80-e14dcc57e652": "In the Morning",
+    "e32255ee-7729-43c1-83a0-ee38cbdc5582": "Look in the Mirror (remix)",
+    "343fe512-8000-40c6-a9e3-eb02859468a0": "Meddafore",
+    "67d87f40-9b5c-43eb-b86c-2cfad633f20d": "Leave Me Alone"
+  },
+  "Big Daddy Kane": {
+    "1fc493c4-edc7-4795-9a90-b2777b077986": "Makin' Moves"
+  },
+  "Talib Kweli": {
+    "53b739d9-3cd2-4e1a-aa4e-6c2854c01ddd": "Just Begun",
+    "68d89eba-d2f1-4e76-9374-b861ca0709dc": "Marshall Law (Screamixx)"
+  },
+  "Big Sean": {
+    "ebaf2042-3a96-483f-9876-221f8ff512b8": "Clique"
+  },
+  "Twista": {
+    "f855ea74-6703-4b7a-bcb2-196c72f22b09": "Mo' Money",
+    "a80a07fa-a3e9-41c9-a45f-9a91efd2792e": "Is That Yo Bitch",
+    "f49082e1-a043-43fa-abe9-1ff7112331fe": "Poppin' Tags"
+  },
+  "Too Short": {
+    "9e235382-0f4b-472c-9a25-c1a9cf8ef591": "Real Niggaz",
+    "18e5d79c-aa00-41d2-a9fc-83b7a86e5912": "A Week Ago"
+  }
 },
-"Joey Badass": {},
+"Joey Bada$$": {
+  "Ab-Soul": {
+    "c833cf4b-59d9-4c9d-8181-f86e746aa752": "Enter the Void"
+  },
+  "Action Bronson": {
+    "4606c057-96de-4e83-84ce-050dc0c03915": "Run Up on Ya"
+  }
+},
 "Juicy J": {
-  "Lil Wayne": [
-    "f3602cb2-eb1d-4098-bfdc-7a453c276e4f",
-    "9bddac6c-5339-4398-a8f4-78c204e0ab7c"
-  ],
-  "Wale": [
-    "7c14c8cf-9bda-49d6-9b55-91086211278b",
-    "f489f2bd-ccd0-4600-973d-6fa1707a3c7d"
-  ],
-  "Young Jeezy": [
-    "d8e48b03-ccfd-44c1-857e-0715aa700375",
-    "63830d6f-2364-471c-871b-984690175a29",
-    "aaabb49f-bc5c-42f3-9c93-c9037b2df9b5"
-  ],
-  "Pimp C": [
-    "d0951b20-e7fd-43e3-aed6-0e3dd8a6e4c1"
-  ],
-  "Danny Brown": [
-    "80471833-ea62-47ea-9f38-0737e9613dac",
-    "102f5eb3-9008-420e-b4ee-1107993916dc",
-    "05f2a69c-a210-4400-8030-4e489ee6e601"
-  ],
-  "A$AP Rocky": [
-    "8311e779-272f-4d93-82fe-35686470cc71",
-    "c847a8af-17d3-465c-a97a-fe870eef1b2e"
-  ],
-  "Rick Ross": [
-    "d8e48b03-ccfd-44c1-857e-0715aa700375"
-  ],
-  "The Weeknd": [
-    "40238671-ce74-4303-adb3-e86bc042169f",
-    "aa893f37-a81e-4b0e-a75e-c12a8aee8cd3"
-  ],
-  "Pusha T": [
-    "e33df6a6-f6ab-4899-b825-74fc13416206",
-    "a13ce638-fc19-4df2-a96f-d2acdc969029"
-  ],
-  "Big Sean": [
-    "63830d6f-2364-471c-871b-984690175a29",
-    "aaabb49f-bc5c-42f3-9c93-c9037b2df9b5"
-  ],
-  "T.I.": [
-    "d8e48b03-ccfd-44c1-857e-0715aa700375",
-    "07c6d6ca-3882-4156-ac8c-b8d8df6a6470"
-  ]
+  "Lil Wayne": {
+    "f3602cb2-eb1d-4098-bfdc-7a453c276e4f": "Bandz a Make Her Dance",
+    "9bddac6c-5339-4398-a8f4-78c204e0ab7c": "Bandz a Make Her Dance"
+  },
+  "Wale": {
+    "7c14c8cf-9bda-49d6-9b55-91086211278b": "Bounce It",
+    "f489f2bd-ccd0-4600-973d-6fa1707a3c7d": "Bounce It"
+  },
+  "Young Jeezy": {
+    "d8e48b03-ccfd-44c1-857e-0715aa700375": "Pour It Up (remix)",
+    "63830d6f-2364-471c-871b-984690175a29": "Show Out",
+    "aaabb49f-bc5c-42f3-9c93-c9037b2df9b5": "Show Out"
+  },
+  "Pimp C": {
+    "d0951b20-e7fd-43e3-aed6-0e3dd8a6e4c1": "Smokin\u2019 Rollin\u2019"
+  },
+  "Danny Brown": {
+    "80471833-ea62-47ea-9f38-0737e9613dac": "Piss Test (clean)",
+    "102f5eb3-9008-420e-b4ee-1107993916dc": "Piss Test (instrumental)",
+    "05f2a69c-a210-4400-8030-4e489ee6e601": "Piss Test"
+  },
+  "A$AP Rocky": {
+    "8311e779-272f-4d93-82fe-35686470cc71": "Scholarship",
+    "c847a8af-17d3-465c-a97a-fe870eef1b2e": "Real Hustler\u2019s Don\u2019t Sleep"
+  },
+  "Rick Ross": {
+    "d8e48b03-ccfd-44c1-857e-0715aa700375": "Pour It Up (remix)"
+  },
+  "The Weeknd": {
+    "40238671-ce74-4303-adb3-e86bc042169f": "One of Those Nights",
+    "aa893f37-a81e-4b0e-a75e-c12a8aee8cd3": "One of Those Nights"
+  },
+  "Pusha T": {
+    "e33df6a6-f6ab-4899-b825-74fc13416206": "She Bad Bad (remix)",
+    "a13ce638-fc19-4df2-a96f-d2acdc969029": "My Hoes They Do Drugs"
+  },
+  "T.I.": {
+    "d8e48b03-ccfd-44c1-857e-0715aa700375": "Pour It Up (remix)",
+    "07c6d6ca-3882-4156-ac8c-b8d8df6a6470": "We Still In This Bitch"
+  },
+  "Big Sean": {
+    "63830d6f-2364-471c-871b-984690175a29": "Show Out",
+    "aaabb49f-bc5c-42f3-9c93-c9037b2df9b5": "Show Out"
+  }
 },
-"Jurrasic 5": {},
-"Juvenile": {
-  "Lil Wayne": [
-    "f42da537-acc2-48b7-9986-6c82bc35b72d",
-    "09a22c86-ff4d-49fc-9877-ff41da54a798",
-    "b9fd224f-9f20-4f9d-8e07-dec340189da7",
-    "37a309f5-1f50-42a4-b4c3-5eb6d0d58751",
-    "76cddcb0-6db3-4c83-8686-e2b3aec3a7a3",
-    "0a3880bd-6695-4bff-8ce4-ad999c865029",
-    "e255e72f-703e-4f34-a449-0f24510a8506",
-    "f4a4d836-546d-4e8d-a030-cf1e570fbc9a",
-    "81067e53-4f41-41ca-86b9-bc22733db03d",
-    "81c8dc5e-8169-449c-8aaf-2ecce7a9c0ff",
-    "68496c1a-c31b-4cbc-9bda-2024834f6f9b",
-    "a0205498-337b-4569-aab5-d648ef58fe85",
-    "a99c0eb7-cd8f-48b5-b88c-de92cce5eeea"
-  ],
-  "Rick Ross": [
-    "fa0a711f-ecb9-4ba2-b946-29f7be71dfb7",
-    "8602c464-66d3-4a50-b01c-6c8baea70f9e"
-  ],
-  "50 Cent": [
-    "b677c429-39a4-4ff5-a342-3dd8e855762c"
-  ],
-  "Meek Mill": [
-    "0f55aeb0-baa5-476c-882a-4c7bd271f23d"
-  ],
-  "Young Jeezy": [
-    "514dce80-bab5-421c-90a1-75ea08a30b6e"
-  ]
+"Jurrasic 5": {
+  "Kool Keith": {
+    "19d2e387-e7e4-4e24-a3f6-8fc1b500b79c": "DDT"
+  },
+  "Big Daddy Kane": {
+    "72d67f3e-75f7-42fa-8fa0-4ff9a0fec187": "A Day at the Races"
+  }
 },
 "Juvenile": {
-  "Lil Wayne": [
-    "f42da537-acc2-48b7-9986-6c82bc35b72d",
-    "09a22c86-ff4d-49fc-9877-ff41da54a798",
-    "b9fd224f-9f20-4f9d-8e07-dec340189da7",
-    "37a309f5-1f50-42a4-b4c3-5eb6d0d58751",
-    "76cddcb0-6db3-4c83-8686-e2b3aec3a7a3",
-    "0a3880bd-6695-4bff-8ce4-ad999c865029",
-    "e255e72f-703e-4f34-a449-0f24510a8506",
-    "f4a4d836-546d-4e8d-a030-cf1e570fbc9a",
-    "81067e53-4f41-41ca-86b9-bc22733db03d",
-    "81c8dc5e-8169-449c-8aaf-2ecce7a9c0ff",
-    "68496c1a-c31b-4cbc-9bda-2024834f6f9b",
-    "a0205498-337b-4569-aab5-d648ef58fe85",
-    "a99c0eb7-cd8f-48b5-b88c-de92cce5eeea"
-  ],
-  "Rick Ross": [
-    "fa0a711f-ecb9-4ba2-b946-29f7be71dfb7",
-    "8602c464-66d3-4a50-b01c-6c8baea70f9e"
-  ],
-  "50 Cent": [
-    "b677c429-39a4-4ff5-a342-3dd8e855762c"
-  ],
-  "Meek Mill": [
-    "0f55aeb0-baa5-476c-882a-4c7bd271f23d"
-  ],
-  "Young Jeezy": [
-    "514dce80-bab5-421c-90a1-75ea08a30b6e"
-  ]
+  "Lil Wayne": {
+    "f42da537-acc2-48b7-9986-6c82bc35b72d": "Rich Niggaz",
+    "09a22c86-ff4d-49fc-9877-ff41da54a798": "Back That Thang Up",
+    "b9fd224f-9f20-4f9d-8e07-dec340189da7": "Hide Out or Ride Out",
+    "37a309f5-1f50-42a4-b4c3-5eb6d0d58751": "Spendin\u2019 This Money",
+    "76cddcb0-6db3-4c83-8686-e2b3aec3a7a3": "Rich Niggaz",
+    "0a3880bd-6695-4bff-8ce4-ad999c865029": "Lil' Boyz",
+    "e255e72f-703e-4f34-a449-0f24510a8506": "What U Call Us",
+    "f4a4d836-546d-4e8d-a030-cf1e570fbc9a": "White Girl",
+    "81067e53-4f41-41ca-86b9-bc22733db03d": "From the Start",
+    "81c8dc5e-8169-449c-8aaf-2ecce7a9c0ff": "Run for It",
+    "68496c1a-c31b-4cbc-9bda-2024834f6f9b": "Ya Heard Me",
+    "a0205498-337b-4569-aab5-d648ef58fe85": "What U Scared 4",
+    "a99c0eb7-cd8f-48b5-b88c-de92cce5eeea": "Back That Azz Up"
+  },
+  "Rick Ross": {
+    "fa0a711f-ecb9-4ba2-b946-29f7be71dfb7": "Power",
+    "8602c464-66d3-4a50-b01c-6c8baea70f9e": "Power"
+  },
+  "50 Cent": {
+    "b677c429-39a4-4ff5-a342-3dd8e855762c": "NY to No"
+  },
+  "Meek Mill": {
+    "0f55aeb0-baa5-476c-882a-4c7bd271f23d": "Wild Boy (remix)"
+  },
+  "Young Jeezy": {
+    "514dce80-bab5-421c-90a1-75ea08a30b6e": "Pay tha Rent"
+  }
 },
 "Kanye West": {
-  "Lil Wayne": [
-    "f163835b-64b6-4326-bd4b-7e5dd223a540",
-    "b937fd6d-797c-4b12-9b91-7cebe8930197",
-    "461dd644-1429-479e-9620-d0a91a7015d9",
-    "30ce7320-5b24-4707-b712-63556b5c5b65",
-    "ea73b3ca-f9ab-4dd7-af90-f0f189215fa8",
-    "609c8580-fa6e-4110-94df-4c767afde631",
-    "70fd92b3-7647-4671-9973-f3ec5dd3f0f2",
-    "93049c9b-d229-47ae-8b09-1d7125783def",
-    "f41748fd-2452-4e1d-aa24-0af6ff831aa9",
-    "e1060d8f-d790-4a91-a1ac-80430123abf1",
-    "a08a7c15-7864-4c3b-b1b2-e8b3b8f70b15",
-    "54c0f950-b904-4bfd-8ee5-34ea742bee8f",
-    "27a7e1da-b772-4790-9de9-545f8c197e16"
-  ],
-  "Busta Rhymes": [
-    "91afb40e-8fdd-4bee-9a07-bdea9c56c331",
-    "1d2a177e-7d44-4a18-947e-111e71ec27f1"
-  ],
-  "Nicki Minaj": [
-    "e7b7be0e-f18c-4ba8-a604-9a0b325b88c7",
-    "2beff74d-69fe-4e53-9a47-26f29b64c6d4"
-  ],
-  "50 Cent": [
-    "91afb40e-8fdd-4bee-9a07-bdea9c56c331",
-    "b6c0adaa-8ec1-45df-a0aa-e789f0cd9ed1",
-    "20ee1b6f-936a-4783-9114-13aa9818d7ca"
-  ],
-  "Nas": [
-    "7c7ed646-a3d9-4224-b5d8-1dd5c5bed13e",
-    "32dc2588-a199-44fb-88fc-eb5e045b4fd4",
-    "a668e11b-e96a-40cd-9dd4-2f3b53002853",
-    "c82848ee-bb1a-4def-8d3e-4e359dc37fcc",
-    "ab74a673-8843-4512-8a3c-3917ba1d3133",
-    "cc1aab6f-78b3-49a2-babc-456647a727c8",
-    "f211f94c-e388-41d3-bb89-28950aea45f2",
-    "8cce9dbc-ab82-4cc3-a440-2b19a1ea5b87",
-    "07d7064a-96a3-4587-b091-e4bd4e6026b7"
-  ],
-  "DMX": [
-    "2c065c55-6bad-43fc-bf25-27e7adc76e5d"
-  ],
-  "Notorious B.I.G.": [
-    "1323c0df-3c5d-4c6f-8e08-6758bcf3bffe"
-  ],
-  "Ludacris": [
-    "319cbcfb-dcea-47a0-932b-70610387ccaa",
-    "fb0a10ce-aaa6-47af-a86c-dca3f437a701",
-    "9af526a1-2dfd-4e88-b99b-81bfaf8ad66e"
-  ],
-  "Dr. Dre": [
-    "1d2a177e-7d44-4a18-947e-111e71ec27f1"
-  ],
-  "Pusha T": [
-    "79415511-4e44-4727-9b01-e5286d363706",
-    "dd97ba3a-a8ab-434b-b1e6-90cb39e05c64",
-    "8c65a8fe-180e-47ad-bba2-5b93ed20825f",
-    "810a074a-7b5c-44f7-a39e-a7cb048062a4",
-    "a24f67ff-a81e-4a95-817d-c0b4e5af3e6b",
-    "7000188d-0c00-4632-8f42-e6117e69dc5d",
-    "41d53bb7-4a5b-4acb-8c18-f4e244c71eb4",
-    "2128c8ac-9bbd-4274-8f6a-ca967d173293",
-    "8fca38a2-8f76-4a9f-b7e6-388441b66174",
-    "55c56289-653e-49da-87a5-d5a6b9b8a779",
-    "763160ee-8e7e-4ed2-a92e-251bc2b6affa",
-    "1aa43c59-092d-4479-a1ad-a67ee182eb24",
-    "36e2b944-e497-4b83-9bbb-0723fcb197f8",
-    "467eb310-bf65-4922-a5ac-82587b55ff3d",
-    "707cda78-2232-405a-9001-d86f951396c6",
-    "70385b31-b5bd-44a1-8bda-1bc3feb1036b",
-    "aae455f3-321d-4d48-a794-62f29fda34d4"
-  ],
-  "Eminem": [
-    "b937fd6d-797c-4b12-9b91-7cebe8930197",
-    "30ce7320-5b24-4707-b712-63556b5c5b65",
-    "ea73b3ca-f9ab-4dd7-af90-f0f189215fa8",
-    "f41748fd-2452-4e1d-aa24-0af6ff831aa9",
-    "e1060d8f-d790-4a91-a1ac-80430123abf1",
-    "f163835b-64b6-4326-bd4b-7e5dd223a540",
-    "54c0f950-b904-4bfd-8ee5-34ea742bee8f"
-  ],
-  "Lauryn Hill": [
-    "79ad9e9a-ca3f-49f3-8c55-000274a63f08",
-    "eedc32fa-f29c-4923-8962-c2e4e5390aab",
-    "61930756-0ac2-420f-966e-baa9929232d7"
-  ],
-  "Rakim": [
-    "ab74a673-8843-4512-8a3c-3917ba1d3133",
-    "c82848ee-bb1a-4def-8d3e-4e359dc37fcc"
-  ],
-  "Mase": [
-    "4e3f9ff1-3eaa-4313-866c-8aaa8533de4c"
-  ],
-  "Young Jeezy": [
-    "1ae02b62-31c1-4f46-88b2-ef5328d7c6d4",
-    "20327ab0-f6c6-4401-b5c3-f7c0fc0d2bd0"
-  ],
-  "Big Sean": [
-    "b415b397-9cc7-4d3c-a662-ddc27bb3ff3f",
-    "a131df2a-ffd8-471f-a266-50101b0dc159",
-    "c75a1f63-32c3-4b72-92df-c8e5621a4f91",
-    "ed6acf7c-cbd1-4d2b-8d1d-771cee4f29e7",
-    "8c65a8fe-180e-47ad-bba2-5b93ed20825f",
-    "94f27706-4179-49b2-bb1d-7b2b98f9c3a5",
-    "361fb729-9543-4383-a77b-f3bdecbd9893",
-    "8fca38a2-8f76-4a9f-b7e6-388441b66174",
-    "2128c8ac-9bbd-4274-8f6a-ca967d173293",
-    "dd97ba3a-a8ab-434b-b1e6-90cb39e05c64",
-    "fe4fd4d8-2b91-4e68-b409-962af4707a17",
-    "763160ee-8e7e-4ed2-a92e-251bc2b6affa",
-    "1aa43c59-092d-4479-a1ad-a67ee182eb24",
-    "ebaf2042-3a96-483f-9876-221f8ff512b8",
-    "aae455f3-321d-4d48-a794-62f29fda34d4"
-  ],
-  "Drake": [
-    "b937fd6d-797c-4b12-9b91-7cebe8930197",
-    "30ce7320-5b24-4707-b712-63556b5c5b65",
-    "ea73b3ca-f9ab-4dd7-af90-f0f189215fa8",
-    "f41748fd-2452-4e1d-aa24-0af6ff831aa9",
-    "e1060d8f-d790-4a91-a1ac-80430123abf1",
-    "f163835b-64b6-4326-bd4b-7e5dd223a540",
-    "54c0f950-b904-4bfd-8ee5-34ea742bee8f"
-  ],
-  "Paul Wall": [
-    "b6bbdd37-fa96-46f7-b651-88b29bc22400"
-  ],
-  "Rick Ross": [
-    "c8da6e46-d517-4930-87d8-5be5ab9ca3c9",
-    "c7d4cbfc-a1fd-4389-8196-0d9882a8f72a",
-    "2beff74d-69fe-4e53-9a47-26f29b64c6d4",
-    "e7b7be0e-f18c-4ba8-a604-9a0b325b88c7"
-  ],
-  "Kid Cudi": [
-    "79415511-4e44-4727-9b01-e5286d363706",
-    "264ef3cd-1c76-4caa-9fda-d3f7008d9150",
-    "8fca38a2-8f76-4a9f-b7e6-388441b66174",
-    "a131df2a-ffd8-471f-a266-50101b0dc159",
-    "7a76c130-c747-42dd-8d2a-7b00ee28adb7",
-    "9da9970b-ea00-4093-9b5b-1bf4e3173c5a",
-    "cc086205-4e55-4740-a2ce-238d4353b2be",
-    "55c56289-653e-49da-87a5-d5a6b9b8a779",
-    "b3c6aa0a-6960-4db6-bf27-ed50de88309c",
-    "9eff08f8-e8cf-46f9-b948-dc2bf57b6f42",
-    "aae455f3-321d-4d48-a794-62f29fda34d4"
-  ],
-  "T.I.": [
-    "b008511e-ef1b-4de0-976f-19f7b082324d"
-  ],
-  "Ol Dirty Bastard": [
-    "48f666d3-bf27-4f97-91c2-c26b5164ba0d",
-    "db4cea77-15f9-4067-901b-f56d755ffb5e"
-  ],
-  "Mos Def": [
-    "0cb1e2d9-3b27-42b3-9471-d552d5b799d2",
-    "0b6d65b4-3dea-4d7e-b0b8-fa7114e400a1",
-    "d4530465-db6d-494a-a470-42888d2b2252",
-    "fd31fcf1-750c-41dd-a140-70e3e68c5c9a",
-    "ec9637f1-e5a8-4a3f-85d8-e6dc438477c3",
-    "2915a04a-db5e-4bf9-9e29-c09bfe60c63b",
-    "361fb729-9543-4383-a77b-f3bdecbd9893",
-    "91afb40e-8fdd-4bee-9a07-bdea9c56c331",
-    "49c454d9-516b-46e2-9160-236b260ac391",
-    "69775f74-f723-4244-a3fe-4735f72f4545",
-    "fe4fd4d8-2b91-4e68-b409-962af4707a17",
-    "0ee17159-10e8-4337-aecb-442757df132e"
-  ],
-  "Talib Kweli": [
-    "af16a916-fefc-46c6-abbc-2fa7ef0497e0",
-    "548f5bc3-ce0f-477e-b057-a1c1759d6d20",
-    "9c40c848-0b28-4e5d-aafc-e6c749cb1420",
-    "191b6a49-992d-432b-9249-f364122e428e",
-    "91afb40e-8fdd-4bee-9a07-bdea9c56c331",
-    "7e86105a-30a2-471f-84e6-cf3644aefc11",
-    "84aff569-f92d-4142-a355-b77768ebf9e7",
-    "71f652f9-cd4f-49af-9f3c-3bb44ba9259e",
-    "c8ca116f-6350-410c-be1a-e026011685ea"
-  ],
-  "Raekwon": [
-    "0d7e5378-f1e9-43e9-8665-58f77c0502a0",
-    "4c20a500-248a-42c3-ab14-919e3ce975bd",
-    "49c454d9-516b-46e2-9160-236b260ac391",
-    "b3c6aa0a-6960-4db6-bf27-ed50de88309c",
-    "ec9637f1-e5a8-4a3f-85d8-e6dc438477c3"
-  ],
-  "The Game": [
-    "76be5639-712e-47e6-a6d6-5b3da3ad577d"
-  ],
-  "Pimp C": [
-    "70fd92b3-7647-4671-9973-f3ec5dd3f0f2"
-  ],
-  "Twista": [
-    "e3abdc26-f2b9-4e13-b332-74a1e7dc3959",
-    "dcb53dbb-ae48-4d91-a945-963026fb9ef8",
-    "7cb2af51-c926-436a-96a7-ef4892409d90",
-    "1c351b1a-56ba-452a-ad05-b8fe5bf164d3",
-    "5d6a1434-c2a1-405f-9c82-fad25597ccee",
-    "067559e7-43d2-4a0b-8fb7-c8395c392f5a",
-    "90a1826a-d2d5-4d3f-871f-fb7f30920fdb",
-    "18fc70d3-d7db-4a32-a5bb-2fd15240a375",
-    "0423b7d4-f31c-4b1b-9de0-cc51f001fd28"
-  ],
-  "Common": [
-    "8fca38a2-8f76-4a9f-b7e6-388441b66174",
-    "347be3b6-0b33-47a9-ad67-2103717c4961",
-    "7e86105a-30a2-471f-84e6-cf3644aefc11",
-    "966818af-bc5c-4b4b-8416-559c496ddf25",
-    "d1d0412f-ae8c-4f5c-8cae-1a42470ed303",
-    "8bce3c8c-cb94-43e0-9a2d-bfbfbcd54e9a",
-    "daeb2b3b-7566-456d-93f9-bd32cc3f96ec",
-    "7e294634-98ec-432b-a85f-529f17eb52d9",
-    "c6b5ee11-940d-47df-907f-8d528f97f560",
-    "a584e208-22f5-4534-8bd3-704f213234dd",
-    "bea393f0-f77d-49ed-bd6c-5dbdea145324",
-    "2d1488a1-41cd-49f7-9d30-ae8e4483fe59",
-    "122e0799-70d5-4cd8-b1d8-f57c70730e60",
-    "aae455f3-321d-4d48-a794-62f29fda34d4",
-    "a131df2a-ffd8-471f-a266-50101b0dc159",
-    "7a76c130-c747-42dd-8d2a-7b00ee28adb7",
-    "144553a3-2236-48e5-acc5-45ff7254c398",
-    "9fd0368e-7d3e-47da-a8d9-312b8e6aa421",
-    "0f9d09a4-7484-4c48-8997-fcd4b2b4c249",
-    "79f2190e-e402-4eb9-95d9-4321c64310f2",
-    "a5d015a5-456d-4b0e-ba97-bd9b5d7c7a86",
-    "9c40c848-0b28-4e5d-aafc-e6c749cb1420",
-    "6d40b591-e5e4-421d-a2fc-ed4ba8ab730c",
-    "10ee7f8a-9484-4969-9121-3c17826c7e06",
-    "7e12995c-7291-4216-b7a6-0f6795c75660",
-    "9e4da579-0931-45cd-b0a9-3f8d26b22b0f"
-  ]
+  "Lil Wayne": {
+    "f163835b-64b6-4326-bd4b-7e5dd223a540": "Forever",
+    "b937fd6d-797c-4b12-9b91-7cebe8930197": "Forever (clean)",
+    "461dd644-1429-479e-9620-d0a91a7015d9": "Breakin My Heart (Mick Boogie mix)",
+    "27a7e1da-b772-4790-9de9-545f8c197e16": "TiK ToK (DJ Double A remix)",
+    "30ce7320-5b24-4707-b712-63556b5c5b65": "Forever (a cappella)",
+    "ea73b3ca-f9ab-4dd7-af90-f0f189215fa8": "Forever (radio edit)",
+    "70fd92b3-7647-4671-9973-f3ec5dd3f0f2": "C.O.L.O.U.R.S.",
+    "93049c9b-d229-47ae-8b09-1d7125783def": "See You in My Nightmares",
+    "f41748fd-2452-4e1d-aa24-0af6ff831aa9": "Forever (instrumental)",
+    "e1060d8f-d790-4a91-a1ac-80430123abf1": "Forever (Tyler Blue Drumstep remix)",
+    "a08a7c15-7864-4c3b-b1b2-e8b3b8f70b15": "Barry Bonds",
+    "54c0f950-b904-4bfd-8ee5-34ea742bee8f": "Forever",
+    "609c8580-fa6e-4110-94df-4c767afde631": "Loser"
+  },
+  "Busta Rhymes": {
+    "91afb40e-8fdd-4bee-9a07-bdea9c56c331": "Get By (extended remix)",
+    "1d2a177e-7d44-4a18-947e-111e71ec27f1": "Imagine 2008 (Terry Urban remix)"
+  },
+  "Nicki Minaj": {
+    "e7b7be0e-f18c-4ba8-a604-9a0b325b88c7": "Monster",
+    "2beff74d-69fe-4e53-9a47-26f29b64c6d4": "Monster"
+  },
+  "50 Cent": {
+    "91afb40e-8fdd-4bee-9a07-bdea9c56c331": "Get By (extended remix)",
+    "b6c0adaa-8ec1-45df-a0aa-e789f0cd9ed1": "Flashing Lights (Mick Boogie mix)",
+    "20ee1b6f-936a-4783-9114-13aa9818d7ca": "Chase You Outta Here"
+  },
+  "Nas": {
+    "7c7ed646-a3d9-4224-b5d8-1dd5c5bed13e": "Major League (Mick Boogie mix)",
+    "32dc2588-a199-44fb-88fc-eb5e045b4fd4": "Classic (Better Than I\u2019ve Ever Been) (DJ Premier remix) (instrumental)",
+    "a668e11b-e96a-40cd-9dd4-2f3b53002853": "Better Than I\u2019ve Ever Been (instrumental)",
+    "c82848ee-bb1a-4def-8d3e-4e359dc37fcc": "Classic (Better Than I\u2019ve Ever Been) (DJ Premier remix)",
+    "ab74a673-8843-4512-8a3c-3917ba1d3133": "Classic",
+    "cc1aab6f-78b3-49a2-babc-456647a727c8": "Better Than I\u2019ve Ever Been",
+    "f211f94c-e388-41d3-bb89-28950aea45f2": "I Wonder (Terry Urban mix)",
+    "8cce9dbc-ab82-4cc3-a440-2b19a1ea5b87": "We Major",
+    "07d7064a-96a3-4587-b091-e4bd4e6026b7": "Better Than I\u2019ve Ever Been (a cappella)"
+  },
+  "DMX": {
+    "2c065c55-6bad-43fc-bf25-27e7adc76e5d": "Dog's Out"
+  },
+  "Notorious B.I.G.": {
+    "1323c0df-3c5d-4c6f-8e08-6758bcf3bffe": "Kicks Open Doors (Terry Urban mix)"
+  },
+  "Ludacris": {
+    "319cbcfb-dcea-47a0-932b-70610387ccaa": "Breathe In (9th Wonder remix)",
+    "fb0a10ce-aaa6-47af-a86c-dca3f437a701": "Stand Up (remix)",
+    "9af526a1-2dfd-4e88-b99b-81bfaf8ad66e": "Stand Up (remix)"
+  },
+  "Dr. Dre": {
+    "1d2a177e-7d44-4a18-947e-111e71ec27f1": "Imagine 2008 (Terry Urban remix)"
+  },
+  "Pusha T": {
+    "79415511-4e44-4727-9b01-e5286d363706": "Christian Dior Denim Flow",
+    "dd97ba3a-a8ab-434b-b1e6-90cb39e05c64": "Christmas in Harlem",
+    "8c65a8fe-180e-47ad-bba2-5b93ed20825f": "Looking for Trouble",
+    "810a074a-7b5c-44f7-a39e-a7cb048062a4": "Runaway",
+    "a24f67ff-a81e-4a95-817d-c0b4e5af3e6b": "Runaway",
+    "7000188d-0c00-4632-8f42-e6117e69dc5d": "So Appalled",
+    "41d53bb7-4a5b-4acb-8c18-f4e244c71eb4": "Take One for the Team",
+    "2128c8ac-9bbd-4274-8f6a-ca967d173293": "Looking for Trouble",
+    "8fca38a2-8f76-4a9f-b7e6-388441b66174": "Good Friday",
+    "55c56289-653e-49da-87a5-d5a6b9b8a779": "Christian Dior Denim Flow",
+    "763160ee-8e7e-4ed2-a92e-251bc2b6affa": "Mercy",
+    "1aa43c59-092d-4479-a1ad-a67ee182eb24": "Christmas in Harlem",
+    "36e2b944-e497-4b83-9bbb-0723fcb197f8": "So Appalled",
+    "467eb310-bf65-4922-a5ac-82587b55ff3d": "So Appalled",
+    "707cda78-2232-405a-9001-d86f951396c6": "New God Flow",
+    "70385b31-b5bd-44a1-8bda-1bc3feb1036b": "Take One for the Team",
+    "aae455f3-321d-4d48-a794-62f29fda34d4": "Good Friday"
+  },
+  "Eminem": {
+    "b937fd6d-797c-4b12-9b91-7cebe8930197": "Forever (clean)",
+    "30ce7320-5b24-4707-b712-63556b5c5b65": "Forever (a cappella)",
+    "ea73b3ca-f9ab-4dd7-af90-f0f189215fa8": "Forever (radio edit)",
+    "f41748fd-2452-4e1d-aa24-0af6ff831aa9": "Forever (instrumental)",
+    "e1060d8f-d790-4a91-a1ac-80430123abf1": "Forever (Tyler Blue Drumstep remix)",
+    "f163835b-64b6-4326-bd4b-7e5dd223a540": "Forever",
+    "54c0f950-b904-4bfd-8ee5-34ea742bee8f": "Forever"
+  },
+  "Lauryn Hill": {
+    "79ad9e9a-ca3f-49f3-8c55-000274a63f08": "Mystery of Iniquity",
+    "eedc32fa-f29c-4923-8962-c2e4e5390aab": "Self Conscious",
+    "61930756-0ac2-420f-966e-baa9929232d7": "All Falls Down"
+  },
+  "Rakim": {
+    "ab74a673-8843-4512-8a3c-3917ba1d3133": "Classic",
+    "c82848ee-bb1a-4def-8d3e-4e359dc37fcc": "Classic (Better Than I\u2019ve Ever Been) (DJ Premier remix)"
+  },
+  "Mase": {
+    "4e3f9ff1-3eaa-4313-866c-8aaa8533de4c": "Jesus Walks (remix) (Bitches Ain't Shit Blend)"
+  },
+  "Young Jeezy": {
+    "1ae02b62-31c1-4f46-88b2-ef5328d7c6d4": "Put On",
+    "20327ab0-f6c6-4401-b5c3-f7c0fc0d2bd0": "Amazing"
+  },
+  "Big Sean": {
+    "b415b397-9cc7-4d3c-a662-ddc27bb3ff3f": "Get'cha Some",
+    "a131df2a-ffd8-471f-a266-50101b0dc159": "Whatever You Want (DJ Emi remix)",
+    "c75a1f63-32c3-4b72-92df-c8e5621a4f91": "Marvin & Chardonnay",
+    "ed6acf7c-cbd1-4d2b-8d1d-771cee4f29e7": "Good Morning (The Kickdrums remix)",
+    "8c65a8fe-180e-47ad-bba2-5b93ed20825f": "Looking for Trouble",
+    "94f27706-4179-49b2-bb1d-7b2b98f9c3a5": "Teriya King",
+    "361fb729-9543-4383-a77b-f3bdecbd9893": "Don't Look Down",
+    "8fca38a2-8f76-4a9f-b7e6-388441b66174": "Good Friday",
+    "2128c8ac-9bbd-4274-8f6a-ca967d173293": "Looking for Trouble",
+    "dd97ba3a-a8ab-434b-b1e6-90cb39e05c64": "Christmas in Harlem",
+    "fe4fd4d8-2b91-4e68-b409-962af4707a17": "Don't Look Down",
+    "763160ee-8e7e-4ed2-a92e-251bc2b6affa": "Mercy",
+    "1aa43c59-092d-4479-a1ad-a67ee182eb24": "Christmas in Harlem",
+    "ebaf2042-3a96-483f-9876-221f8ff512b8": "Clique",
+    "aae455f3-321d-4d48-a794-62f29fda34d4": "Good Friday"
+  },
+  "Drake": {
+    "b937fd6d-797c-4b12-9b91-7cebe8930197": "Forever (clean)",
+    "30ce7320-5b24-4707-b712-63556b5c5b65": "Forever (a cappella)",
+    "ea73b3ca-f9ab-4dd7-af90-f0f189215fa8": "Forever (radio edit)",
+    "f41748fd-2452-4e1d-aa24-0af6ff831aa9": "Forever (instrumental)",
+    "e1060d8f-d790-4a91-a1ac-80430123abf1": "Forever (Tyler Blue Drumstep remix)",
+    "f163835b-64b6-4326-bd4b-7e5dd223a540": "Forever",
+    "54c0f950-b904-4bfd-8ee5-34ea742bee8f": "Forever"
+  },
+  "Paul Wall": {
+    "b6bbdd37-fa96-46f7-b651-88b29bc22400": "Drive Slow"
+  },
+  "Rick Ross": {
+    "c8da6e46-d517-4930-87d8-5be5ab9ca3c9": "Devil in a New Dress",
+    "c7d4cbfc-a1fd-4389-8196-0d9882a8f72a": "I Wish You Would",
+    "2beff74d-69fe-4e53-9a47-26f29b64c6d4": "Monster",
+    "e7b7be0e-f18c-4ba8-a604-9a0b325b88c7": "Monster"
+  },
+  "Kid Cudi": {
+    "79415511-4e44-4727-9b01-e5286d363706": "Christian Dior Denim Flow",
+    "264ef3cd-1c76-4caa-9fda-d3f7008d9150": "The Joy",
+    "8fca38a2-8f76-4a9f-b7e6-388441b66174": "Good Friday",
+    "a131df2a-ffd8-471f-a266-50101b0dc159": "Whatever You Want (DJ Emi remix)",
+    "7a76c130-c747-42dd-8d2a-7b00ee28adb7": "I Poke Her Face",
+    "9da9970b-ea00-4093-9b5b-1bf4e3173c5a": "Welcome to Heartbreak (unreleased version)",
+    "cc086205-4e55-4740-a2ce-238d4353b2be": "Welcome to Heartbreak",
+    "55c56289-653e-49da-87a5-d5a6b9b8a779": "Christian Dior Denim Flow",
+    "b3c6aa0a-6960-4db6-bf27-ed50de88309c": "Gorgeous",
+    "9eff08f8-e8cf-46f9-b948-dc2bf57b6f42": "The Joy",
+    "aae455f3-321d-4d48-a794-62f29fda34d4": "Good Friday"
+  },
+  "T.I.": {
+    "b008511e-ef1b-4de0-976f-19f7b082324d": "Doin' My Job"
+  },
+  "Jay Z": {
+    "ff740436-528d-41b7-b36f-71439d63f0ab": "Why I Love You",
+    "e67985c1-4e31-4d7b-b2af-1f97931df3cc": "Otis",
+    "e8182a34-9e4a-489e-b613-42cabbe7dfe5": "No Church in the Wild",
+    "d75d6e31-9d60-4aeb-9530-31b7e8d333aa": "Made in America",
+    "f26027cf-73d9-4db6-8429-a7bd316713e1": "Lift Off"
+  },
+  "Ol Dirty Bastard": {
+    "48f666d3-bf27-4f97-91c2-c26b5164ba0d": "Keep the Receipt",
+    "db4cea77-15f9-4067-901b-f56d755ffb5e": "Keep the Receipt"
+  },
+  "Mos Def": {
+    "0cb1e2d9-3b27-42b3-9471-d552d5b799d2": "Get By",
+    "0b6d65b4-3dea-4d7e-b0b8-fa7114e400a1": "Good Night",
+    "d4530465-db6d-494a-a470-42888d2b2252": "Two Words (radio edit)",
+    "fd31fcf1-750c-41dd-a140-70e3e68c5c9a": "Good Night",
+    "ec9637f1-e5a8-4a3f-85d8-e6dc438477c3": "Lord Lord Lord",
+    "2915a04a-db5e-4bf9-9e29-c09bfe60c63b": "2 Words (Old Skool Blend)",
+    "361fb729-9543-4383-a77b-f3bdecbd9893": "Don't Look Down",
+    "91afb40e-8fdd-4bee-9a07-bdea9c56c331": "Get By (extended remix)",
+    "49c454d9-516b-46e2-9160-236b260ac391": "Lord Lord Lord",
+    "69775f74-f723-4244-a3fe-4735f72f4545": "2 Words",
+    "fe4fd4d8-2b91-4e68-b409-962af4707a17": "Don't Look Down",
+    "0ee17159-10e8-4337-aecb-442757df132e": "Drunk & Hot Girls"
+  },
+  "J. Cole": {
+    "2128c8ac-9bbd-4274-8f6a-ca967d173293": "Looking for Trouble",
+    "8c65a8fe-180e-47ad-bba2-5b93ed20825f": "Looking for Trouble"
+  },
+  "Talib Kweli": {
+    "af16a916-fefc-46c6-abbc-2fa7ef0497e0": "Guerilla Monsoon (rap)",
+    "548f5bc3-ce0f-477e-b057-a1c1759d6d20": "In the Mood",
+    "9c40c848-0b28-4e5d-aafc-e6c749cb1420": "Wack Niggaz, Part 2",
+    "191b6a49-992d-432b-9249-f364122e428e": "The Bounce / Two Words (live)",
+    "91afb40e-8fdd-4bee-9a07-bdea9c56c331": "Get By (extended remix)",
+    "7e86105a-30a2-471f-84e6-cf3644aefc11": "Get'em High (Gettin Money Blend)",
+    "84aff569-f92d-4142-a355-b77768ebf9e7": "Chain Heavy",
+    "71f652f9-cd4f-49af-9f3c-3bb44ba9259e": "Wack Niggaz",
+    "c8ca116f-6350-410c-be1a-e026011685ea": "Chain Heavy"
+  },
+  "Raekwon": {
+    "0d7e5378-f1e9-43e9-8665-58f77c0502a0": "Runaway Love (remix)",
+    "4c20a500-248a-42c3-ab14-919e3ce975bd": "Runaway Love (remix)",
+    "49c454d9-516b-46e2-9160-236b260ac391": "Lord Lord Lord",
+    "b3c6aa0a-6960-4db6-bf27-ed50de88309c": "Gorgeous",
+    "ec9637f1-e5a8-4a3f-85d8-e6dc438477c3": "Lord Lord Lord"
+  },
+  "The Game": {
+    "76be5639-712e-47e6-a6d6-5b3da3ad577d": "Crack Music"
+  },
+  "Pimp C": {
+    "70fd92b3-7647-4671-9973-f3ec5dd3f0f2": "C.O.L.O.U.R.S."
+  },
+  "Twista": {
+    "e3abdc26-f2b9-4e13-b332-74a1e7dc3959": "Champions (Keep Your Head Up Blend)",
+    "dcb53dbb-ae48-4d91-a945-963026fb9ef8": "Slow Jams",
+    "7cb2af51-c926-436a-96a7-ef4892409d90": "Slow Jamz",
+    "1c351b1a-56ba-452a-ad05-b8fe5bf164d3": "Impossible",
+    "5d6a1434-c2a1-405f-9c82-fad25597ccee": "Slow Jam",
+    "067559e7-43d2-4a0b-8fb7-c8395c392f5a": "Overnight Celebrity",
+    "90a1826a-d2d5-4d3f-871f-fb7f30920fdb": "I Can Make You Famous (Stackhouse Recordings mix)",
+    "18fc70d3-d7db-4a32-a5bb-2fd15240a375": "Confessions (remix) (Turn Off the Lights Blend)",
+    "0423b7d4-f31c-4b1b-9de0-cc51f001fd28": "Slow Jamz (Still Tippin' Blend)"
+  },
+  "Common": {
+    "8fca38a2-8f76-4a9f-b7e6-388441b66174": "Good Friday",
+    "347be3b6-0b33-47a9-ad67-2103717c4961": "Southside (Terry Urban remix)",
+    "7e86105a-30a2-471f-84e6-cf3644aefc11": "Get'em High (Gettin Money Blend)",
+    "966818af-bc5c-4b4b-8416-559c496ddf25": "Southside (snippet)",
+    "d1d0412f-ae8c-4f5c-8cae-1a42470ed303": "Would You Like to Ride?",
+    "8bce3c8c-cb94-43e0-9a2d-bfbfbcd54e9a": "Classic Freestyle",
+    "daeb2b3b-7566-456d-93f9-bd32cc3f96ec": "The People",
+    "7e294634-98ec-432b-a85f-529f17eb52d9": "The Game",
+    "c6b5ee11-940d-47df-907f-8d528f97f560": "Better Than Yours",
+    "a584e208-22f5-4534-8bd3-704f213234dd": "My Way Home",
+    "bea393f0-f77d-49ed-bd6c-5dbdea145324": "Wanna Ride",
+    "2d1488a1-41cd-49f7-9d30-ae8e4483fe59": "Get 'em High",
+    "122e0799-70d5-4cd8-b1d8-f57c70730e60": "Southside",
+    "aae455f3-321d-4d48-a794-62f29fda34d4": "Good Friday",
+    "a131df2a-ffd8-471f-a266-50101b0dc159": "Whatever You Want (DJ Emi remix)",
+    "7a76c130-c747-42dd-8d2a-7b00ee28adb7": "I Poke Her Face",
+    "144553a3-2236-48e5-acc5-45ff7254c398": "Better Than Yours",
+    "9fd0368e-7d3e-47da-a8d9-312b8e6aa421": "The Food",
+    "0f9d09a4-7484-4c48-8997-fcd4b2b4c249": "Southside My Dear",
+    "79f2190e-e402-4eb9-95d9-4321c64310f2": "Magic Man",
+    "a5d015a5-456d-4b0e-ba97-bd9b5d7c7a86": "Glory (Mick Boogie remix)",
+    "9c40c848-0b28-4e5d-aafc-e6c749cb1420": "Wack Niggaz, Part 2",
+    "6d40b591-e5e4-421d-a2fc-ed4ba8ab730c": "Wouldn't You Like 2 Ryde",
+    "10ee7f8a-9484-4969-9121-3c17826c7e06": "Wouldn't You Like to Ride?",
+    "7e12995c-7291-4216-b7a6-0f6795c75660": "Get Em High (A-Trak remix)",
+    "9e4da579-0931-45cd-b0a9-3f8d26b22b0f": "Would U Like 2 Ride (Blend)"
+  }
 },
 "Kendrick Lamar": {
-  "Ab-Soul": [
-    "7756d7ae-ff6d-4a02-a47e-4ce684698891",
-    "e9dad0b2-c9c5-4042-a551-74546be3e2d8",
-    "d9d6765c-36f8-48e0-8fd5-bf515e32423b",
-    "069409eb-08db-40d1-9bc5-bb136c685f29",
-    "9edec7c5-6331-4067-a2d3-bd5719988494",
-    "27498bb6-126c-4460-ac92-c99cf4935c4d",
-    "7ee83b87-febf-4119-8681-8afcffca112b"
-  ],
-  "Lil Wayne": [
-    "dd204301-5175-4e2d-925e-2163dc9df26f"
-  ],
-  "Dr. Dre": [
-    "7655d366-57d4-4bd3-9030-8de9b1efa5e1",
-    "115be1e6-3937-41ef-96dd-11b768c3a56e"
-  ],
-  "Juicy J": [
-    "9bf94585-9e40-4015-be6d-294fbdfa882f"
-  ],
-  "Young Jeezy": [
-    "fa95bca2-2ccd-42cb-a29d-b7cb2ecb98a0"
-  ],
-  "50 Cent": [
-    "828b2bb3-ca06-4bb4-8ff2-25cce05c8124",
-    "fae24e52-3701-4455-925a-73e3b4ef8549"
-  ],
-  "Danny Brown": [
-    "b2c23109-b45e-4c67-a908-7337559ae9e5"
-  ],
-  "A$AP Rocky": [
-    "b2c23109-b45e-4c67-a908-7337559ae9e5",
-    "c62bf94c-b8ad-40b3-b357-265f91e6fbe5"
-  ],
-  "Kid Cudi": [
-    "947d26ad-6655-449b-b442-e6a72af777d1"
-  ],
-  "T.I.": [
-    "fc52fb68-4e21-4d10-be7f-a4b23d68e031"
-  ],
-  "Murs": [
-    "11e711e9-539d-429b-988d-f98d2fa5027b"
-  ],
-  "Drake": [
-    "ecd80faa-f201-4756-943c-65dbe79a4dc5",
-    "c62bf94c-b8ad-40b3-b357-265f91e6fbe5",
-    "21842c0b-b4ac-4418-878c-4f377032f0fe"
-  ],
-  "Action Bronson": [
-    "b2c23109-b45e-4c67-a908-7337559ae9e5"
-  ],
-  "Snoop Dogg": [
-    "f49ad366-23d0-4911-b626-f27a1352a2e2"
-  ],
-  "Pusha T": [
-    "6f490a44-5750-4cfe-8ef1-f28dc02b6ff2"
-  ]
+  "Ab-Soul": {
+    "7756d7ae-ff6d-4a02-a47e-4ce684698891": "Welcome to C4",
+    "e9dad0b2-c9c5-4042-a551-74546be3e2d8": "Still Hustlin'",
+    "d9d6765c-36f8-48e0-8fd5-bf515e32423b": "P & P 1.5",
+    "069409eb-08db-40d1-9bc5-bb136c685f29": "P & P",
+    "9edec7c5-6331-4067-a2d3-bd5719988494": "Famous Pipe Game",
+    "27498bb6-126c-4460-ac92-c99cf4935c4d": "West Coast Wu-Tang",
+    "7ee83b87-febf-4119-8681-8afcffca112b": "Take Off Your Pants"
+  },
+  "Lil Wayne": {
+    "dd204301-5175-4e2d-925e-2163dc9df26f": "Mr. Carter 2 (New Wayne Verse)"
+  },
+  "Jay Z": {
+    "36767a98-c07b-4333-8a43-b58535663287": "Bitch Dont Kill My Vibe (remix)"
+  },
+  "Dr. Dre": {
+    "7655d366-57d4-4bd3-9030-8de9b1efa5e1": "The Recipe",
+    "115be1e6-3937-41ef-96dd-11b768c3a56e": "Compton"
+  },
+  "Juicy J": {
+    "9bf94585-9e40-4015-be6d-294fbdfa882f": "I Want It All"
+  },
+  "J. Cole": {
+    "fdebc7bc-27df-4316-b944-f0187235c617": "Forbidden Fruit"
+  },
+  "50 Cent": {
+    "828b2bb3-ca06-4bb4-8ff2-25cce05c8124": "We Up",
+    "fae24e52-3701-4455-925a-73e3b4ef8549": "We Up"
+  },
+  "Joey Bada$$": {
+    "b2c23109-b45e-4c67-a908-7337559ae9e5": "1 Train"
+  },
+  "Danny Brown": {
+    "b2c23109-b45e-4c67-a908-7337559ae9e5": "1 Train"
+  },
+  "A$AP Rocky": {
+    "b2c23109-b45e-4c67-a908-7337559ae9e5": "1 Train",
+    "c62bf94c-b8ad-40b3-b357-265f91e6fbe5": "Fuckin' Problems"
+  },
+  "Jay Rock": {
+    "33eede6d-8463-4eb3-8365-56c7dfe1a7e0": "I Do This",
+    "7756d7ae-ff6d-4a02-a47e-4ce684698891": "Welcome to C4",
+    "e9dad0b2-c9c5-4042-a551-74546be3e2d8": "Still Hustlin'",
+    "0132cd32-a517-4103-87f5-f0cf5d42d1db": "My People",
+    "903ca235-c726-4cb6-a89f-17d6ff55d915": "Misunderstood",
+    "c294757b-0430-4eb4-ae7a-6abcffb87405": "Money Trees",
+    "066dfe28-4cd5-4bbd-b81a-9ed7b4858904": "My People",
+    "ac9ee211-8a86-48b6-9e1f-c5a78f69d25f": "Imagine"
+  },
+  "Young Jeezy": {
+    "d92bc00f-d211-4f89-a271-aec84843b5ee": "Westside, Right On Time"
+  },
+  "Drake": {
+    "ecd80faa-f201-4756-943c-65dbe79a4dc5": "Poetic Justice [Explicit]",
+    "c62bf94c-b8ad-40b3-b357-265f91e6fbe5": "Fuckin' Problems",
+    "21842c0b-b4ac-4418-878c-4f377032f0fe": "Poetic Justice"
+  },
+  "Pusha T": {
+    "6f490a44-5750-4cfe-8ef1-f28dc02b6ff2": "Nosetalgia"
+  },
+  "T.I.": {
+    "fc52fb68-4e21-4d10-be7f-a4b23d68e031": "Memories Back Then"
+  },
+  "Murs": {
+    "11e711e9-539d-429b-988d-f98d2fa5027b": "She Needs Me (remix)"
+  },
+  "ScHoolboy Q": {
+    "7756d7ae-ff6d-4a02-a47e-4ce684698891": "Welcome to C4",
+    "c2e0c26a-7e79-4fcd-9f8b-6f658a0a4d97": "Far From Here",
+    "f0ca345f-dc8e-4092-a73f-2df3529e432d": "Michael Jordan",
+    "117bdb40-40b9-4f81-a3ee-c70d4586ce44": "The Spiteful Chant",
+    "cf1f0a19-5ac2-4250-8273-9bf38fbaf170": "Collard Greens",
+    "34e3c370-be27-492e-b8f1-c8cfb4cce23b": "Collard Greens"
+  },
+  "Action Bronson": {
+    "b2c23109-b45e-4c67-a908-7337559ae9e5": "1 Train"
+  },
+  "Snoop Dogg": {
+    "f49ad366-23d0-4911-b626-f27a1352a2e2": "Institutionalized"
+  },
+  "Kid Cudi": {
+    "947d26ad-6655-449b-b442-e6a72af777d1": "Solo Dolo, Part 2"
+  }
 },
 "Kevin Gates": {
-  "Currensy": [
-    "7f613003-5e19-41b1-86bf-4ae5f7dbb8a0"
-  ],
-  "Master P": [
-    "80a06055-16f6-4da3-bc15-f268afbe61d3"
-  ],
-  "Juicy J": [
-    "bfc2da11-1584-4e08-a887-4f316ec1bd19"
-  ]
+  "Currensy": {
+    "7f613003-5e19-41b1-86bf-4ae5f7dbb8a0": "Just Ride"
+  },
+  "Master P": {
+    "80a06055-16f6-4da3-bc15-f268afbe61d3": "Ugly but She Fine"
+  },
+  "Juicy J": {
+    "bfc2da11-1584-4e08-a887-4f316ec1bd19": "Thinking With My Dick"
+  }
 },
 "Kid Cudi": {
-  "Wale": [
-    "01bfc638-b5f4-47cc-bfda-61b9202d0a21",
-    "3d76a8de-8369-4dca-84c0-c8fd039e7440",
-    "380f8cf9-84c0-48af-a5fc-ae45d50b9b8c",
-    "675c0b29-00c6-4523-9397-aaf8ed19f4ad",
-    "63d2a762-04f5-4692-a362-71e656a44561",
-    "cade9b8e-a369-454c-9bdb-841192205dc5"
-  ],
-  "Kanye West": [
-    "21d9bb76-a6cc-492a-8592-fc6d838fc34c",
-    "54532a4f-7621-4c04-9b36-31c559528577",
-    "ff037143-7cb4-4bef-aa42-dfa3b2ccba88",
-    "ea40db84-3ae6-498e-ac46-0dda27d42b74",
-    "ae32f56d-ca2e-43c8-a5c7-57b981160337",
-    "b0f6c499-f792-4163-9aec-43d21276393e",
-    "223dd661-10cf-4ef1-bc2d-a3a0483c4d70",
-    "55c56289-653e-49da-87a5-d5a6b9b8a779",
-    "aae455f3-321d-4d48-a794-62f29fda34d4",
-    "ad9fcec9-16a4-47bb-8a07-f442a71af898",
-    "9eff08f8-e8cf-46f9-b948-dc2bf57b6f42",
-    "90a1a3eb-e99e-479a-9282-e15964f8a351",
-    "9de34d40-db72-4a4b-a5dc-2900b366f91a"
-  ],
-  "Snoop Dogg": [
-    "d3559b5d-183e-4a3d-8d6f-329acc4f4211"
-  ],
-  "Busta Rhymes": [
-    "ea4d4ab7-46c6-4804-be3a-47e3fd6af436"
-  ],
-  "Talib Kweli": [
-    "f9228561-4e03-42c0-91eb-f51361101ae2",
-    "e2f85890-1785-48a0-a628-b3217e1bf798"
-  ],
-  "Pusha T": [
-    "55c56289-653e-49da-87a5-d5a6b9b8a779",
-    "aae455f3-321d-4d48-a794-62f29fda34d4"
-  ],
-  "Rick Ross": [
-    "af659837-0582-4fc9-b741-ffc503b61846",
-    "f4189784-5cc2-4084-a56a-b527521f2c58",
-    "fac8a233-1a14-40e1-99ec-0e01df92f17a"
-  ],
-  "Asher Roth": [
-    "96f458b8-8e2d-4170-9ffa-85922a25bc9f"
-  ],
-  "A$AP Rocky": [
-    "355e994e-747e-44c9-8b75-37bdf8ebcd8d"
-  ],
-  "Big Sean": [
-    "54532a4f-7621-4c04-9b36-31c559528577",
-    "ae32f56d-ca2e-43c8-a5c7-57b981160337",
-    "aae455f3-321d-4d48-a794-62f29fda34d4"
-  ],
-  "Too Short": [
-    "73d6b799-3583-4bce-9d92-7e320158eddd"
-  ],
-  "Kendrick Lamar": [
-    "f97dbaa7-3c4c-4434-9a85-29cdf5fb4c10"
-  ],
-  "Common": [
-    "21d9bb76-a6cc-492a-8592-fc6d838fc34c",
-    "54532a4f-7621-4c04-9b36-31c559528577",
-    "ff037143-7cb4-4bef-aa42-dfa3b2ccba88",
-    "223dd661-10cf-4ef1-bc2d-a3a0483c4d70",
-    "90a1a3eb-e99e-479a-9282-e15964f8a351",
-    "aae455f3-321d-4d48-a794-62f29fda34d4",
-    "9de34d40-db72-4a4b-a5dc-2900b366f91a"
-  ]
+  "Wale": {
+    "01bfc638-b5f4-47cc-bfda-61b9202d0a21": "Look Up in da Stars",
+    "3d76a8de-8369-4dca-84c0-c8fd039e7440": "Is There Any Love?",
+    "380f8cf9-84c0-48af-a5fc-ae45d50b9b8c": "Focused",
+    "675c0b29-00c6-4523-9397-aaf8ed19f4ad": "Look Up in Da Stars",
+    "63d2a762-04f5-4692-a362-71e656a44561": "Look Up in the Stars",
+    "cade9b8e-a369-454c-9bdb-841192205dc5": "Look Up in da Stars"
+  },
+  "Kanye West": {
+    "21d9bb76-a6cc-492a-8592-fc6d838fc34c": "Make Her Say",
+    "54532a4f-7621-4c04-9b36-31c559528577": "Whatever You Want (remix)",
+    "ff037143-7cb4-4bef-aa42-dfa3b2ccba88": "Poker Face",
+    "ea40db84-3ae6-498e-ac46-0dda27d42b74": "Sky High",
+    "ae32f56d-ca2e-43c8-a5c7-57b981160337": "Paranoid (G.O.O.D Music remix)",
+    "b0f6c499-f792-4163-9aec-43d21276393e": "Erase Me",
+    "223dd661-10cf-4ef1-bc2d-a3a0483c4d70": "I Poke Her Face",
+    "55c56289-653e-49da-87a5-d5a6b9b8a779": "Christian Dior Denim Flow",
+    "aae455f3-321d-4d48-a794-62f29fda34d4": "Good Friday",
+    "ad9fcec9-16a4-47bb-8a07-f442a71af898": "Anyone but Him",
+    "9eff08f8-e8cf-46f9-b948-dc2bf57b6f42": "The Joy",
+    "90a1a3eb-e99e-479a-9282-e15964f8a351": "Make Her Say",
+    "9de34d40-db72-4a4b-a5dc-2900b366f91a": "Poke Her Face"
+  },
+  "Busta Rhymes": {
+    "ea4d4ab7-46c6-4804-be3a-47e3fd6af436": "Boom Boom Pow (remix)"
+  },
+  "Talib Kweli": {
+    "f9228561-4e03-42c0-91eb-f51361101ae2": "Therapy",
+    "e2f85890-1785-48a0-a628-b3217e1bf798": "Therapy, Part 2"
+  },
+  "A$AP Rocky": {
+    "355e994e-747e-44c9-8b75-37bdf8ebcd8d": "Brothers"
+  },
+  "Rick Ross": {
+    "af659837-0582-4fc9-b741-ffc503b61846": "Welcome to the World (remix)",
+    "f4189784-5cc2-4084-a56a-b527521f2c58": "I Like That",
+    "fac8a233-1a14-40e1-99ec-0e01df92f17a": "Sky Might Fall (remix)"
+  },
+  "Kendrick Lamar": {
+    "f97dbaa7-3c4c-4434-9a85-29cdf5fb4c10": "Solo Dolo, Part II"
+  },
+  "Asher Roth": {
+    "96f458b8-8e2d-4170-9ffa-85922a25bc9f": "Freestyle Jam"
+  },
+  "Pusha T": {
+    "55c56289-653e-49da-87a5-d5a6b9b8a779": "Christian Dior Denim Flow",
+    "aae455f3-321d-4d48-a794-62f29fda34d4": "Good Friday"
+  },
+  "Big Sean": {
+    "54532a4f-7621-4c04-9b36-31c559528577": "Whatever You Want (remix)",
+    "ae32f56d-ca2e-43c8-a5c7-57b981160337": "Paranoid (G.O.O.D Music remix)",
+    "aae455f3-321d-4d48-a794-62f29fda34d4": "Good Friday"
+  },
+  "Too Short": {
+    "73d6b799-3583-4bce-9d92-7e320158eddd": "Girls"
+  },
+  "Snoop Dogg": {
+    "d3559b5d-183e-4a3d-8d6f-329acc4f4211": "Peace, Love, Joy"
+  },
+  "Common": {
+    "21d9bb76-a6cc-492a-8592-fc6d838fc34c": "Make Her Say",
+    "54532a4f-7621-4c04-9b36-31c559528577": "Whatever You Want (remix)",
+    "ff037143-7cb4-4bef-aa42-dfa3b2ccba88": "Poker Face",
+    "223dd661-10cf-4ef1-bc2d-a3a0483c4d70": "I Poke Her Face",
+    "90a1a3eb-e99e-479a-9282-e15964f8a351": "Make Her Say",
+    "aae455f3-321d-4d48-a794-62f29fda34d4": "Good Friday",
+    "9de34d40-db72-4a4b-a5dc-2900b366f91a": "Poke Her Face"
+  }
 },
 "Killer Mike": {
-  "Young Jeezy": [
-    "59114bb6-3fd1-48ae-a0b6-15effbbf74b5",
-    "d063aff3-eb0c-4f49-a2cc-83dac8af2d11"
-  ],
-  "Twista": [
-    "10658105-884f-4434-822a-57bf6039359e"
-  ],
-  "Big Boi": [
-    "c24c0a5c-454c-45c7-8731-0274a8fe884e",
-    "0cc8bb95-9fd4-4672-9c9f-0c29f5c9cb0f",
-    "908d5d3e-aede-431d-9b81-456de21694f2",
-    "9ddfbd2d-ad9f-4ab7-8345-7ac45ecc6890"
-  ],
-  "T.I.": [
-    "4b9743bd-a500-4ac9-987e-36333bb83c60",
-    "0cc8bb95-9fd4-4672-9c9f-0c29f5c9cb0f",
-    "f56e2064-c70c-4946-a9c1-9245ea01c574",
-    "35f8dca5-8209-46a6-977d-3407f87ceecc",
-    "c24c0a5c-454c-45c7-8731-0274a8fe884e",
-    "c5603154-7152-4b3c-a8d5-1cde87e902c9",
-    "775aa1f7-b453-4ce0-be36-cf624163002e",
-    "845a9903-d18f-423b-aa07-22956bdf0373",
-    "6503d299-43cf-4e2b-aca9-458e49c86885"
-  ],
-  "Ice Cube": [
-    "e21924dd-1e60-49a3-a3bb-2edbe1c90b9d"
-  ]
+  "OutKast": {
+    "ed0341f3-44c9-4fb6-8d6e-b601f800ddb5": "AKshon (Yeah!)"
+  },
+  "Young Jeezy": {
+    "59114bb6-3fd1-48ae-a0b6-15effbbf74b5": "Go Out on the Town",
+    "d063aff3-eb0c-4f49-a2cc-83dac8af2d11": "Go Out on the Town"
+  },
+  "Twista": {
+    "10658105-884f-4434-822a-57bf6039359e": "Players Lullaby"
+  },
+  "T.I.": {
+    "4b9743bd-a500-4ac9-987e-36333bb83c60": "In My City",
+    "0cc8bb95-9fd4-4672-9c9f-0c29f5c9cb0f": "Ready Set Go (remix)",
+    "f56e2064-c70c-4946-a9c1-9245ea01c574": "Big Beast",
+    "35f8dca5-8209-46a6-977d-3407f87ceecc": "Ready Set Go",
+    "c24c0a5c-454c-45c7-8731-0274a8fe884e": "Ready Set Go (remix)",
+    "c5603154-7152-4b3c-a8d5-1cde87e902c9": "Re-Akshon (clean remix)",
+    "775aa1f7-b453-4ce0-be36-cf624163002e": "Ready Set Go",
+    "845a9903-d18f-423b-aa07-22956bdf0373": "Niggaz Down South (remix)",
+    "6503d299-43cf-4e2b-aca9-458e49c86885": "Re-AKshon (remix)"
+  },
+  "EL-P": {
+    "7d8c02fc-2fa6-4343-8a36-16cc1143d351": "Butane (Champion\u2019s Anthem)"
+  },
+  "Big Boi": {
+    "c24c0a5c-454c-45c7-8731-0274a8fe884e": "Ready Set Go (remix)",
+    "0cc8bb95-9fd4-4672-9c9f-0c29f5c9cb0f": "Ready Set Go (remix)",
+    "908d5d3e-aede-431d-9b81-456de21694f2": "A.D.I.D.A.S.",
+    "9ddfbd2d-ad9f-4ab7-8345-7ac45ecc6890": "My Chrome"
+  },
+  "Ice Cube": {
+    "e21924dd-1e60-49a3-a3bb-2edbe1c90b9d": "Bad Day / Worst Day (remix)"
+  }
 },
 "Kool Keith": {},
 "KRS-One": {
-  "Rakim": [
-    "fcf984c6-9b5f-4ac2-990a-6a3e46644360",
-    "c82848ee-bb1a-4def-8d3e-4e359dc37fcc"
-  ],
-  "Kanye West": [
-    "32dc2588-a199-44fb-88fc-eb5e045b4fd4",
-    "c82848ee-bb1a-4def-8d3e-4e359dc37fcc",
-    "cc1aab6f-78b3-49a2-babc-456647a727c8",
-    "a668e11b-e96a-40cd-9dd4-2f3b53002853",
-    "07d7064a-96a3-4587-b091-e4bd4e6026b7"
-  ],
-  "Busta Rhymes": [
-    "179c59ed-4540-4608-bb83-cf85c552f27c"
-  ],
-  "Talib Kweli": [
-    "f4f792e3-ac4b-40f3-a9ea-99317c69854b"
-  ],
-  "Chuck D": [
-    "15be63c8-4b51-4429-84d8-3d477448389e"
-  ],
-  "Nas": [
-    "32dc2588-a199-44fb-88fc-eb5e045b4fd4",
-    "a668e11b-e96a-40cd-9dd4-2f3b53002853",
-    "c82848ee-bb1a-4def-8d3e-4e359dc37fcc",
-    "cc1aab6f-78b3-49a2-babc-456647a727c8",
-    "cb010b9f-8cb6-4a19-b74a-383c9a9efab1",
-    "07d7064a-96a3-4587-b091-e4bd4e6026b7"
-  ],
-  "Redman": [
-    "843ea27c-cc27-4f0d-848d-3bf388628c10",
-    "b9fce197-7946-4dec-9566-934661310bf6",
-    "6ae4ec41-e419-4d60-8b45-df408a406377",
-    "44662c0a-153c-452d-b864-167eeaae27f7"
-  ],
-  "Common": [
-    "d01d10dc-5c72-497b-818d-7132285a6a6a"
-  ],
-  "Immortal Technique": [
-    "b02dc12b-575a-4fab-ac6b-7993e1960f62"
-  ]
+  "Rakim": {
+    "fcf984c6-9b5f-4ac2-990a-6a3e46644360": "Intro",
+    "c82848ee-bb1a-4def-8d3e-4e359dc37fcc": "Classic (Better Than I\u2019ve Ever Been) (DJ Premier remix)"
+  },
+  "Kanye West": {
+    "32dc2588-a199-44fb-88fc-eb5e045b4fd4": "Classic (Better Than I\u2019ve Ever Been) (DJ Premier remix) (instrumental)",
+    "c82848ee-bb1a-4def-8d3e-4e359dc37fcc": "Classic (Better Than I\u2019ve Ever Been) (DJ Premier remix)",
+    "cc1aab6f-78b3-49a2-babc-456647a727c8": "Better Than I\u2019ve Ever Been",
+    "a668e11b-e96a-40cd-9dd4-2f3b53002853": "Better Than I\u2019ve Ever Been (instrumental)",
+    "07d7064a-96a3-4587-b091-e4bd4e6026b7": "Better Than I\u2019ve Ever Been (a cappella)"
+  },
+  "Busta Rhymes": {
+    "179c59ed-4540-4608-bb83-cf85c552f27c": "Build Ya Skillz"
+  },
+  "Talib Kweli": {
+    "f4f792e3-ac4b-40f3-a9ea-99317c69854b": "Oh Really"
+  },
+  "Chuck D": {
+    "15be63c8-4b51-4429-84d8-3d477448389e": "Today's Topics"
+  },
+  "Nas": {
+    "32dc2588-a199-44fb-88fc-eb5e045b4fd4": "Classic (Better Than I\u2019ve Ever Been) (DJ Premier remix) (instrumental)",
+    "a668e11b-e96a-40cd-9dd4-2f3b53002853": "Better Than I\u2019ve Ever Been (instrumental)",
+    "c82848ee-bb1a-4def-8d3e-4e359dc37fcc": "Classic (Better Than I\u2019ve Ever Been) (DJ Premier remix)",
+    "cc1aab6f-78b3-49a2-babc-456647a727c8": "Better Than I\u2019ve Ever Been",
+    "cb010b9f-8cb6-4a19-b74a-383c9a9efab1": "The Real Hiphop",
+    "07d7064a-96a3-4587-b091-e4bd4e6026b7": "Better Than I\u2019ve Ever Been (a cappella)"
+  },
+  "Redman": {
+    "843ea27c-cc27-4f0d-848d-3bf388628c10": "Blowe",
+    "b9fce197-7946-4dec-9566-934661310bf6": "Heartbeat",
+    "6ae4ec41-e419-4d60-8b45-df408a406377": "Heartbeat (LP version)",
+    "44662c0a-153c-452d-b864-167eeaae27f7": "5 Boroughs"
+  },
+  "Common": {
+    "d01d10dc-5c72-497b-818d-7132285a6a6a": "A Freestyle Song"
+  },
+  "Immortal Technique": {
+    "b02dc12b-575a-4fab-ac6b-7993e1960f62": "Runnin Away"
+  }
 },
