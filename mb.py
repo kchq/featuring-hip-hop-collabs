@@ -20,7 +20,7 @@ with open("ids_artist.json") as f:
 # TODO: replace this txt file with the chunk you are running
 # make sure you don't have any files named "records_incremental.json"
 # or "collabs_incremental.json"
-with open("artists_sonja.txt") as f:
+with open("artists_riley.txt") as f:
     rappers = f.read().splitlines()
 
 musicbrainzngs.set_useragent("Example music app", "0.1", "http://example.com/music")
@@ -34,7 +34,7 @@ collabs_json = {}
 
 # TODO: change file to your name!
 def writeArtistCollabs(name, artist_collabs):
-    with open("sonja_collabs.json", "a") as outfile:
+    with open("riley_collabs.json", "a") as outfile:
         outfile.write("\"" + name + "\": ");
         json.dump(artist_collabs, outfile, indent=2, separators=(',', ': ')) 
         outfile.write(",\n")
