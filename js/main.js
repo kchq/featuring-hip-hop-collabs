@@ -2,8 +2,8 @@ $(document).ready(init);
 
 //d3.select(window).on("resize", throttle);
 
-var width, height, centered, time_slider, prevYear, currentYear;
-var svg, g, gc, washington, midWest, northEast, southCalifornia, northCalifornia, south, time_slider;
+var width, height, mainVisTop, mainVisLeft, narrationLeft, narrationTop, narrationWidth, centered, time_slider, prevYear, currentYear, timelineEvents, slider;
+var svg, svgNarration, g, gn, gc, washington, midWest, northEast, southCalifornia, northCalifornia, south, time_slider;
 
 //width = document.getElementById('container').scrollWidth;
 width = $(window).width() * 0.6;
@@ -26,7 +26,9 @@ function init() {
 
 // creates the svg
 function setup() {
-  svg = d3.select("#mainVis").style("left", $(window).width() * (1 - (width/$(window).width()) - 0.025) + "px").style("top", $(window).height() * (1 - (height / $(window).height()))/2 + "px").style("position", "absolute")
+  mainVisLeft = $(window).width() * (1 - (width/$(window).width()) - 0.025);
+  mainVisTop = $(window).height() * (1 - (height / $(window).height()))/2;
+  svg = d3.select("#mainVis").style("left", mainVisLeft + "px").style("top", mainVisTop + "px").style("position", "absolute")
     .append("svg")
     .attr("width", width)
     .attr("height", height)
@@ -43,16 +45,20 @@ function setup() {
     //.on("click", clicked);
 
   gc = svg.append("g").attr("id", "rappers");
+
+  // setup narrator box and get timeline events ready
+  narrationSetup();
 }
 
 function drawSlider() {
-  var slider = d3.slider().min(1965).max(2015).ticks(10).showRange(true).tickFormat(function(d) {
+  slider = d3.slider().min(1965).max(2015).ticks(10).showRange(true).tickFormat(function(d) {
     return "" + parseInt(d);
   });
 
   slider.callback(function() {
     currentYear = parseInt(slider.value());
     drawRappers();
+    updateNarration();
   })
 
   // Render the slider in the div
