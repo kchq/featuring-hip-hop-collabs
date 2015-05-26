@@ -29,10 +29,22 @@ body {
   pointer-events: none;
 }
 
-
-#mainVis {
+@font-face {
+    font-family: "syncopateBold";
+    src: url("../syncopate/Syncopate-Bold.ttf");
 }
 
+@font-face {
+    font-family: "syncopateRegular";
+    src: url("../syncopate/Syncopate-Regular.ttf");
+}
+.narrationEventText {
+  font-family: "syncopateRegular";
+}
+
+#narrationYearText {
+  font-family: "syncopateBold";
+}
 
 #slider {
   width: 95%;
