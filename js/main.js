@@ -48,7 +48,6 @@ function drawSlider() {
 
   slider.callback(function() {
     currentYear = parseInt(slider.value());
-    console.log(slider.value());
     drawRappers();
   })
 
