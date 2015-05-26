@@ -24,9 +24,12 @@ circle {
   pointer-events: none;
 }
 
-#sliderContainer {
-  margin: 50px;
+#mainVis {
+
 }
+
+
 #slider {
-  width: 80%;
+  margin-left: 2%;
+  width: 90%;
 }

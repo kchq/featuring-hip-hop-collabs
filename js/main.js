@@ -2,7 +2,7 @@ $(document).ready(init);
 
 d3.select(window).on("resize", throttle);
 
-var width, height, centered, time_slider, currentYear;
+var width, height, centered, time_slider, prevYear, currentYear;
 var svg, g, gc, washington, midWest, northEast, southCalifornia, northCalifornia, south, time_slider;
 
 width = document.getElementById('container').scrollWidth;
@@ -25,9 +25,10 @@ function init() {
 
 // creates the svg
 function setup() {
-  svg = d3.select("body").append("svg")
+  svg = d3.select("#mainVis").append("svg")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height)
+    .attr("id", "map");
 
   g = svg.append("g");
 
@@ -41,31 +42,36 @@ function setup() {
 }
 
 function drawSlider() {
-  var slider = d3.slider().axis(true).min(1950).max(2015).step(5);
-  slider.on("slide", function(evt, value) {
-    currentYear = parseInt(value);
-    d3.select("#rappers").html("");
-    drawRegions();
-    drawRappers();
+  var slider = d3.slider().min(1965).max(2015).ticks(10).showRange(true).tickFormat(function(d) {
+    return "" + parseInt(d);
   });
+
+  slider.callback(function() {
+    currentYear = parseInt(slider.value());
+    console.log(slider.value());
+    drawRappers();
+  })
 
   // Render the slider in the div
   d3.select('#slider').call(slider);
-  currentYear = 1950;
+  currentYear = 1965;
+  prevYear = 1965;
+
 }
+
 
 // sets up and draws the region circles
 function drawRegions() {
-  washington = drawRegion(122.3331, 47.609);
-  northEast = drawRegion(74.0059, 40.7127);
-  northCalifornia = drawRegion(121.4689, 38.5556);
-  southCalifornia = drawRegion(117, 35);
-  south = drawRegion(85, 32);
-  midWest = drawRegion(87.6847, 40);
+  washington = drawRegion(122.3331, 47.609, "green");
+  northEast = drawRegion(74.0059, 40.7127, "steelblue");
+  northCalifornia = drawRegion(121.4689, 38.5556, "gold");
+  southCalifornia = drawRegion(117, 35, "orange");
+  south = drawRegion(85, 32, "red");
+  midWest = drawRegion(87.6847, 40, "purple");
 }
 
 // helper function to draw a single region
-function drawRegion(lon, lat) {
+function drawRegion(lon, lat, color) {
   var region;
   var regionX = projection([-1*parseFloat(lon), parseFloat(lat)])[0];
   var regionY = projection([-1*parseFloat(lon), parseFloat(lat)])[1];
@@ -73,7 +79,8 @@ function drawRegion(lon, lat) {
                      .attr("cx", regionX)
                      .attr("cy", regionY)
                      .attr("r", 0)
-                     .attr("numArtists", 0);
+                     .attr("numArtists", 1)
+                     .style("fill", color);
   return region;
 }
 
@@ -84,6 +91,13 @@ function drawRappers() {
       // western hemisphere is negative https://github.com/mbostock/d3/issues/1287
       addRapper(artist.region, artist.name, artist.start_year);
     });
+    washington.transition().duration(100).attr("r", 10 * Math.log(washington.attr("numArtists")));
+    northEast.transition().duration(100).attr("r", 10 * Math.log(northEast.attr("numArtists")));
+    northCalifornia.transition().duration(100).attr("r", 10 * Math.log(northCalifornia.attr("numArtists")));
+    southCalifornia.transition().duration(100).attr("r", 10 * Math.log(southCalifornia.attr("numArtists")));
+    south.transition().duration(100).attr("r", 10 * Math.log(south.attr("numArtists")));
+    midWest.transition().duration(100).attr("r", 10 * Math.log(midWest.attr("numArtists")));
+    prevYear = currentYear;
   });
 }
 
@@ -133,28 +147,30 @@ function redraw() {
 }*/
 
 function addRapper(region, rapper, startYear) {
+  var regionNode;
+  if (region === "W") {
+    regionNode = washington;
+  } else if (region === "SC") {
+    regionNode = southCalifornia;
+  } else if (region === "NC") {
+    regionNode = northCalifornia;
+  } else if (region ==="S") {
+    regionNode = south;
+  } else if (region === "NE") {
+    regionNode = northEast;
+  } else if (region == "MW") {
+    regionNode = midWest;
+  }
 
-  //if (startYear !== "" && parseInt(startYear) <= currentYear) {
-     var regionNode;
-    if (region === "W") {
-      regionNode = washington;
-    } else if (region === "SC") {
-      regionNode = southCalifornia;
-    } else if (region === "NC") {
-      regionNode = northCalifornia;
-    } else if (region ==="S") {
-      regionNode = south;
-    } else if (region === "NE") {
-      regionNode = northEast;
-    } else if (region == "MW") {
-      regionNode = midWest;
-    }
+  if (regionNode != undefined && startYear !== "") {
+    if (parseInt(startYear) <= currentYear && parseInt(startYear) > prevYear) {
 
-    if (regionNode != undefined) {
       regionNode.attr("numArtists", parseInt(regionNode.attr("numArtists")) + 1);
-      regionNode.attr("r", 10 * Math.log(regionNode.attr("numArtists")));
+
+    } else if (parseInt(startYear) > currentYear && parseInt(startYear) <= prevYear) {
+      regionNode.attr("numArtists", parseInt(regionNode.attr("numArtists")) - 1);
     }
-  //}
+  }
 }
 
 function clicked(d) {
