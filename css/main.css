@@ -4,10 +4,16 @@ body {
 }
 
 .background {
-  fill: "black";
+  fill: #000;
   pointer-events: all;
-  border-radius: 25px;
-  border: 2px solid #000;
+  stroke: #aaa;
+  stroke-width: 4%;
+}
+
+#narrationBackground {
+  fill: #aaa;
+  stroke: black;
+  stroke-width: 4%;
 }
 
 #states {
