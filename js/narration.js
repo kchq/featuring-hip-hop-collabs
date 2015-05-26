@@ -27,8 +27,7 @@ function restOfNarrationSetup() {
 	.attr("height", height)
 	.attr("id", "narrationSvg");
 
-	gn = svgNarration.append("g")
-					  .style("overflow", "visible");
+	gn = svgNarration.append("g");
 
 	gn.append("rect")
 		.attr("id", "narrationBackground")
@@ -41,7 +40,7 @@ function restOfNarrationSetup() {
 		.attr("id", "narrationYearText")
         .attr("x", narrationWidth/2)
         .attr("y", height/5)
-        .style("font-size", narrationWidth/5)
+        .style("font-size", narrationWidth/10)
         .style("text-anchor", "middle")
         .text(function(d) { return slider.value();});
 
@@ -61,7 +60,7 @@ function updateNarration() {
 	if (eventsForYear != undefined) {
 		var currX = narrationWidth/7;
 		var currY = height/4;
-		var size = narrationWidth/20;
+		var size = narrationWidth/25;
 		var eventNo = 0;
 		eventsForYear.forEach(function(eventDesc) {
 			gn.append("text")
