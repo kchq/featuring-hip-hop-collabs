@@ -2,10 +2,6 @@ body {
   margin: 0px;
 }
 
-circle {
-  fill: #04CCFF;
-}
-
 .background {
   fill: none;
   pointer-events: all;
@@ -32,4 +28,5 @@ circle {
 #slider {
   margin-left: 2%;
   width: 90%;
+  height: 2%;
 }
