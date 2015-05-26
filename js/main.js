@@ -70,7 +70,7 @@ function drawRegions() {
   northCalifornia = drawRegion(121.4689, 38.5556, "#BF9900");
   southCalifornia = drawRegion(117, 35, "#E39612");
   south = drawRegion(85, 32, "#BF113A");
-  midWest = drawRegion(87.6847, 40, "#AA61D4");
+  midWest = drawRegion(87.6847, 40, "#A314A8");
 }
 
 // helper function to draw a single region
