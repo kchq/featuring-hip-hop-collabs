@@ -1,11 +1,12 @@
 $(document).ready(init);
 
-d3.select(window).on("resize", throttle);
+//d3.select(window).on("resize", throttle);
 
 var width, height, centered, time_slider, prevYear, currentYear;
 var svg, g, gc, washington, midWest, northEast, southCalifornia, northCalifornia, south, time_slider;
 
-width = document.getElementById('container').scrollWidth;
+//width = document.getElementById('container').scrollWidth;
+width = $(window).width() * 0.6;
 height = width * 25.0 / 48.0;  // dimensions taken from http://bl.ocks.org/mbostock/2206340
 
 var projection = d3.geo.albersUsa()
@@ -25,7 +26,8 @@ function init() {
 
 // creates the svg
 function setup() {
-  svg = d3.select("#mainVis").append("svg")
+  svg = d3.select("#mainVis").style("left", $(window).width() * (1 - (width/$(window).width()) - 0.025) + "px").style("top", $(window).height() * (1 - (height / $(window).height()))/2 + "px").style("position", "absolute")
+    .append("svg")
     .attr("width", width)
     .attr("height", height)
     .attr("id", "map");
@@ -35,7 +37,9 @@ function setup() {
   g.append("rect")
     .attr("class", "background")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height)
+    .attr("rx", 50)
+    .attr("ry", 50);
     //.on("click", clicked);
 
   gc = svg.append("g").attr("id", "rappers");
@@ -52,7 +56,7 @@ function drawSlider() {
   })
 
   // Render the slider in the div
-  d3.select('#slider').call(slider);
+  d3.select('#slider').style("top", parseInt($("#mainVis").css("top")) + height + 20 + "px").call(slider);
   currentYear = 1965;
   prevYear = 1965;
 
@@ -61,12 +65,12 @@ function drawSlider() {
 
 // sets up and draws the region circles
 function drawRegions() {
-  washington = drawRegion(122.3331, 47.609, "green");
+  washington = drawRegion(122.3331, 47.609, "#3AA827");
   northEast = drawRegion(74.0059, 40.7127, "steelblue");
-  northCalifornia = drawRegion(121.4689, 38.5556, "gold");
-  southCalifornia = drawRegion(117, 35, "orange");
-  south = drawRegion(85, 32, "red");
-  midWest = drawRegion(87.6847, 40, "purple");
+  northCalifornia = drawRegion(121.4689, 38.5556, "#BF9900");
+  southCalifornia = drawRegion(117, 35, "#E39612");
+  south = drawRegion(85, 32, "#BF113A");
+  midWest = drawRegion(87.6847, 40, "#AA61D4");
 }
 
 // helper function to draw a single region

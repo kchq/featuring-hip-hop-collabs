@@ -33,14 +33,18 @@ d3.slider = function module() {
       svg.append("rect")
       .attr("class", "d3slider-rect-range")
       .attr("width", width)
-      .attr("height", rectHeight);
+      .attr("height", rectHeight)
+      .attr("rx", 15)
+      .attr("ry", 15);
      
       // Range rect 
       if (range) {
         svg.append("rect")
         .attr("class", "d3slider-rect-value")
         .attr("width", scale(value))
-        .attr("height", rectHeight);
+        .attr("height", rectHeight)
+        .attr("rx", 15)
+        .attr("ry", 15);
       }
       
       // Axis      

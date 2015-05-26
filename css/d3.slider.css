@@ -34,7 +34,8 @@
 }
 
 .d3slider text {
-  font: 10px sans-serif;
+  font: 70% sans-serif;
+  font-weight: bold;
 }
 
 .tick.minor text {
