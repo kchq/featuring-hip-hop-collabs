@@ -1,19 +1,9 @@
 body {
   margin: 0px;
-  background: #D4B757;
 }
 
-.background {
-  fill: #000;
-  pointer-events: all;
-  stroke: #aaa;
-  stroke-width: 4%;
-}
-
-#narrationBackground {
-  fill: #aaa;
-  stroke: black;
-  stroke-width: 4%;
+#content {
+  position: relative;
 }
 
 #states {
@@ -22,7 +12,7 @@ body {
 
 #state-borders {
   fill: none;
-  stroke: #000;
+  stroke: #fff;
   stroke-width: 2px;
   stroke-linejoin: round;
   stroke-linecap: round;
