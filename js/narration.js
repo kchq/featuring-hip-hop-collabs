@@ -18,23 +18,26 @@ function narrationSetup() {
 }
 
 function restOfNarrationSetup() {
-	narrationWidth = $(window).width() * (1 - width/$(window).width() - 0.075);
-	narrationLeft = mainVisLeft - narrationWidth - $(window).width() * 0.02;
-	narrationTop = mainVisTop;
-	svgNarration = d3.select("#narration").style("left", narrationLeft + "px").style("top", narrationTop + "px").style("position", "absolute")
-	.append("svg")
-	.attr("width", narrationWidth)
-	.attr("height", height)
-	.attr("id", "narrationSvg");
+	narrationWidth = 220;
+	narrationLeft = 0;
+	narrationTop = 0;
+	svgNarration = d3.select("#narration")
+		.style("left", narrationLeft + "px")
+		.style("top", narrationTop + "px")
+		.style("position", "absolute")
+		.style("fill", "white")
+		.style("stroke", "black")
+		.append("svg")
+		.attr("width", narrationWidth)
+		.attr("height", height)
+		.attr("id", "narrationSvg");
 
 	gn = svgNarration.append("g");
 
 	gn.append("rect")
 		.attr("id", "narrationBackground")
 		.attr("width", narrationWidth)
-		.attr("height", height)
-		.attr("rx", 50)
-		.attr("ry", 50);
+		.attr("height", height);
 
 	gn.append("text")
 		.attr("id", "narrationYearText")
@@ -42,7 +45,7 @@ function restOfNarrationSetup() {
         .attr("y", height/5)
         .style("font-size", narrationWidth/10)
         .style("text-anchor", "middle")
-        .text(function(d) { return slider.value();});
+        .text(function(d) { return currentYear; });
 
   	gn.append("text")
   		.attr("class", "narrationEventText")
@@ -54,9 +57,9 @@ function restOfNarrationSetup() {
 }
 
 function updateNarration() {
-	$("#narrationYearText").text(parseInt(slider.value()));
+	$("#narrationYearText").text(currentYear);
 	$(".narrationEventText").remove();
-	var eventsForYear = timelineEvents.get("" + parseInt(slider.value()));
+	var eventsForYear = timelineEvents.get("" + currentYear);
 	if (eventsForYear != undefined) {
 		var currX = narrationWidth/7;
 		var currY = height/4;
