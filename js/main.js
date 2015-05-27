@@ -2,12 +2,31 @@ $(document).ready(init);
 
 //d3.select(window).on("resize", throttle);
 
-var width, height, mainVisTop, mainVisLeft, narrationLeft, narrationTop, narrationWidth, centered, time_slider, prevYear, currentYear, timelineEvents, slider;
-var svg, svgNarration, g, gn, gc, washington, midWest, northEast, southCalifornia, northCalifornia, south, time_slider;
+const regions = { 
+  "washington": { "lon": 122.3331, "lat": 47.609, "color": "#3AA827", "scale": 10},
+  "northEast": { "lon": 74.0059, "lat": 40.7127, "color": "steelblue", "scale": 4},
+  "northCalifornia": { "lon": 121.4689, "lat": 38.5556, "color": "#BF9900", "scale": 4},
+  "southCalifornia": { "lon": 117, "lat": 35, "color": "#E39612", "scale": 4},
+  "south": { "lon": 85, "lat": 32, "color": "#BF113A", "scale": 4},
+  "midWest": { "lon": 87.6847, "lat": 40, "color": "#A314A8", "scale": 3},
+}
 
-//width = document.getElementById('container').scrollWidth;
-width = $(window).width() * 0.6;
-height = width * 25.0 / 48.0;  // dimensions taken from http://bl.ocks.org/mbostock/2206340
+const birthYear = 1967;
+const presentYear = 2015;
+var prevYear = birthYear;
+var currentYear = birthYear;
+
+var zoom = d3.behavior.zoom()
+  .scaleExtent([1,(presentYear - birthYear) / 5.0 + 1])
+  .on("zoom", moveThroughTime);
+
+var width, height, mainVisTop, mainVisLeft, narrationLeft, narrationTop, narrationWidth, centered, timelineEvents, slider;
+var svg, svgNarration, g, gn, regionsGroup, washington, midWest, northEast, southCalifornia, northCalifornia, south;
+
+var isZoomed = false;
+
+width = $(window).width();
+height = $(window).height();
 
 var projection = d3.geo.albersUsa()
   .scale(width)  // determines initial map size
@@ -20,19 +39,17 @@ function init() {
   setup();
   drawMap();
   drawRegions();
-  drawSlider();
   drawRappers();
 }
 
 // creates the svg
 function setup() {
-  mainVisLeft = $(window).width() * (1 - (width/$(window).width()) - 0.025);
-  mainVisTop = $(window).height() * (1 - (height / $(window).height()))/2;
-  svg = d3.select("#mainVis").style("left", mainVisLeft + "px").style("top", mainVisTop + "px").style("position", "absolute")
+  svg = d3.select("#mapContainer")
     .append("svg")
     .attr("width", width)
     .attr("height", height)
-    .attr("id", "map");
+    .attr("id", "map")
+    .call(zoom);
 
   g = svg.append("g");
 
@@ -40,57 +57,41 @@ function setup() {
     .attr("class", "background")
     .attr("width", width)
     .attr("height", height)
-    .attr("rx", 50)
-    .attr("ry", 50);
-    //.on("click", clicked);
+    .style("fill", "rgba(0,0,0,0)");
 
-  gc = svg.append("g").attr("id", "rappers");
+  regionsGroup = svg.append("g").attr("id", "regions");
+  g.attr("transform", "translate(120,0)");
+  regionsGroup.attr("transform", "translate(120,0)");
 
   // setup narrator box and get timeline events ready
   narrationSetup();
 }
 
-function drawSlider() {
-  slider = d3.slider().min(1965).max(2015).ticks(10).showRange(true).tickFormat(function(d) {
-    return "" + parseInt(d);
-  });
-
-  slider.callback(function() {
-    currentYear = parseInt(slider.value());
-    drawRappers();
-    updateNarration();
-  })
-
-  // Render the slider in the div
-  d3.select('#slider').style("top", parseInt($("#mainVis").css("top")) + height + 20 + "px").call(slider);
-  currentYear = 1965;
-  prevYear = 1965;
-
-}
-
-
 // sets up and draws the region circles
 function drawRegions() {
-  washington = drawRegion(122.3331, 47.609, "#3AA827");
-  northEast = drawRegion(74.0059, 40.7127, "steelblue");
-  northCalifornia = drawRegion(121.4689, 38.5556, "#BF9900");
-  southCalifornia = drawRegion(117, 35, "#E39612");
-  south = drawRegion(85, 32, "#BF113A");
-  midWest = drawRegion(87.6847, 40, "#A314A8");
+  washington = drawRegion("washington");
+  northEast = drawRegion("northEast");
+  northCalifornia = drawRegion("northCalifornia");
+  southCalifornia = drawRegion("southCalifornia");
+  south = drawRegion("south");
+  midWest = drawRegion("midWest");
 }
 
 // helper function to draw a single region
-function drawRegion(lon, lat, color) {
-  var region;
-  var regionX = projection([-1*parseFloat(lon), parseFloat(lat)])[0];
-  var regionY = projection([-1*parseFloat(lon), parseFloat(lat)])[1];
-  region = gc.append("svg:circle")
+function drawRegion(regionName) {
+  var lon = regions[regionName]["lon"];
+  var lat = regions[regionName]["lat"];
+  var color = regions[regionName]["color"];
+  var regionX = projection([-1*lon, lat])[0];
+  var regionY = projection([-1*lon, lat])[1];
+  return regionsGroup.append("svg:circle")
                      .attr("cx", regionX)
                      .attr("cy", regionY)
                      .attr("r", 0)
                      .attr("numArtists", 1)
-                     .style("fill", color);
-  return region;
+                     .attr("id", regionName)
+                     .style("fill", color)
+                     .on("click", function() { zoomToRegion(this); });
 }
 
 function drawRappers() {
@@ -125,41 +126,24 @@ function drawMap() {
       .data(topojson.feature(us, us.objects.states).features)
     .enter().append("path")
       .attr("d", path);
-     // .on("click", clicked);
 
   g.append("path")
       .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
       .attr("id", "state-borders")
       .attr("d", path);
   });
-
 }
 
 // redraws everything
 function redraw() {
-  width = document.getElementById('container').scrollWidth;
-  height = width * 25.0 / 48.0;
+  width = $(window).width();
+  height = $(window).height();
   d3.select('svg').remove();
   setup();
   drawMap();
   drawRegions();
-  drawSlider();
   drawRappers();
 }
-
-/*function addRapper(lat,lon,rapper) {
-  // if not on map, return
-  if (!projection([lon,lat])) {
-    return;
-  }
-  var x = projection([lon,lat])[0];
-  var y = projection([lon,lat])[1];
-
-  var circle = gc.append("svg:circle")
-        .attr("cx", x)
-        .attr("cy", y)
-        .attr("r", 5);
-}*/
 
 function addRapper(region, rapper, startYear) {
   var regionNode;
@@ -188,33 +172,43 @@ function addRapper(region, rapper, startYear) {
   }
 }
 
-function clicked(d) {
-  console.log(d);
+function zoomToRegion(region) {
   var x, y, k;
-
-  if (d && centered !== d && onAValidNode(d)) {
-    var centroid = path.centroid(d);
-    x = centroid[0];
-    y = centroid[1];
-    k = 4;
-    centered = d;
-    d3.select("#rappers").remove();
-  } else {
-    x = width / 2;
-    y = height / 2;
-    k = 1;
-    centered = null;
-    gc = svg.append("g").attr("id", "rappers");
-    drawRappers();
-  }
-
-  g.selectAll("path")
-      .classed("active", centered && function(d) { return d === centered; });
-
+  console.log(region.id);
+  var lon = regions[region.id]["lon"];
+  var lat = regions[region.id]["lat"];
+  x = projection([-1*lon, lat])[0];
+  y = projection([-1*lon, lat])[1];
+  k = regions[region.id]["scale"];
+  d3.select("#regions").style("display", "none");
+  zoom.on("zoom", null);
+  g.on("dblclick", zoomOut);
   g.transition()
-      .duration(750)
-      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-      .style("stroke-width", 1.5 / k + "px");
+    .duration(750)
+    .attr("transform", "translate(" + (width + 120) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+    .style("stroke-width", 1.5 / k + "px");
+}
+
+function zoomOut() {
+  x = width / 2;
+  y = height / 2;
+  k = 1;
+  d3.select("#regions").style("display", "block");
+  g.transition()
+    .duration(750)
+    .attr("transform", "translate(" + (width / 2 + 120) + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+    .style("stroke-width", 1.5 / k + "px")
+    .each("end", function() { 
+      zoom.on("zoom", moveThroughTime); 
+      drawRappers();
+    });
+}
+
+// called when the user scrolls to zoom, moves through years from 1967 to 2015
+function moveThroughTime() {
+  currentYear = Math.round((d3.event.scale - 1) * 5 + birthYear);
+  drawRappers();
+  updateNarration();
 }
 
 var throttleTimer;
