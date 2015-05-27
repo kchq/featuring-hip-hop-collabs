@@ -18,15 +18,13 @@ function narrationSetup() {
 }
 
 function restOfNarrationSetup() {
-	narrationWidth = 220;
+	narrationWidth = $(window).width() * 0.20;
 	narrationLeft = 0;
 	narrationTop = 0;
 	svgNarration = d3.select("#narration")
 		.style("left", narrationLeft + "px")
 		.style("top", narrationTop + "px")
 		.style("position", "absolute")
-		.style("fill", "white")
-		.style("stroke", "black")
 		.append("svg")
 		.attr("width", narrationWidth)
 		.attr("height", height)
@@ -37,7 +35,10 @@ function restOfNarrationSetup() {
 	gn.append("rect")
 		.attr("id", "narrationBackground")
 		.attr("width", narrationWidth)
-		.attr("height", height);
+		.attr("height", height)
+		.style("fill", "white")
+		.style("stroke", "black")
+		.style("stroke-width", $(window).width() * 0.005);
 
 	gn.append("text")
 		.attr("id", "narrationYearText")
@@ -45,6 +46,8 @@ function restOfNarrationSetup() {
         .attr("y", height/5)
         .style("font-size", narrationWidth/10)
         .style("text-anchor", "middle")
+       	.style("fill", "white")
+		.style("stroke", "black")
         .text(function(d) { return currentYear; });
 
   	gn.append("text")

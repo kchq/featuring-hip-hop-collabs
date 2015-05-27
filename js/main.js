@@ -20,7 +20,7 @@ var zoom = d3.behavior.zoom()
   .scaleExtent([1,(presentYear - birthYear) / 5.0 + 1])
   .on("zoom", moveThroughTime);
 
-var width, height, mainVisTop, mainVisLeft, narrationLeft, narrationTop, narrationWidth, centered, timelineEvents, slider;
+var width, height, mapTranslateLeft, mainVisTop, mainVisLeft, narrationLeft, narrationTop, narrationWidth, centered, timelineEvents, slider;
 var svg, svgNarration, g, gn, regionsGroup, washington, midWest, northEast, southCalifornia, northCalifornia, south;
 
 var isZoomed = false;
@@ -45,9 +45,13 @@ function init() {
 // creates the svg
 function setup() {
   svg = d3.select("#mapContainer")
+    .style("width", width + "px")
+    .style("left", $(window).width() * 0.2 + "px")
+    .style("position", "absolute")
     .append("svg")
     .attr("width", width)
     .attr("height", height)
+    .style("left", $(window).width() * 0.2 + "px")
     .attr("id", "map")
     .call(zoom);
 
@@ -59,9 +63,10 @@ function setup() {
     .attr("height", height)
     .style("fill", "rgba(0,0,0,0)");
 
+  mapTranslateLeft = $(window).width() * 0.1;
   regionsGroup = svg.append("g").attr("id", "regions");
-  g.attr("transform", "translate(120,0)");
-  regionsGroup.attr("transform", "translate(120,0)");
+  g.attr("transform", "translate(" + (-1 * mapTranslateLeft) + ",0)");
+  regionsGroup.attr("transform", "translate(" + (-1 * mapTranslateLeft) + ",0)");
 
   // setup narrator box and get timeline events ready
   narrationSetup();
@@ -185,7 +190,7 @@ function zoomToRegion(region) {
   g.on("dblclick", zoomOut);
   g.transition()
     .duration(750)
-    .attr("transform", "translate(" + (width + 120) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+    .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
     .style("stroke-width", 1.5 / k + "px");
 }
 
@@ -196,7 +201,7 @@ function zoomOut() {
   d3.select("#regions").style("display", "block");
   g.transition()
     .duration(750)
-    .attr("transform", "translate(" + (width / 2 + 120) + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+    .attr("transform", "translate(" + (width / 2 - mapTranslateLeft) + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
     .style("stroke-width", 1.5 / k + "px")
     .each("end", function() { 
       zoom.on("zoom", moveThroughTime); 
