@@ -113,6 +113,12 @@ function drawRappers() {
 // draws the map in the group 'g' (this must be initialized before calling this function)
 function drawMap() {
   d3.json("data/us.json", function(error, us) {
+    // remove alaska and hawaii
+    us.objects.states.geometries = us.objects.states.geometries.filter(
+      function(state) { 
+        return state.id != 2 && state.id != 15; 
+      }
+    );
     g.append("g")
       .attr("id", "states")
     .selectAll("path")
