@@ -1,86 +1,82 @@
-.d3-slider {
-    position: relative;
-    font-family: Verdana,Arial,sans-serif;
-    font-size: 1.1em;
-    border: 1px solid #aaaaaa;
-    z-index: 2;
+.d3slider {
+  z-index: 2;
+  height: 100%;
+  background: none;
 }
 
-.d3-slider-horizontal {
-    height: .8em;
-}  
-
-.d3-slider-range {
-  background:#2980b9;
-  left:0px;
-  right:0px;
-  height: 0.8em;
-  position: absolute;
+.d3slider-rect-range {
+  fill: #000;
+  stroke: none;
 }
 
-.d3-slider-range-vertical {
-  background:#2980b9;
-  left:0px;
-  right:0px;
-  position: absolute;
-  top:0;
+.d3slider-rect-value {
+  fill: #805fd1;
+  stroke: none;
 }
 
-.d3-slider-vertical {
-    width: .8em;
-    height: 100px;
-}      
-
-.d3-slider-handle {
-    position: absolute;
-    width: 1.2em;
-    height: 1.2em;
-    border: 1px solid #d3d3d3;
-    border-radius: 4px;
-    background: #eee;
-    background: linear-gradient(to bottom, #eee 0%, #ddd 100%);
-    z-index: 3;
+.d3slider-axis {
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
 }
 
-.d3-slider-handle:hover {
-    border: 1px solid #999999;
+.d3slider-axis path {
+  display: none;
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
 }
 
-.d3-slider-horizontal .d3-slider-handle {
-    top: -.3em;
-    margin-left: -.6em;
-}
-
-.d3-slider-axis {
-    position: relative;
-    z-index: 1;    
-}
-
-.d3-slider-axis-bottom {
-    top: .8em;
-}
-
-.d3-slider-axis-right {
-    left: .8em;
-}
-
-.d3-slider-axis path {
-    stroke-width: 0;
+.d3slider-axis line {
     fill: none;
-}
-
-.d3-slider-axis line {
-    fill: none;
-    stroke: #aaa;
+    stroke: #000;
     shape-rendering: crispEdges;
 }
 
-.d3-slider-axis text {
-    font-size: 11px;
+.d3slider text {
+  font: 70% sans-serif;
+  font-weight: bold;
 }
 
-.d3-slider-vertical .d3-slider-handle {
-    left: -.25em;
-    margin-left: 0;
-    margin-bottom: -.6em;      
+.tick.minor text {
+  display: none;
+}
+
+.tick line {
+  stroke-width: 1;
+}
+.tick.minor line {
+  stroke-width: 1;
+  stroke: #bbb;
+}
+
+.dragger rect {
+  fill: #71ACE3;
+  stroke: none;
+  z-index: 3;
+}
+
+.dragger line {
+  stroke: #aa0000;
+  fill: none;
+}
+
+.dragger-outer {
+  stroke: #000;
+}
+
+.dragger-inner {
+  fill: #B30424;
+  stroke: none;
+}
+
+.min-marker line {
+  stroke: #aa0000;
+  fill: none;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+  z-index: 1;
 }
