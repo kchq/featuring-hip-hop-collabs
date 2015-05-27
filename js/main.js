@@ -1,11 +1,12 @@
 $(document).ready(init);
 
-d3.select(window).on("resize", throttle);
+//d3.select(window).on("resize", throttle);
 
-var width, height, centered, time_slider, currentYear;
-var svg, g, gc, washington, midWest, northEast, southCalifornia, northCalifornia, south, time_slider;
+var width, height, mainVisTop, mainVisLeft, narrationLeft, narrationTop, narrationWidth, centered, time_slider, prevYear, currentYear, timelineEvents, slider;
+var svg, svgNarration, g, gn, gc, washington, midWest, northEast, southCalifornia, northCalifornia, south, time_slider;
 
-width = document.getElementById('container').scrollWidth;
+//width = document.getElementById('container').scrollWidth;
+width = $(window).width() * 0.6;
 height = width * 25.0 / 48.0;  // dimensions taken from http://bl.ocks.org/mbostock/2206340
 
 var projection = d3.geo.albersUsa()
@@ -25,47 +26,61 @@ function init() {
 
 // creates the svg
 function setup() {
-  svg = d3.select("body").append("svg")
+  mainVisLeft = $(window).width() * (1 - (width/$(window).width()) - 0.025);
+  mainVisTop = $(window).height() * (1 - (height / $(window).height()))/2;
+  svg = d3.select("#mainVis").style("left", mainVisLeft + "px").style("top", mainVisTop + "px").style("position", "absolute")
+    .append("svg")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height)
+    .attr("id", "map");
 
   g = svg.append("g");
 
   g.append("rect")
     .attr("class", "background")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height)
+    .attr("rx", 50)
+    .attr("ry", 50);
     //.on("click", clicked);
 
   gc = svg.append("g").attr("id", "rappers");
+
+  // setup narrator box and get timeline events ready
+  narrationSetup();
 }
 
 function drawSlider() {
-  var slider = d3.slider().axis(true).min(1950).max(2015).step(5);
-  slider.on("slide", function(evt, value) {
-    currentYear = parseInt(value);
-    d3.select("#rappers").html("");
-    drawRegions();
-    drawRappers();
+  slider = d3.slider().min(1965).max(2015).ticks(10).showRange(true).tickFormat(function(d) {
+    return "" + parseInt(d);
   });
 
+  slider.callback(function() {
+    currentYear = parseInt(slider.value());
+    drawRappers();
+    updateNarration();
+  })
+
   // Render the slider in the div
-  d3.select('#slider').call(slider);
-  currentYear = 1950;
+  d3.select('#slider').style("top", parseInt($("#mainVis").css("top")) + height + 20 + "px").call(slider);
+  currentYear = 1965;
+  prevYear = 1965;
+
 }
+
 
 // sets up and draws the region circles
 function drawRegions() {
-  washington = drawRegion(122.3331, 47.609);
-  northEast = drawRegion(74.0059, 40.7127);
-  northCalifornia = drawRegion(121.4689, 38.5556);
-  southCalifornia = drawRegion(117, 35);
-  south = drawRegion(85, 32);
-  midWest = drawRegion(87.6847, 40);
+  washington = drawRegion(122.3331, 47.609, "#3AA827");
+  northEast = drawRegion(74.0059, 40.7127, "steelblue");
+  northCalifornia = drawRegion(121.4689, 38.5556, "#BF9900");
+  southCalifornia = drawRegion(117, 35, "#E39612");
+  south = drawRegion(85, 32, "#BF113A");
+  midWest = drawRegion(87.6847, 40, "#A314A8");
 }
 
 // helper function to draw a single region
-function drawRegion(lon, lat) {
+function drawRegion(lon, lat, color) {
   var region;
   var regionX = projection([-1*parseFloat(lon), parseFloat(lat)])[0];
   var regionY = projection([-1*parseFloat(lon), parseFloat(lat)])[1];
@@ -73,7 +88,8 @@ function drawRegion(lon, lat) {
                      .attr("cx", regionX)
                      .attr("cy", regionY)
                      .attr("r", 0)
-                     .attr("numArtists", 0);
+                     .attr("numArtists", 1)
+                     .style("fill", color);
   return region;
 }
 
@@ -84,12 +100,25 @@ function drawRappers() {
       // western hemisphere is negative https://github.com/mbostock/d3/issues/1287
       addRapper(artist.region, artist.name, artist.start_year);
     });
+    washington.transition().duration(100).attr("r", 10 * Math.log(washington.attr("numArtists")));
+    northEast.transition().duration(100).attr("r", 10 * Math.log(northEast.attr("numArtists")));
+    northCalifornia.transition().duration(100).attr("r", 10 * Math.log(northCalifornia.attr("numArtists")));
+    southCalifornia.transition().duration(100).attr("r", 10 * Math.log(southCalifornia.attr("numArtists")));
+    south.transition().duration(100).attr("r", 10 * Math.log(south.attr("numArtists")));
+    midWest.transition().duration(100).attr("r", 10 * Math.log(midWest.attr("numArtists")));
+    prevYear = currentYear;
   });
 }
 
 // draws the map in the group 'g' (this must be initialized before calling this function)
 function drawMap() {
   d3.json("data/us.json", function(error, us) {
+    // remove alaska and hawaii
+    us.objects.states.geometries = us.objects.states.geometries.filter(
+      function(state) { 
+        return state.id != 2 && state.id != 15; 
+      }
+    );
     g.append("g")
       .attr("id", "states")
     .selectAll("path")
@@ -133,28 +162,30 @@ function redraw() {
 }*/
 
 function addRapper(region, rapper, startYear) {
+  var regionNode;
+  if (region === "W") {
+    regionNode = washington;
+  } else if (region === "SC") {
+    regionNode = southCalifornia;
+  } else if (region === "NC") {
+    regionNode = northCalifornia;
+  } else if (region ==="S") {
+    regionNode = south;
+  } else if (region === "NE") {
+    regionNode = northEast;
+  } else if (region == "MW") {
+    regionNode = midWest;
+  }
 
-  //if (startYear !== "" && parseInt(startYear) <= currentYear) {
-     var regionNode;
-    if (region === "W") {
-      regionNode = washington;
-    } else if (region === "SC") {
-      regionNode = southCalifornia;
-    } else if (region === "NC") {
-      regionNode = northCalifornia;
-    } else if (region ==="S") {
-      regionNode = south;
-    } else if (region === "NE") {
-      regionNode = northEast;
-    } else if (region == "MW") {
-      regionNode = midWest;
-    }
+  if (regionNode != undefined && startYear !== "") {
+    if (parseInt(startYear) <= currentYear && parseInt(startYear) > prevYear) {
 
-    if (regionNode != undefined) {
       regionNode.attr("numArtists", parseInt(regionNode.attr("numArtists")) + 1);
-      regionNode.attr("r", 10 * Math.log(regionNode.attr("numArtists")));
+
+    } else if (parseInt(startYear) > currentYear && parseInt(startYear) <= prevYear) {
+      regionNode.attr("numArtists", parseInt(regionNode.attr("numArtists")) - 1);
     }
-  //}
+  }
 }
 
 function clicked(d) {
