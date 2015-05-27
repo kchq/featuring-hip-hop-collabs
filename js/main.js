@@ -3,12 +3,12 @@ $(document).ready(init);
 //d3.select(window).on("resize", throttle);
 
 const regions = { 
-  "washington": { "lon": 122.3331, "lat": 47.609, "color": "#3AA827", "scale": 10},
-  "northEast": { "lon": 74.0059, "lat": 40.7127, "color": "steelblue", "scale": 4},
-  "northCalifornia": { "lon": 121.4689, "lat": 38.5556, "color": "#BF9900", "scale": 4},
-  "southCalifornia": { "lon": 117, "lat": 35, "color": "#E39612", "scale": 4},
-  "south": { "lon": 85, "lat": 32, "color": "#BF113A", "scale": 4},
-  "midWest": { "lon": 87.6847, "lat": 40, "color": "#A314A8", "scale": 3},
+  "W": { "lon": 122.3331, "lat": 47.609, "color": "#3AA827", "scale": 10},
+  "NE": { "lon": 74.0059, "lat": 40.7127, "color": "steelblue", "scale": 4},
+  "NC": { "lon": 121.4689, "lat": 38.5556, "color": "#BF9900", "scale": 4},
+  "SC": { "lon": 117, "lat": 35, "color": "#E39612", "scale": 4},
+  "S": { "lon": 85, "lat": 32, "color": "#BF113A", "scale": 4},
+  "MW": { "lon": 87.6847, "lat": 40, "color": "#A314A8", "scale": 3},
 }
 
 const birthYear = 1967;
@@ -74,12 +74,12 @@ function setup() {
 
 // sets up and draws the region circles
 function drawRegions() {
-  washington = drawRegion("washington");
-  northEast = drawRegion("northEast");
-  northCalifornia = drawRegion("northCalifornia");
-  southCalifornia = drawRegion("southCalifornia");
-  south = drawRegion("south");
-  midWest = drawRegion("midWest");
+  washington = drawRegion("W");
+  northEast = drawRegion("NE");
+  northCalifornia = drawRegion("NC");
+  southCalifornia = drawRegion("SC");
+  south = drawRegion("S");
+  midWest = drawRegion("MW");
 }
 
 // helper function to draw a single region
