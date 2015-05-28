@@ -1,4 +1,7 @@
 
+narrationWidth = $(window).width() * 0.20;
+narrationLeft = 0;
+narrationTop = 0;
 
 function narrationSetup() {
 	var parsedRes = d3.csv.parseRows("data/timelineEvents.csv");
@@ -18,9 +21,6 @@ function narrationSetup() {
 }
 
 function restOfNarrationSetup() {
-	narrationWidth = $(window).width() * 0.20;
-	narrationLeft = 0;
-	narrationTop = 0;
 	svgNarration = d3.select("#narration")
 		.style("left", narrationLeft + "px")
 		.style("top", narrationTop + "px")
@@ -42,19 +42,19 @@ function restOfNarrationSetup() {
 
 	gn.append("text")
 		.attr("id", "narrationYearText")
-        .attr("x", narrationWidth/2)
-        .attr("y", height/5)
+        .attr("x", narrationWidth/9)
+        .attr("y", height/2.5)
         .style("font-size", narrationWidth/10)
-        .style("text-anchor", "middle")
+        .style("text-anchor", "start")
        	.style("fill", "white")
 		.style("stroke", "black")
         .text(function(d) { return currentYear; });
 
   	gn.append("text")
   		.attr("class", "narrationEventText")
-		.attr("x", narrationWidth/7)
-        .attr("y", height/2)
-        .style("font-size", narrationWidth/10)
+		.attr("x", narrationWidth/9)
+        .attr("y", height/2.3)
+        .style("font-size", narrationWidth/25)
         .style("text-anchor", "middle")
         .text(function(d) { return "";});
 }
@@ -64,8 +64,8 @@ function updateNarration() {
 	$(".narrationEventText").remove();
 	var eventsForYear = timelineEvents.get("" + currentYear);
 	if (eventsForYear != undefined) {
-		var currX = narrationWidth/7;
-		var currY = height/4;
+		var currX = narrationWidth/9;
+		var currY = height/2.3;
 		var size = narrationWidth/25;
 		var eventNo = 0;
 		eventsForYear.forEach(function(eventDesc) {
@@ -82,7 +82,7 @@ function updateNarration() {
 		    	  .container(d3.select("#narrationEvent" + eventNo))
 		    	  .text(eventDesc)
 		    	  .shape("square")
-		    	  .width(narrationWidth*0.7)
+		    	  .width(narrationWidth*0.5)
 		    	  .draw();
 		    currY += parseInt($("#narrationEvent" + eventNo).css("height") + 5);
 		    eventNo++;
