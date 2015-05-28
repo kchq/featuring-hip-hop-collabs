@@ -2,14 +2,16 @@ $(document).ready(init);
 
 //d3.select(window).on("resize", throttle);
 
-const regions = { 
-  "W": { "lon": 122.3331, "lat": 47.609, "color": "#3AA827", "scale": 10},
-  "NE": { "lon": 74.0059, "lat": 40.7127, "color": "steelblue", "scale": 4},
-  "NC": { "lon": 121.4689, "lat": 38.5556, "color": "#BF9900", "scale": 4},
-  "SC": { "lon": 117, "lat": 35, "color": "#E39612", "scale": 4},
-  "S": { "lon": 85, "lat": 32, "color": "#BF113A", "scale": 4},
-  "MW": { "lon": 87.6847, "lat": 40, "color": "#A314A8", "scale": 3},
-}
+var regionNodes = [
+  {"code":"W", "lon": 122.3331, "lat": 47.609, "color": "#3AA827", "scale": 10, "numArtists":0},
+  {"code":"NE", "lon": 74.0059, "lat": 40.7127, "color": "steelblue", "scale": 4, "numArtists":0},
+  {"code":"NC", "lon": 121.4689, "lat": 38.5556, "color": "#BF9900", "scale": 4, "numArtists":0},
+  {"code":"SC", "lon": 117, "lat": 35, "color": "#E39612", "scale": 4, "numArtists":0},
+  {"code":"S", "lon": 85, "lat": 32, "color": "#BF113A", "scale": 4, "numArtists":0},
+  {"code":"MW", "lon": 87.6847, "lat": 40, "color": "#A314A8", "scale": 3, "numArtists":0}
+]
+
+const regionIndexMap = ["W", "NE", "NC", "SC", "S", "MW"];
 
 const birthYear = 1967;
 const presentYear = 2015;
@@ -23,6 +25,7 @@ var zoom = d3.behavior.zoom()
 
 var width, height, mapTranslateLeft, mainVisTop, mainVisLeft, narrationLeft, narrationTop, narrationWidth, centered, timelineEvents, slider;
 var svg, svgNarration, g, gn, gt, regionsGroup, washington, midWest, northEast, southCalifornia, northCalifornia, south;
+var artistNodes, artistLinks;
 
 var isZoomed = false;
 
@@ -36,8 +39,11 @@ var projection = d3.geo.albersUsa()
 var path = d3.geo.path()
   .projection(projection);
 
+parseData();
+setupMap();
+
 function init() {
-  setup();
+  setupNodes();
   drawMap();
   drawRegions();
   drawRappers();
@@ -45,7 +51,7 @@ function init() {
 }
 
 // creates the svg
-function setup() {
+function setupMap() {
   svg = d3.select("#mapContainer")
     .style("width", width + "px")
     .style("left", $(window).width() * 0.2 + "px")
@@ -74,6 +80,26 @@ function setup() {
   narrationSetup();
 }
 
+function parseData() {
+  var q = queue();
+  q.defer(function(callback) {
+    d3.csv("data/artists.csv", function(err, artists) {
+      artistNodes = [];
+      artists.forEach(function(artist) {
+        // add to correct region node  
+        artistNodes.push(artist);
+        debugger;
+        // regionNodes[regionIndexMap.indexOf(artist.region)].numArtists++;
+      });
+    });
+    callback(null, artistNodes);
+  });
+
+  q.await(function(error, file1, file2) { console.log(file1, file2); });
+  
+ 
+}
+
 // sets up and draws the region circles
 function drawRegions() {
   washington = drawRegion("W");
@@ -86,9 +112,10 @@ function drawRegions() {
 
 // helper function to draw a single region
 function drawRegion(regionName) {
-  var lon = regions[regionName]["lon"];
-  var lat = regions[regionName]["lat"];
-  var color = regions[regionName]["color"];
+  var regionIndex = regionIndexMap.indexOf(regionName);
+  var lon = regionNodes[regionIndex].lon;
+  var lat = regionNodes[regionIndex].lat;
+  var color = regionNodes[regionIndex].color;
   var regionX = projection([-1*lon, lat])[0];
   var regionY = projection([-1*lon, lat])[1];
   return regionsGroup.append("svg:circle")
