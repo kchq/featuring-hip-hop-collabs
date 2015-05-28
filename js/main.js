@@ -1,4 +1,4 @@
-$(document).ready(init);
+// $(document).ready();
 
 //d3.select(window).on("resize", throttle);
 
@@ -25,7 +25,7 @@ var zoom = d3.behavior.zoom()
 
 var width, height, mapTranslateLeft, mainVisTop, mainVisLeft, narrationLeft, narrationTop, narrationWidth, centered, timelineEvents, slider;
 var svg, svgNarration, g, gn, gt, regionsGroup, washington, midWest, northEast, southCalifornia, northCalifornia, south;
-var artistNodes, artistLinks;
+var artistNodes, artistLinks, artistMap;
 
 var isZoomed = false;
 
@@ -42,8 +42,10 @@ var path = d3.geo.path()
 parseData();
 setupMap();
 
-function init() {
-  setupNodes();
+// this function requires waiting for all of the data to load
+// error will be defined if there is an issue with parsing the data
+function init(error) {
+  debugger;
   drawMap();
   drawRegions();
   drawRappers();
@@ -82,40 +84,57 @@ function setupMap() {
 
 function parseData() {
   var q = queue();
+
+  // load the artists csv
   q.defer(function(callback) {
     d3.csv("data/artists.csv", function(err, artists) {
       artistNodes = [];
+      artistMap = {};
+      var i = 0;
       artists.forEach(function(artist) {
         // add to correct region node  
         artistNodes.push(artist);
-        debugger;
-        // regionNodes[regionIndexMap.indexOf(artist.region)].numArtists++;
+        artistMap[artist.name] = i;
+         if (i == 6) {
+          debugger;
+        }
+        regionNodes[regionIndexMap.indexOf(artist.region)].numArtists++;
+        // debugger;
+
+        i++;
       });
+      callback(err);
     });
-    callback(null, artistNodes);
   });
 
-  q.await(function(error, file1, file2) { console.log(file1, file2); });
-  
- 
+  // load the collaboration json
+  q.defer(function(callback) {
+    d3.json("data/collabs_pruned.json", function(err, collabs) {
+      // load up all the collaborations
+      artistLinks = [];
+      
+        debugger;
+        // load in a link for this collab
+      callback(err);
+    });
+  });
+
+  // call init function after all callbacks have been reached
+  q.awaitAll(init);
 }
 
 // sets up and draws the region circles
 function drawRegions() {
-  washington = drawRegion("W");
-  northEast = drawRegion("NE");
-  northCalifornia = drawRegion("NC");
-  southCalifornia = drawRegion("SC");
-  south = drawRegion("S");
-  midWest = drawRegion("MW");
+  regionNodes.forEach(function(node) {
+    drawRegion(node);
+  });
 }
 
 // helper function to draw a single region
-function drawRegion(regionName) {
-  var regionIndex = regionIndexMap.indexOf(regionName);
-  var lon = regionNodes[regionIndex].lon;
-  var lat = regionNodes[regionIndex].lat;
-  var color = regionNodes[regionIndex].color;
+function drawRegion(regionNode) {
+  var lon = regionNode.lon;
+  var lat = regionNode.lat;
+  var color = regionNode.color;
   var regionX = projection([-1*lon, lat])[0];
   var regionY = projection([-1*lon, lat])[1];
   return regionsGroup.append("svg:circle")
