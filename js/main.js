@@ -92,16 +92,13 @@ function parseData() {
       artistMap = {};
       var i = 0;
       artists.forEach(function(artist) {
-        // add to correct region node  
-        artistNodes.push(artist);
-        artistMap[artist.name] = i;
-         if (i == 6) {
-          debugger;
+        // add to correct region node if we have the data for this artist  
+        if (artist.region) {
+          artistNodes.push(artist);
+          artistMap[artist.name] = i;
+          regionNodes[regionIndexMap.indexOf(artist.region)].numArtists++;
+          i++;
         }
-        regionNodes[regionIndexMap.indexOf(artist.region)].numArtists++;
-        // debugger;
-
-        i++;
       });
       callback(err);
     });
