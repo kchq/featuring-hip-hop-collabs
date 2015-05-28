@@ -25,7 +25,10 @@ var svg, svgNarration, g, gn, regionsGroup, washington, midWest, northEast, sout
 
 var force;
 var artistNodes = [ {"name": "50_cent", "longitude": 72.8403, "latitude": 41.7278, "region": "NE"},
-                    {"name": "action_bronson", "longitude": 73.8667, "latitude": 40.75, "region": "NE"}];
+                    {"name": "action_bronson", "longitude": 73.8667, "latitude": 40.75, "region": "NE"},
+                    {"name": "aesop_rock", "longitude": 73.5008, "latitude": 40.8128, "region": "NE"},
+                    {"name": "asap_rocky", "longitude": 73.9484, "latitude": 40.809, "region": "NE"},
+                  ];
 
 var isZoomed = false;
 
@@ -207,6 +210,7 @@ function zoomOut() {
   k = 1;
   d3.select("#regions").style("display", "block");
   svg.selectAll(".node").remove();
+  svg.selectAll(".clippath").remove();
   g.transition()
     .duration(750)
     .attr("transform", "translate(" + (width / 2 - mapTranslateLeft) + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
@@ -250,6 +254,7 @@ function drawRegionalArtists(region, x, y, k) {
   node.each(function(d, i) {
     svg.append('clipPath')
       .attr("id", d.name)
+      .attr("class", "clippath")
       .append("circle")
       .attr("cx", getXY(d)[0])
       .attr("cy", getXY(d)[1])
@@ -257,26 +262,38 @@ function drawRegionalArtists(region, x, y, k) {
       .attr("clipPathUnits", "userSpaceOnUse");
     });
 
-  node.append("image")
+  var images = node.append("image")
       .attr("xlink:href", function(d) { return "imgs/" + d.name + ".png"; })
       .attr("x", function(d) { return getXY(d)[0] - artistSize / 2; })
       .attr("y", function(d) { return getXY(d)[1] - artistSize / 2; })
       .attr("width", artistSize)
       .attr("height", artistSize)
-      .on("mouseenter", function(d) {
-        svg.append("circle")
-          .attr("id", d.name+"ring")
-          .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-          .attr("cx", getXY(d)[0])
-          .attr("cy", getXY(d)[1])
-          .attr("r", artistSize / 2)
-          .style("fill", "rgba(0,0,0,0)")
-          .style("stroke", "red");
-      })
-      .on("mouseleave", function(d) {
-        $("#"+d.name+"ring").remove();
-      })
       .attr("clip-path", function(d) { return "url(#" + d.name + ")"; });
+
+  var rings = node.append("circle")
+    .attr("id", function(d) { return d.name + "ring"; })
+    .attr("cx", function(d) { return getXY(d)[0]; })
+    .attr("cy", function(d) { return getXY(d)[1]; })
+    .attr("r", artistSize / 2)
+    .style("fill", "none")
+    .style("stroke", "#000")
+    .style("stroke-width", "0.5px");
+
+  // draw a ring on hover
+  node.on("mouseenter", function(d) { $("#"+d.name+"ring").css("stroke", "#FF5655"); });//drawRing(d, x, y, k, artistSize); });
+  node.on("mouseleave", function(d) { $("#"+d.name+"ring").css("stroke", "#000"); });
+}
+
+function drawRing(d, x, y, k, artistSize) {
+  svg.append("circle")
+    .attr("id", d.name+"ring")
+    .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+    .attr("cx", getXY(d)[0])
+    .attr("cy", getXY(d)[1])
+    .attr("r", artistSize / 2)
+    .style("fill", "none")
+    .style("stroke", "#FF5655")
+    .style("stroke-width", "0.5px");
 }
 
 function getXY(artistNode) {
