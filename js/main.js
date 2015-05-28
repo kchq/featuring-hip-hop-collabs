@@ -23,6 +23,10 @@ var zoom = d3.behavior.zoom()
 var width, height, mapTranslateLeft, mainVisTop, mainVisLeft, narrationLeft, narrationTop, narrationWidth, centered, timelineEvents, slider;
 var svg, svgNarration, g, gn, regionsGroup, washington, midWest, northEast, southCalifornia, northCalifornia, south;
 
+var force;
+var artistNodes = [ {"name": "50_cent", "longitude": 72.8403, "latitude": 41.7278, "region": "NE"},
+                    {"name": "action_bronson", "longitude": 73.8667, "latitude": 40.75, "region": "NE"}];
+
 var isZoomed = false;
 
 width = $(window).width();
@@ -191,7 +195,10 @@ function zoomToRegion(region) {
   g.transition()
     .duration(750)
     .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-    .style("stroke-width", 1.5 / k + "px");
+    .style("stroke-width", 1.5 / k + "px")
+    .each("end", function() {
+      drawRegionalArtists(region.id, x, y, k);
+    });
 }
 
 function zoomOut() {
@@ -199,6 +206,7 @@ function zoomOut() {
   y = height / 2;
   k = 1;
   d3.select("#regions").style("display", "block");
+  svg.selectAll(".node").remove();
   g.transition()
     .duration(750)
     .attr("transform", "translate(" + (width / 2 - mapTranslateLeft) + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
@@ -207,6 +215,77 @@ function zoomOut() {
       zoom.on("zoom", moveThroughTime); 
       drawRappers();
     });
+}
+
+function drawRegionalArtists(region, x, y, k) {
+  var artistSize = 8;
+
+  var artistNodesTemp = artistNodes.filter( function(a) {
+    return a.region === region;
+    // TODO: add time
+  });
+
+  force = d3.layout.force()
+      .nodes(artistNodesTemp)
+      //.links(links)
+      .size([width, height])
+      .linkDistance(function(d) {
+        d.target.fixed = true;
+        d.source.fixed = true;
+        return 10 * lineLength(d.source.x, d.source.y, d.target.x, d.target.y);
+      })
+      .charge(-30)
+      .gravity(0)
+      .start();
+
+  var node = svg.selectAll(".node")
+      .data(force.nodes())
+      .enter().append("g")
+      .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+      .attr("class", "node")
+     // .on("click", click)
+     // .on("dblclick", dblclick)
+      .call(force.drag);
+  
+  node.each(function(d, i) {
+    svg.append('clipPath')
+      .attr("id", d.name)
+      .append("circle")
+      .attr("cx", getXY(d)[0])
+      .attr("cy", getXY(d)[1])
+      .attr("r", artistSize / 2)
+      .attr("clipPathUnits", "userSpaceOnUse");
+    });
+
+  node.append("image")
+      .attr("xlink:href", function(d) { return "imgs/" + d.name + ".png"; })
+      .attr("x", function(d) { return getXY(d)[0] - artistSize / 2; })
+      .attr("y", function(d) { return getXY(d)[1] - artistSize / 2; })
+      .attr("width", artistSize)
+      .attr("height", artistSize)
+      .on("mouseenter", function(d) {
+        svg.append("circle")
+          .attr("id", d.name+"ring")
+          .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+          .attr("cx", getXY(d)[0])
+          .attr("cy", getXY(d)[1])
+          .attr("r", artistSize / 2)
+          .style("fill", "rgba(0,0,0,0)")
+          .style("stroke", "red");
+      })
+      .on("mouseleave", function(d) {
+        $("#"+d.name+"ring").remove();
+      })
+      .attr("clip-path", function(d) { return "url(#" + d.name + ")"; });
+}
+
+function getXY(artistNode) {
+  var lon = -1 * artistNode.longitude;
+  var lat = artistNode.latitude;
+  if (!projection([lon,lat])) {
+    return null;
+  }
+  return [projection([lon,lat])[0], projection([lon,lat])[1]];
 }
 
 // called when the user scrolls to zoom, moves through years from 1967 to 2015
