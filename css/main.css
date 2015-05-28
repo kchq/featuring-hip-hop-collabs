@@ -41,9 +41,5 @@ body {
 }
 
 #slider {
-  width: 95%;
-  height: 2%;
-  padding-left: 2.5%;
-  padding-right: 2.5%;
-  position: absolute;
+  width: 1em;
 }

@@ -13,15 +13,16 @@ const regions = {
 
 const birthYear = 1967;
 const presentYear = 2015;
+const scrollSensitivity = 10.0; // higher equals less sensitive
 var prevYear = birthYear;
 var currentYear = birthYear;
 
 var zoom = d3.behavior.zoom()
-  .scaleExtent([1,(presentYear - birthYear) / 5.0 + 1])
+  .scaleExtent([1,(presentYear - birthYear) / scrollSensitivity + 1])
   .on("zoom", moveThroughTime);
 
 var width, height, mapTranslateLeft, mainVisTop, mainVisLeft, narrationLeft, narrationTop, narrationWidth, centered, timelineEvents, slider;
-var svg, svgNarration, g, gn, regionsGroup, washington, midWest, northEast, southCalifornia, northCalifornia, south;
+var svg, svgNarration, g, gn, gt, regionsGroup, washington, midWest, northEast, southCalifornia, northCalifornia, south;
 
 var isZoomed = false;
 
@@ -40,6 +41,7 @@ function init() {
   drawMap();
   drawRegions();
   drawRappers();
+  drawSlider();
 }
 
 // creates the svg
@@ -114,6 +116,18 @@ function drawRappers() {
     midWest.transition().duration(100).attr("r", 10 * Math.log(midWest.attr("numArtists")));
     prevYear = currentYear;
   });
+}
+
+function drawSlider() {
+  slider = d3.slider().axis(d3.svg.axis().orient("left").tickFormat(d3.format("d")).tickValues([1965, 1970, 1975, 1980, 1985, 1990, 1995, 2000, 2005, 2010, 2015]))
+                      .value(1967).min(1967).max(2015).orientation("vertical").step(1);
+  slider.on("slide", function(evt, value) {
+    moveThroughTime(value);
+  });
+  d3.select("#slider").style("left", narrationWidth + "px")
+                      .style("top", $(window).height() * 0.05 + "px")
+                      .style("height", height-$(window).height() * 0.15 + "px").call(slider)
+                      .style("border", "0px");
 }
 
 // draws the map in the group 'g' (this must be initialized before calling this function)
@@ -210,8 +224,13 @@ function zoomOut() {
 }
 
 // called when the user scrolls to zoom, moves through years from 1967 to 2015
-function moveThroughTime() {
-  currentYear = Math.round((d3.event.scale - 1) * 5 + birthYear);
+function moveThroughTime(newYear) {
+  if (newYear === undefined) {
+    currentYear = Math.round((d3.event.scale - 1) * scrollSensitivity + birthYear);
+    slider.value(currentYear);
+  } else {
+    currentYear = newYear;
+  }
   drawRappers();
   updateNarration();
 }
