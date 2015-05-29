@@ -1,33 +1,32 @@
-// $(document).ready();
-
 //d3.select(window).on("resize", throttle);
 
 var regionNodes = [
-  {"code":"W", "lon": 122.3331, "lat": 47.609, "color": "#3AA827", "scale": 10, "numArtists":0},
-  {"code":"NE", "lon": 74.0059, "lat": 40.7127, "color": "steelblue", "scale": 4, "numArtists":0},
-  {"code":"NC", "lon": 121.4689, "lat": 38.5556, "color": "#BF9900", "scale": 4, "numArtists":0},
-  {"code":"SC", "lon": 117, "lat": 35, "color": "#E39612", "scale": 4, "numArtists":0},
-  {"code":"S", "lon": 85, "lat": 32, "color": "#BF113A", "scale": 4, "numArtists":0},
-  {"code":"MW", "lon": 87.6847, "lat": 40, "color": "#A314A8", "scale": 3, "numArtists":0}
+  {"id":"W", "lon": 122.3331, "lat": 47.609, "color": "#3AA827", "scale": 10, "numArtists":0, "artistsPerYear":{}},
+  {"id":"NE", "lon": 74.0059, "lat": 40.7127, "color": "steelblue", "scale": 4, "numArtists":0, "artistsPerYear":{}},
+  {"id":"NC", "lon": 121.4689, "lat": 38.5556, "color": "#BF9900", "scale": 4, "numArtists":0, "artistsPerYear":{}},
+  {"id":"SC", "lon": 117, "lat": 35, "color": "#E39612", "scale": 4, "numArtists":0, "artistsPerYear":{}},
+  {"id":"S", "lon": 85, "lat": 32, "color": "#BF113A", "scale": 4, "numArtists":0, "artistsPerYear":{}},
+  {"id":"MW", "lon": 87.6847, "lat": 40, "color": "#A314A8", "scale": 3, "numArtists":0, "artistsPerYear":{}}
 ]
-
 const regionIndexMap = ["W", "NE", "NC", "SC", "S", "MW"];
 
 const birthYear = 1967;
 const presentYear = 2015;
 const scrollSensitivity = 10.0; // higher equals less sensitive
 var prevYear = birthYear;
-var currentYear = birthYear;
+var currentYear = 2000;
 
 var zoom = d3.behavior.zoom()
   .scaleExtent([1,(presentYear - birthYear) / scrollSensitivity + 1])
   .on("zoom", moveThroughTime);
 
 var width, height, mapTranslateLeft, mainVisTop, mainVisLeft, narrationLeft, narrationTop, narrationWidth, centered, timelineEvents, slider;
-var svg, svgNarration, g, gn, gt, regionsGroup, washington, midWest, northEast, southCalifornia, northCalifornia, south;
+var svg, svgNarration, g, gn, gt;
 var artistNodes, artistLinks, artistMap;
 
 var isZoomed = false;
+
+var force, node, link;
 
 width = $(window).width();
 height = $(window).height();
@@ -40,15 +39,53 @@ var path = d3.geo.path()
   .projection(projection);
 
 parseData();
-setupMap();
 
 // this function requires waiting for all of the data to load
 // error will be defined if there is an issue with parsing the data
 function init(error) {
+  setupMap();
   drawMap();
-  drawRegions();
-  drawRappers();
   drawSlider();
+  setRegions();
+  updateRegionalForce();
+}
+
+
+function updateRegionalForce() {
+  force = d3.layout.force()
+    .nodes(regionNodes)
+    .start();
+
+  node = svg.selectAll(".node")
+    .data(regionNodes)
+    .enter().append("g")
+    .attr("class", "node")
+    .call(force.drag)
+    .append("svg:circle")
+      .attr("r", function(d) { 
+        calculateArtists(d);
+        return d.numArtists;
+      })
+      .style("fill", function(d) {
+        return d.color;
+      })
+      .on("click", function() {
+        zoomToRegion(this); 
+      });
+
+  force.on("tick", function() {
+    node.attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; });
+  });
+}
+
+function calculateArtists(node) {
+  // total up the numArtists up to the current year and set numArtists attribute accordingly
+  for (var year in node.artistsPerYear) {
+    if (parseInt(year) <= currentYear) {
+      node.numArtists += parseInt(node.artistsPerYear[year]);
+    }
+  }
 }
 
 // creates the svg
@@ -95,7 +132,11 @@ function parseData() {
         if (artist.region) {
           artistNodes.push(artist);
           artistMap[artist.name] = i;
-          regionNodes[regionIndexMap.indexOf(artist.region)].numArtists++;
+          if (regionNodes[regionIndexMap.indexOf(artist.region)].artistsPerYear[artist.start_year] == undefined) {
+            regionNodes[regionIndexMap.indexOf(artist.region)].artistsPerYear[artist.start_year] = 1;
+          } else {
+            regionNodes[regionIndexMap.indexOf(artist.region)].artistsPerYear[artist.start_year]++;
+          }
           i++;
         } else {
           console.log("problem adding " + artist.name + " to artist list");
@@ -142,45 +183,18 @@ function parseData() {
 }
 
 // sets up and draws the region circles
-function drawRegions() {
-  regionNodes.forEach(function(node) {
-    drawRegion(node);
+function setRegions() {
+  regionNodes.forEach(function(regionNode) {
+    var lon = regionNode.lon;
+    var lat = regionNode.lat;
+    var regionX = projection([-1*lon, lat])[0];
+    var regionY = projection([-1*lon, lat])[1];
+    regionNode["x"] = regionX;
+    regionNode["y"] = regionY;
+    regionNode["fixed"] = true;
   });
 }
 
-// helper function to draw a single region
-function drawRegion(regionNode) {
-  var lon = regionNode.lon;
-  var lat = regionNode.lat;
-  var color = regionNode.color;
-  var regionX = projection([-1*lon, lat])[0];
-  var regionY = projection([-1*lon, lat])[1];
-  return regionsGroup.append("svg:circle")
-                     .attr("cx", regionX)
-                     .attr("cy", regionY)
-                     .attr("r", 0)
-                     .attr("numArtists", 1)
-                     .attr("id", regionName)
-                     .style("fill", color)
-                     .on("click", function() { zoomToRegion(this); });
-}
-
-function drawRappers() {
-  d3.csv("data/artists.csv", function(err, artists) {
-    artists.forEach(function(artist) {
-      // need to invert longitude because I got values in terms of hemispheres
-      // western hemisphere is negative https://github.com/mbostock/d3/issues/1287
-      addRapper(artist.region, artist.name, artist.start_year);
-    });
-    washington.transition().duration(100).attr("r", 10 * Math.log(washington.attr("numArtists")));
-    northEast.transition().duration(100).attr("r", 10 * Math.log(northEast.attr("numArtists")));
-    northCalifornia.transition().duration(100).attr("r", 10 * Math.log(northCalifornia.attr("numArtists")));
-    southCalifornia.transition().duration(100).attr("r", 10 * Math.log(southCalifornia.attr("numArtists")));
-    south.transition().duration(100).attr("r", 10 * Math.log(south.attr("numArtists")));
-    midWest.transition().duration(100).attr("r", 10 * Math.log(midWest.attr("numArtists")));
-    prevYear = currentYear;
-  });
-}
 
 function drawSlider() {
   slider = d3.slider().axis(d3.svg.axis().orient("left").tickFormat(d3.format("d")).tickValues([1965, 1970, 1975, 1980, 1985, 1990, 1995, 2000, 2005, 2010, 2015]))
@@ -224,35 +238,7 @@ function redraw() {
   d3.select('svg').remove();
   setup();
   drawMap();
-  drawRegions();
-  drawRappers();
-}
-
-function addRapper(region, rapper, startYear) {
-  var regionNode;
-  if (region === "W") {
-    regionNode = washington;
-  } else if (region === "SC") {
-    regionNode = southCalifornia;
-  } else if (region === "NC") {
-    regionNode = northCalifornia;
-  } else if (region ==="S") {
-    regionNode = south;
-  } else if (region === "NE") {
-    regionNode = northEast;
-  } else if (region == "MW") {
-    regionNode = midWest;
-  }
-
-  if (regionNode != undefined && startYear !== "") {
-    if (parseInt(startYear) <= currentYear && parseInt(startYear) > prevYear) {
-
-      regionNode.attr("numArtists", parseInt(regionNode.attr("numArtists")) + 1);
-
-    } else if (parseInt(startYear) > currentYear && parseInt(startYear) <= prevYear) {
-      regionNode.attr("numArtists", parseInt(regionNode.attr("numArtists")) - 1);
-    }
-  }
+  updateRegionalForce();
 }
 
 function zoomToRegion(region) {
@@ -295,7 +281,7 @@ function moveThroughTime(newYear) {
   } else {
     currentYear = newYear;
   }
-  drawRappers();
+  updateRegionalForce();
   updateNarration();
 }
 
