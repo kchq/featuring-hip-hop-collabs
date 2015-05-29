@@ -45,7 +45,6 @@ setupMap();
 // this function requires waiting for all of the data to load
 // error will be defined if there is an issue with parsing the data
 function init(error) {
-  debugger;
   drawMap();
   drawRegions();
   drawRappers();
@@ -98,6 +97,8 @@ function parseData() {
           artistMap[artist.name] = i;
           regionNodes[regionIndexMap.indexOf(artist.region)].numArtists++;
           i++;
+        } else {
+          console.log("problem adding " + artist.name + " to artist list");
         }
       });
       callback(err);
@@ -109,9 +110,29 @@ function parseData() {
     d3.json("data/collabs_pruned.json", function(err, collabs) {
       // load up all the collaborations
       artistLinks = [];
-      
-        debugger;
-        // load in a link for this collab
+      for (var artist in collabs) {
+        var sourceIndex = artistMap[artist];
+        if (sourceIndex >= 0) {
+          var targetArtists = collabs[artist];
+          for (var targetArtist in targetArtists) {
+            var targetIndex = artistMap[targetArtist];
+            if (targetIndex >= 0) {
+              // we have both a source and a target, so let's add all the songs as links
+              var links = targetArtists[targetArtist];
+              for (var i = 0; i < links.length; i++) {
+                var link = links[i];
+                link["source"] = sourceIndex;
+                link["target"] = targetIndex;
+                artistLinks.push(link);
+              }
+            } else {
+              console.log("problem with: " + targetArtist + "'s name as target of link");
+            }
+          }
+        } else {
+          console.log("problem with: " + artist + "'s name as source of link");
+        }
+      }
       callback(err);
     });
   });
