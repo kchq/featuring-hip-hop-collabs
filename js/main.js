@@ -4,7 +4,7 @@ var regionNodes = [
   {"id":"W", "lon": 122.3331, "lat": 47.609, "color": "#3AA827", "scale": 10, "numArtists":0, "artistsPerYear":{}},
   {"id":"NE", "lon": 74.0059, "lat": 40.7127, "color": "steelblue", "scale": 4, "numArtists":0, "artistsPerYear":{}},
   {"id":"NC", "lon": 121.4689, "lat": 38.5556, "color": "#BF9900", "scale": 4, "numArtists":0, "artistsPerYear":{}},
-  {"id":"SC", "lon": 117, "lat": 35, "color": "#E39612", "scale": 4, "numArtists":0, "artistsPerYear":{}},
+  {"id":"SC", "lon": 118.5, "lat": 34.2, "color": "#E39612", "scale": 20, "numArtists":0, "artistsPerYear":{}},
   {"id":"S", "lon": 85, "lat": 32, "color": "#BF113A", "scale": 4, "numArtists":0, "artistsPerYear":{}},
   {"id":"MW", "lon": 87.6847, "lat": 40, "color": "#A314A8", "scale": 3, "numArtists":0, "artistsPerYear":{}}
 ]
@@ -15,6 +15,8 @@ const birthYear = 1967;
 const presentYear = 2015;
 
 const scrollSensitivity = 2.0; // higher equals more sensitive
+const artistCircleSize = 8;
+
 var prevYear = startYear;
 var currentYear = startYear;
 
@@ -36,6 +38,11 @@ height = $(window).height();
 var force = d3.layout.force()
     .size([width, height])
     .on("tick", tick);
+
+var artistForce = d3.layout.force()
+    .size([width, height])
+    .on("tick", tick);
+
 var node, link;
 
 var projection = d3.geo.albersUsa()
@@ -159,7 +166,7 @@ function setUpRegions() {
 }
 
 function updateRegions() {
-  regionNodes.forEach(function(d){
+  regionNodes.forEach(function(d) {
     calculateArtists(d);
   });
 
@@ -236,6 +243,7 @@ function zoomToRegion(region) {
   y = projection([-1*lon, lat])[1];
   k = region.scale;
   hideRegions();
+  // TODO: Sonja - allow scrolling through time while zoomed in
   zoom.on("zoom", null);
   g.on("dblclick", zoomOut);
   g.transition()
@@ -253,7 +261,7 @@ function zoomOut() {
   k = 1;
 
   d3.select("#regions").style("display", "block");
-  svg.selectAll(".node").remove();
+  svg.selectAll(".artistNode").remove();
   svg.selectAll(".clippath").remove();
 
   setUpRegions();
@@ -269,36 +277,33 @@ function zoomOut() {
     });
 }
 
-function drawRegionalArtists(region, x, y, k) {
-  var artistSize = 8;
+// ======= Functions to handle drawing artists in a region ======= 
 
+function drawRegionalArtists(region, x, y, k) {
+
+  // filter out artists who are not in the selected region or not active in the current year
   var artistNodesTemp = artistNodes.filter( function(a) {
-    return a.region === region;
-    // TODO: add time
+    var r = a.region === region;
+    var t = (a.start_year <= currentYear) && (a.end_year === 'present'|| a.end_year >= currentYear);
+    return r && t;
   });
 
-  force = d3.layout.force()
-      .nodes(artistNodesTemp)
-      //.links(links)
-      .size([width, height])
-      .linkDistance(function(d) {
-        d.target.fixed = true;
-        d.source.fixed = true;
-        return 10 * lineLength(d.source.x, d.source.y, d.target.x, d.target.y);
-      })
-      .charge(-30)
-      .gravity(0)
-      .start();
+  artistForce.nodes(artistNodesTemp);
 
   var node = svg.selectAll(".node")
-      .data(force.nodes())
+      .data(artistForce.nodes())
       .enter().append("g")
       .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
       .attr("class", "node")
+      .attr("class", "artistNode")
      // .on("click", click)
      // .on("dblclick", dblclick)
-      .call(force.drag);
+      .call(artistForce.drag);
+
+  // TODO: Sonja - figure out why first six nodes are null
+  console.log(node);
   
+  // set up clip paths to mask artist images to circles
   node.each(function(d, i) {
     xy = getXY(d);
     if (xy == null) {
@@ -310,24 +315,39 @@ function drawRegionalArtists(region, x, y, k) {
       .append("circle")
       .attr("cx", xy[0])
       .attr("cy", xy[1])
-      .attr("r", artistSize / 2)
+      .attr("r", artistCircleSize / 2)
       .attr("clipPathUnits", "userSpaceOnUse");
   });
 
-
+  // add artist images to each node
   var images = node.append("image")
     .attr("xlink:href", function(d) { return "imgs/" + getArtistImageName(d.name) + ".png"; })
-    .attr("x", function(d) { xy = getXY(d); if (xy == null) return; return xy[0] - artistSize / 2; })
-    .attr("y", function(d) { xy = getXY(d); if (xy == null) return; return xy[1] - artistSize / 2; })
-    .attr("width", artistSize)
-    .attr("height", artistSize)
+    .attr("x", function(d) { xy = getXY(d); if (xy == null) return; return xy[0] - artistCircleSize / 2; })
+    .attr("y", function(d) { xy = getXY(d); if (xy == null) return; return xy[1] - artistCircleSize / 2; })
+    .attr("width", artistCircleSize)
+    .attr("height", artistCircleSize)
+    // preserve size of circle across different regions, because each region has a different scale
+    .attr("transform", function(d) { 
+      xy = getXY(d); 
+      if (xy == null) return; 
+      var xx = xy[0];
+      var yy = xy[1];
+      return "translate(" + xx + "," + yy + ")scale(" + artistCircleSize / 2 / k + ")translate(" + -xx + "," + -yy + ")"; })
     .attr("clip-path", function(d) { return "url(#" + getArtistImageName(d.name) + ")"; });
 
+  // add border to each artist
   var rings = node.append("circle")
     .attr("id", function(d) { return getArtistImageName(d.name) + "ring"; })
     .attr("cx", function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
     .attr("cy", function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
-    .attr("r", artistSize / 2)
+    .attr("r", artistCircleSize / 2)
+    // preserve size of circle across different regions, because each region has a different scale
+    .attr("transform", function(d) { 
+      xy = getXY(d); 
+      if (xy == null) return; 
+      var xx = xy[0];
+      var yy = xy[1];
+      return "translate(" + xx + "," + yy + ")scale(" + artistCircleSize / 2 / k + ")translate(" + -xx + "," + -yy + ")"; })
     .style("fill", "none")
     .style("stroke", "#000")
     .style("stroke-width", "0.5px");
@@ -346,9 +366,14 @@ function getXY(artistNode) {
   return [projection([lon,lat])[0], projection([lon,lat])[1]];
 }
 
+// converts name of artist in artists.csv to name on image file
+// spaces -> '_', quotes are removed, and everything becomes lowercase
 function getArtistImageName(name) {
   return name.split(' ').join('_').split('\'').join('').toLowerCase();
 }
+
+
+// ======= Functions for handling scrolling ======= 
 
 function moveThroughTimeScrolling() {
   currentYear = Math.round((d3.event.scale - 1) * scrollSensitivity + startYear);
