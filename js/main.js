@@ -10,17 +10,20 @@ var regionNodes = [
 ]
 const regionIndexMap = ["W", "NE", "NC", "SC", "S", "MW"];
 
+const startYear = 1965;
 const birthYear = 1967;
 const presentYear = 2015;
-const scrollSensitivity = 10.0; // higher equals less sensitive
-var prevYear = birthYear;
-var currentYear = birthYear;
+const scrollSensitivity = 2.0; // higher equals more sensitive
+var prevYear = startYear;
+var currentYear = startYear;
 
 var zoom = d3.behavior.zoom()
-  .scaleExtent([1,(presentYear - birthYear) / scrollSensitivity + 1])
-  .on("zoom", moveThroughTime);
+  .scaleExtent([1,((presentYear - startYear) / scrollSensitivity) + 1])
+  .on("zoom", function() {
+    moveThroughTimeScrolling();
+  });
 
-var width, height, mapTranslateLeft, mainVisTop, mainVisLeft, narrationLeft, narrationTop, narrationWidth, centered, timelineEvents, slider;
+var width, height, mapTranslateLeft, mainVisTop, mainVisLeft, narrationLeft, narrationTop, narrationWidth, centered, timelineEventDescriptions, timelineEvents, slider;
 var svg, svgNarration, g, gn, gt;
 var artistNodes, artistLinks, artistMap;
 
@@ -76,7 +79,9 @@ function setupMap() {
     .attr("height", height)
     .style("left", $(window).width() * 0.2 + "px")
     .attr("id", "map")
-    .call(zoom);
+    .call(zoom)
+    .on("mousedown.zoom", null)
+    .on("dblclick.zoom", null);
 
   g = svg.append("g");
 
@@ -86,13 +91,75 @@ function setupMap() {
     .attr("height", height)
     .style("fill", "rgba(0,0,0,0)");
 
-  mapTranslateLeft = $(window).width() * 0.1;
+  mapTranslateLeft = $(window).width() * 0.07;
+
   g.attr("transform", "translate(" + (-1 * mapTranslateLeft) + ",0)");
 
   // setup narrator box and get timeline events ready
   narrationSetup();
 }
 
+// sets up and draws the region circles
+function drawRegions() {
+  washington = drawRegion("W");
+  northEast = drawRegion("NE");
+  northCalifornia = drawRegion("NC");
+  southCalifornia = drawRegion("SC");
+  south = drawRegion("S");
+  midWest = drawRegion("MW");
+}
+
+// helper function to draw a single region
+function drawRegion(regionName) {
+  var lon = regions[regionName]["lon"];
+  var lat = regions[regionName]["lat"];
+  var color = regions[regionName]["color"];
+  var regionX = projection([-1*lon, lat])[0];
+  var regionY = projection([-1*lon, lat])[1];
+  return regionsGroup.append("svg:circle")
+                     .attr("cx", regionX)
+                     .attr("cy", regionY)
+                     .attr("r", 0)
+                     .attr("numArtists", 1)
+                     .attr("id", regionName)
+                     .style("fill", color)
+                     .on("click", function() { zoomToRegion(this); });
+}
+
+function drawRappers() {
+  d3.csv("data/artists.csv", function(err, artists) {
+    artists.forEach(function(artist) {
+      // need to invert longitude because I got values in terms of hemispheres
+      // western hemisphere is negative https://github.com/mbostock/d3/issues/1287
+      addRapper(artist.region, artist.name, artist.start_year);
+    });
+    washington.transition().duration(100).attr("r", 10 * Math.log(washington.attr("numArtists")));
+    northEast.transition().duration(100).attr("r", 10 * Math.log(northEast.attr("numArtists")));
+    northCalifornia.transition().duration(100).attr("r", 10 * Math.log(northCalifornia.attr("numArtists")));
+    southCalifornia.transition().duration(100).attr("r", 10 * Math.log(southCalifornia.attr("numArtists")));
+    south.transition().duration(100).attr("r", 10 * Math.log(south.attr("numArtists")));
+    midWest.transition().duration(100).attr("r", 10 * Math.log(midWest.attr("numArtists")));
+    prevYear = currentYear;
+  });
+}
+
+function drawSlider() {
+  slider = d3.slider().axis(d3.svg.axis().orient("right").tickFormat(d3.format("d")).tickValues([1965, 1970, 1975, 1980, 1985, 1990, 1995, 2000, 2005, 2010, 2015]))
+                      .value(1965).min(1965).max(2015).orientation("vertical").step(1);
+  slider.on("slide", function(evt, value) {
+    moveThroughTimeSliding(value);
+  });
+  d3.select("#slider").style("left", narrationWidth + "px")
+                      .style("top", $(window).height() * 0.09 + "px")
+                      .style("height", height-$(window).height() * 0.2 + "px").call(slider)
+                      .style("border", "0px")
+                      .style("width", "0px")
+                      .call(zoom)
+                      .on("mousedown.zoom", null)
+                      .on("dblclick.zoom", null);
+}
+
+>>>>>>> fixed small slider issues and added preview shortcuts to skip to events during narration
 // draws the map in the group 'g' (this must be initialized before calling this function)
 function drawMap() {
   d3.json("data/us.json", function(error, us) {
@@ -243,11 +310,29 @@ function zoomOut() {
     .attr("transform", "translate(" + (width / 2 - mapTranslateLeft) + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
     .style("stroke-width", 1.5 / k + "px")
     .each("end", function() { 
-      zoom.on("zoom", moveThroughTime); 
+      zoom.on("zoom", function() {
+        moveThroughTimeScrolling();
+      }); 
       updateRegions();
     });
 }
 
+// called when the user scrolls to zoom, moves through years from 1967 to 2015
+function moveThroughTimeScrolling() {
+  currentYear = Math.round((d3.event.scale - 1) * scrollSensitivity + startYear);
+  slider.value(currentYear);
+  drawRappers();
+  updateNarration();
+}
+
+// called when the user slides to zoom, moves through years from 1967 to 2015
+function moveThroughTimeSliding(newYear) {
+  currentYear = newYear;
+  zoom.scale(((currentYear - startYear)/scrollSensitivity) + 1);
+  slider.value(currentYear);
+  drawRappers();
+  updateNarration();
+}
 
 // ======= Functions for managing the data ======= 
 
