@@ -14,12 +14,6 @@ const startYear = 1965;
 const birthYear = 1967;
 const presentYear = 2015;
 
-/*var artistNodes = [ {"name": "50 Cent", "longitude": 72.8403, "latitude": 41.7278, "region": "NE"},
-                    {"name": "Action Bronson", "longitude": 73.8667, "latitude": 40.75, "region": "NE"},
-                    {"name": "Aesop Rock", "longitude": 73.5008, "latitude": 40.8128, "region": "NE"},
-                    {"name": "Asap Rocky", "longitude": 73.9484, "latitude": 40.809, "region": "NE"},
-                  ];*/
-
 const scrollSensitivity = 2.0; // higher equals more sensitive
 var prevYear = startYear;
 var currentYear = startYear;
@@ -322,12 +316,12 @@ function drawRegionalArtists(region, x, y, k) {
 
 
   var images = node.append("image")
-      .attr("xlink:href", function(d) { return "imgs/" + getArtistImageName(d.name) + ".png"; })
-      .attr("x", function(d) { xy = getXY(d); if (xy == null) return; return xy[0] - artistSize / 2; })
-      .attr("y", function(d) { xy = getXY(d); if (xy == null) return; return xy[1] - artistSize / 2; })
-      .attr("width", artistSize)
-      .attr("height", artistSize)
-      .attr("clip-path", function(d) { return "url(#" + getArtistImageName(d.name) + ")"; });
+    .attr("xlink:href", function(d) { return "imgs/" + getArtistImageName(d.name) + ".png"; })
+    .attr("x", function(d) { xy = getXY(d); if (xy == null) return; return xy[0] - artistSize / 2; })
+    .attr("y", function(d) { xy = getXY(d); if (xy == null) return; return xy[1] - artistSize / 2; })
+    .attr("width", artistSize)
+    .attr("height", artistSize)
+    .attr("clip-path", function(d) { return "url(#" + getArtistImageName(d.name) + ")"; });
 
   var rings = node.append("circle")
     .attr("id", function(d) { return getArtistImageName(d.name) + "ring"; })
@@ -353,7 +347,7 @@ function getXY(artistNode) {
 }
 
 function getArtistImageName(name) {
-  return name.replace(" ", "_").toLowerCase();
+  return name.split(' ').join('_').split('\'').join('').toLowerCase();
 }
 
 function moveThroughTimeScrolling() {
