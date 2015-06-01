@@ -32,14 +32,22 @@ body {
     font-family: "syncopateRegular";
     src: url("../syncopate/Syncopate-Regular.ttf");
 }
-.narrationEventText {
+.narrationEventText, .narationEventPreviewText {
   font-family: "syncopateRegular";
 }
 
-#narrationYearText {
+#gNext, #gPrev {
+  opacity: 0.3;
+}
+
+#gNext:hover, #gPrev:hover {
+  opacity: 1;
+}
+
+#narrationYearText, .narrationEventPreviewNextYearText, .narrationEventPreviewPreviousYearText {
   font-family: "syncopateBold";
 }
 
-#slider {
-  width: 1em;
+#narrationEventPreviewNextYearBackground, #narrationEventPreviewPreviousYearBackground, .narrationEventPreviewNextYearText, .narrationEventPreviewPreviousYearText {
+  cursor: pointer;
 }
