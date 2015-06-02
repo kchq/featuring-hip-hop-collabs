@@ -3,7 +3,7 @@
 // lat and lon are the coordinates of where the region circle are drawn, zlat and zlon are the center of zoom when 
 // the region is zoomed in on
 var regionNodes = [
-  {"id":"W", "lon": 122.3331, "lat": 47.609, "zlon": 122.3331, "zlat": 47.609, "color": "#3AA827", "scale": 16, "numArtists":0, "artistsPerYear":{}},
+  {"id":"W", "lon": 122.3331, "lat": 47.609, "zlon": 122.3331, "zlat": 47.609, "color": "#3AA827", "scale": 24, "numArtists":0, "artistsPerYear":{}},
   {"id":"NE", "lon": 74.0059, "lat": 40.7127, "zlon": 76, "zlat": 40.5, "color": "steelblue", "scale": 7, "numArtists":0, "artistsPerYear":{}},
   {"id":"NC", "lon": 121.4689, "lat": 38.5556, "zlon": 121.4689, "zlat": 38, "color": "#BF9900", "scale": 10, "numArtists":0, "artistsPerYear":{}},
   {"id":"SC", "lon": 118.5, "lat": 34.2, "zlon": 118.5, "zlat": 34, "color": "#E39612", "scale": 32, "numArtists":0, "artistsPerYear":{}},
@@ -17,7 +17,7 @@ const birthYear = 1967;
 const presentYear = 2015;
 
 const scrollSensitivity = 2.0; // higher equals more sensitive
-const artistCircleSize = 8;
+const artistCircleSize = 7;
 
 var prevYear = startYear;
 var currentYear = startYear;
@@ -362,8 +362,8 @@ function drawRegionalArtists(region, x, y, k) {
 }
 
 function getXY(artistNode) {
-  var lon = -1 * artistNode.longitude;
-  var lat = artistNode.latitude;
+  var lon = -1 * artistNode.map_longitude;
+  var lat = artistNode.map_latitude;
   if (!projection([lon,lat])) {
     return null;
   }
