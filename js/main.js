@@ -1,12 +1,14 @@
 //d3.select(window).on("resize", throttle);
 
+// lat and lon are the coordinates of where the region circle are drawn, zlat and zlon are the center of zoom when 
+// the region is zoomed in on
 var regionNodes = [
-  {"id":"W", "lon": 122.3331, "lat": 47.609, "color": "#3AA827", "scale": 10, "numArtists":0, "artistsPerYear":{}},
-  {"id":"NE", "lon": 74.0059, "lat": 40.7127, "color": "steelblue", "scale": 4, "numArtists":0, "artistsPerYear":{}},
-  {"id":"NC", "lon": 121.4689, "lat": 38.5556, "color": "#BF9900", "scale": 4, "numArtists":0, "artistsPerYear":{}},
-  {"id":"SC", "lon": 118.5, "lat": 34.2, "color": "#E39612", "scale": 20, "numArtists":0, "artistsPerYear":{}},
-  {"id":"S", "lon": 85, "lat": 32, "color": "#BF113A", "scale": 4, "numArtists":0, "artistsPerYear":{}},
-  {"id":"MW", "lon": 87.6847, "lat": 40, "color": "#A314A8", "scale": 3, "numArtists":0, "artistsPerYear":{}}
+  {"id":"W", "lon": 122.3331, "lat": 47.609, "zlon": 122.3331, "zlat": 47.609, "color": "#3AA827", "scale": 16, "numArtists":0, "artistsPerYear":{}},
+  {"id":"NE", "lon": 74.0059, "lat": 40.7127, "zlon": 76, "zlat": 40.5, "color": "steelblue", "scale": 7, "numArtists":0, "artistsPerYear":{}},
+  {"id":"NC", "lon": 121.4689, "lat": 38.5556, "zlon": 121.4689, "zlat": 38, "color": "#BF9900", "scale": 10, "numArtists":0, "artistsPerYear":{}},
+  {"id":"SC", "lon": 118.5, "lat": 34.2, "zlon": 118.5, "zlat": 34, "color": "#E39612", "scale": 32, "numArtists":0, "artistsPerYear":{}},
+  {"id":"S", "lon": 85, "lat": 32, "zlon": 86, "zlat": 32, "color": "#BF113A", "scale": 2, "numArtists":0, "artistsPerYear":{}},
+  {"id":"MW", "lon": 87.6847, "lat": 40, "zlon": 88, "zlat": 41.5, "color": "#A314A8", "scale": 3, "numArtists":0, "artistsPerYear":{}}
 ]
 const regionIndexMap = ["W", "NE", "NC", "SC", "S", "MW"];
 
@@ -213,18 +215,6 @@ function drawSlider() {
                       .on("dblclick.zoom", null);
 }
 
-// called when the user scrolls to zoom, moves through years from 1967 to 2015
-function moveThroughTime(newYear) {
-  if (newYear === undefined) {
-    currentYear = Math.round((d3.event.scale - 1) * scrollSensitivity + birthYear);
-    slider.value(currentYear);
-  } else {
-    currentYear = newYear;
-  }
-  updateRegions();
-  updateNarration();
-}
-
 var throttleTimer;
 function throttle() {
   window.clearTimeout(throttleTimer);
@@ -237,14 +227,19 @@ function throttle() {
 
 function zoomToRegion(region) {
   var x, y, k;
-  var lon = region.lon;
-  var lat = region.lat;
+  var lon = region.zlon;
+  var lat = region.zlat;
   x = projection([-1*lon, lat])[0];
   y = projection([-1*lon, lat])[1];
   k = region.scale;
   hideRegions();
   // TODO: Sonja - allow scrolling through time while zoomed in
-  zoom.on("zoom", null);
+  zoom.on("zoom", function() {
+    moveThroughTimeRegionalScrolling();
+  });
+  slider.on("slide", function(evt, value) {
+    moveThroughTimeRegionalSliding(value);
+  });
   g.on("dblclick", zoomOut);
   g.transition()
     .duration(750)
@@ -273,14 +268,22 @@ function zoomOut() {
       zoom.on("zoom", function() {
         moveThroughTimeScrolling();
       });
+      slider.on("slide", function(evt, value) {
+        moveThroughTimeSliding(value);
+      });
       updateRegions();
     });
 }
 
 // ======= Functions to handle drawing artists in a region ======= 
 
+var currentRegion, currentX, currentY, currentK;
 function drawRegionalArtists(region, x, y, k) {
-
+  currentRegion = region;
+  currentX = x;
+  currentY = y;
+  currentK = k;
+  
   // filter out artists who are not in the selected region or not active in the current year
   var artistNodesTemp = artistNodes.filter( function(a) {
     var r = a.region === region;
@@ -290,8 +293,8 @@ function drawRegionalArtists(region, x, y, k) {
 
   artistForce.nodes(artistNodesTemp);
 
-  var node = svg.selectAll(".node")
-      .data(artistForce.nodes())
+  var artistNode = svg.selectAll(".artistNode")
+      .data(artistNodesTemp)
       .enter().append("g")
       .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
       .attr("class", "node")
@@ -300,11 +303,10 @@ function drawRegionalArtists(region, x, y, k) {
      // .on("dblclick", dblclick)
       .call(artistForce.drag);
 
-  // TODO: Sonja - figure out why first six nodes are null
-  console.log(node);
+  artistForce.start();
   
   // set up clip paths to mask artist images to circles
-  node.each(function(d, i) {
+  artistNode.each(function(d, i) {
     xy = getXY(d);
     if (xy == null) {
       return;
@@ -320,7 +322,7 @@ function drawRegionalArtists(region, x, y, k) {
   });
 
   // add artist images to each node
-  var images = node.append("image")
+  var images = artistNode.append("image")
     .attr("xlink:href", function(d) { return "imgs/" + getArtistImageName(d.name) + ".png"; })
     .attr("x", function(d) { xy = getXY(d); if (xy == null) return; return xy[0] - artistCircleSize / 2; })
     .attr("y", function(d) { xy = getXY(d); if (xy == null) return; return xy[1] - artistCircleSize / 2; })
@@ -336,7 +338,7 @@ function drawRegionalArtists(region, x, y, k) {
     .attr("clip-path", function(d) { return "url(#" + getArtistImageName(d.name) + ")"; });
 
   // add border to each artist
-  var rings = node.append("circle")
+  var rings = artistNode.append("circle")
     .attr("id", function(d) { return getArtistImageName(d.name) + "ring"; })
     .attr("cx", function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
     .attr("cy", function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
@@ -353,8 +355,8 @@ function drawRegionalArtists(region, x, y, k) {
     .style("stroke-width", "0.5px");
 
   // draw a ring on hover
-  node.on("mouseenter", function(d) { $("#" + getArtistImageName(d.name) + "ring").css("stroke", "#FF5655"); });
-  node.on("mouseleave", function(d) { $("#" + getArtistImageName(d.name) + "ring").css("stroke", "#000"); });
+  artistNode.on("mouseenter", function(d) { $("#" + getArtistImageName(d.name) + "ring").css("stroke", "#FF5655"); });
+  artistNode.on("mouseleave", function(d) { $("#" + getArtistImageName(d.name) + "ring").css("stroke", "#000"); });
 }
 
 function getXY(artistNode) {
@@ -370,6 +372,11 @@ function getXY(artistNode) {
 // spaces -> '_', quotes are removed, and everything becomes lowercase
 function getArtistImageName(name) {
   return name.split(' ').join('_').split('\'').join('').toLowerCase();
+}
+
+function updateRegionalArtists(region, x, y, k) {
+  svg.selectAll(".artistNode").remove();
+  drawRegionalArtists(region, x, y, k);
 }
 
 
@@ -388,6 +395,21 @@ function moveThroughTimeSliding(newYear) {
   zoom.scale(((currentYear - startYear)/scrollSensitivity) + 1);
   slider.value(currentYear);
   updateRegions();
+  updateNarration();
+}
+
+function moveThroughTimeRegionalScrolling() {
+  currentYear = Math.round((d3.event.scale - 1) * scrollSensitivity + startYear);
+  slider.value(currentYear);
+  updateRegionalArtists(currentRegion, currentX, currentY, currentK);
+  updateNarration();
+}
+
+function moveThroughTimeRegionalSliding(newYear) {
+  currentYear = newYear;
+  zoom.scale(((currentYear - startYear)/scrollSensitivity) + 1);
+  slider.value(currentYear);
+  updateRegionalArtists(currentRegion, currentX, currentY, currentK);
   updateNarration();
 }
 
