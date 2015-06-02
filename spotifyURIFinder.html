@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Spotify URI Finder</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script src="js/spotify-web-api.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <link type="text/css" href="live_styles.css" rel="stylesheet" />
+  </head>
+
+<body>
+</body>
+
+<script type="text/javascript">
+
+    var spotifyApi = new SpotifyWebApi();
+
+    d3.json("collabs_pruned_with_spotify.json", function(data) {
+        var delay = 0;
+        for (var mainArtistkey in data) {
+            for (var collabArtistKey in data[mainArtistkey]) {
+                var tracks = data[mainArtistkey][collabArtistKey];
+
+                for(var i = 0; i<tracks.length; i++) {
+                    delay++;
+                    setTimeout(findTrack.bind(this, spotifyApi, tracks, i, collabArtistKey, mainArtistkey), (1000*delay));
+                }
+  
+  
+            }
+        }
+
+        setTimeout(function() {
+            $("body").text(JSON.stringify(data));
+
+        }, (1000 * (delay + 10)));
+    });
+
+    function findTrack(spotifyApi, tracks, i, collabArtistKey, mainArtistkey) {
+        spotifyApi.searchTracks(tracks[i].title)
+            .then(function(trackSearchResults) {
+                console.log(collabArtistKey + " " + mainArtistkey + " " + i + " " + tracks[i].title);
+                var trackResultsList = trackSearchResults.tracks.items;
+                for (var j = 0; j < trackResultsList.length; j++) {
+
+                    var artistsOfSearchResult = trackResultsList[j].artists;
+                    var artistsToCredit = tracks[i].artist_credit;
+                    var numSame = 0;
+                    var collabArtistExists = false;
+                    for (var k = 0; k < artistsToCredit.length; k++) {
+                        for (var z = 0; z < artistsOfSearchResult.length; z++) {
+
+                            if (String(artistsOfSearchResult[z].name).toUpperCase() === String(artistsToCredit[k]).toUpperCase()) {
+                             if (String(artistsToCredit[k]).toUpperCase() === String(collabArtistKey).toUpperCase()) {
+                                     collabArtistExists = true;
+                                }
+                                numSame++;
+                            }
+                        }
+                    }
+                    if (collabArtistExists && numSame >= 1 && artistsOfSearchResult.length > 0 && artistsToCredit.length > 0) {
+
+                        // set spotify URI for track
+                        tracks[i].spotifyURI = trackResultsList[j].uri;
+                        return; 
+                    }
+
+                }
+        }, function(err) {
+            console.error(err);
+        });
+
+    }
+</script>
+</html>
