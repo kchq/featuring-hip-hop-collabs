@@ -373,7 +373,7 @@ function getXY(artistNode) {
 // converts name of artist in artists.csv to name on image file
 // spaces -> '_', quotes are removed, and everything becomes lowercase
 function getArtistImageName(name) {
-  return name.split(' ').join('_').split('\'').join('').toLowerCase();
+  return name.split(' ').join('_').split('\'').join('').split('.').join('').toLowerCase();
 }
 
 function updateRegionalArtists(region, x, y, k) {
