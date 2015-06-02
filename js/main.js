@@ -248,6 +248,7 @@ function zoomToRegion(region) {
     .each("end", function() {
       drawRegionalArtists(region.id, x, y, k);
     });
+  isZoomed = true;
 }
 
 function zoomOut() {
@@ -273,6 +274,7 @@ function zoomOut() {
       });
       updateRegions();
     });
+  isZoomed = false;
 }
 
 // ======= Functions to handle drawing artists in a region ======= 
