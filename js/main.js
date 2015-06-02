@@ -162,8 +162,8 @@ function setUpRegions() {
       .on("click", function(d) {
         zoomToRegion(d); 
       });
-  force.start();
 
+    setUpRegionLinks();
 }
 
 function updateRegions() {
@@ -181,6 +181,18 @@ function hideRegions() {
 }
 
 function tick() {
+   path.attr("d", function(d) {
+        var dx = d.target.x - d.source.x,
+            dy = d.target.y - d.source.y,
+            dr = Math.sqrt(dx * dx + dy * dy);
+        return "M" + 
+            d.source.x + "," + 
+            d.source.y + "A" + 
+            dr + "," + dr + " 0 0,1 " + 
+            d.target.x + "," + 
+            d.target.y;
+    });
+
   node.attr("cx", function(d) { return d.x - mapTranslateLeft; })
       .attr("cy", function(d) { return d.y; });
 }
@@ -197,7 +209,41 @@ function calculateArtists(node) {
 
 // ======= Functions to create and modify the region links ======= 
 
+function setUpRegionLinks() {
+  var regionLinks = computeRegionLinks();
+  force.links(regionLinks);
 
+  force.start();
+}
+
+function computeRegionLinks(){
+  var regionLinks = [];
+  artistLinks.forEach(function(link) {
+    var sourceRegion = artistNodes[link.source].region;
+    var sourceIndex = regionIndexMap.indexOf(sourceRegion);
+    var targetRegion = artistNodes[link.target].region;
+    var targetIndex = regionIndexMap.indexOf(targetRegion);
+    if (sourceIndex != targetIndex) {
+      // we don't show self loops to a region.
+      var regionLink = getLink(regionLinks, sourceIndex, targetIndex);
+      regionLink.numLinks++;
+    }
+  });
+  debugger;
+  return regionLinks;
+}
+
+function getLink(regionLinks, sourceIndex, targetIndex) {
+  regionLinks.forEach(function(link) {
+    if (link.source == sourceIndex && link.target == targetIndex) {
+      // found the link
+      return link;
+    }
+  });
+  var newLink = {source: sourceIndex, target: targetIndex, numLinks: 0};
+  regionLinks.push(newLink);
+  return newLink;
+}
 
 // ======= Functions to create and modify the slider ======= 
 
