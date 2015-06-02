@@ -7,7 +7,7 @@ var regionNodes = [
   {"id":"NE", "lon": 74.0059, "lat": 40.7127, "zlon": 76, "zlat": 40.5, "color": "steelblue", "scale": 7, "numArtists":0, "artistsPerYear":{}},
   {"id":"NC", "lon": 121.4689, "lat": 38.5556, "zlon": 121.4689, "zlat": 38, "color": "#BF9900", "scale": 10, "numArtists":0, "artistsPerYear":{}},
   {"id":"SC", "lon": 118.5, "lat": 34.2, "zlon": 118.5, "zlat": 34, "color": "#E39612", "scale": 32, "numArtists":0, "artistsPerYear":{}},
-  {"id":"S", "lon": 85, "lat": 32, "zlon": 86, "zlat": 32, "color": "#BF113A", "scale": 2, "numArtists":0, "artistsPerYear":{}},
+  {"id":"S", "lon": 85, "lat": 32, "zlon": 86, "zlat": 32, "color": "#BF113A", "scale": 2.3, "numArtists":0, "artistsPerYear":{}},
   {"id":"MW", "lon": 87.6847, "lat": 40, "zlon": 87.2, "zlat": 41.5, "color": "#A314A8", "scale": 4, "numArtists":0, "artistsPerYear":{}}
 ]
 const regionIndexMap = ["W", "NE", "NC", "SC", "S", "MW"];
