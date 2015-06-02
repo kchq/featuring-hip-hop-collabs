@@ -220,14 +220,22 @@ function updateNarration() {
 	d3.selectAll(".timelineJumperNext")
 		.on("click", function() {
 			if (currentNextEventYear !== 0) {
-				moveThroughTimeSliding(currentNextEventYear);
+				if (isZoomed) {
+					moveThroughTimeRegionalSliding(currentNextEventYear);
+				} else {
+					moveThroughTimeSliding(currentNextEventYear);
+				}
 			}
 		});
 
 	d3.selectAll(".timelineJumperPrev")
 		.on("click", function() {
 			if (currentPreviousEventYear !== 0) {
-				moveThroughTimeSliding(currentPreviousEventYear);
+				if (isZoomed) {
+					moveThroughTimeRegionalSliding(currentPreviousEventYear);
+				} else {
+					moveThroughTimeSliding(currentPreviousEventYear);
+				}
 			}
 		});
 }
