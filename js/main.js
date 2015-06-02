@@ -162,7 +162,6 @@ function setUpRegions() {
       .on("click", function(d) {
         zoomToRegion(d); 
       });
-
   force.start();
 
 }
@@ -195,6 +194,9 @@ function calculateArtists(node) {
     }
   }
 }
+
+// ======= Functions to create and modify the region links ======= 
+
 
 
 // ======= Functions to create and modify the slider ======= 
@@ -256,11 +258,9 @@ function zoomOut() {
   y = height / 2;
   k = 1;
 
-  d3.select("#regions").style("display", "block");
   svg.selectAll(".artistNode").remove();
   svg.selectAll(".clippath").remove();
 
-  setUpRegions();
   g.transition()
     .duration(750)
     .attr("transform", "translate(" + (width / 2 - mapTranslateLeft) + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
