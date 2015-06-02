@@ -378,6 +378,7 @@ function getArtistImageName(name) {
 
 function updateRegionalArtists(region, x, y, k) {
   svg.selectAll(".artistNode").remove();
+  svg.selectAll(".clippath").remove();
   drawRegionalArtists(region, x, y, k);
 }
 
