@@ -51,3 +51,7 @@ body {
 #narrationEventPreviewNextYearBackground, #narrationEventPreviewPreviousYearBackground, .narrationEventPreviewNextYearText, .narrationEventPreviewPreviousYearText {
   cursor: pointer;
 }
+
+.regionLink {
+  stroke: #777;
+}

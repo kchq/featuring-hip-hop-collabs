@@ -30,7 +30,8 @@ var zoom = d3.behavior.zoom()
 
 var width, height, mapTranslateLeft, mainVisTop, mainVisLeft, narrationLeft, narrationTop, narrationWidth, centered, timelineEventDescriptions, timelineEvents, slider;
 var svg, svgNarration, g, gn, gt;
-var artistNodes, artistLinks, artistMap;
+var artistNodes, artistMap, regionLinks;
+var regionNode, regionLink, artistLink;
 
 var isZoomed = false;
 
@@ -39,13 +40,15 @@ height = $(window).height();
 
 var force = d3.layout.force()
     .size([width, height])
-    .on("tick", tick);
+    .on("tick", function() {
+      tick(regionLink);
+    });
 
 var artistForce = d3.layout.force()
     .size([width, height])
-    .on("tick", tick);
-
-var node, link;
+    .on("tick", function() {
+      tick(undefined);
+    });
 
 var projection = d3.geo.albersUsa()
   .scale(width)  // determines initial map size
@@ -74,6 +77,20 @@ function redraw() {
   setup();
   drawMap();
   updateRegions();
+}
+
+function tick(link) {
+  regionNode.attr("cx", function(d) { return d.x - mapTranslateLeft; })
+      .attr("cy", function(d) { return d.y; });
+
+  if (link) {
+    link.attr('x1', function(d) { return d.source.x - mapTranslateLeft; })
+      .attr('y1', function(d) { return d.source.y; })
+      .attr('x2', function(d) { return d.target.x - mapTranslateLeft; })
+      .attr('y2', function(d) { return d.target.y; });
+  }
+
+  
 }
 
 // ======= Functions to create the Map ======= 
@@ -136,24 +153,27 @@ function drawMap() {
 
 // sets up and draws the region circles
 function createRegions() {
-  regionNodes.forEach(function(regionNode) {
-    var lon = regionNode.lon;
-    var lat = regionNode.lat;
+  regionNodes.forEach(function(node) {
+    var lon = node.lon;
+    var lat = node.lat;
     var regionX = projection([-1*lon, lat])[0];
     var regionY = projection([-1*lon, lat])[1];
-    regionNode["x"] = regionX;
-    regionNode["y"] = regionY;
-    regionNode["fixed"] = true;
+    node["x"] = regionX;
+    node["y"] = regionY;
+    node["fixed"] = true;
   });
 }
 
 function setUpRegions() {
   force.nodes(regionNodes);
 
-  node = svg.selectAll(".node")
+  // path first for correct z-index ordering
+  setUpRegionLinks();
+
+  regionNode = svg.selectAll(".regionNode")
     .data(regionNodes)
     .enter().append("g")
-    .attr("class", "node")
+    .attr("class", "regionNode")
     .call(force.drag)
     .append("svg:circle")
       .style("fill", function(d) {
@@ -162,8 +182,6 @@ function setUpRegions() {
       .on("click", function(d) {
         zoomToRegion(d); 
       });
-
-    setUpRegionLinks();
 }
 
 function updateRegions() {
@@ -174,27 +192,13 @@ function updateRegions() {
   d3.selectAll("circle").transition().duration(100).attr("r", function(d) { 
     return Math.max(0, 10 * Math.log(d.numArtists)); 
   });
+
+  updateRegionLinks();
 }
 
 function hideRegions() {
   d3.selectAll("circle").attr("r", 0);
-}
-
-function tick() {
-   path.attr("d", function(d) {
-        var dx = d.target.x - d.source.x,
-            dy = d.target.y - d.source.y,
-            dr = Math.sqrt(dx * dx + dy * dy);
-        return "M" + 
-            d.source.x + "," + 
-            d.source.y + "A" + 
-            dr + "," + dr + " 0 0,1 " + 
-            d.target.x + "," + 
-            d.target.y;
-    });
-
-  node.attr("cx", function(d) { return d.x - mapTranslateLeft; })
-      .attr("cy", function(d) { return d.y; });
+  regionLink.style("stroke-width", "0px");
 }
 
 function calculateArtists(node) {
@@ -210,14 +214,24 @@ function calculateArtists(node) {
 // ======= Functions to create and modify the region links ======= 
 
 function setUpRegionLinks() {
-  var regionLinks = computeRegionLinks();
+  computeRegionLinks();
   force.links(regionLinks);
+
+  regionLink = svg.selectAll('.regionLink')
+        .data(regionLinks)
+        .enter().append('line')
+        .attr('class', 'regionLink')
+        .attr('x1', function(d) { return regionNodes[d.source].x; })
+        .attr('y1', function(d) { return regionNodes[d.source].y; })
+        .attr('x2', function(d) { return regionNodes[d.target].x; })
+        .attr('y2', function(d) { return regionNodes[d.target].y; })
+        .style("stroke-width", "0px");
 
   force.start();
 }
 
 function computeRegionLinks(){
-  var regionLinks = [];
+  regionLinks = [];
   artistLinks.forEach(function(link) {
     var sourceRegion = artistNodes[link.source].region;
     var sourceIndex = regionIndexMap.indexOf(sourceRegion);
@@ -226,23 +240,46 @@ function computeRegionLinks(){
     if (sourceIndex != targetIndex) {
       // we don't show self loops to a region.
       var regionLink = getLink(regionLinks, sourceIndex, targetIndex);
-      regionLink.numLinks++;
+      if (regionLink.linksPerYear[link.release_year] == undefined) {
+        regionLink.linksPerYear[link.release_year] = 1;
+      } else {
+        regionLink.linksPerYear[link.release_year]++;
+      }
     }
   });
-  debugger;
   return regionLinks;
 }
 
 function getLink(regionLinks, sourceIndex, targetIndex) {
-  regionLinks.forEach(function(link) {
+  for (var i = 0; i < regionLinks.length; i++) {
+    var link = regionLinks[i];
     if (link.source == sourceIndex && link.target == targetIndex) {
       // found the link
       return link;
     }
-  });
-  var newLink = {source: sourceIndex, target: targetIndex, numLinks: 0};
+  }
+  var newLink = {source: sourceIndex, target: targetIndex, numLinks: 0, linksPerYear:{}};
   regionLinks.push(newLink);
   return newLink;
+}
+
+function updateRegionLinks() {
+  regionLinks.forEach(function(d) {
+    calculateLinks(d);
+  });
+
+  d3.selectAll(".regionLink").style("stroke-width", function(d) { 
+    return Math.max(0, 1 + Math.log(d.numLinks)) + "px"; 
+  });
+}
+
+function calculateLinks(link) {
+  link.numLinks = 0;
+  for (var year in link.linksPerYear) {
+    if (parseInt(year) <= currentYear) {
+      link.numLinks += parseInt(link.linksPerYear[year]);
+    }
+  }
 }
 
 // ======= Functions to create and modify the slider ======= 
@@ -345,7 +382,6 @@ function drawRegionalArtists(region, x, y, k) {
       .data(artistNodesTemp)
       .enter().append("g")
       .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-      .attr("class", "node")
       .attr("class", "artistNode")
      // .on("click", click)
      // .on("dblclick", dblclick)
@@ -494,7 +530,7 @@ function parseData() {
 
   // load the collaboration json
   q.defer(function(callback) {
-    d3.json("data/collabs_pruned.json", function(err, collabs) {
+    d3.json("data/collabs_pruned_with_spotify.json", function(err, collabs) {
       // load up all the collaborations
       artistLinks = [];
       for (var artist in collabs) {
