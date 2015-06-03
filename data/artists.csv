@@ -1,6 +1,6 @@
 name,city,state,latitude,longitude,map_latitude,map_longitude,start_year,end_year,region
 50 Cent,Farmington,CT,41.7278,72.8403,41.7278,72.8403,1998,present,NE
-Ab-Soul,Los Angeles,CA,34.05,118.25,34.05,118.25,2003,present,SC
+Ab-Soul,Los Angeles,CA,34.05,118.25,34.05,118.18,2003,present,SC
 Action Bronson,Queens,NY,40.75,73.8667,40.75,73.8667,2008,present,NE
 Aesop Rock,Syosset,NY,40.8128,73.5008,40.8128,73.5008,1996,present,NE
 Andre 3000,Atlanta,GA,33.755,84.39,33.755,84.39,1991,present,S
@@ -18,7 +18,7 @@ Blackalicious,Sacremento,CA,38.5556,121.4689,38.5556,121.4689,1992,present,NC
 Blue Scholars,Seattle,WA,47.6097,122.3331,47.55,122.4,2002,present,W
 Bone Thugs N' Harmony,Cleveland,OH,41.4822,81.6697,41.4822,81.6697,1992,present,MW
 Brother Ali,Madison,WI,43.0667,89.4,43.0667,89.4,1998,present,MW
-Busdriver,Los Angeles,CA,34.05,118.25,34.05,118.25,1999,present,SC
+Busdriver,Los Angeles,CA,34.05,118.25,34,118.22,1999,present,SC
 Busta Rhymes,Brooklyn,NY,40.6928,73.9903,40.6928,73.9903,1989,present,NE
 Cam'ron,Harlem,NY,40.809,73.9484,40.809,73.9484,1993,present,NE
 Canibus,New York City,NY,40.7127,74.0059,40.7127,74.0059,1992,present,NE
@@ -32,13 +32,13 @@ Currensy,New Orleans,LA,29.95,90.0667,30.2,89.1,2002,present,S
 Cypress Hill,South Gate,CA,33.9442,118.195,33.9442,118.195,1988,present,SC
 Danny Brown,Detroit,MI,42.3314,83.0458,42,83.0458,2003,present,MW
 De la Soul,Long Island,NY,40.8,73.3,40.8,73.3,1987,present,NE
-Del the Funky Homosapien,Oakland,CA,37.8044,122.2708,37.8044,122.2708,1988,present,NC
+Del the Funky Homosapien,Oakland,CA,37.8044,122.2708,37.8044,122.3,1988,present,NC
 DJ Kool Herc,Bronx,NY,40.8373,,40.8373,,1967,present,NE
 DMX,Baltimore,MD,39.2833,76.6167,39.2833,76.6167,1991,present,NE
 Dr. Dre,Compton,CA,33.8967,118.225,33.8967,118.225,1985,present,SC
 Drake,"Toronto, Ontario, Canda",,,,,,2001,present,NE
 E-40,Vallejo,CA,38.1131,122.2358,38.1131,122.2358,1990,present,NC
-Earl Sweatshirt,Los Angeles,CA,34.05,118.25,34.05,118.25,2008,present,SC
+Earl Sweatshirt,Los Angeles,CA,34.05,118.25,34.1,118.22,2008,present,SC
 Eazy-E,Compton,CA,33.8967,118.225,33.8967,118.225,1986,1995,SC
 El-P,Brooklyn,NY,40.6928,73.9903,40.6928,73.9903,1993,present,NE
 Eminem,Detroit,MI,42.3314,83.0458,42.5,83.0458,1992,present,MW
@@ -48,11 +48,11 @@ Ghostface Killa,Staten Island,NY,40.5763,74.1448,40.5763,74.1448,1992,present,NE
 Grandmaster Flash,New York City,NY,40.7127,74.0059,40.7127,74.0059,1978,1988,NE
 GZA,Brooklyn,NY,40.6928,73.9903,40.6928,73.9903,1986,present,NE
 Ice Cube,Compton,CA,33.8967,118.225,33.8967,118.225,1984,present,SC
-Ice-T,"Crenshaw, LA, CA",CA,34.0181,118.3406,34.0181,118.3406,1982,present,SC
+Ice-T,"Crenshaw, LA, CA",CA,34.0181,118.3406,34.03,118.36,1982,present,SC
 Immortal Technique,Harlem,NY,40.809,73.9484,40.809,73.9484,2000,present,NE
 J. Cole,Fayetteville,NC,35.0525,78.8781,35.0525,78.8781,2007,present,S
 Jay Electronica,New Orleans,LA,29.95,90.0667,29.4,89.2,2004,present,S
-Jay Rock,Los Angeles,CA,34.05,118.25,34.05,118.25,2003,present,SC
+Jay Rock,Los Angeles,CA,34.05,118.25,34.09,118.3,2003,present,SC
 Jay Z,Brooklyn,NY,40.6928,73.9903,40.6928,73.9903,1990,present,NE
 Joey Bada$$,New York City,NY,40.7127,74.0059,40.7127,74.0059,2010,present,NE
 Juicy J,North Memphis,TN,35.1174,89.8711,35.1174,89.8711,1991,present,S
@@ -67,7 +67,7 @@ Kool Keith,Bronx,NY,40.8373,73.886,40.8373,73.886,1984,present,NE
 KRS-One,South Bronx,NY,40.8373,73.886,40.8373,73.886,1984,present,NE
 Lauryn Hill,East Orange,NJ,40.7651,74.2119,40.7651,74.2119,1991,present,NE
 Lil Wayne,New Orleans,LA,29.95,90.0667,29.95,90.0667,1995,present,S
-Lil B,Berkeley,CA,37.8717,122.2728,37.8717,122.2728,2004,present,NC
+Lil B,Berkeley,CA,37.8717,122.2728,37.9,122.2728,2004,present,NC
 Lil' Kim,Brooklyn,NY,40.6928,73.9903,40.6928,73.9903,1994,present,NE
 LL Cool J,Bayshore,NY,40.7297,73.2536,40.7297,73.2536,1984,present,NE
 Logic,Gaithersburg,MD,39.1319,77.2264,39.1319,77.2264,2009,present,NE
@@ -94,7 +94,7 @@ Ol Dirty Bastard,New York City,NY,40.7127,74.0059,40.7127,74.0059,1989,2010,NE
 Outkast,Atlanta,GA,33.755,84.39,33.755,85.4,1993,present,S
 Paul Wall,Houston,TX,29.7604,95.3698,29.7604,94.8,2001,present,S
 Pharrell,Virginia Beach,VA,36.8506,75.9779,36.8506,75.9779,1992,present,S
-Pimp C,Los Angeles,CA,34.05,118.25,34.05,118.25,1987,2007,SC
+Pimp C,Los Angeles,CA,34.05,118.25,34,118.3,1987,2007,SC
 Public Enemy,Long Island,NY,40.8,73.3,40.8,73.3,1982,present,NE
 Pusha T,Bronx,NY,40.8373,73.886,40.8373,73.886,1992,present,NE
 Common Market,Seattle,WA,47.6097,122.3331,47.56,122.28,2009,present,W
@@ -118,12 +118,12 @@ Talib Kweli,Brooklyn,NY,40.6928,73.9903,40.6928,73.9903,1995,present,NE
 Tech N9ne,Kansa City,MI,39.0997,94.5783,39.0997,94.5783,1991,present,MW
 The Game,Compton,CA,33.8967,118.225,33.8967,118.225,2002,present,SC
 The Weeknd,Ontario,Canada,50,80,50,80,2010,present,NE
-Too Short,East Oakland,CA,37.8044,122.2708,37.8044,122.2708,1982,present,NC
+Too Short,East Oakland,CA,37.8044,122.2708,37.825,122.2,1982,present,NC
 Tribe Called Quest,Queens,NY,40.75,73.8667,40.75,73.8667,1985,2013,NE
 2Pac,"East Harlem, NY",NY,40.798,73.94,40.798,73.94,1998,1996,NE
 Twista,Chicago,IL,41.8369,87.6847,41.4,87.6,1991,present,MW
 Tyga,Compton,CA,33.8967,118.225,33.8967,118.225,2007,present,SC
-Tyler the Creator,Ladera Heights,CA,33.9889,118.3742,33.9889,118.3742,2007,present,SC
+Tyler the Creator,Ladera Heights,CA,33.9889,118.3742,33.9889,118.4,2007,present,SC
 UGK,Port Arthur,TX,29.885,93.94,29.885,93.94,1987,2007,S
 Vic Mensa,Chicago,IL,41.8369,87.6847,41.6,88.2,2009,present,MW
 Waka Flaka Flame,Atlanta,GA,33.755,84.39,33,84.8,2008,present,S
