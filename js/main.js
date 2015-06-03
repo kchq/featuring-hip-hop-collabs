@@ -69,7 +69,7 @@ function init(error) {
   drawSlider();
   createRegions();
   setUpRegions();
-  headSetup();
+  //headSetup();
 }
 
 // redraws everything
@@ -505,6 +505,9 @@ function drawRegionalArtists(region, x, y, k) {
   });
   artistNode.on("mouseleave", function(d) { 
     artistMouseLeave(d);
+  });
+  artistNode.on("click", function(d) {
+    headViewSingleArtist(d);
   });
 }
 

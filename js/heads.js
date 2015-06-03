@@ -72,7 +72,7 @@ function addImages(node1, node2) {
 		.style("stroke-width", $(window).width() * 0.005)
         .style("opacity", 0.8);
 
-   svg.append('clipPath')
+   svgHead.append('clipPath')
       .attr("id", getArtistImageName("50 Cent"))
       .attr("class", "clippath")
       .append("circle")
@@ -99,7 +99,7 @@ function addImages(node1, node2) {
         .style("stroke", "#000")
         .style("stroke-width", "2px");
 
-    svg.append('clipPath')
+    svgHead.append('clipPath')
       .attr("id", getArtistImageName("Earl Sweatshirt"))
       .attr("class", "clippath")
       .append("circle")
@@ -126,5 +126,61 @@ function addImages(node1, node2) {
         .style("stroke", "#000")
         .style("stroke-width", "2px");
     return gn;
+}
+
+// Shows artist detailed view in head to head fashion only displaying a single artist
+function headViewSingleArtist(artist) {
+    console.log(artist);
+    var artistFormatted = getArtistImageName(artist.name);
+    var artistImage = "imgs/" + artistFormatted + ".png";
+    var imgWidth = imageWidth * 1.5
+
+    svgHead = d3.select("#head")
+		.style("left", xStart + "px")
+		.style("top", yStart + "px")
+		.style("position", "absolute")
+		.append("svg")
+		.attr("width", headWidth)
+		.attr("height", headHeight)
+		.attr("id", "headSVG")
+
+	gn = svgHead.append("g");
+
+	gn.append("rect")
+		.attr("id", "headRect")
+		.attr("width", headWidth)
+		.attr("height", headHeight)
+		.style("fill", "white")
+		.style("stroke", "black")
+		.style("stroke-width", $(window).width() * 0.005)
+        .style("opacity", 0.8);
+
+   svgHead.append('clipPath')
+      .attr("id", artistFormatted)
+      .attr("class", "clippath")
+      .append("circle")
+      .attr("cx", image1X * 0.5 + imgWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
+      .attr("cy", imageY * 1.2 + imgWidth / 2) 
+      .attr("r", imgWidth / 2)
+      .attr("clipPathUnits", "userSpaceOnUse");
+
+    gn.append("image")
+        .attr("xlink:href", artistImage)
+        .attr("x", image1X * 0.5)
+        .attr("y", imageY * 1.2)
+        .attr("width", imgWidth)
+        .attr("height", imgWidth)
+        // preserve size of circle across different regions, because each region has a different scale
+        .attr("clip-path", function(d) { return "url(#" + artistFormatted + ")"; });
+       
+    gn.append("circle")
+        .attr("id", "50_centring") //function(d) { return getArtistImageName(d.name) + "ring"; })
+        .attr("cx", image1X * 0.5 + imgWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
+        .attr("cy", imageY * 1.2 + imgWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
+        .attr("r", imgWidth / 2)
+        .style("fill", "none")
+        .style("stroke", "#000")
+        .style("stroke-width", "2px");
+ 
 }
 
