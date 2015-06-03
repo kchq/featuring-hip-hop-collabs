@@ -340,6 +340,9 @@ function zoomToRegion(region) {
 function zoomOut() {
   if (inNY) {
     inNY = false;
+    svg.selectAll(".artistNode").remove();
+    svg.selectAll(".clippath").remove();
+    svg.selectAll("#nyCircle").remove();
     zoomToRegion(regionNodes[1]);
   } else {
     x = width / 2;
@@ -454,6 +457,7 @@ function drawRegionalArtists(region, x, y, k) {
       .attr("id", getArtistImageName(d.name))
       .attr("class", "clippath")
       .append("circle")
+      .attr("id", getArtistImageName(d.name) + "_mask")
       .attr("cx", xy[0])
       .attr("cy", xy[1])
       .attr("r", artistCircleSize / 2)
@@ -462,6 +466,7 @@ function drawRegionalArtists(region, x, y, k) {
 
   // add artist images to each node
   var images = artistNode.append("image")
+    .attr("id", function(d) { return getArtistImageName(d.name) + "_image" })
     .attr("xlink:href", function(d) { return "imgs/" + getArtistImageName(d.name) + ".png"; })
     .attr("x", function(d) { xy = getXY(d); if (xy == null) return; return xy[0] - artistCircleSize / 2; })
     .attr("y", function(d) { xy = getXY(d); if (xy == null) return; return xy[1] - artistCircleSize / 2; })
@@ -478,7 +483,7 @@ function drawRegionalArtists(region, x, y, k) {
 
   // add border to each artist
   var rings = artistNode.append("circle")
-    .attr("id", function(d) { return getArtistImageName(d.name) + "ring"; })
+    .attr("id", function(d) { return getArtistImageName(d.name) + "_ring"; })
     .attr("cx", function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
     .attr("cy", function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
     .attr("r", artistCircleSize / 2)
@@ -494,8 +499,12 @@ function drawRegionalArtists(region, x, y, k) {
     .style("stroke-width", "0.5px");
 
   // draw a ring on hover
-  artistNode.on("mouseenter", function(d) { $("#" + getArtistImageName(d.name) + "ring").css("stroke", "#FF5655"); });
-  artistNode.on("mouseleave", function(d) { $("#" + getArtistImageName(d.name) + "ring").css("stroke", "#000"); });
+  artistNode.on("mouseenter", function(d) { 
+    artistMouseEnter(d);
+  });
+  artistNode.on("mouseleave", function(d) { 
+    artistMouseLeave(d);
+  });
 }
 
 function getXY(artistNode) {
@@ -520,6 +529,31 @@ function updateRegionalArtists(region, x, y, k) {
   drawRegionalArtists(region, x, y, k);
 }
 
+function artistMouseEnter(d) {
+  $("#" + getArtistImageName(d.name) + "_mask")
+    .attr("r", artistCircleSize);
+  $("#" + getArtistImageName(d.name) + "_image")
+    .attr("x", function() { xy = getXY(d); if (xy == null) return; return xy[0] - artistCircleSize; })
+    .attr("y", function() { xy = getXY(d); if (xy == null) return; return xy[1] - artistCircleSize; })
+    .attr("width", artistCircleSize * 2)
+    .attr("height", artistCircleSize * 2);
+  $("#" + getArtistImageName(d.name) + "_ring")
+    .css("stroke", "#FF5655")
+    .attr("r", artistCircleSize);
+}
+
+function artistMouseLeave(d) {
+  $("#" + getArtistImageName(d.name) + "_mask")
+    .attr("r", artistCircleSize / 2);
+  $("#" + getArtistImageName(d.name) + "_image")
+    .attr("x", function() { xy = getXY(d); if (xy == null) return; return xy[0] - artistCircleSize / 2; })
+    .attr("y", function() { xy = getXY(d); if (xy == null) return; return xy[1] - artistCircleSize / 2; })
+    .attr("width", artistCircleSize)
+    .attr("height", artistCircleSize);
+  $("#" + getArtistImageName(d.name) + "_ring")
+    .css("stroke", "#000")
+    .attr("r", artistCircleSize / 2);
+}
 
 // ======= Functions for handling scrolling ======= 
 

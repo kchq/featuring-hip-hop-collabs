@@ -65,7 +65,7 @@ Kid Cudi,Brooklyn,NY,40.6928,73.9903,40.6928,73.9903,2003,present,NE
 Killer Mike,Atlanta,GA,33.755,84.39,34.5,84,1999,present,S
 Kool Keith,Bronx,NY,40.8373,73.886,40.8373,73.886,1984,present,NE
 KRS-One,South Bronx,NY,40.8373,73.886,40.8373,73.886,1984,present,NE
-Lauryn Hill,East Orange,NJ,40.7651,74.2119,40.7651,74.2119,1991,present,NE
+Lauryn Hill,East Orange,NJ,40.7651,74.2119,40.7651,74.4,1991,present,NE
 Lil Wayne,New Orleans,LA,29.95,90.0667,29.95,90.0667,1995,present,S
 Lil B,Berkeley,CA,37.8717,122.2728,37.9,122.2728,2004,present,NC
 Lil' Kim,Brooklyn,NY,40.6928,73.9903,40.6928,73.9903,1994,present,NE
@@ -77,8 +77,8 @@ Macklemore,Seattle,WA,47.6097,122.3331,47.62,122.3531,2000,present,W
 Madlib,Oxnard,CA,34.1914,119.1825,34.1914,119.1825,2007,present,SC
 Mase,Jacksonville,FL,30.3369,81.6614,30.3369,81.6614,1993,present,S
 Master P,New Orleans,LA,29.95,90.0667,29.4,90.8,1990,present,S
-MC Paul Barman,Ridgewood,NJ,40.9816,74.1135,40.9816,74.1135,1998,present,NE
-Meek Mill,North Philadelphia,PA,39.95,75.1667,39.95,75.1667,2003,present,NE
+MC Paul Barman,Ridgewood,NJ,40.9816,74.1135,40.9816,74.2,1998,present,NE
+Meek Mill,North Philadelphia,PA,39.5,75.1667,40.2,75.1667,2003,present,NE
 Melle Mel,Bronx,NY,40.8373,73.886,40.8373,73.886,1978,present,NE
 Method Man,Staten Island,NY,40.5763,74.1448,40.5763,74.1448,1992,present,NE
 MF DOOM,Long Island,NY,40.8,73.3,40.8,73.3,1988,present,NE
@@ -101,18 +101,18 @@ Common Market,Seattle,WA,47.6097,122.3331,47.56,122.28,2009,present,W
 Raekwon,Staten Island,NY,40.5763,74.1448,40.5763,74.1448,1992,present,NE
 Rakim,Long Island,NY,40.8,73.3,40.8,73.3,1985,present,NE
 Ratking,New York City,NY,40.7127,74.0059,40.7127,74.0059,2011,present,NE
-Redman,Newark,NJ,40.7242,74.1726,40.7242,74.1726,1990,present,NE
+Redman,Newark,NJ,40.7242,74.1726,40.65,74.05,1990,present,NE
 Rick Ross,Carol City,FL,25.9406,80.2456,25.9406,80.2456,2001,present,S
 Riff Raff,Houston,TX,29.7604,95.3698,29.55,95.7,2001,present,S
 Roots,Philadelphia,PN,39.95,75.1667,39.95,75.1667,1987,present,NE
 Run DMC,Queens,NY,40.75,73.8667,40.75,73.8667,1981,2002,NE
 Salt-n-Peppa,Queens,NY,40.75,73.8667,40.75,73.8667,1985,present,NE
-Schoolboy Q,South Central Los Angeles,CA,33.9275,118.2772,33.9275,118.2772,2007,present,SC
+Schoolboy Q,South Central Los Angeles,CA,33.9275,118.2772,33.975,118.2772,2007,present,SC
 P Diddy,Harlem,NY,40.809,73.9484,40.809,73.9484,1993,present,NE
 Slick Rick,Bronx,NY,40.8373,73.886,40.8373,73.886,1982,present,NE
 Snoop Dogg,Long Beach,CA,33.7683,118.1956,33.7683,118.1956,1992,present,SC
 Sonic Sum,New York City,NY,40.7127,74.0059,40.7127,74.0059,1998,present,NE
-The Sugarhill Gang,Englewood,NJ,40.8912,73.9725,40.8912,73.9725,1973,present,NE
+The Sugarhill Gang,Englewood,NJ,40.8912,73.9725,40.8912,73.9,1973,present,NE
 T.I.,Atlanta,GA,33.755,84.39,33.755,83.3,1996,present,S
 Talib Kweli,Brooklyn,NY,40.6928,73.9903,40.6928,73.9903,1995,present,NE
 Tech N9ne,Kansa City,MI,39.0997,94.5783,39.0997,94.5783,1991,present,MW
@@ -128,7 +128,7 @@ UGK,Port Arthur,TX,29.885,93.94,29.885,93.94,1987,2007,S
 Vic Mensa,Chicago,IL,41.8369,87.6847,41.6,88.2,2009,present,MW
 Waka Flaka Flame,Atlanta,GA,33.755,84.39,33,84.8,2008,present,S
 Wale,Washington D.C.,DC,38.9047,77.0164,38.9047,77.0164,2005,present,NE
-Will Smith,West Philadelphia,PA,,,,,1985,present,NE
+Will Smith,West Philadelphia,PA,39.95,75.1667,40,75.5,1985,present,NE
 Wu Tang Clan,Staten Island,NY,40.5763,74.1448,40.5763,74.1448,1992,present,NE
 Young Jeezy,Columbia,SC,34.0298,80.8966,34.0298,80.8966,2000,present,S
 Young Thug,Atlanta,GA,33.755,84.39,33,83.8,2011,present,S
