@@ -1,4 +1,4 @@
-// Sets up the narration bar on the left
+// Set up the narration bar on the left
 
 narrationWidth = $(window).width() * 0.20;
 narrationLeft = 0;
