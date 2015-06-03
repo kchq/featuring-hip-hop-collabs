@@ -506,9 +506,12 @@ function drawRegionalArtists(region, x, y, k) {
   artistNode.on("mouseleave", function(d) { 
     artistMouseLeave(d);
   });
+<<<<<<< HEAD
   artistNode.on("click", function(d) {
     headViewSingleArtist(d);
   });
+=======
+>>>>>>> 0cf839e8ddc2a2ba98c3e49308f6c063ddded86b
 }
 
 function getXY(artistNode) {
