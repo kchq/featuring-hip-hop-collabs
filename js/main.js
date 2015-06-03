@@ -3,10 +3,10 @@
 // lat and lon are the coordinates of where the region circle are drawn, zlat and zlon are the center of zoom when 
 // the region is zoomed in on
 var regionNodes = [
-  {"id":"W", "lon": 122.3331, "lat": 47.609, "zlon": 122.3331, "zlat": 47.609, "color": "#3AA827", "scale": 24, "numArtists":0, "artistsPerYear":{}},
+  {"id":"W", "lon": 122.3331, "lat": 47.609, "zlon": 122.3331, "zlat": 47.609, "color": "#3AA827", "scale": 32, "numArtists":0, "artistsPerYear":{}},
   {"id":"NE", "lon": 74.0059, "lat": 40.7127, "zlon": 76, "zlat": 40.5, "color": "steelblue", "scale": 7, "numArtists":0, "artistsPerYear":{}},
-  {"id":"NC", "lon": 121.4689, "lat": 38.5556, "zlon": 121.4689, "zlat": 38, "color": "#BF9900", "scale": 10, "numArtists":0, "artistsPerYear":{}},
-  {"id":"SC", "lon": 118.5, "lat": 34.2, "zlon": 118.5, "zlat": 34, "color": "#E39612", "scale": 32, "numArtists":0, "artistsPerYear":{}},
+  {"id":"NC", "lon": 122, "lat": 37.8, "zlon": 121.8, "zlat": 38.1, "color": "#BF9900", "scale": 24, "numArtists":0, "artistsPerYear":{}},
+  {"id":"SC", "lon": 118.5, "lat": 34.2, "zlon": 118.6, "zlat": 34, "color": "#E39612", "scale": 36, "numArtists":0, "artistsPerYear":{}},
   {"id":"S", "lon": 85, "lat": 32, "zlon": 86, "zlat": 32, "color": "#BF113A", "scale": 2.3, "numArtists":0, "artistsPerYear":{}},
   {"id":"MW", "lon": 87.6847, "lat": 40, "zlon": 87.2, "zlat": 41.5, "color": "#A314A8", "scale": 4, "numArtists":0, "artistsPerYear":{}}
 ]
