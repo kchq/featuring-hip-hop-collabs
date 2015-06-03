@@ -10,6 +10,8 @@ var regionNodes = [
   {"id":"S", "lon": 85, "lat": 32, "zlon": 86, "zlat": 32, "color": "#BF113A", "scale": 2.3, "numArtists":0, "artistsPerYear":{}},
   {"id":"MW", "lon": 87.6847, "lat": 40, "zlon": 87.2, "zlat": 41.5, "color": "#A314A8", "scale": 4, "numArtists":0, "artistsPerYear":{}}
 ]
+
+var nyNode = {"id":"NY", "lon": 74.0059, "lat": 40.7127, "zlon": 73.7, "zlat": 40.65, "color": "red", "scale": 54 };
 const regionIndexMap = ["W", "NE", "NC", "SC", "S", "MW"];
 
 const startYear = 1965;
@@ -172,7 +174,7 @@ function updateRegions() {
   });
 
   d3.selectAll("circle").transition().duration(100).attr("r", function(d) { 
-    return Math.max(0, 10 * Math.log(d.numArtists)); 
+    return Math.max(0, 10 * Math.log(d.numArtists) + 4); 
   });
 }
 
@@ -235,7 +237,6 @@ function zoomToRegion(region) {
   y = projection([-1*lon, lat])[1];
   k = region.scale;
   hideRegions();
-  // TODO: Sonja - allow scrolling through time while zoomed in
   zoom.on("zoom", function() {
     moveThroughTimeRegionalScrolling();
   });
@@ -254,32 +255,38 @@ function zoomToRegion(region) {
 }
 
 function zoomOut() {
-  x = width / 2;
-  y = height / 2;
-  k = 1;
+  if (inNY) {
+    inNY = false;
+    zoomToRegion(regionNodes[1]);
+  } else {
+    x = width / 2;
+    y = height / 2;
+    k = 1;
 
-  svg.selectAll(".artistNode").remove();
-  svg.selectAll(".clippath").remove();
-
-  g.transition()
-    .duration(750)
-    .attr("transform", "translate(" + (width / 2 - mapTranslateLeft) + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-    .style("stroke-width", 1.5 / k + "px")
-    .each("end", function() { 
-      zoom.on("zoom", function() {
-        moveThroughTimeScrolling();
+    svg.selectAll(".artistNode").remove();
+    svg.selectAll(".clippath").remove();
+    svg.selectAll("#nyCircle").remove();
+    g.transition()
+      .duration(750)
+      .attr("transform", "translate(" + (width / 2 - mapTranslateLeft) + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+      .style("stroke-width", 1.5 / k + "px")
+      .each("end", function() { 
+        zoom.on("zoom", function() {
+          moveThroughTimeScrolling();
+        });
+        slider.on("slide", function(evt, value) {
+          moveThroughTimeSliding(value);
+        });
+        updateRegions();
       });
-      slider.on("slide", function(evt, value) {
-        moveThroughTimeSliding(value);
-      });
-      updateRegions();
-    });
-  isZoomed = false;
+    isZoomed = false;
+  }
 }
 
 // ======= Functions to handle drawing artists in a region ======= 
 
 var currentRegion, currentX, currentY, currentK;
+var inNY = false;
 function drawRegionalArtists(region, x, y, k) {
   currentRegion = region;
   currentX = x;
@@ -292,6 +299,54 @@ function drawRegionalArtists(region, x, y, k) {
     var t = (a.start_year <= currentYear) && (a.end_year === 'present'|| a.end_year >= currentYear);
     return r && t;
   });
+
+  var nyCount = 0;
+  if (region == 'NE') {
+    // lon/lat of new york
+    var lon = nyNode.lon;
+    var lat = nyNode.lat;
+    var zlon = nyNode.zlon;
+    var zlat = nyNode.zlat;
+    var nyX = projection([-1*zlon, zlat])[0];
+    var nyY = projection([-1*zlon, zlat])[1];
+    var nyK = nyNode.scale;
+    if (!inNY) {
+      artistNodesTemp = artistNodesTemp.filter( function(a){
+        if (a.state != 'NY') {
+          return true;
+        } else {
+          nyCount++;
+          return false;
+        }
+      });
+      svg.append('circle')
+        .attr("id", "nyCircle")
+        .attr("fill", "red")
+        .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+        .attr("cx", projection([-1*lon, lat])[0])
+        .attr("cy", projection([-1*lon, lat])[1])
+        .attr("r", function(d) { 
+          return Math.max(0, 10 * Math.log(nyCount) + 4) / k; 
+        })
+        .on("click", function() {
+          svg.selectAll(".artistNode").remove();
+          svg.selectAll(".clippath").remove();
+          svg.selectAll("#nyCircle").remove();
+          g.transition()
+            .duration(750)
+            .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + nyK + ")translate(" + -nyX + "," + -nyY + ")")
+            .style("stroke-width", 1.5 / nyK + "px")
+            .each("end", function() {
+              inNY = true;
+              drawRegionalArtists(region, nyX, nyY, nyK);
+            });
+        });
+    } else {
+      artistNodesTemp = artistNodesTemp.filter( function(a) {
+        return a.state == 'NY';
+      });
+    }
+  }
 
   artistForce.nodes(artistNodesTemp);
 
@@ -379,6 +434,7 @@ function getArtistImageName(name) {
 function updateRegionalArtists(region, x, y, k) {
   svg.selectAll(".artistNode").remove();
   svg.selectAll(".clippath").remove();
+  svg.selectAll("#nyCircle").remove();
   drawRegionalArtists(region, x, y, k);
 }
 

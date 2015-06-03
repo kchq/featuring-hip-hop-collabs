@@ -39,7 +39,7 @@ Dr. Dre,Compton,CA,33.8967,118.225,33.8967,118.225,1985,present,SC
 Drake,"Toronto, Ontario, Canda",,,,,,2001,present,NE
 E-40,Vallejo,CA,38.1131,122.2358,38.1131,122.2358,1990,present,NC
 Earl Sweatshirt,Los Angeles,CA,34.05,118.25,34.1,118.22,2008,present,SC
-Eazy-E,Compton,CA,33.8967,118.225,33.8967,118.225,1986,1995,SC
+Eazy-E,Compton,CA,33.8967,118.225,33.9,118.16,1986,1995,SC
 El-P,Brooklyn,NY,40.6928,73.9903,40.6928,73.9903,1993,present,NE
 Eminem,Detroit,MI,42.3314,83.0458,42.5,83.0458,1992,present,MW
 Eyedea,Saint Paul,MN,44.9442,93.0936,44.9442,92.8,1993,2010,MW
@@ -47,7 +47,7 @@ Geto Boys,Houston,TX,29.7604,95.3698,29,95,1986,present,S
 Ghostface Killa,Staten Island,NY,40.5763,74.1448,40.5763,74.1448,1992,present,NE
 Grandmaster Flash,New York City,NY,40.7127,74.0059,40.7127,74.0059,1978,1988,NE
 GZA,Brooklyn,NY,40.6928,73.9903,40.6928,73.9903,1986,present,NE
-Ice Cube,Compton,CA,33.8967,118.225,33.8967,118.225,1984,present,SC
+Ice Cube,Compton,CA,33.8967,118.225,33.845,118.17,1984,present,SC
 Ice-T,"Crenshaw, LA, CA",CA,34.0181,118.3406,34.03,118.36,1982,present,SC
 Immortal Technique,Harlem,NY,40.809,73.9484,40.809,73.9484,2000,present,NE
 J. Cole,Fayetteville,NC,35.0525,78.8781,35.0525,78.8781,2007,present,S
@@ -59,7 +59,7 @@ Juicy J,North Memphis,TN,35.1174,89.8711,35.1174,89.8711,1991,present,S
 Jurrasic 5,Los Angeles,CA,34.05,118.25,34.05,118.25,1992,present,SC
 Juvenile,New Orleans,LA,29.95,90.0667,29,90,1991,present,S
 Kanye West,Chicago,IL,41.8369,87.6847,41.8369,87.6847,1996,present,MW
-Kendrick Lamar,Compton,CA,33.8967,118.225,33.8967,118.225,2003,present,SC
+Kendrick Lamar,Compton,CA,33.8967,118.225,33.9,118.16,2003,present,SC
 Kevin Gates,Baton Rougue,LA,30.45,91.14,30.45,91.14,2007,present,S
 Kid Cudi,Brooklyn,NY,40.6928,73.9903,40.6928,73.9903,2003,present,NE
 Killer Mike,Atlanta,GA,33.755,84.39,34.5,84,1999,present,S
@@ -116,13 +116,13 @@ The Sugarhill Gang,Englewood,NJ,40.8912,73.9725,40.8912,73.9725,1973,present,NE
 T.I.,Atlanta,GA,33.755,84.39,33.755,83.3,1996,present,S
 Talib Kweli,Brooklyn,NY,40.6928,73.9903,40.6928,73.9903,1995,present,NE
 Tech N9ne,Kansa City,MI,39.0997,94.5783,39.0997,94.5783,1991,present,MW
-The Game,Compton,CA,33.8967,118.225,33.8967,118.225,2002,present,SC
+The Game,Compton,CA,33.8967,118.225,33.84g5,118.24,2002,present,SC
 The Weeknd,Ontario,Canada,50,80,50,80,2010,present,NE
 Too Short,East Oakland,CA,37.8044,122.2708,37.825,122.2,1982,present,NC
 Tribe Called Quest,Queens,NY,40.75,73.8667,40.75,73.8667,1985,2013,NE
 2Pac,"East Harlem, NY",NY,40.798,73.94,40.798,73.94,1998,1996,NE
 Twista,Chicago,IL,41.8369,87.6847,41.4,87.6,1991,present,MW
-Tyga,Compton,CA,33.8967,118.225,33.8967,118.225,2007,present,SC
+Tyga,Compton,CA,33.8967,118.225,33.875,118.3,2007,present,SC
 Tyler the Creator,Ladera Heights,CA,33.9889,118.3742,33.9889,118.4,2007,present,SC
 UGK,Port Arthur,TX,29.885,93.94,29.885,93.94,1987,2007,S
 Vic Mensa,Chicago,IL,41.8369,87.6847,41.6,88.2,2009,present,MW
