@@ -2,17 +2,53 @@ xStart = $(window).width() * 0.30;
 yStart = $(window).height() * 0.10 
 headHeight= $(window).height() * .80;
 headWidth = $(window).width() * 0.60;
-image1X = xStart * 1.2
-image2X = xStart * .2 
-imageY = yStart * .8
-imageWidth = headWidth * 0.30
+image1X = xStart * 1.3
+image2X = xStart * .3 
+imageY = yStart * .4
+imageWidth = headWidth * 0.20
 
 
 function headSetup(artistNode1, artistNode2) {
 //    var artistImage1 = "imgs/" + getArtistImageName(artistNode1.name) + ".png";
   //  var artistImage2 = "imgs/" + getArtistImageName(artistNode2.name) + ".png";
   //
+    var gn = addImages(artistNode1, artistNode2);
+    addData(gn, artistNode1, artistNode2);
+}
 
+// 'gn' coming from addImages. it represents the internal contents 
+// of the head Rectangle that represents the head to head container
+function addData(gn, node1, node2){
+    dataArtist1 = gn.append("text")
+        .attr("class", "head headname")
+		.attr("x", image1X + imageWidth / 2)
+		.attr("y", imageY + imageWidth * 1.2)
+	    .style("font-size", narrationWidth * 0.1)
+        .style("text-anchor", "middle")
+		.style("fill", "black")
+        // TODO update .text with the name of the artist
+		.text(function(d) { return "50 Cent(1)";});
+    
+    /*gn.append("svg:a")
+        .attr("xlink:href","https://www.facebook.com/EarlSweatshirtMusic?fref=ts")
+        .attr("class", "head headname")
+		.append("text")
+            .text("-Earl Sweatshirt Facebook").attr("x", image1X)
+		    .attr("y", imageY + imageWidth * 1.3);*/
+
+
+    dataArtist2 = gn.append("text")
+        .attr("class", "head headname")
+		.attr("x", image2X + imageWidth / 2)
+		.attr("y", imageY + imageWidth * 1.2)
+	    .style("font-size", narrationWidth * 0.1)
+		.style("fill", "black")
+        .style("text-anchor", "middle") 
+        // TODO update .text with the name of the artist
+		.text(function(d) { return "Earl Sweatshirt(2)";});
+}
+
+function addImages(node1, node2) {
     var artistImage1 = "imgs/50_cent.png";
     var artistImage2 = "imgs/earl_sweatshirt.png";
 
@@ -28,7 +64,7 @@ function headSetup(artistNode1, artistNode2) {
 	gn = svgHead.append("g");
 
 	gn.append("rect")
-		.attr("id", "narrationBackground")
+		.attr("id", "headRect")
 		.attr("width", headWidth)
 		.attr("height", headHeight)
 		.style("fill", "white")
@@ -89,7 +125,6 @@ function headSetup(artistNode1, artistNode2) {
         .style("fill", "none")
         .style("stroke", "#000")
         .style("stroke-width", "2px");
-
-
+    return gn;
 }
 

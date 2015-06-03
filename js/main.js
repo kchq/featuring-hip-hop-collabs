@@ -64,6 +64,7 @@ function init(error) {
   drawSlider();
   createRegions();
   setUpRegions();
+  headSetup();
 }
 
 // redraws everything
