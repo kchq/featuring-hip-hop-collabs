@@ -244,16 +244,7 @@ function setUpRegions() {
       .on("click", function(d) {
         zoomToRegion(d); 
       });
-
-  regionNode.call(regionTip);
-  regionNode.on("mouseover", function(d) {
-    d3.select(this).style("stroke-width", "3px").style("stroke", d.ringColor);
-    regionTip.show(d);
-  });
-  regionNode.on("mouseout", function(d) {
-    d3.select(this).style("stroke-width", "0px");
-    regionTip.hide(d);
-  });
+  addRegionTooltips(regionNode);
 }
 
 function updateRegions() {
@@ -267,6 +258,18 @@ function updateRegions() {
 
 
   updateRegionLinks();
+}
+
+function addRegionTooltips(regionNode) {
+  regionNode.call(regionTip);
+  regionNode.on("mouseover", function(d) {
+    d3.select(this).style("stroke-width", "3px").style("stroke", d.ringColor);
+    regionTip.show(d);
+  });
+  regionNode.on("mouseout", function(d) {
+    d3.select(this).style("stroke-width", "0px");
+    regionTip.hide(d);
+  });
 }
 
 function hideRegions() {
@@ -463,15 +466,7 @@ function zoomOut() {
     svg.selectAll("#nyCircle").remove();
 
     var regionNode = svg.selectAll('.regionNode');
-    regionNode.call(regionTip);
-    regionNode.on("mouseover", function(d) {
-      d3.select(this).style("stroke-width", "3px").style("stroke", d.ringColor);
-      regionTip.show(d);
-    });
-    regionNode.on("mouseout", function(d) {
-      d3.select(this).style("stroke-width", "0px");
-      regionTip.hide(d);
-    });
+    addRegionTooltips(regionNode);
 
     artistLink.style("stroke-width", "0px");
     g.transition()
