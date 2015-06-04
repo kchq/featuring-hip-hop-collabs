@@ -55,3 +55,7 @@ body {
 .regionLink {
   stroke: #777;
 }
+
+.regionLinkInteractionArea {
+  stroke: rgba(0,0,0,0);
+}

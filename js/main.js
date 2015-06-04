@@ -92,8 +92,11 @@ function tick(link) {
       .attr('x2', function(d) { return d.target.x - mapTranslateLeft; })
       .attr('y2', function(d) { return d.target.y; });
   }
-
-  
+  d3.selectAll(".regionLinkInteractionArea")
+    .attr('x1', function(d) { return d.source.x - mapTranslateLeft; })
+    .attr('y1', function(d) { return d.source.y; })
+    .attr('x2', function(d) { return d.target.x - mapTranslateLeft; })
+    .attr('y2', function(d) { return d.target.y; });
 }
 
 // ======= Functions to create the Map ======= 
@@ -202,6 +205,7 @@ function updateRegions() {
 function hideRegions() {
   d3.selectAll("circle").attr("r", 0);
   regionLink.style("stroke-width", "0px");
+  d3.selectAll(".regionLinkInteractionArea").style("stroke-width", "0px");
 }
 
 function calculateArtists(node) {
@@ -222,13 +226,38 @@ function setUpRegionLinks() {
 
   regionLink = svg.selectAll('.regionLink')
         .data(regionLinks)
-        .enter().append('line')
+        .enter();
+  regionLink.append('line')
+        .attr('class', 'regionLinkInteractionArea')
+        .attr('x1', function(d) { return regionNodes[d.source].x  - mapTranslateLeft; })
+        .attr('y1', function(d) { return regionNodes[d.source].y; })
+        .attr('x2', function(d) { return regionNodes[d.target].x  - mapTranslateLeft; })
+        .attr('y2', function(d) { return regionNodes[d.target].y; })
+        .style("stroke-width", "0px")
+        .on("mouseenter", function(d) {
+          d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#ddd");
+        })
+        .on("mouseleave", function(d) {
+          d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#777");
+        });
+  regionLink = regionLink.append('line')
         .attr('class', 'regionLink')
+        .attr('id', function(d) { return regionNodes[d.source].id + "-" + regionNodes[d.target].id })
         .attr('x1', function(d) { return regionNodes[d.source].x; })
         .attr('y1', function(d) { return regionNodes[d.source].y; })
         .attr('x2', function(d) { return regionNodes[d.target].x; })
         .attr('y2', function(d) { return regionNodes[d.target].y; })
-        .style("stroke-width", "0px");
+        .style("stroke-width", "0px")
+        .on("mouseenter", function(d) {
+          d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#ddd");
+        })
+        .on("mouseout", function(d) {
+          d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#777");
+        })
+        .on("click", function(d) {
+          // TODO: Sonja
+          console.log(d);
+        });
 
   force.start();
 }
@@ -273,6 +302,10 @@ function updateRegionLinks() {
 
   d3.selectAll(".regionLink").style("stroke-width", function(d) { 
     return Math.max(0, 1 + Math.log(d.numLinks)) + "px"; 
+  });
+
+  d3.selectAll(".regionLinkInteractionArea").style("stroke-width", function(d) {
+    return Math.max(0, 1 + Math.log(d.numLinks)) + 15 + "px";
   });
 }
 
