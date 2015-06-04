@@ -48,7 +48,7 @@ body {
   font-family: "syncopateBold";
 }
 
-#closeMenuText, #narrationEventPreviewNextYearBackground, #narrationEventPreviewPreviousYearBackground, .narrationEventPreviewNextYearText, .narrationEventPreviewPreviousYearText {
+#narrationEventPreviewNextYearBackground, #narrationEventPreviewPreviousYearBackground, .narrationEventPreviewNextYearText, .narrationEventPreviewPreviousYearText {
   cursor: pointer;
 }
 
@@ -56,3 +56,14 @@ body {
   stroke: #777;
 }
 
+ul li:nth-child(even) {
+    background-color: #E0E0E0;
+}
+
+ul {
+    overflow-y:scroll; 
+}
+
+ul .collab {
+    padding-left: 0px;
+}

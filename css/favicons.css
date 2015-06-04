@@ -1,0 +1,89 @@
+.allmusic-favicon {
+   background-image: url("../icons/allmusic-favicon.png"); /* data:icons/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABaFBMV…AA3TG3GV9AwJ+UiIjYgoChqB8ebo9vENBetcN5Tf0D3gHTvVN12wWaYQAAAABJRU5ErkJggg==);*/
+   background-size: 16px;
+}
+.discogs-favicon {
+    background-image: url("../icons/discogs-favicon.png"); 
+    background-size: 16px;
+}
+
+.youtube-favicon {
+    background-image: url("../icons/youtube-favicon.png"); 
+    background-size: 16px;
+}
+.facebook-favicon {
+    background-image: url("../icons/facebook-favicon.png"); 
+    background-size: 16px;
+}
+.home-favicon {
+    background-image: url("../icons/home-favicon.png"); 
+    background-size: 16px;
+}
+
+.lastfm-favicon {
+    background-image: url("../icons/lastfm-favicon.png"); 
+    background-size: 16px;
+}
+
+.myspace-favicon {
+    background-image: url("../icons/myspace-favicon.png"); 
+    background-size: 16px;
+}
+
+.no-favicon {
+    background-image: url("../icons/no-favicon.png"); 
+    background-size: 16px;
+}
+
+.rateyourmusic-favicon {
+    background-image: url("../icons/rateyourmusic-favicon.png"); 
+    background-size: 16px;
+}
+.soundcloud-favicon {
+    background-image: url("../icons/soundcloud-favicon.png"); 
+    background-size: 16px;
+}
+.spotify-favicon {
+    background-image: url("../icons/spotify-favicon.png"); 
+    background-size: 16px;
+}
+.twitter-favicon {
+    background-image: url("../icons/twitter-favicon.png"); 
+    background-size: 16px;
+
+}
+.viaf-favicon {
+    background-image: url("../icons/viaf-favicon.png"); 
+    background-size: 16px;
+}
+.wikidata-favicon {
+    background-image: url("../icons/wikidata-favicon.png"); 
+    background-size: 16px;
+}
+.wikipedia-favicon {
+    background-image: url("../icons/wikipedia-favicon.png"); 
+    background-size: 16px;
+}
+
+.zzz-favicon {
+    background-image: url("../icons/zzz-favicon.png"); 
+    background-size: 16px;
+}
+
+.zzz-favicon {
+    background-image: url("../icons/zzz-favicon.png"); 
+    background-size: 16px;
+}
+
+.external_links  li {
+  background-position: 0 2px;
+  background-repeat: no-repeat;
+  padding: 0 0 0 22px;
+  min-height: 14px;
+}
+
+
+
+
+
+
