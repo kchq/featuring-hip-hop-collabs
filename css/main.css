@@ -32,6 +32,12 @@ body {
     font-family: "syncopateRegular";
     src: url("../syncopate/Syncopate-Regular.ttf");
 }
+
+@font-face {
+    font-family: "graffitiHeader";
+    src: url("../graffiti/Bombing.ttf");
+}
+
 .narrationEventText, .narationEventPreviewText {
   font-family: "syncopateRegular";
 }
@@ -45,11 +51,17 @@ body {
 }
 
 #narrationYearText, .narrationEventPreviewNextYearText, .narrationEventPreviewPreviousYearText {
-  font-family: "syncopateBold";
+    font-family: "syncopateBold";
+    /*font-family: "graffitiHeader";*/
 }
 
 #closeMenuText, #narrationEventPreviewNextYearBackground, #narrationEventPreviewPreviousYearBackground, .narrationEventPreviewNextYearText, .narrationEventPreviewPreviousYearText {
   cursor: pointer;
+}
+
+#test {
+    font-family: "graffitiHeader";
+    font-size: 70px;
 }
 
 .regionLink {
