@@ -3,12 +3,12 @@
 // lat and lon are the coordinates of where the region circle are drawn, zlat and zlon are the center of zoom when 
 // the region is zoomed in on
 var regionNodes = [
-  {"id":"W", "lon": 122.3331, "lat": 47.609, "zlon": 122.3331, "zlat": 47.609, "color": "#3AA827", "scale": 32, "numArtists":0, "artistsPerYear":{}},
-  {"id":"NE", "lon": 74.0059, "lat": 40.7127, "zlon": 76, "zlat": 40.5, "color": "steelblue", "scale": 7, "numArtists":0, "artistsPerYear":{}},
-  {"id":"NC", "lon": 122, "lat": 37.8, "zlon": 121.8, "zlat": 38.1, "color": "#BF9900", "scale": 24, "numArtists":0, "artistsPerYear":{}},
-  {"id":"SC", "lon": 118.5, "lat": 34.2, "zlon": 118.6, "zlat": 34, "color": "#E39612", "scale": 36, "numArtists":0, "artistsPerYear":{}},
-  {"id":"S", "lon": 85, "lat": 32, "zlon": 86, "zlat": 32, "color": "#BF113A", "scale": 2.3, "numArtists":0, "artistsPerYear":{}},
-  {"id":"MW", "lon": 87.6847, "lat": 40, "zlon": 87.2, "zlat": 41.5, "color": "#A314A8", "scale": 4, "numArtists":0, "artistsPerYear":{}}
+  {"id":"W", "name": "Washington", "lon": 122.3331, "lat": 47.609, "zlon": 122.3331, "zlat": 47.609, "color": "#3AA827", "ringColor": "#1A9817", "scale": 32, "numArtists":0, "artistsPerYear":{}},
+  {"id":"NE", "name": "North East", "lon": 74.0059, "lat": 40.7127, "zlon": 76, "zlat": 40.5, "color": "#4682B4", "ringColor": "#265294", "scale": 7, "numArtists":0, "artistsPerYear":{}},
+  {"id":"NC", "name": "North California", "lon": 122, "lat": 37.8, "zlon": 121.8, "zlat": 38.1, "color": "#FFE303", "ringColor": "#EEC900", "scale": 24, "numArtists":0, "artistsPerYear":{}},
+  {"id":"SC", "name": "South California", "lon": 118.5, "lat": 34.2, "zlon": 118.6, "zlat": 34, "color": "#E39612", "ringColor": "#C37602", "scale": 36, "numArtists":0, "artistsPerYear":{}},
+  {"id":"S", "name": "South", "lon": 85, "lat": 32, "zlon": 86, "zlat": 32, "color": "#BF113A", "ringColor": "#9F011A", "scale": 2.3, "numArtists":0, "artistsPerYear":{}},
+  {"id":"MW", "name": "Mid West", "lon": 87.6847, "lat": 40, "zlon": 87.2, "zlat": 41.5, "color": "#A314A8", "ringColor": "#830488", "scale": 4, "numArtists":0, "artistsPerYear":{}}
 ]
 
 var nyNode = {"id":"NY", "lon": 74.0059, "lat": 40.7127, "zlon": 73.7, "zlat": 40.65, "color": "red", "scale": 54 };
@@ -28,6 +28,12 @@ var zoom = d3.behavior.zoom()
   .scaleExtent([1,((presentYear - startYear) / scrollSensitivity) + 1])
   .on("zoom", function() {
     moveThroughTimeScrolling();
+  });
+
+var regionTip = d3.tip()
+  .attr('class', 'd3-region-tip')
+  .html(function(d) {
+    return "<div>" + d.name + "</div>";
   });
 
 var width, height, mapTranslateLeft, mainVisTop, mainVisLeft, narrationLeft, narrationTop, narrationWidth, centered, timelineEventDescriptions, timelineEvents, slider;
@@ -180,6 +186,7 @@ function setUpRegions() {
     .data(regionNodes)
     .enter().append("g")
     .attr("class", "regionNode")
+    .attr("title", function(d) { return d.id; })
     .call(force.drag)
     .append("svg:circle")
       .style("fill", function(d) {
@@ -188,6 +195,16 @@ function setUpRegions() {
       .on("click", function(d) {
         zoomToRegion(d); 
       });
+
+  regionNode.call(regionTip);
+  regionNode.on("mouseover", function(d) {
+    d3.select(this).style("stroke-width", "3px").style("stroke", d.ringColor);
+    regionTip.show(d);
+  });
+  regionNode.on("mouseout", function(d) {
+    d3.select(this).style("stroke-width", "0px");
+    regionTip.hide(d);
+  });
 }
 
 function updateRegions() {
@@ -206,6 +223,7 @@ function hideRegions() {
   d3.selectAll("circle").attr("r", 0);
   regionLink.style("stroke-width", "0px");
   d3.selectAll(".regionLinkInteractionArea").style("stroke-width", "0px");
+  d3.selectAll(".d3-region-tip").remove();
 }
 
 function calculateArtists(node) {
@@ -239,6 +257,9 @@ function setUpRegionLinks() {
         })
         .on("mouseleave", function(d) {
           d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#777");
+        })
+        .on("click", function(d) {
+          // TODO: Sonja
         });
   regionLink = regionLink.append('line')
         .attr('class', 'regionLink')
@@ -253,10 +274,6 @@ function setUpRegionLinks() {
         })
         .on("mouseout", function(d) {
           d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#777");
-        })
-        .on("click", function(d) {
-          // TODO: Sonja
-          console.log(d);
         });
 
   force.start();
@@ -690,4 +707,3 @@ function parseData() {
   // call init function after all callbacks have been reached
   q.awaitAll(init);
 }
-
