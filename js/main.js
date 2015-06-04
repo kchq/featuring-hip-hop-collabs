@@ -10,6 +10,8 @@ var regionNodes = [
   {"id":"S", "lon": 85, "lat": 32, "zlon": 86, "zlat": 32, "color": "#BF113A", "scale": 2.3, "numArtists":0, "artistsPerYear":{}},
   {"id":"MW", "lon": 87.6847, "lat": 40, "zlon": 87.2, "zlat": 41.5, "color": "#A314A8", "scale": 4, "numArtists":0, "artistsPerYear":{}}
 ]
+
+var nyNode = {"id":"NY", "lon": 74.0059, "lat": 40.7127, "zlon": 73.7, "zlat": 40.65, "color": "red", "scale": 54 };
 const regionIndexMap = ["W", "NE", "NC", "SC", "S", "MW"];
 
 const startYear = 1965;
@@ -67,6 +69,7 @@ function init(error) {
   drawSlider();
   createRegions();
   setUpRegions();
+  //headSetup();
 }
 
 // redraws everything
@@ -190,7 +193,7 @@ function updateRegions() {
   });
 
   d3.selectAll("circle").transition().duration(100).attr("r", function(d) { 
-    return Math.max(0, 10 * Math.log(d.numArtists)); 
+    return Math.max(0, 10 * Math.log(d.numArtists) + 4); 
   });
 
   updateRegionLinks();
@@ -324,7 +327,6 @@ function zoomToRegion(region) {
   y = projection([-1*lon, lat])[1];
   k = region.scale;
   hideRegions();
-  // TODO: Sonja - allow scrolling through time while zoomed in
   zoom.on("zoom", function() {
     moveThroughTimeRegionalScrolling();
   });
@@ -343,32 +345,43 @@ function zoomToRegion(region) {
 }
 
 function zoomOut() {
-  x = width / 2;
-  y = height / 2;
-  k = 1;
+  if (inNY) {
+    inNY = false;
+    svg.selectAll(".artistNode").remove();
+    svg.selectAll(".clippath").remove();
+    svg.selectAll("#nyCircle").remove();
+    artistLink.style("stroke-width", "0px");
+    zoomToRegion(regionNodes[1]);
+  } else {
+    x = width / 2;
+    y = height / 2;
+    k = 1;
 
-  svg.selectAll(".artistNode").remove();
-  svg.selectAll(".clippath").remove();
-  artistLink.style("stroke-width", "0px");
-  g.transition()
-    .duration(750)
-    .attr("transform", "translate(" + (width / 2 - mapTranslateLeft) + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-    .style("stroke-width", 1.5 / k + "px")
-    .each("end", function() { 
-      zoom.on("zoom", function() {
-        moveThroughTimeScrolling();
+    svg.selectAll(".artistNode").remove();
+    svg.selectAll(".clippath").remove();
+    svg.selectAll("#nyCircle").remove();
+    artistLink.style("stroke-width", "0px");
+    g.transition()
+      .duration(750)
+      .attr("transform", "translate(" + (width / 2 - mapTranslateLeft) + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+      .style("stroke-width", 1.5 / k + "px")
+      .each("end", function() { 
+        zoom.on("zoom", function() {
+          moveThroughTimeScrolling();
+        });
+        slider.on("slide", function(evt, value) {
+          moveThroughTimeSliding(value);
+        });
+        updateRegions();
       });
-      slider.on("slide", function(evt, value) {
-        moveThroughTimeSliding(value);
-      });
-      updateRegions();
-    });
-  isZoomed = false;
+    isZoomed = false;
+  }
 }
 
 // ======= Functions to handle drawing artists in a region ======= 
 
 var currentRegion, currentX, currentY, currentK;
+var inNY = false;
 function drawRegionalArtists(region, x, y, k) {
   currentRegion = region;
   currentX = x;
@@ -381,6 +394,54 @@ function drawRegionalArtists(region, x, y, k) {
     var t = (a.start_year <= currentYear) && (a.end_year === 'present'|| a.end_year >= currentYear);
     return r && t;
   });
+
+  var nyCount = 0;
+  if (region == 'NE') {
+    // lon/lat of new york
+    var lon = nyNode.lon;
+    var lat = nyNode.lat;
+    var zlon = nyNode.zlon;
+    var zlat = nyNode.zlat;
+    var nyX = projection([-1*zlon, zlat])[0];
+    var nyY = projection([-1*zlon, zlat])[1];
+    var nyK = nyNode.scale;
+    if (!inNY) {
+      artistNodesTemp = artistNodesTemp.filter( function(a){
+        if (a.state != 'NY') {
+          return true;
+        } else {
+          nyCount++;
+          return false;
+        }
+      });
+      svg.append('circle')
+        .attr("id", "nyCircle")
+        .attr("fill", "red")
+        .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+        .attr("cx", projection([-1*lon, lat])[0])
+        .attr("cy", projection([-1*lon, lat])[1])
+        .attr("r", function(d) { 
+          return Math.max(0, 10 * Math.log(nyCount) + 4) / k; 
+        })
+        .on("click", function() {
+          svg.selectAll(".artistNode").remove();
+          svg.selectAll(".clippath").remove();
+          svg.selectAll("#nyCircle").remove();
+          g.transition()
+            .duration(750)
+            .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + nyK + ")translate(" + -nyX + "," + -nyY + ")")
+            .style("stroke-width", 1.5 / nyK + "px")
+            .each("end", function() {
+              inNY = true;
+              drawRegionalArtists(region, nyX, nyY, nyK);
+            });
+        });
+    } else {
+      artistNodesTemp = artistNodesTemp.filter( function(a) {
+        return a.state == 'NY';
+      });
+    }
+  }
 
   artistForce.nodes(artistNodesTemp);
 
@@ -407,6 +468,7 @@ function drawRegionalArtists(region, x, y, k) {
       .attr("id", getArtistImageName(d.name))
       .attr("class", "clippath")
       .append("circle")
+      .attr("id", getArtistImageName(d.name) + "_mask")
       .attr("cx", xy[0])
       .attr("cy", xy[1])
       .attr("r", artistCircleSize / 2)
@@ -415,6 +477,7 @@ function drawRegionalArtists(region, x, y, k) {
 
   // add artist images to each node
   var images = artistNode.append("image")
+    .attr("id", function(d) { return getArtistImageName(d.name) + "_image" })
     .attr("xlink:href", function(d) { return "imgs/" + getArtistImageName(d.name) + ".png"; })
     .attr("x", function(d) { xy = getXY(d); if (xy == null) return; return xy[0] - artistCircleSize / 2; })
     .attr("y", function(d) { xy = getXY(d); if (xy == null) return; return xy[1] - artistCircleSize / 2; })
@@ -431,7 +494,7 @@ function drawRegionalArtists(region, x, y, k) {
 
   // add border to each artist
   var rings = artistNode.append("circle")
-    .attr("id", function(d) { return getArtistImageName(d.name) + "ring"; })
+    .attr("id", function(d) { return getArtistImageName(d.name) + "_ring"; })
     .attr("cx", function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
     .attr("cy", function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
     .attr("r", artistCircleSize / 2)
@@ -447,8 +510,15 @@ function drawRegionalArtists(region, x, y, k) {
     .style("stroke-width", "0.5px");
 
   // draw a ring on hover
-  artistNode.on("mouseenter", function(d) { $("#" + getArtistImageName(d.name) + "ring").css("stroke", "#FF5655"); });
-  artistNode.on("mouseleave", function(d) { $("#" + getArtistImageName(d.name) + "ring").css("stroke", "#000"); });
+  artistNode.on("mouseenter", function(d) { 
+    artistMouseEnter(d);
+  });
+  artistNode.on("mouseleave", function(d) { 
+    artistMouseLeave(d);
+  });
+  artistNode.on("click", function(d) {
+    headViewSingleArtist(d);
+  });
 
   updateArtistLinks(artistLinksTemp);
 
@@ -474,6 +544,7 @@ function updateRegionalArtists(region, x, y, k) {
   svg.selectAll(".artistNode").remove();
   svg.selectAll(".clippath").remove();
   var artistLinksTemp = drawRegionalArtists(region, x, y, k);
+  svg.selectAll("#nyCircle").remove();
 }
 
 
@@ -579,6 +650,31 @@ function updateArtistLinks(artistLinksTemp) {
     });
 }
 
+function artistMouseEnter(d) {
+  $("#" + getArtistImageName(d.name) + "_mask")
+    .attr("r", artistCircleSize);
+  $("#" + getArtistImageName(d.name) + "_image")
+    .attr("x", function() { xy = getXY(d); if (xy == null) return; return xy[0] - artistCircleSize; })
+    .attr("y", function() { xy = getXY(d); if (xy == null) return; return xy[1] - artistCircleSize; })
+    .attr("width", artistCircleSize * 2)
+    .attr("height", artistCircleSize * 2);
+  $("#" + getArtistImageName(d.name) + "_ring")
+    .css("stroke", "#FF5655")
+    .attr("r", artistCircleSize);
+}
+
+function artistMouseLeave(d) {
+  $("#" + getArtistImageName(d.name) + "_mask")
+    .attr("r", artistCircleSize / 2);
+  $("#" + getArtistImageName(d.name) + "_image")
+    .attr("x", function() { xy = getXY(d); if (xy == null) return; return xy[0] - artistCircleSize / 2; })
+    .attr("y", function() { xy = getXY(d); if (xy == null) return; return xy[1] - artistCircleSize / 2; })
+    .attr("width", artistCircleSize)
+    .attr("height", artistCircleSize);
+  $("#" + getArtistImageName(d.name) + "_ring")
+    .css("stroke", "#000")
+    .attr("r", artistCircleSize / 2);
+}
 
 // ======= Functions for handling scrolling ======= 
 
