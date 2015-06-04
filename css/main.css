@@ -76,3 +76,17 @@ ul {
     max-height: 250px;
     overflow-y:scroll; 
 }
+.regionLinkInteractionArea {
+  stroke: rgba(0,0,0,0);
+}
+
+#artistBio {
+  background-color: #E0E0E0;
+  font-family: "syncopateRegular";
+  text-align: center;
+}
+
+#artistNameHead {
+  font-family: "syncopateBold";
+>>>>>>> 78feef54c4112c92f6657f49303134dac4d02b82
+}

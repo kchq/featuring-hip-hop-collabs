@@ -182,6 +182,31 @@ function headViewSingleArtist(artist) {
         .style("stroke", "#000")
         .style("stroke-width", "2px");
 
+    var artistBio = $("<div id='artistBio'>");
+    artistBio.css("height", "330px")
+             .css("width", "280px")
+             .css("left", "5px")
+             .css("top", headHeight - 330 - 4 + "px")
+             .css("position", "absolute")
+             .css("font-size", headWidth * 0.4 * 0.04);
+    var artistName = $("<p id='artistNameHead'>");
+    artistName.text(artist.name);
+    artistName.css("font-size", headWidth * 0.4 * 0.07);
+
+    var artistOrigin = $("<p>");
+    artistOrigin.text("Artist Origin is " + artist.city + ", " + artist.state);
+
+    var artistYear = $("<p>");
+    artistYear.text("Artist Career began " + artist.start_year);
+
+    artistBio.append(artistName);
+    artistBio.append(artistOrigin);
+    artistBio.append(artistYear);
+    $("#head").append(artistBio);
+
+
+
+
     var spotifyFrame = $("<iframe>");
     var collabsWidth = headWidth * .6;
     var collabsHeight = headHeight * .4;
