@@ -156,28 +156,30 @@ function headViewSingleArtist(artist) {
         .style("opacity", 0.8);
 
    svgHead.append('clipPath')
-      .attr("id", artistFormatted + "Large")
-      .attr("class", "clippath")
-      .append("circle")
-      .attr("cx",  image2X + imageWidth / 2)
-      .attr("cy", imageY + imageWidth / 2)
-      .attr("r", imageWidth / 2)
-      .attr("clipPathUnits", "userSpaceOnUse");
+        .attr("id", artistFormatted + "Large")
+        .attr("class", "clippath")
+        .append("circle")
+        .attr("cx", image2X * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
+        .attr("cy", imageY + imageWidth * (3/2) / 2)      
+        .attr("r", (imageWidth * 3/2) / 2)
+        .attr("clipPathUnits", "userSpaceOnUse");
 
     gh.append("image")
         .attr("xlink:href", artistImage)
-        .attr("x", image2X)
+        .attr("x", image2X * .5)
         .attr("y", imageY)
-        .attr("width", imageWidth)
-        .attr("height", imageWidth)
+        .attr("width", imageWidth * 3/2)
+        .attr("height", imageWidth * 3/2)
         // preserve size of circle across different regions, because each region has a different scale
         .attr("clip-path", function(d) { return "url(#" + artistFormatted + "Large" + ")"; });
+
+    
        
     gh.append("circle")
         .attr("id", "50_centring") //function(d) { return getArtistImageName(d.name) + "ring"; })
-        .attr("cx", image2X + imageWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
-        .attr("cy", imageY + imageWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
-        .attr("r", imageWidth / 2)
+        .attr("cx", image2X * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
+        .attr("cy", imageY + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
+        .attr("r", (imageWidth * 3/2) / 2)
         .style("fill", "none")
         .style("stroke", "#000")
         .style("stroke-width", "2px");
@@ -204,9 +206,42 @@ function headViewSingleArtist(artist) {
     artistBio.append(artistYear);
     $("#head").append(artistBio);
 
+    var spotifyFrame = $("<iframe>");
+    var collabsWidth = headWidth * .55;
+    var collabsHeight = headHeight * .4;
+    var frameWidth = Math.max(headWidth * 0.4, 250);
+    var frameHeight = Math.max(headHeight * 0.4, frameWidth + 80);
 
+    var collabsList = $("<div id='collabsList'>");
+    collabsList.css("left", headWidth - collabsWidth - headWidth * 0.02 + "px")
+        .css("top", headHeight - collabsHeight * 2.35 +/* headHeight * 0.02 + */"px")
+        .css("width", collabsWidth + "px")
+        .css("height", collabsHeight * .8 + "px")
+        .css("position", "absolute")
+        .css("max-height", collabsHeight); 
 
+    var ul = $("<ul class='list-group collab'>");
+    ul.css("height", collabsHeight + "px")
+        .css("max-height", collabsHeight)
+        .css("border", "2px")
+        .css("width", collabsWidth + "px")
+        .css("border-style", "solid")
+        .css("border-width", "3px");
 
+    
+    //FOR EACH LINK ADD ONE OF THESE, OK? COOl
+    //
+    var li = ul.append("<li class='list-group-item'> <b>Track name</b>, Album Name<br/> -Artist Name, featuring A, B C");
+    li = ul.append("<li class='list-group-item collabs'> <b>Track name</b>, Album Name<br/> -Artist Name, featuring A, B C");
+    li = ul.append("<li class='list-group-item collabs'> <b>Track name</b>, Album Name<br/> -Artist Name, featuring A, B C");
+    li = ul.append("<li class='list-group-item collabs'> <b>Track name</b>, Album Name<br/> -Artist Name, featuring A, B C");
+    li = ul.append("<li class='list-group-item collabs'> <b>Track name</b>, Album Name<br/> -Artist Name, featuring A, B C");
+    li = ul.append("<li class='list-group-item collabs'> <b>Track name</b>, Album Name<br/> -Artist Name, featuring A, B C");
+    li = ul.append("<li class='list-group-item collabs'> <b>Track name</b>, Album Name<br/> -Artist Name, featuring A, B C");
+
+    collabsList.append(ul);
+
+    $("#head").append(collabsList);
     var spotifyFrame = $("<iframe>");
 
     spotifyFrame.attr("src", "https://embed.spotify.com/?uri=spotify:trackset:Kanye West playlist:2WBjsxTE3hBInd21yUY65h,2RAj4LEmos3pkc396FE5Mg,1w2lHasjKWxkmZxeLAzObf,2bCLwbMQHgvcDC6zGUzQZP,1iQ5E4z6CJ38dIzvMI9Wdo,1Kjnf4Nr6SmVIRLSh6XZCF,0jWF4qSFNhDjoMmitBaBjh,0ME2IxF0Mbopx1hNXGDE3N,3Z2SFbiNPxR7KAMntC4baK,0HXtsURsJGmhmdOFUqSAmk,7AV8RY7S7SzbtxL8ohDt4N,444P4wvSDa0SD5HE4YGx9B,")

@@ -11,7 +11,7 @@ var regionNodes = [
   {"id":"MW", "name": "Mid West", "lon": 87.6847, "lat": 40, "zlon": 87.2, "zlat": 41.5, "color": "#A314A8", "ringColor": "#830488", "scale": 4, "numArtists":0, "artistsPerYear":{}}
 ]
 
-var nyNode = {"id":"NY", "lon": 74.0059, "lat": 40.7127, "zlon": 73.7, "zlat": 40.65, "color": "red", "scale": 54 };
+var nyNode = {"id":"NY", "name": "New York", "lon": 74.0059, "lat": 40.7127, "zlon": 73.7, "zlat": 40.65, "color": "#1662A4", "ringColor": "#024274", "scale": 54 };
 const regionIndexMap = ["W", "NE", "NC", "SC", "S", "MW"];
 
 const startYear = 1965;
@@ -38,8 +38,8 @@ var regionTip = d3.tip()
 
 var width, height, mapTranslateLeft, mainVisTop, mainVisLeft, narrationLeft, narrationTop, narrationWidth, centered, timelineEventDescriptions, timelineEvents, slider;
 var svg, svgNarration, g, gn, gt;
-var artistNodes, artistMap, regionLinks;
-var regionNode, regionLink, artistLink;
+var artistNodes, artistMap, artistLink;
+var regionNode, regionLink, regionLinks;
 
 var isZoomed = false;
 
@@ -55,7 +55,7 @@ var force = d3.layout.force()
 var artistForce = d3.layout.force()
     .size([width, height])
     .on("tick", function() {
-      tick(undefined);
+      tick(artistLink);
     });
 
 var projection = d3.geo.albersUsa()
@@ -75,6 +75,7 @@ function init(error) {
   drawSlider();
   createRegions();
   setUpRegions();
+  setUpSearch();
   //headSetup();
 }
 
@@ -103,6 +104,54 @@ function tick(link) {
     .attr('y1', function(d) { return d.source.y; })
     .attr('x2', function(d) { return d.target.x - mapTranslateLeft; })
     .attr('y2', function(d) { return d.target.y; });
+}
+
+function setUpSearch() {
+  $("#searchError").css("color", "red");
+  $("#searchError").css("font-weight", "bold");
+  $("#searchError").css("padding-left", "10px");
+  $("#searchError").css("left", ($(window).width() * 0.72) + "px");
+  $("#searchError").css("top", ($(window).height() * 0.08) + "px");
+  $("#searchError").css("position", "absolute");
+
+  $("#searchArea").css("padding-left", "10px");
+  $("#searchArea").css("left", ($(window).width() * 0.72) + "px");
+  $("#searchArea").css("top", ($(window).height() * 0.045) + "px");
+  $("#searchArea").css("position", "absolute");
+
+   $("#searchbutton").click(function () {
+      $("#searchError").text("");
+      var selectedVal = document.getElementById('search').value;
+      
+
+
+      var artistNode = artistNodes[artistMap[selectedVal]];
+      var startYear = parseInt(artistNode.start_year);
+      var endYear = artistNode.end_year;
+      if (endYear == "present") {
+        endYear = presentYear;
+      } else {
+        endYear = parseInt(endYear);
+      }
+      regionNodes.forEach(function(node) {
+        if (node.id === artistNode.region) {
+          zoomOut();
+          zoomToRegion(node);
+          
+          if (currentYear < startYear || currentYear > endYear) {
+            moveThroughTimeRegionalSliding(startYear);
+          }
+          if (node.id === "NE" && artistNode.state === "NY") {
+            setTimeout(function() {
+              $("#nyCircle").d3Click();
+              console.log(artistNode);
+            }, 1500);
+          }
+        } 
+
+      });
+      
+   });
 }
 
 // ======= Functions to create the Map ======= 
@@ -286,29 +335,26 @@ function computeRegionLinks(){
     var sourceIndex = regionIndexMap.indexOf(sourceRegion);
     var targetRegion = artistNodes[link.target].region;
     var targetIndex = regionIndexMap.indexOf(targetRegion);
-    if (sourceIndex != targetIndex) {
-      // we don't show self loops to a region.
-      var regionLink = getLink(regionLinks, sourceIndex, targetIndex);
-      if (regionLink.linksPerYear[link.release_year] == undefined) {
-        regionLink.linksPerYear[link.release_year] = 1;
-      } else {
-        regionLink.linksPerYear[link.release_year]++;
-      }
+    var regionLink = getLink(regionLinks, sourceIndex, targetIndex);
+    if (regionLink.linksPerYear[link.release_year] == undefined) {
+      regionLink.linksPerYear[link.release_year] = [link];
+    } else {
+      regionLink.linksPerYear[link.release_year].push(link);
     }
   });
   return regionLinks;
 }
 
-function getLink(regionLinks, sourceIndex, targetIndex) {
-  for (var i = 0; i < regionLinks.length; i++) {
-    var link = regionLinks[i];
+function getLink(links, sourceIndex, targetIndex) {
+  for (var i = 0; i < links.length; i++) {
+    var link = links[i];
     if (link.source == sourceIndex && link.target == targetIndex) {
       // found the link
       return link;
     }
   }
   var newLink = {source: sourceIndex, target: targetIndex, numLinks: 0, linksPerYear:{}};
-  regionLinks.push(newLink);
+  links.push(newLink);
   return newLink;
 }
 
@@ -317,20 +363,30 @@ function updateRegionLinks() {
     calculateLinks(d);
   });
 
-  d3.selectAll(".regionLink").style("stroke-width", function(d) { 
-    return Math.max(0, 1 + Math.log(d.numLinks)) + "px"; 
-  });
+  d3.selectAll(".regionLink")
+    .style("stroke-width", function(d) { 
+      if (d.source != d.target) {
+        return Math.max(0, 1.25 * Math.log(4 * d.numLinks)) + "px"; 
+      }
+    });
+    // .attr("class", function(d) { 
+    //   if (d.source == d.target) {
+    //     // somehow set the border of this svg
+    //     return "selfLink";
+    //   }
+    // });
 
   d3.selectAll(".regionLinkInteractionArea").style("stroke-width", function(d) {
     return Math.max(0, 1 + Math.log(d.numLinks)) + 15 + "px";
   });
+
 }
 
 function calculateLinks(link) {
   link.numLinks = 0;
   for (var year in link.linksPerYear) {
     if (parseInt(year) <= currentYear) {
-      link.numLinks += parseInt(link.linksPerYear[year]);
+      link.numLinks += parseInt(link.linksPerYear[year].length);
     }
   }
 }
@@ -394,6 +450,7 @@ function zoomOut() {
     svg.selectAll(".artistNode").remove();
     svg.selectAll(".clippath").remove();
     svg.selectAll("#nyCircle").remove();
+    artistLink.style("stroke-width", "0px");
     zoomToRegion(regionNodes[1]);
   } else {
     x = width / 2;
@@ -403,6 +460,7 @@ function zoomOut() {
     svg.selectAll(".artistNode").remove();
     svg.selectAll(".clippath").remove();
     svg.selectAll("#nyCircle").remove();
+    artistLink.style("stroke-width", "0px");
     g.transition()
       .duration(750)
       .attr("transform", "translate(" + (width / 2 - mapTranslateLeft) + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
@@ -456,9 +514,9 @@ function drawRegionalArtists(region, x, y, k) {
           return false;
         }
       });
-      svg.append('circle')
+      nyCircle = svg.append('circle')
         .attr("id", "nyCircle")
-        .attr("fill", "red")
+        .attr("fill", nyNode.color)
         .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
         .attr("cx", projection([-1*lon, lat])[0])
         .attr("cy", projection([-1*lon, lat])[1])
@@ -469,6 +527,7 @@ function drawRegionalArtists(region, x, y, k) {
           svg.selectAll(".artistNode").remove();
           svg.selectAll(".clippath").remove();
           svg.selectAll("#nyCircle").remove();
+          d3.selectAll(".d3-region-tip").remove();
           g.transition()
             .duration(750)
             .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + nyK + ")translate(" + -nyX + "," + -nyY + ")")
@@ -478,6 +537,15 @@ function drawRegionalArtists(region, x, y, k) {
               drawRegionalArtists(region, nyX, nyY, nyK);
             });
         });
+      nyCircle.call(regionTip);
+      nyCircle.on("mouseover", function() {
+          d3.select(this).style("stroke-width", 0.5 + "px").style("stroke", nyNode.ringColor);
+            regionTip.show(nyNode);
+          });
+      nyCircle.on("mouseout", function() {
+          d3.select(this).style("stroke-width", "0px");
+            regionTip.hide(nyNode);
+          });
     } else {
       artistNodesTemp = artistNodesTemp.filter( function(a) {
         return a.state == 'NY';
@@ -486,6 +554,8 @@ function drawRegionalArtists(region, x, y, k) {
   }
 
   artistForce.nodes(artistNodesTemp);
+
+  var artistLinksTemp = createArtistLinks(region, artistNodesTemp, k, x, y);
 
   var artistNode = svg.selectAll(".artistNode")
       .data(artistNodesTemp)
@@ -559,6 +629,10 @@ function drawRegionalArtists(region, x, y, k) {
   artistNode.on("click", function(d) {
     headViewSingleArtist(d);
   });
+
+  updateArtistLinks(artistLinksTemp);
+
+  return artistLinksTemp;
 }
 
 function getXY(artistNode) {
@@ -579,8 +653,111 @@ function getArtistImageName(name) {
 function updateRegionalArtists(region, x, y, k) {
   svg.selectAll(".artistNode").remove();
   svg.selectAll(".clippath").remove();
+  var artistLinksTemp = drawRegionalArtists(region, x, y, k);
   svg.selectAll("#nyCircle").remove();
-  drawRegionalArtists(region, x, y, k);
+}
+
+
+// ======= Functions to handle drawing links in a region ======= 
+
+function createArtistLinks(region, artistNodesTemp, k, x, y) {
+  var artistLinksTemp = computeArtistLinks(region, artistNodesTemp);
+
+  artistForce.links(artistLinksTemp);
+
+  filterArtistLinks(artistLinksTemp, artistNodesTemp);
+
+  artistLink = svg.selectAll('.artistLink')
+        .data(artistLinksTemp)
+        .enter().append('line')
+        .attr('class', 'artistLink')
+        .attr('x1', function(d) { return d.sourceX; })
+        .attr('y1', function(d) { return d.sourceY; })
+        .attr('x2', function(d) { return d.targetX; })
+        .attr('y2', function(d) { return d.targetY; })
+        .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+        .style("stroke-width", "0px");
+
+  return artistLinksTemp;
+}
+
+function filterArtistLinks(artistLinksTemp, artistNodesTemp) {
+  for (var i = 0; i < artistLinksTemp.length; i++) {
+    var link = artistLinksTemp[i];
+    var linkSource = artistNodesTemp[link.source];
+    var sourceXY = getXY(linkSource);
+    if (sourceXY != null) {
+      link.sourceX = sourceXY[0];
+      link.sourceY = sourceXY[1]
+    } else {
+      artistLinksTemp.splice(i, 1);
+      i--;
+      continue;
+    }
+
+    var linkTarget = artistNodesTemp[link.target];
+    var targetXY = getXY(linkTarget);
+    if (targetXY != null) {
+      link.targetX = targetXY[0];
+      link.targetY = targetXY[1]
+    } else {
+      artistLinksTemp.splice(i, 1);
+      i--;
+    }
+  }
+}
+
+function computeArtistLinks(region, artistNodesTemp) {
+  for (var i = 0; i < regionLinks.length; i++) {
+    var link = regionLinks[i];
+    if (link.source.id === region && link.target.id === region) {
+      // now we have the link for this region, which has the collection of links
+      // that we care about, stored in an associative array indexed by year
+      return artistLinksForRegion(artistNodesTemp, link.linksPerYear);
+    } else if (link.source.id === region || link.target.id === region) {
+      // add some color for an outgoing edge to other region?
+    }
+  };
+}
+
+function artistLinksForRegion(artistNodesTemp, allLinks) {
+  var artistLinksTemp = [];
+  for (var year in allLinks) {
+    if (parseInt(year) <= currentYear) {
+      // add all links in this array
+      for (var i = 0; i < allLinks[year].length; i++) {
+        var link = allLinks[year][i];
+        var sourceArtistIndex = artistNodesTemp.indexOf(artistNodes[link.source]);
+        var targetArtistIndex = artistNodesTemp.indexOf(artistNodes[link.target]);
+        if (sourceArtistIndex != -1 && targetArtistIndex != -1) {
+          // this link is valid and the two artists are currently there
+          var artistLink = getLink(artistLinksTemp, sourceArtistIndex, targetArtistIndex);
+          if (artistLink.linksPerYear[link.release_year] == undefined) {
+            artistLink.linksPerYear[link.release_year] = [link];
+          } else {
+            artistLink.linksPerYear[link.release_year].push(link);
+          }
+        }
+      }
+    }
+  }
+  return artistLinksTemp;
+}
+
+
+function updateArtistLinks(artistLinksTemp) {
+  // TODO: figure out how to make dynamic artists links 
+  // that just sum up from a static one
+  artistLinksTemp.forEach(function(d) {
+    calculateLinks(d);
+  });
+
+  d3.selectAll(".artistLink")
+    .style("stroke-width", function(d) { 
+      if (d.source != d.target) {
+        return Math.max(0, Math.log(2 * d.numLinks)) + "px"; 
+      }
+    });
 }
 
 function artistMouseEnter(d) {
@@ -707,3 +884,12 @@ function parseData() {
   // call init function after all callbacks have been reached
   q.awaitAll(init);
 }
+
+jQuery.fn.d3Click = function () {
+  this.each(function (i, e) {
+    var evt = document.createEvent("MouseEvents");
+    evt.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+
+    e.dispatchEvent(evt);
+  });
+};

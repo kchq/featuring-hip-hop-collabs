@@ -48,11 +48,11 @@ body {
   font-family: "syncopateBold";
 }
 
-#closeMenuText, #narrationEventPreviewNextYearBackground, #narrationEventPreviewPreviousYearBackground, .narrationEventPreviewNextYearText, .narrationEventPreviewPreviousYearText {
+#narrationEventPreviewNextYearBackground, #narrationEventPreviewPreviousYearBackground, .narrationEventPreviewNextYearText, .narrationEventPreviewPreviousYearText {
   cursor: pointer;
 }
 
-.regionLink {
+.regionLink, .artistLink {
   stroke: #777;
   cursor: pointer;
 }
@@ -62,14 +62,16 @@ body {
   cursor: pointer;
 }
 
-#artistBio {
-  background-color: #E0E0E0;
-  font-family: "syncopateRegular";
-  text-align: center;
+ul li:nth-child(even) {
+    background-color: #E0E0E0;
 }
 
-#artistNameHead {
-  font-family: "syncopateBold";
+ul {
+    overflow-y:scroll; 
+}
+
+ul .collab {
+    padding-left: 0px;
 }
 
 .d3-region-tip {
