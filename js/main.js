@@ -66,9 +66,9 @@ parseData();
 function init(error) {
   setupMap();
   drawMap();
-  drawSlider();
-  createRegions();
-  setUpRegions();
+  // drawSlider();
+  // createRegions();
+  // setUpRegions();
   //headSetup();
 }
 
@@ -126,7 +126,7 @@ function setupMap() {
   g.attr("transform", "translate(" + (-1 * mapTranslateLeft) + ",0)");
 
   // setup narrator box and get timeline events ready
-  narrationSetup();
+  // narrationSetup();
 }
 
 // draws the map in the group 'g' (this must be initialized before calling this function)
