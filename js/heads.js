@@ -125,6 +125,7 @@ function addImages(node1, node2) {
         .style("fill", "none")
         .style("stroke", "#000")
         .style("stroke-width", "2px");
+
     return gn;
 }
 
@@ -183,19 +184,27 @@ function headViewSingleArtist(artist) {
         .style("stroke-width", "2px");
 
     var spotifyFrame = $("<iframe>");
-    var frameWidth = Math.min(headWidth * 0.4, 250);
-    var frameHeight = Math.max(headHeight * 0.4, frameWidth + 80);
 
     spotifyFrame.attr("src", "https://embed.spotify.com/?uri=spotify:trackset:Kanye West playlist:2WBjsxTE3hBInd21yUY65h,2RAj4LEmos3pkc396FE5Mg,1w2lHasjKWxkmZxeLAzObf,2bCLwbMQHgvcDC6zGUzQZP,1iQ5E4z6CJ38dIzvMI9Wdo,1Kjnf4Nr6SmVIRLSh6XZCF,0jWF4qSFNhDjoMmitBaBjh,0ME2IxF0Mbopx1hNXGDE3N,3Z2SFbiNPxR7KAMntC4baK,0HXtsURsJGmhmdOFUqSAmk,7AV8RY7S7SzbtxL8ohDt4N,444P4wvSDa0SD5HE4YGx9B,")
                 .attr("frameborder", "0")
                 .attr("id", "spotifyFrame")
                 .attr("allowTransparency", "true")
-                .css("left", headWidth - frameWidth - headWidth * 0.02 + "px")
-                .css("top", headHeight - frameHeight - headHeight * 0.02 + "px")
-                .css("width", frameWidth + "px")
-                .css("height", frameHeight + "px")
+                .css("left", headWidth - 250 - 2 + "px")
+                .css("top", headHeight - 330 - 2 + "px")
+                .css("width", "250px")
+                .css("height", "330px")
                 .css("position", "absolute");
     $("#head").append(spotifyFrame);
+    $("#head").on("click", function() {
+
+    });
+
+    gn.append("text")
+      .attr("x", headWidth * 0.02)
+      .attr("y", headHeight * 0.09)
+      .style("font-size", headWidth * 0.07)
+      .style("text-anchor", "start")
+      .text(function(d) { return "\u2718";});
  
 }
 
