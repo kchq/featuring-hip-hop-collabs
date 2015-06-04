@@ -59,3 +59,13 @@ body {
 .regionLinkInteractionArea {
   stroke: rgba(0,0,0,0);
 }
+
+#artistBio {
+  background-color: #E0E0E0;
+  font-family: "syncopateRegular";
+  text-align: center;
+}
+
+#artistNameHead {
+  font-family: "syncopateBold";
+}
