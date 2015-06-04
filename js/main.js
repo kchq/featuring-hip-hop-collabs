@@ -69,6 +69,7 @@ function init(error) {
   drawSlider();
   createRegions();
   setUpRegions();
+  setUpSearch();
   //headSetup();
 }
 
@@ -97,6 +98,54 @@ function tick(link) {
     .attr('y1', function(d) { return d.source.y; })
     .attr('x2', function(d) { return d.target.x - mapTranslateLeft; })
     .attr('y2', function(d) { return d.target.y; });
+}
+
+function setUpSearch() {
+  $("#searchError").css("color", "red");
+  $("#searchError").css("font-weight", "bold");
+  $("#searchError").css("padding-left", "10px");
+  $("#searchError").css("left", ($(window).width() * 0.72) + "px");
+  $("#searchError").css("top", ($(window).height() * 0.08) + "px");
+  $("#searchError").css("position", "absolute");
+
+  $("#searchArea").css("padding-left", "10px");
+  $("#searchArea").css("left", ($(window).width() * 0.72) + "px");
+  $("#searchArea").css("top", ($(window).height() * 0.045) + "px");
+  $("#searchArea").css("position", "absolute");
+
+   $("#searchbutton").click(function () {
+      $("#searchError").text("");
+      var selectedVal = document.getElementById('search').value;
+      
+
+
+      var artistNode = artistNodes[artistMap[selectedVal]];
+      var startYear = parseInt(artistNode.start_year);
+      var endYear = artistNode.end_year;
+      if (endYear == "present") {
+        endYear = presentYear;
+      } else {
+        endYear = parseInt(endYear);
+      }
+      regionNodes.forEach(function(node) {
+        if (node.id === artistNode.region) {
+          zoomOut();
+          zoomToRegion(node);
+          
+          if (currentYear < startYear || currentYear > endYear) {
+            moveThroughTimeRegionalSliding(startYear);
+          }
+          if (node.id === "NE" && artistNode.state === "NY") {
+            setTimeout(function() {
+              $("#nyCircle").d3Click();
+              console.log(artistNode);
+            }, 1500);
+          }
+        } 
+
+      });
+      
+   });
 }
 
 // ======= Functions to create the Map ======= 
@@ -808,4 +857,13 @@ function parseData() {
   // call init function after all callbacks have been reached
   q.awaitAll(init);
 }
+
+jQuery.fn.d3Click = function () {
+  this.each(function (i, e) {
+    var evt = document.createEvent("MouseEvents");
+    evt.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+
+    e.dispatchEvent(evt);
+  });
+};
 
