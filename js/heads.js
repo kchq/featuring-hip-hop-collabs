@@ -159,28 +159,43 @@ function headViewSingleArtist(artist) {
       .attr("id", artistFormatted)
       .attr("class", "clippath")
       .append("circle")
-      .attr("cx", image1X * 0.5 + imgWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
-      .attr("cy", imageY * 1.2 + imgWidth / 2) 
-      .attr("r", imgWidth / 2)
+      .attr("cx",  image2X + imageWidth / 2)
+      .attr("cy", imageY + imageWidth / 2)
+      .attr("r", imageWidth / 2)
       .attr("clipPathUnits", "userSpaceOnUse");
 
     gn.append("image")
         .attr("xlink:href", artistImage)
-        .attr("x", image1X * 0.5)
-        .attr("y", imageY * 1.2)
-        .attr("width", imgWidth)
-        .attr("height", imgWidth)
+        .attr("x", image2X)
+        .attr("y", imageY)
+        .attr("width", imageWidth)
+        .attr("height", imageWidth)
         // preserve size of circle across different regions, because each region has a different scale
         .attr("clip-path", function(d) { return "url(#" + artistFormatted + ")"; });
        
     gn.append("circle")
         .attr("id", "50_centring") //function(d) { return getArtistImageName(d.name) + "ring"; })
-        .attr("cx", image1X * 0.5 + imgWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
-        .attr("cy", imageY * 1.2 + imgWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
-        .attr("r", imgWidth / 2)
+        .attr("cx", image2X + imageWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
+        .attr("cy", imageY + imageWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
+        .attr("r", imageWidth / 2)
         .style("fill", "none")
         .style("stroke", "#000")
         .style("stroke-width", "2px");
+
+    var spotifyFrame = $("<iframe>");
+    var frameWidth = Math.min(headWidth * 0.4, 250);
+    var frameHeight = Math.max(headHeight * 0.4, frameWidth + 80);
+
+    spotifyFrame.attr("src", "https://embed.spotify.com/?uri=spotify:trackset:Kanye West playlist:2WBjsxTE3hBInd21yUY65h,2RAj4LEmos3pkc396FE5Mg,1w2lHasjKWxkmZxeLAzObf,2bCLwbMQHgvcDC6zGUzQZP,1iQ5E4z6CJ38dIzvMI9Wdo,1Kjnf4Nr6SmVIRLSh6XZCF,0jWF4qSFNhDjoMmitBaBjh,0ME2IxF0Mbopx1hNXGDE3N,3Z2SFbiNPxR7KAMntC4baK,0HXtsURsJGmhmdOFUqSAmk,7AV8RY7S7SzbtxL8ohDt4N,444P4wvSDa0SD5HE4YGx9B,")
+                .attr("frameborder", "0")
+                .attr("id", "spotifyFrame")
+                .attr("allowTransparency", "true")
+                .css("left", headWidth - frameWidth - headWidth * 0.02 + "px")
+                .css("top", headHeight - frameHeight - headHeight * 0.02 + "px")
+                .css("width", frameWidth + "px")
+                .css("height", frameHeight + "px")
+                .css("position", "absolute");
+    $("#head").append(spotifyFrame);
  
 }
 
