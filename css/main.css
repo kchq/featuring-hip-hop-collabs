@@ -55,3 +55,14 @@ body {
 .regionLink {
   stroke: #777;
 }
+
+#artistBio {
+  background-color: #E0E0E0;
+  font-family: "syncopateRegular";
+  text-align: center;
+}
+
+#artistNameHead {
+  font-family: "syncopateBold";
+
+}

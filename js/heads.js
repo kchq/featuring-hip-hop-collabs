@@ -182,6 +182,31 @@ function headViewSingleArtist(artist) {
         .style("stroke", "#000")
         .style("stroke-width", "2px");
 
+    var artistBio = $("<div id='artistBio'>");
+    artistBio.css("height", "330px")
+             .css("width", "280px")
+             .css("left", "5px")
+             .css("top", headHeight - 330 - 4 + "px")
+             .css("position", "absolute")
+             .css("font-size", headWidth * 0.4 * 0.04);
+    var artistName = $("<p id='artistNameHead'>");
+    artistName.text(artist.name);
+    artistName.css("font-size", headWidth * 0.4 * 0.07);
+
+    var artistOrigin = $("<p>");
+    artistOrigin.text("Artist Origin is " + artist.city + ", " + artist.state);
+
+    var artistYear = $("<p>");
+    artistYear.text("Artist Career began " + artist.start_year);
+
+    artistBio.append(artistName);
+    artistBio.append(artistOrigin);
+    artistBio.append(artistYear);
+    $("#head").append(artistBio);
+
+
+
+
     var spotifyFrame = $("<iframe>");
 
     spotifyFrame.attr("src", "https://embed.spotify.com/?uri=spotify:trackset:Kanye West playlist:2WBjsxTE3hBInd21yUY65h,2RAj4LEmos3pkc396FE5Mg,1w2lHasjKWxkmZxeLAzObf,2bCLwbMQHgvcDC6zGUzQZP,1iQ5E4z6CJ38dIzvMI9Wdo,1Kjnf4Nr6SmVIRLSh6XZCF,0jWF4qSFNhDjoMmitBaBjh,0ME2IxF0Mbopx1hNXGDE3N,3Z2SFbiNPxR7KAMntC4baK,0HXtsURsJGmhmdOFUqSAmk,7AV8RY7S7SzbtxL8ohDt4N,444P4wvSDa0SD5HE4YGx9B,")
