@@ -265,6 +265,7 @@ function updateRegions() {
     return Math.max(0, 10 * Math.log(d.numArtists) + 4); 
   });
 
+
   updateRegionLinks();
 }
 
@@ -460,6 +461,18 @@ function zoomOut() {
     svg.selectAll(".artistNode").remove();
     svg.selectAll(".clippath").remove();
     svg.selectAll("#nyCircle").remove();
+
+    var regionNode = svg.selectAll('.regionNode');
+    regionNode.call(regionTip);
+    regionNode.on("mouseover", function(d) {
+      d3.select(this).style("stroke-width", "3px").style("stroke", d.ringColor);
+      regionTip.show(d);
+    });
+    regionNode.on("mouseout", function(d) {
+      d3.select(this).style("stroke-width", "0px");
+      regionTip.hide(d);
+    });
+
     artistLink.style("stroke-width", "0px");
     g.transition()
       .duration(750)
