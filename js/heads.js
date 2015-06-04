@@ -183,6 +183,36 @@ function headViewSingleArtist(artist) {
         .style("stroke-width", "2px");
 
     var spotifyFrame = $("<iframe>");
+    var collabsWidth = headWidth * .6;
+    var collabsHeight = headHeight * .4;
+    var frameWidth = Math.max(headWidth * 0.4, 250);
+    var frameHeight = Math.max(headHeight * 0.4, frameWidth + 80);
+
+    var collabsList = $("<div id='collabsList'>");
+    collabsList.css("left", headWidth - collabsWidth - headWidth * 0.02 + "px")
+        .css("top", headHeight - collabsHeight * 2.45 +/* headHeight * 0.02 + */"px")
+        .css("width", collabsWidth + "px")
+        .css("height", collabsHeight * 1.5 + "px")
+        .css("position", "absolute")
+        .css("max-height", collabsHeight);
+
+    var ul = $("<ul collabclass='list-group'>");
+    
+    //FOR EACH LINK ADD ONE OF THESE, OK? COOl
+    //
+    var li = ul.append("<li class='list-group-item'> <b>Track name</b>, Album Name<br/> -Artist Name, featuring A, B C");
+    li = ul.append("<li class='list-group-item'> <b>Track name</b>, Album Name<br/> -Artist Name, featuring A, B C");
+    li = ul.append("<li class='list-group-item'> <b>Track name</b>, Album Name<br/> -Artist Name, featuring A, B C");
+    li = ul.append("<li class='list-group-item'> <b>Track name</b>, Album Name<br/> -Artist Name, featuring A, B C");
+    li = ul.append("<li class='list-group-item'> <b>Track name</b>, Album Name<br/> -Artist Name, featuring A, B C");
+    li = ul.append("<li class='list-group-item'> <b>Track name</b>, Album Name<br/> -Artist Name, featuring A, B C");
+    li = ul.append("<li class='list-group-item'> <b>Track name</b>, Album Name<br/> -Artist Name, featuring A, B C");
+
+    collabsList.append(ul);
+
+    $("#head").append(collabsList);
+    
+    var spotifyFrame = $("<iframe>");
 
     spotifyFrame.attr("src", "https://embed.spotify.com/?uri=spotify:trackset:Kanye West playlist:2WBjsxTE3hBInd21yUY65h,2RAj4LEmos3pkc396FE5Mg,1w2lHasjKWxkmZxeLAzObf,2bCLwbMQHgvcDC6zGUzQZP,1iQ5E4z6CJ38dIzvMI9Wdo,1Kjnf4Nr6SmVIRLSh6XZCF,0jWF4qSFNhDjoMmitBaBjh,0ME2IxF0Mbopx1hNXGDE3N,3Z2SFbiNPxR7KAMntC4baK,0HXtsURsJGmhmdOFUqSAmk,7AV8RY7S7SzbtxL8ohDt4N,444P4wvSDa0SD5HE4YGx9B,")
                 .attr("frameborder", "0")

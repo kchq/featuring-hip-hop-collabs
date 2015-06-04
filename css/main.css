@@ -55,3 +55,12 @@ body {
 .regionLink {
   stroke: #777;
 }
+
+ul li:nth-child(even) {
+    background-color: #E0E0E0;
+}
+
+ul {
+    max-height: 250px;
+    overflow-y:scroll; 
+}
