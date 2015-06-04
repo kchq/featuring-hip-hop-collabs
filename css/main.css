@@ -52,6 +52,7 @@ body {
   cursor: pointer;
 }
 
-.regionLink {
+.regionLink, .artistLink {
   stroke: #777;
 }
+
