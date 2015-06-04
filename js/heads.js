@@ -12,14 +12,14 @@ function headSetup(artistNode1, artistNode2) {
 //    var artistImage1 = "imgs/" + getArtistImageName(artistNode1.name) + ".png";
   //  var artistImage2 = "imgs/" + getArtistImageName(artistNode2.name) + ".png";
   //
-    var gn = addImages(artistNode1, artistNode2);
-    addData(gn, artistNode1, artistNode2);
+    var gh = addImages(artistNode1, artistNode2);
+    addData(gh, artistNode1, artistNode2);
 }
 
-// 'gn' coming from addImages. it represents the internal contents 
+// 'gh' coming from addImages. it represents the internal contents 
 // of the head Rectangle that represents the head to head container
-function addData(gn, node1, node2){
-    dataArtist1 = gn.append("text")
+function addData(gh, node1, node2){
+    dataArtist1 = gh.append("text")
         .attr("class", "head headname")
 		.attr("x", image1X + imageWidth / 2)
 		.attr("y", imageY + imageWidth * 1.2)
@@ -29,7 +29,7 @@ function addData(gn, node1, node2){
         // TODO update .text with the name of the artist
 		.text(function(d) { return "50 Cent(1)";});
     
-    /*gn.append("svg:a")
+    /*gh.append("svg:a")
         .attr("xlink:href","https://www.facebook.com/EarlSweatshirtMusic?fref=ts")
         .attr("class", "head headname")
 		.append("text")
@@ -37,7 +37,7 @@ function addData(gn, node1, node2){
 		    .attr("y", imageY + imageWidth * 1.3);*/
 
 
-    dataArtist2 = gn.append("text")
+    dataArtist2 = gh.append("text")
         .attr("class", "head headname")
 		.attr("x", image2X + imageWidth / 2)
 		.attr("y", imageY + imageWidth * 1.2)
@@ -61,9 +61,9 @@ function addImages(node1, node2) {
 		.attr("height", headHeight)
 		.attr("id", "headSVG")
 
-	gn = svgHead.append("g");
+	gh = svgHead.append("g");
 
-	gn.append("rect")
+	gh.append("rect")
 		.attr("id", "headRect")
 		.attr("width", headWidth)
 		.attr("height", headHeight)
@@ -81,7 +81,7 @@ function addImages(node1, node2) {
       .attr("r", imageWidth / 2)
       .attr("clipPathUnits", "userSpaceOnUse");
 
-    gn.append("image")
+    gh.append("image")
         .attr("xlink:href", artistImage1)
         .attr("x", image1X)
         .attr("y", imageY)
@@ -90,7 +90,7 @@ function addImages(node1, node2) {
         // preserve size of circle across different regions, because each region has a different scale
         .attr("clip-path", function(d) { return "url(#" + getArtistImageName("50 Cent") + ")"; });
         
-    gn.append("circle")
+    gh.append("circle")
         .attr("id", "50_centring") //function(d) { return getArtistImageName(d.name) + "ring"; })
         .attr("cx", image1X + imageWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
         .attr("cy", imageY + imageWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
@@ -108,7 +108,7 @@ function addImages(node1, node2) {
       .attr("r", imageWidth / 2)
       .attr("clipPathUnits", "userSpaceOnUse"); 
 
-    gn.append("image")
+    gh.append("image")
         .attr("xlink:href", artistImage2)
         .attr("x", image2X)
         .attr("y", imageY)
@@ -116,7 +116,7 @@ function addImages(node1, node2) {
         .attr("height", imageWidth)
         .attr("clip-path", function(d) { return "url(#" + getArtistImageName("Earl Sweatshirt") + ")"; });
         
-    gn.append("circle")
+    gh.append("circle")
         .attr("id", "earl_sweatshirtring") //function(d) { return getArtistImageName(d.name) + "ring"; })
         .attr("cx", image2X + imageWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
         .attr("cy", imageY + imageWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
@@ -126,12 +126,11 @@ function addImages(node1, node2) {
         .style("stroke", "#000")
         .style("stroke-width", "2px");
 
-    return gn;
+    return gh;
 }
 
 // Shows artist detailed view in head to head fashion only displaying a single artist
 function headViewSingleArtist(artist) {
-    console.log(artist);
     var artistFormatted = getArtistImageName(artist.name);
     var artistImage = "imgs/" + artistFormatted + ".png";
     var imgWidth = imageWidth * 1.5
@@ -145,9 +144,9 @@ function headViewSingleArtist(artist) {
 		.attr("height", headHeight)
 		.attr("id", "headSVG")
 
-	gn = svgHead.append("g");
+	gh = svgHead.append("g");
 
-	gn.append("rect")
+	gh.append("rect")
 		.attr("id", "headRect")
 		.attr("width", headWidth)
 		.attr("height", headHeight)
@@ -157,7 +156,7 @@ function headViewSingleArtist(artist) {
         .style("opacity", 0.8);
 
    svgHead.append('clipPath')
-      .attr("id", artistFormatted)
+      .attr("id", artistFormatted + "Large")
       .attr("class", "clippath")
       .append("circle")
       .attr("cx",  image2X + imageWidth / 2)
@@ -165,16 +164,16 @@ function headViewSingleArtist(artist) {
       .attr("r", imageWidth / 2)
       .attr("clipPathUnits", "userSpaceOnUse");
 
-    gn.append("image")
+    gh.append("image")
         .attr("xlink:href", artistImage)
         .attr("x", image2X)
         .attr("y", imageY)
         .attr("width", imageWidth)
         .attr("height", imageWidth)
         // preserve size of circle across different regions, because each region has a different scale
-        .attr("clip-path", function(d) { return "url(#" + artistFormatted + ")"; });
+        .attr("clip-path", function(d) { return "url(#" + artistFormatted + "Large" + ")"; });
        
-    gn.append("circle")
+    gh.append("circle")
         .attr("id", "50_centring") //function(d) { return getArtistImageName(d.name) + "ring"; })
         .attr("cx", image2X + imageWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
         .attr("cy", imageY + imageWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
@@ -199,12 +198,18 @@ function headViewSingleArtist(artist) {
 
     });
 
-    gn.append("text")
+    gh.append("text")
       .attr("x", headWidth * 0.02)
       .attr("y", headHeight * 0.09)
+      .attr("id", "closeMenuText")
       .style("font-size", headWidth * 0.07)
       .style("text-anchor", "start")
-      .text(function(d) { return "\u2718";});
+      .text(function(d) { return "\u2718";})
+      .on("click", closeHead);
  
+}
+
+function closeHead() {
+  $("#head").html("");
 }
 
