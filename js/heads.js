@@ -227,6 +227,7 @@ function headViewSingleArtist(artist) {
 
    //FOR EACH LINK ADD ONE OF THESE, OK? COOl
     var uriList = "";
+    var numListItems = 0;
     for (var i = 0; i < singleHeadCollabMap[artist.name].length; i++) { //var track in singleHeadCollabMap[artist.name]) {
         var trk = singleHeadCollabMap[artist.name][i];
         
@@ -234,6 +235,7 @@ function headViewSingleArtist(artist) {
           var str = "<li class='list-group-item'> + <b>" + trk.title + "</b>, " + trk.release_title + "<br/> -";
           str += trk.artist_credit.join(", ");
           var li = ul.append(str);
+          numListItems++;
           if (trk.spotifyURI !== undefined) {
             var uriArray = trk.spotifyURI.split(":");
             uriList += uriArray[2] + ",";
@@ -243,7 +245,9 @@ function headViewSingleArtist(artist) {
     }
     collabsList.append(ul); 
 
-    $("#head").append(collabsList);
+    if (numListItems > 0) {
+      $("#head").append(collabsList);
+    }
     
     var spotifyFrame = $("<iframe>");
     spotifyFrame.attr("src", "https://embed.spotify.com/?uri=spotify:trackset:Collaboration Song Demos:" + uriList)
