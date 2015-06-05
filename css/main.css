@@ -86,6 +86,10 @@ ul .collab {
     padding-left: 0px;
 }
 
+li.list-group-item.artistCollabs {
+  height: 40px;
+}
+
 .d3-region-tip {
   line-height: 1;
   font-family: monospace;

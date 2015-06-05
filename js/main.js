@@ -74,7 +74,6 @@ function init(error) {
   createRegions();
   setUpRegions();
   setUpSearch();
-  //headSetup();
 }
 
 // redraws everything
@@ -124,7 +123,6 @@ function setUpSearch() {
       }
    });
 
-   console.log(Object.keys(artistMap));
    $("#search").autocomplete ({
       source: Object.keys(artistMap)
     });
@@ -739,7 +737,6 @@ function setUpCurrentArtistNodes(region, x, y, k) {
   currentArtistNode.on("click", function(d) {
     if (d == nyNode) { return; }
     headViewSingleArtist(d);
-    //headViewMultipleArtist(null, false);
   });
 
   updateRegionalArtists(region, x, y, k);
@@ -793,7 +790,10 @@ function createArtistLinks(region, k, x, y) {
         .attr('x2', function(d) { return d.targetX; })
         .attr('y2', function(d) { return d.targetY; })
         .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-        .style("stroke-width", "0px");
+        .style("stroke-width", "0px")
+        .on("click", function(d) {
+          headViewMultipleArtist(d.linksPerYear, false);
+        });
 
   return artistLinksTemp;
 }
@@ -1007,7 +1007,6 @@ function parseData() {
           console.log("problem with: " + artist + "'s name as source of link");
         }
       }
-      console.log(singleHeadCollabMap);
       callback(err);
     });
   });
