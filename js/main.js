@@ -501,7 +501,6 @@ function zoomOut() {
     svg.selectAll(".artistLink").remove();
     svg.selectAll(".clippath").remove();
     svg.selectAll("#nyCircle").remove();
-    // artistLink.style("stroke-width", "0px");
     zoomToRegion(regionNodes[1]);
   } else {
     if (currentRegion === 'NE') {
@@ -514,13 +513,12 @@ function zoomOut() {
 
     // hide stuff already on screen
     svg.selectAll(".currentArtistNode").remove();
+    svg.selectAll(".artistLink").remove();
     svg.selectAll(".clippath").remove();
     svg.selectAll("#nyCircle").remove();
 
     var regionNode = svg.selectAll('.regionNode');
     addRegionTooltips(regionNode);
-
-    artistLink.style("stroke-width", "0px");
 
     g.transition()
       .duration(750)
@@ -632,6 +630,8 @@ function createRegionalArtists(region, x, y, k) {
               setUpCurrentArtistNodes(region, nyX, nyY, nyK);
             });
         });
+
+      nyCircle = d3.select("#nyCircle");
 
       nyCircle.call(regionTip);
       nyCircle.on("mouseover", function() {
