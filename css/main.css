@@ -32,6 +32,12 @@ body {
     font-family: "syncopateRegular";
     src: url("../syncopate/Syncopate-Regular.ttf");
 }
+
+@font-face {
+    font-family: "bombing";
+    src: url("../graffiti/Bombing.ttf");
+}
+
 .narrationEventText, .narationEventPreviewText {
   font-family: "syncopateRegular";
 }
@@ -51,6 +57,11 @@ body {
 #narrationEventPreviewNextYearBackground, #narrationEventPreviewPreviousYearBackground, 
 .narrationEventPreviewNextYearText, .narrationEventPreviewPreviousYearText, #closeMenuText {
   cursor: pointer;
+}
+
+#artistNameHead {
+    font-family: "bombing";
+    font-size: "50px";
 }
 
 .regionLink, .artistLink {

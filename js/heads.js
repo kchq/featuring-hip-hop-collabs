@@ -169,14 +169,23 @@ function headViewSingleArtist(artist) {
 
     var artistBio = $("<div id='artistBio'>");
     artistBio.css("height", "330px")
-             .css("width", "280px")
-             .css("left", "5px")
-             .css("top", headHeight - 330 - 4 + "px")
+             .css("width", imageWidth * 2 + "px")
+             .css("padding-left", "5px")
+             .css("left", "8px")
+             .css("top", headHeight - headHeight * .40 + "px")
              .css("position", "absolute")
              .css("font-size", headWidth * 0.4 * 0.04);
     var artistName = $("<p id='artistNameHead'>");
+
+    size = Math.max(7, artist.name.length)
+    artistName.css("font-size", headWidth / (Math.log(size) * 5))
+        //.css('color', 'black');
+        .css("text-align", "center")
+        .css("left", image2X * .5 - 50) 
+        .css("top", headHeight - headHeight * .50)
+        .css("width", imageWidth * 3/2 + 100)
+        .css("position", "absolute");
     artistName.text(artist.name);
-    artistName.css("font-size", headWidth * 0.4 * 0.07);
 
     var artistOrigin = $("<p>");
     artistOrigin.text("Artist Origin is " + artist.city + ", " + artist.state);
@@ -184,10 +193,12 @@ function headViewSingleArtist(artist) {
     var artistYear = $("<p>");
     artistYear.text("Artist Career began " + artist.start_year);
 
-    artistBio.append(artistName);
+    //artistBio.append(artistName);
     artistBio.append(artistOrigin);
     artistBio.append(artistYear);
     $("#head").append(artistBio);
+    $("#head").append(artistName);
+
 
     var spotifyFrame = $("<iframe>");
     var collabsWidth = headWidth * .55;
@@ -210,7 +221,11 @@ function headViewSingleArtist(artist) {
         .css("border-style", "solid")
         .css("border-width", "3px");
 
-    
+    var rapperTitle = $("<h1 id='rapperName'>");
+    rapperTitle.text(artist.name);
+
+//    collabsList.append(rapperTitle);
+
     //FOR EACH LINK ADD ONE OF THESE, OK? COOl
     //
     var li = ul.append("<li class='list-group-item'> <b>Track name</b>, Album Name<br/> -Artist Name, featuring A, B C");
