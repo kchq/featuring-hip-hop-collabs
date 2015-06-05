@@ -7,7 +7,6 @@ image2X = xStart * .3
 imageY = yStart * .4
 imageWidth = headWidth * 0.20
 
-
 function headSetup(artistNode1, artistNode2) {
 //    var artistImage1 = "imgs/" + getArtistImageName(artistNode1.name) + ".png";
   //  var artistImage2 = "imgs/" + getArtistImageName(artistNode2.name) + ".png";
@@ -267,6 +266,68 @@ function headViewSingleArtist(artist) {
       .text(function(d) { return "\u2718";})
       .on("click", closeHead);
  
+}
+
+function headViewRegionLink(artists) {
+    svgHead = d3.select("#head")
+        .style("left", xStart + "px")
+        .style("top", yStart + "px")
+        .style("position", "absolute")
+        .append("svg")
+        .attr("width", headWidth)
+        .attr("height", headHeight)
+        .attr("id", "headSVG")
+
+    gh = svgHead.append("g");
+
+    gh.append("rect")
+        .attr("id", "headRect")
+        .attr("width", headWidth)
+        .attr("height", headHeight)
+        .style("fill", "white")
+        .style("stroke", "black")
+        .style("stroke-width", $(window).width() * 0.005)
+        .style("opacity", 0.8);
+
+    var artistCollabHeight = headHeight * 0.8;
+    var artistCollabWidth = headWidth * 0.8;
+    var artistCollabsList = $("<div id='artistCollabsList'>");
+    artistCollabsList.css("left", headWidth * 0.1 + "px")
+        .css("top", headHeight * 0.15 + "px")
+        .css("width", artistCollabWidth + "px")
+        .css("height", artistCollabHeight + "px")
+        .css("position", "absolute")
+        .css("max-height", headHeight); 
+
+    var ul = $("<ul class='list-group collab'>");
+    ul.css("height", artistCollabHeight + "px")
+        .css("max-height", headHeight)
+        .css("border", "2px")
+        .css("width", artistCollabWidth + "px")
+        .css("border-style", "solid")
+        .css("border-width", "3px")
+        .css("overflow", "auto");
+
+    // add li for each distinct artist-artist collaboration
+    for (var source in artists) {
+        for (var target in artists[source]) {
+            ul.append("<li class='list-group-item artistCollabs'> <div class='artistPair'><div class='sourceArtist'>" + artistNodes[source].name + "</div><div class='targetArtist'>" + artistNodes[target].name + "</div></div>");
+        }
+    }
+    
+    artistCollabsList.append(ul);
+    $("#head").append(artistCollabsList);
+
+    gh.append("text")
+      .attr("x", headWidth * 0.02)
+      .attr("y", headHeight * 0.09)
+      .attr("id", "closeMenuText")
+      .style("font-size", headWidth * 0.07)
+      .style("text-anchor", "start")
+      .text(function(d) { return "\u2718";})
+      .on("click", closeHead);
+
+
 }
 
 function closeHead() {

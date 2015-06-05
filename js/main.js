@@ -312,7 +312,7 @@ function setUpRegionLinks() {
           d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#777");
         })
         .on("click", function(d) {
-          // TODO: Sonja
+          regionLinkClickHandler(d);
         });
   regionLink = regionLink.append('line')
         .attr('class', 'regionLink')
@@ -327,7 +327,10 @@ function setUpRegionLinks() {
         })
         .on("mouseout", function(d) {
           d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#777");
-        });
+        })
+        .on("click", function(d) {
+          regionLinkClickHandler(d);
+        });;
 
   force.start();
 }
@@ -393,6 +396,39 @@ function calculateLinks(link) {
       link.numLinks += parseInt(link.linksPerYear[year].length);
     }
   }
+}
+
+function regionLinkClickHandler(regionLink) {
+  var artists = {};
+  for (var year in regionLink.linksPerYear) {
+    var linksInYear = regionLink.linksPerYear[year];
+    for (var index in linksInYear) {
+      var source = linksInYear[index];
+      if (!(linksInYear[index].source in artists)) {
+        artists[linksInYear[index].source] = [{ "target": linksInYear[index].target, "linksPerYear": {} }];
+      } else {
+        var targetExists = false;
+        for (var targetIndex in artists[linksInYear[index].source]) {
+          if (linksInYear[index].target === artists[linksInYear[index].source][targetIndex].target) {
+            targetExists = true;
+            break;
+          }
+        }
+        if (!targetExists) {
+          artists[linksInYear[index].source].push({ "target": linksInYear[index].target, "linksPerYear": {} });
+        }
+      }
+        
+      for (var targetIndex in artists[linksInYear[index].source]) {
+        if (artists[linksInYear[index].source][targetIndex].linksPerYear[year] == undefined) {
+          artists[linksInYear[index].source][targetIndex].linksPerYear[year] = [linksInYear[index]];
+        } else {
+          artists[linksInYear[index].source][targetIndex].linksPerYear[year].push(linksInYear[index]); 
+        }
+      }
+    }
+  }
+  headViewRegionLink(artists);
 }
 
 // ======= Functions to create and modify the slider ======= 
