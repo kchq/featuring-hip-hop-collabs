@@ -141,6 +141,10 @@ function setUpSearch() {
    $("#search").autocomplete ({
       source: Object.keys(artistMap)
     });
+
+   $(".ui-autocomplete").css("max-height", height * 0.5 + "px")
+                        .css("overflow-y", "auto")
+                        .css("overflow-x", "hidden");
 }
 
 function searchArtist() {
@@ -157,7 +161,9 @@ function searchArtist() {
     }
     regionNodes.forEach(function(node) {
       if (node.id === artistNode.region) {
-        zoomOut();
+        if (isZoomed) {
+          zoomOut();
+        }
         zoomToRegion(node);
         
         console.log(currentYear + " " + startYear + " " + endYear);
