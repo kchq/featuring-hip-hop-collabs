@@ -226,17 +226,16 @@ function headViewSingleArtist(artist) {
 
 //    collabsList.append(rapperTitle);
 
-    //FOR EACH LINK ADD ONE OF THESE, OK? COOl
-    //
-    var li = ul.append("<li class='list-group-item'> <b>Track name</b>, Album Name<br/> -Artist Name, featuring A, B C");
-    li = ul.append("<li class='list-group-item collabs'> <b>Track name</b>, Album Name<br/> -Artist Name, featuring A, B C");
-    li = ul.append("<li class='list-group-item collabs'> <b>Track name</b>, Album Name<br/> -Artist Name, featuring A, B C");
-    li = ul.append("<li class='list-group-item collabs'> <b>Track name</b>, Album Name<br/> -Artist Name, featuring A, B C");
-    li = ul.append("<li class='list-group-item collabs'> <b>Track name</b>, Album Name<br/> -Artist Name, featuring A, B C");
-    li = ul.append("<li class='list-group-item collabs'> <b>Track name</b>, Album Name<br/> -Artist Name, featuring A, B C");
-    li = ul.append("<li class='list-group-item collabs'> <b>Track name</b>, Album Name<br/> -Artist Name, featuring A, B C");
-
-    collabsList.append(ul);
+   //FOR EACH LINK ADD ONE OF THESE, OK? COOl
+    console.log(singleHeadCollabMap[artist.name]);
+    for (var i = 0; i < singleHeadCollabMap[artist.name].length; i++) { //var track in singleHeadCollabMap[artist.name]) {
+        console.log(singleHeadCollabMap[artist.name][i]);
+        var trk = singleHeadCollabMap[artist.name][i];
+        var str = "<li class='list-group-item'> + <b>" + trk.title + "</b>, " + trk.release_title + "<br/> -";
+        str += trk.artist_credit.join(", ");
+        var li = ul.append(str);
+    }
+    collabsList.append(ul); 
 
     $("#head").append(collabsList);
     

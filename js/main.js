@@ -65,6 +65,9 @@ var projection = d3.geo.albersUsa()
 var path = d3.geo.path()
   .projection(projection);
 
+
+var singleHeadCollabMap = {};
+
 parseData();
 
 // this function requires waiting for all of the data to load
@@ -909,11 +912,19 @@ function parseData() {
       // load up all the collaborations
       artistLinks = [];
       for (var artist in collabs) {
+        if (singleHeadCollabMap[artist] == undefined) {
+            singleHeadCollabMap[artist] = [];
+        }
+          
         var sourceIndex = artistMap[artist];
         if (sourceIndex >= 0) {
           var targetArtists = collabs[artist];
           for (var targetArtist in targetArtists) {
             var targetIndex = artistMap[targetArtist];
+            var tracks = targetArtists[targetArtist]
+            for (var i = 0; i < tracks.length; i++) {
+                singleHeadCollabMap[artist].push(tracks[i]);
+            }
             if (targetIndex >= 0) {
               // we have both a source and a target, so let's add all the songs as links
               var links = targetArtists[targetArtist];
@@ -931,6 +942,7 @@ function parseData() {
           console.log("problem with: " + artist + "'s name as source of link");
         }
       }
+      console.log(singleHeadCollabMap);
       callback(err);
     });
   });
