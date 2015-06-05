@@ -42,15 +42,10 @@ height = $(window).height();
 
 var force = d3.layout.force()
     .size([width, height])
-    .on("tick", function() {
-      tick(regionLink);
-    });
+    .on("tick", tick);
 
 var artistForce = d3.layout.force()
-    .size([width, height])
-    .on("tick", function() {
-      tick(artistLink);
-    });
+    .size([width, height]);
 
 var projection = d3.geo.albersUsa()
   .scale(width)  // determines initial map size
@@ -83,22 +78,22 @@ function redraw() {
   updateRegions();
 }
 
-function tick(link) {
+function tick() {
   regionNode.attr("cx", function(d) { return d.x - mapTranslateLeft; })
       .attr("cy", function(d) { return d.y; });
 
-  if (link) {
-    link.attr('x1', function(d) { return d.source.x - mapTranslateLeft; })
-      .attr('y1', function(d) { return d.source.y; })
-      .attr('x2', function(d) { return d.target.x - mapTranslateLeft; })
-      .attr('y2', function(d) { return d.target.y; });
-  }
+  regionLink.attr('x1', function(d) { return d.source.x - mapTranslateLeft; })
+    .attr('y1', function(d) { return d.source.y; })
+    .attr('x2', function(d) { return d.target.x - mapTranslateLeft; })
+    .attr('y2', function(d) { return d.target.y; });
+  
   d3.selectAll(".regionLinkInteractionArea")
     .attr('x1', function(d) { return d.source.x - mapTranslateLeft; })
     .attr('y1', function(d) { return d.source.y; })
     .attr('x2', function(d) { return d.target.x - mapTranslateLeft; })
     .attr('y2', function(d) { return d.target.y; });
 }
+
 
 function setUpSearch() {
   $("#searchError").css("color", "red");
@@ -255,6 +250,7 @@ function hideRegions() {
   d3.selectAll("circle").attr("r", 0);
   regionLink.style("stroke-width", "0px");
   d3.selectAll(".regionLinkInteractionArea").style("stroke-width", "0px");
+  // hide nodes drawn for artists
 }
 
 function calculateArtists(node) {
@@ -409,7 +405,10 @@ function zoomToRegion(region) {
   x = projection([-1*lon, lat])[0];
   y = projection([-1*lon, lat])[1];
   k = region.scale;
+  
+  // hide stuff already on screen
   hideRegions();
+  
   zoom.on("zoom", function() {
     moveThroughTimeRegionalScrolling();
   });
@@ -422,7 +421,7 @@ function zoomToRegion(region) {
     .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
     .style("stroke-width", 1.5 / k + "px")
     .each("end", function() {
-      drawRegionalArtists(region.id, x, y, k);
+      createRegionalArtists(region.id, x, y, k);
     });
   isZoomed = true;
 }
@@ -430,20 +429,27 @@ function zoomToRegion(region) {
 function zoomOut() {
   if (inNY) {
     inNY = false;
-    svg.selectAll(".artistNode").remove();
+    svg.selectAll(".currentArtistNode").remove();
+    svg.selectAll(".artistLink").remove();
     svg.selectAll(".clippath").remove();
     svg.selectAll("#nyCircle").remove();
-    artistLink.style("stroke-width", "0px");
+    // artistLink.style("stroke-width", "0px");
     zoomToRegion(regionNodes[1]);
   } else {
+    if (currentRegion === 'NE') {
+      artistNodes.splice(artistNodes.length - 1, 1);
+    }
+
     x = width / 2;
     y = height / 2;
     k = 1;
 
-    svg.selectAll(".artistNode").remove();
+    // hide stuff already on screen
+    svg.selectAll(".currentArtistNode").remove();
     svg.selectAll(".clippath").remove();
     svg.selectAll("#nyCircle").remove();
     artistLink.style("stroke-width", "0px");
+
     g.transition()
       .duration(750)
       .attr("transform", "translate(" + (width / 2 - mapTranslateLeft) + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
@@ -463,22 +469,45 @@ function zoomOut() {
 
 // ======= Functions to handle drawing artists in a region ======= 
 
-var currentRegion, currentX, currentY, currentK;
+var currentRegion, currentX, currentY, currentK, currentArtistLinks;
 var inNY = false;
-function drawRegionalArtists(region, x, y, k) {
+
+function shouldShowArtist(region, node) {
+  if (region == 'NE') {
+    if (node.state != 'NY' && !inNY) {
+      return true;
+    } else if (inNY) {
+      return (node.start_year <= currentYear) && (node.end_year === 'present'||
+             node.end_year >= currentYear);
+    } else {
+      return false;
+    }
+  } else {
+    var r = node.region === region;
+    var t = (node.start_year <= currentYear) && (node.end_year === 'present'||
+             node.end_year >= currentYear);
+    return r && t;
+  }
+}
+
+function countNY() {
+  var count = 0;
+  for (var i = 0; i < artistNodes.length; i++) {
+    var node = artistNodes[i];
+    if (node.state != undefined && node.state === 'NY') {
+      count++;
+    }
+  }
+  return count;
+}
+
+function createRegionalArtists(region, x, y, k) {
   currentRegion = region;
   currentX = x;
   currentY = y;
   currentK = k;
-  
-  // filter out artists who are not in the selected region or not active in the current year
-  var artistNodesTemp = artistNodes.filter( function(a) {
-    var r = a.region === region;
-    var t = (a.start_year <= currentYear) && (a.end_year === 'present'|| a.end_year >= currentYear);
-    return r && t;
-  });
 
-  var nyCount = 0;
+  var nyCount = countNY();
   if (region == 'NE') {
     // lon/lat of new york
     var lon = nyNode.lon;
@@ -488,16 +517,22 @@ function drawRegionalArtists(region, x, y, k) {
     var nyX = projection([-1*zlon, zlat])[0];
     var nyY = projection([-1*zlon, zlat])[1];
     var nyK = nyNode.scale;
+    nyNode['nyX'] = nyX;
+    nyNode['nyY'] = nyY;
     if (!inNY) {
-      artistNodesTemp = artistNodesTemp.filter( function(a){
-        if (a.state != 'NY') {
-          return true;
-        } else {
-          nyCount++;
-          return false;
-        }
-      });
-      svg.append('circle')
+      artistNodes.push(nyNode);
+    }
+  }
+
+
+  var artistLinksTemp = createArtistLinks(region, k, x, y);
+  currentArtistLinks = artistLinksTemp;
+
+  artistForce.nodes(artistNodes);
+
+
+  if (region === 'NE' && !inNY) {
+    svg.append('circle')
         .attr("id", "nyCircle")
         .attr("fill", "red")
         .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
@@ -507,42 +542,48 @@ function drawRegionalArtists(region, x, y, k) {
           return Math.max(0, 10 * Math.log(nyCount) + 4) / k; 
         })
         .on("click", function() {
-          svg.selectAll(".artistNode").remove();
+          svg.selectAll(".currentArtistNode").remove();
           svg.selectAll(".clippath").remove();
           svg.selectAll("#nyCircle").remove();
+          artistLink.style("stroke-width", "0px");
+          currentK = nyK;
           g.transition()
             .duration(750)
             .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + nyK + ")translate(" + -nyX + "," + -nyY + ")")
             .style("stroke-width", 1.5 / nyK + "px")
             .each("end", function() {
               inNY = true;
-              drawRegionalArtists(region, nyX, nyY, nyK);
+              var artistLinksTemp = createArtistLinks(region, nyK, nyX, nyY);
+              currentArtistLinks = artistLinksTemp;
+              setUpCurrentArtistNodes(region, nyX, nyY, nyK);
             });
         });
-    } else {
-      artistNodesTemp = artistNodesTemp.filter( function(a) {
-        return a.state == 'NY';
-      });
-    }
+
   }
 
-  artistForce.nodes(artistNodesTemp);
+  setUpCurrentArtistNodes(region, x, y, k);
+}
 
-  var artistLinksTemp = createArtistLinks(region, artistNodesTemp, k, x, y);
-
-  var artistNode = svg.selectAll(".artistNode")
-      .data(artistNodesTemp)
+function setUpCurrentArtistNodes(region, x, y, k) {
+  var artistNode = svg.selectAll(".currentArtistNode")
+      .data(artistNodes)
       .enter().append("g")
       .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-      .attr("class", "artistNode")
-     // .on("click", click)
-     // .on("dblclick", dblclick)
+      .attr("class", function(d) {
+        if (d.region === region && !(d.state === 'NY' && !inNY)) {
+          return "currentArtistNode artistNode";
+        } else {
+          return "artistNode";
+        }
+      })
       .call(artistForce.drag);
 
   artistForce.start();
   
+  var currentArtistNode = d3.selectAll(".currentArtistNode");
+
   // set up clip paths to mask artist images to circles
-  artistNode.each(function(d, i) {
+  currentArtistNode.each(function(d, i) {
     xy = getXY(d);
     if (xy == null) {
       return;
@@ -559,15 +600,16 @@ function drawRegionalArtists(region, x, y, k) {
   });
 
   // add artist images to each node
-  var images = artistNode.append("image")
-    .attr("id", function(d) { return getArtistImageName(d.name) + "_image" })
-    .attr("xlink:href", function(d) { return "imgs/" + getArtistImageName(d.name) + ".png"; })
-    .attr("x", function(d) { xy = getXY(d); if (xy == null) return; return xy[0] - artistCircleSize / 2; })
-    .attr("y", function(d) { xy = getXY(d); if (xy == null) return; return xy[1] - artistCircleSize / 2; })
+  var images = currentArtistNode.append("image")
+    .attr("id", function(d) { if (d == nyNode) { return; } return getArtistImageName(d.name) + "_image" })
+    .attr("xlink:href", function(d) { if (d == nyNode) { return; } return "imgs/" + getArtistImageName(d.name) + ".png"; })
+    .attr("x", function(d) { if (d == nyNode) { return; } xy = getXY(d); if (xy == null) return; return xy[0] - artistCircleSize / 2; })
+    .attr("y", function(d) { if (d == nyNode) { return; } xy = getXY(d); if (xy == null) return; return xy[1] - artistCircleSize / 2; })
     .attr("width", artistCircleSize)
     .attr("height", artistCircleSize)
     // preserve size of circle across different regions, because each region has a different scale
     .attr("transform", function(d) { 
+      if (d == nyNode) { return; }
       xy = getXY(d); 
       if (xy == null) return; 
       var xx = xy[0];
@@ -576,13 +618,14 @@ function drawRegionalArtists(region, x, y, k) {
     .attr("clip-path", function(d) { return "url(#" + getArtistImageName(d.name) + ")"; });
 
   // add border to each artist
-  var rings = artistNode.append("circle")
-    .attr("id", function(d) { return getArtistImageName(d.name) + "_ring"; })
-    .attr("cx", function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
-    .attr("cy", function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
+  var rings = currentArtistNode.append("circle")
+    .attr("id", function(d) { if (d == nyNode) { return; } return getArtistImageName(d.name) + "_ring"; })
+    .attr("cx", function(d) { if (d == nyNode) { return; } xy = getXY(d); if (xy == null) return; return xy[0]; })
+    .attr("cy", function(d) { if (d == nyNode) { return; } xy = getXY(d); if (xy == null) return; return xy[1]; })
     .attr("r", artistCircleSize / 2)
     // preserve size of circle across different regions, because each region has a different scale
     .attr("transform", function(d) { 
+      if (d == nyNode) { return; }
       xy = getXY(d); 
       if (xy == null) return; 
       var xx = xy[0];
@@ -593,22 +636,26 @@ function drawRegionalArtists(region, x, y, k) {
     .style("stroke-width", "0.5px");
 
   // draw a ring on hover
-  artistNode.on("mouseenter", function(d) { 
+  currentArtistNode.on("mouseenter", function(d) { 
+    if (d == nyNode) { return; }
     artistMouseEnter(d);
   });
-  artistNode.on("mouseleave", function(d) { 
+  currentArtistNode.on("mouseleave", function(d) { 
+    if (d == nyNode) { return; }
     artistMouseLeave(d);
   });
-  artistNode.on("click", function(d) {
+  currentArtistNode.on("click", function(d) {
+    if (d == nyNode) { return; }
     headViewSingleArtist(d);
   });
 
-  updateArtistLinks(artistLinksTemp);
-
-  return artistLinksTemp;
+  updateRegionalArtists(region, x, y, k);
 }
 
 function getXY(artistNode) {
+  if (artistNode === nyNode) {
+    return [nyNode.nyX, nyNode.nyY];
+  }
   var lon = -1 * artistNode.map_longitude;
   var lat = artistNode.map_latitude;
   if (!projection([lon,lat])) {
@@ -624,21 +671,25 @@ function getArtistImageName(name) {
 }
 
 function updateRegionalArtists(region, x, y, k) {
-  svg.selectAll(".artistNode").remove();
-  svg.selectAll(".clippath").remove();
-  var artistLinksTemp = drawRegionalArtists(region, x, y, k);
-  svg.selectAll("#nyCircle").remove();
+  svg.selectAll(".currentArtistNode")
+    .style("display", function(d) {
+      if (!shouldShowArtist(region, d)) {
+        return "none";
+      }
+    });
+
+    updateArtistLinks(k);
 }
 
 
 // ======= Functions to handle drawing links in a region ======= 
 
-function createArtistLinks(region, artistNodesTemp, k, x, y) {
-  var artistLinksTemp = computeArtistLinks(region, artistNodesTemp);
+function createArtistLinks(region, k, x, y) {
+  var artistLinksTemp = computeArtistLinks(region);
 
   artistForce.links(artistLinksTemp);
 
-  filterArtistLinks(artistLinksTemp, artistNodesTemp);
+  filterArtistLinks(artistLinksTemp);
 
   artistLink = svg.selectAll('.artistLink')
         .data(artistLinksTemp)
@@ -654,10 +705,10 @@ function createArtistLinks(region, artistNodesTemp, k, x, y) {
   return artistLinksTemp;
 }
 
-function filterArtistLinks(artistLinksTemp, artistNodesTemp) {
+function filterArtistLinks(artistLinksTemp) {
   for (var i = 0; i < artistLinksTemp.length; i++) {
     var link = artistLinksTemp[i];
-    var linkSource = artistNodesTemp[link.source];
+    var linkSource = artistNodes[link.source];
     var sourceXY = getXY(linkSource);
     if (sourceXY != null) {
       link.sourceX = sourceXY[0];
@@ -668,7 +719,7 @@ function filterArtistLinks(artistLinksTemp, artistNodesTemp) {
       continue;
     }
 
-    var linkTarget = artistNodesTemp[link.target];
+    var linkTarget = artistNodes[link.target];
     var targetXY = getXY(linkTarget);
     if (targetXY != null) {
       link.targetX = targetXY[0];
@@ -680,36 +731,44 @@ function filterArtistLinks(artistLinksTemp, artistNodesTemp) {
   }
 }
 
-function computeArtistLinks(region, artistNodesTemp) {
+function computeArtistLinks(region) {
   for (var i = 0; i < regionLinks.length; i++) {
     var link = regionLinks[i];
     if (link.source.id === region && link.target.id === region) {
       // now we have the link for this region, which has the collection of links
       // that we care about, stored in an associative array indexed by year
-      return artistLinksForRegion(artistNodesTemp, link.linksPerYear);
+      return artistLinksForRegion(link.linksPerYear);
     } else if (link.source.id === region || link.target.id === region) {
       // add some color for an outgoing edge to other region?
     }
   };
 }
 
-function artistLinksForRegion(artistNodesTemp, allLinks) {
+function artistLinksForRegion(allLinks) {
   var artistLinksTemp = [];
   for (var year in allLinks) {
-    if (parseInt(year) <= currentYear) {
-      // add all links in this array
-      for (var i = 0; i < allLinks[year].length; i++) {
-        var link = allLinks[year][i];
-        var sourceArtistIndex = artistNodesTemp.indexOf(artistNodes[link.source]);
-        var targetArtistIndex = artistNodesTemp.indexOf(artistNodes[link.target]);
-        if (sourceArtistIndex != -1 && targetArtistIndex != -1) {
-          // this link is valid and the two artists are currently there
-          var artistLink = getLink(artistLinksTemp, sourceArtistIndex, targetArtistIndex);
-          if (artistLink.linksPerYear[link.release_year] == undefined) {
-            artistLink.linksPerYear[link.release_year] = [link];
-          } else {
-            artistLink.linksPerYear[link.release_year].push(link);
-          }
+    // add all links in this array
+    for (var i = 0; i < allLinks[year].length; i++) {
+      var link = allLinks[year][i];
+      var sourceArtistIndex = link.source;
+      if (!inNY && artistNodes[link.source].state === 'NY') {
+        sourceArtistIndex = artistNodes.length - 1;
+      } else if (inNY && artistNodes[link.source].state !== 'NY') {
+        sourceArtistIndex = -1;
+      }
+      var targetArtistIndex = link.target;
+      if (!inNY && artistNodes[link.target].state === 'NY') {
+        targetArtistIndex = artistNodes.length - 1;
+      } else if (inNY && artistNodes[link.target].state !== 'NY') {
+        targetArtistIndex = -1;
+      }
+      if (sourceArtistIndex != -1 && targetArtistIndex != -1) {
+        // this link is valid and the two artists are currently there
+        var artistLink = getLink(artistLinksTemp, sourceArtistIndex, targetArtistIndex);
+        if (artistLink.linksPerYear[link.release_year] == undefined) {
+          artistLink.linksPerYear[link.release_year] = [link];
+        } else {
+          artistLink.linksPerYear[link.release_year].push(link);
         }
       }
     }
@@ -718,17 +777,14 @@ function artistLinksForRegion(artistNodesTemp, allLinks) {
 }
 
 
-function updateArtistLinks(artistLinksTemp) {
-  // TODO: figure out how to make dynamic artists links 
-  // that just sum up from a static one
-  artistLinksTemp.forEach(function(d) {
+function updateArtistLinks(scale) {
+  currentArtistLinks.forEach(function(d) {
     calculateLinks(d);
   });
 
-  d3.selectAll(".artistLink")
-    .style("stroke-width", function(d) { 
+  artistLink.style("stroke-width", function(d) {
       if (d.source != d.target) {
-        return Math.max(0, Math.log(2 * d.numLinks)) + "px"; 
+        return Math.max(0, (3.0 / scale) * Math.log(2 * d.numLinks)) + "px"; 
       }
     });
 }
