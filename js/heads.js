@@ -227,20 +227,28 @@ function headViewSingleArtist(artist) {
 //    collabsList.append(rapperTitle);
 
    //FOR EACH LINK ADD ONE OF THESE, OK? COOl
-    console.log(singleHeadCollabMap[artist.name]);
+    var uriList = "";
     for (var i = 0; i < singleHeadCollabMap[artist.name].length; i++) { //var track in singleHeadCollabMap[artist.name]) {
-        console.log(singleHeadCollabMap[artist.name][i]);
         var trk = singleHeadCollabMap[artist.name][i];
-        var str = "<li class='list-group-item'> + <b>" + trk.title + "</b>, " + trk.release_title + "<br/> -";
-        str += trk.artist_credit.join(", ");
-        var li = ul.append(str);
+        
+        if (trk.release_year !== undefined && parseInt(trk.release_year) <= currentYear) {
+          var str = "<li class='list-group-item'> + <b>" + trk.title + "</b>, " + trk.release_title + "<br/> -";
+          str += trk.artist_credit.join(", ");
+          var li = ul.append(str);
+          console.log(trk);
+          if (trk.spotifyURI !== undefined) {
+            var uriArray = trk.spotifyURI.split(":");
+            uriList += uriArray[2] + ",";
+          }
+        }
+
     }
     collabsList.append(ul); 
 
     $("#head").append(collabsList);
     
     var spotifyFrame = $("<iframe>");
-    spotifyFrame.attr("src", "https://embed.spotify.com/?uri=spotify:trackset:Kanye West playlist:2WBjsxTE3hBInd21yUY65h,2RAj4LEmos3pkc396FE5Mg,1w2lHasjKWxkmZxeLAzObf,2bCLwbMQHgvcDC6zGUzQZP,1iQ5E4z6CJ38dIzvMI9Wdo,1Kjnf4Nr6SmVIRLSh6XZCF,0jWF4qSFNhDjoMmitBaBjh,0ME2IxF0Mbopx1hNXGDE3N,3Z2SFbiNPxR7KAMntC4baK,0HXtsURsJGmhmdOFUqSAmk,7AV8RY7S7SzbtxL8ohDt4N,444P4wvSDa0SD5HE4YGx9B,")
+    spotifyFrame.attr("src", "https://embed.spotify.com/?uri=spotify:trackset:Collaboration Song Demos:" + uriList)
                 .attr("frameborder", "0")
                 .attr("id", "spotifyFrame")
                 .attr("allowTransparency", "true")
