@@ -244,6 +244,48 @@ function createRegions() {
     node["y"] = regionY;
     node["fixed"] = true;
   });
+
+  var pathBlobs = svg.append("g")
+                     .attr("transform", "translate(" + (-1 * mapTranslateLeft) + ",0)");
+  var regionBlobs = { "W": { "points": [ { "lat": 49,  "lon": 122},  { "lat": 47.5,  "lon": 120},
+                                  { "lat": 45.5,  "lon": 122}, { "lat": 47.5,  "lon": 125} ],
+                              "color": "green" },
+                      "NC": { "points": [ { "lat": 40,  "lon": 123.5}, { "lat": 38.5,  "lon": 120}, { "lat": 36.5,  "lon": 120}, 
+                                  { "lat": 35.5,  "lon": 122}, { "lat": 37.5,  "lon": 124} ],
+                              "color": "yellow" },
+                      "SC": { "points": [ { "lat": 37.5,  "lon": 120}, { "lat": 34,  "lon": 115}, { "lat": 31.5,  "lon": 116.5}, 
+                                  { "lat": 34,  "lon": 122} ],
+                              "color": "orange" },
+                      "MW": { "points": [ { "lat": 38.5,  "lon": 95}, { "lat": 38,  "lon": 84}, { "lat": 41,  "lon": 80}, 
+                                  { "lat": 43,  "lon": 83}, { "lat": 45,  "lon": 94} ],
+                              "color": "magenta" },
+                      "S": { "points": [ { "lat": 35,  "lon": 90}, { "lat": 40,  "lon": 71}, { "lat": 24,  "lon": 80}, 
+                                  { "lat": 27,  "lon": 90}, { "lat": 30,  "lon": 100} ],
+                              "color": "red" },
+                      "NE": { "points": [ { "lat": 41,  "lon": 83}, { "lat": 43,  "lon": 72}, 
+                                  { "lat": 41,  "lon": 73}, {"lat": 39, "lon": 74}, { "lat": 38,  "lon": 77} ],
+                              "color": "blue" } 
+                    };
+  for (var region in regionBlobs) {
+    var regionBlob = regionBlobs[region];
+    var lineFunction = d3.svg.line()
+      .x(function(d) { return projection([-1*d.lon,d.lat])[0]; })
+      .y(function(d) { return projection([-1*d.lon,d.lat])[1]; })
+      .interpolate("basis-closed");
+    pathBlobs.append("path")
+        .attr("d", lineFunction(regionBlob.points))
+        .attr("stroke", "black")
+        .attr("stroke-width", 2)
+        .attr("class", "regionBlob")
+        .attr("fill", regionBlob.color)
+        .style("opacity", 0.2)
+        .on("mouseenter", function() {
+          d3.select(this).style("opacity", 0.5);
+        })
+        .on("mouseout", function() {
+          d3.select(this).style("opacity", 0.2);
+        });
+  }
 }
 
 function setUpRegions() {
@@ -277,7 +319,6 @@ function updateRegions() {
     return Math.max(0, 10 * Math.log(d.numArtists) + 4); 
   });
 
-
   updateRegionLinks();
 }
 
@@ -298,6 +339,7 @@ function hideRegions() {
   regionLink.style("stroke-width", "0px");
   d3.selectAll(".regionLinkInteractionArea").style("stroke-width", "0px");
   d3.selectAll(".d3-region-tip").remove();
+  d3.selectAll(".regionBlob").style("visibility", "hidden");
 }
 
 function calculateArtists(node) {
@@ -406,7 +448,6 @@ function updateRegionLinks() {
   });
 
   var regionLinkTemp = regionLink.filter(function(d, i) { return d.numLinks !== 0 });
-  console.log(regionLinkTemp);
   if (regionLinkTemp) {
     regionLinkTemp.call(regionLinkTip);
   }
@@ -575,6 +616,7 @@ function zoomOut() {
         slider.on("slide", function(evt, value) {
           moveThroughTimeSliding(value);
         });
+        d3.selectAll(".regionBlob").style("visibility", "visible");
         updateRegions();
       });
     isZoomed = false;
