@@ -48,28 +48,9 @@ function addData(gh, node1, node2){
 }
 
 function addImages(node1, node2) {
-    var artistImage1 = "imgs/50_cent.png";
-    var artistImage2 = "imgs/earl_sweatshirt.png";
+    var artistImage1 = "imgs/" + getArtistImageName(node1.name) + ".png";
+    var artistImage2 = "imgs/" + getArtistImageName(node2.name) + ".png";;
 
-    svgHead = d3.select("#head")
-		.style("left", xStart + "px")
-		.style("top", yStart + "px")
-		.style("position", "absolute")
-		.append("svg")
-		.attr("width", headWidth)
-		.attr("height", headHeight)
-		.attr("id", "headSVG")
-
-	gh = svgHead.append("g");
-
-	gh.append("rect")
-		.attr("id", "headRect")
-		.attr("width", headWidth)
-		.attr("height", headHeight)
-		.style("fill", "white")
-		.style("stroke", "black")
-		.style("stroke-width", $(window).width() * 0.005)
-        .style("opacity", 0.8);
 
    svgHead.append('clipPath')
       .attr("id", getArtistImageName("50 Cent"))
@@ -172,8 +153,6 @@ function headViewSingleArtist(artist) {
         // preserve size of circle across different regions, because each region has a different scale
         .attr("clip-path", function(d) { return "url(#" + artistFormatted + "Large" + ")"; });
 
-    
-       
     gh.append("circle")
         .attr("id", "50_centring") //function(d) { return getArtistImageName(d.name) + "ring"; })
         .attr("cx", image2X * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
@@ -241,8 +220,8 @@ function headViewSingleArtist(artist) {
     collabsList.append(ul);
 
     $("#head").append(collabsList);
+    
     var spotifyFrame = $("<iframe>");
-
     spotifyFrame.attr("src", "https://embed.spotify.com/?uri=spotify:trackset:Kanye West playlist:2WBjsxTE3hBInd21yUY65h,2RAj4LEmos3pkc396FE5Mg,1w2lHasjKWxkmZxeLAzObf,2bCLwbMQHgvcDC6zGUzQZP,1iQ5E4z6CJ38dIzvMI9Wdo,1Kjnf4Nr6SmVIRLSh6XZCF,0jWF4qSFNhDjoMmitBaBjh,0ME2IxF0Mbopx1hNXGDE3N,3Z2SFbiNPxR7KAMntC4baK,0HXtsURsJGmhmdOFUqSAmk,7AV8RY7S7SzbtxL8ohDt4N,444P4wvSDa0SD5HE4YGx9B,")
                 .attr("frameborder", "0")
                 .attr("id", "spotifyFrame")
@@ -265,7 +244,73 @@ function headViewSingleArtist(artist) {
       .style("text-anchor", "start")
       .text(function(d) { return "\u2718";})
       .on("click", closeHead);
- 
+
+    $(document).mouseup(clickedOutside);
+}
+
+function headViewMultipleArtist() {
+
+   svgHead = d3.select("#head")
+    .style("left", xStart + "px")
+    .style("top", yStart + "px")
+    .style("position", "absolute")
+    .append("svg")
+      .attr("width", headWidth)
+      .attr("height", headHeight)
+      .attr("id", "headSVG");
+
+  gh = svgHead.append("g");
+
+  gh.append("rect")
+    .attr("id", "headRect")
+    .attr("width", headWidth)
+    .attr("height", headHeight)
+    .style("fill", "white")
+    .style("stroke", "black")
+    .style("stroke-width", $(window).width() * 0.005)
+        .style("opacity", 0.8);
+
+  var links = artistLinksInformation[4].linksPerYear;
+  var spotifyURIs = new Set();
+  var linksForSingleYear;
+  for (var year in links) {
+      linksForSingleYear = links[year];
+      for (var i = 0; i < linksForSingleYear.length; i++) {
+        if (linksForSingleYear[i].spotifyURI !== undefined) {
+          spotifyURIs.add(linksForSingleYear[i].spotifyURI);
+        }
+      }
+  }
+
+  var uriList = "";
+  addImages(artistNodes[linksForSingleYear[0].source], artistNodes[linksForSingleYear[0].target]);
+  spotifyURIs.forEach(function(uri) {
+    var uriArray = uri.split(":");
+    uriList += uriArray[2] + ",";
+  });
+  console.log(uriList);
+  var spotifyFrame = $("<iframe>");
+  spotifyFrame.attr("src", "https://embed.spotify.com/?uri=spotify:trackset:Some Demo Collaborations:" + uriList)
+                .attr("frameborder", "0")
+                .attr("id", "spotifyFrame")
+                .attr("allowTransparency", "true")
+                .css("left", headWidth - 250 - 2 + "px")
+                .css("top", headHeight - 330 - 2 + "px")
+                .css("width", "250px")
+                .css("height", "330px")
+                .css("position", "absolute");
+  $("#head").append(spotifyFrame);
+
+  gh.append("text")
+    .attr("x", headWidth * 0.02)
+    .attr("y", headHeight * 0.09)
+    .attr("id", "closeMenuText")
+    .style("font-size", headWidth * 0.07)
+    .style("text-anchor", "start")
+    .text(function(d) { return "\u2718";})
+    .on("click", closeHead);
+
+  $(document).mouseup(clickedOutside);
 }
 
 function headViewRegionLink(artists) {
@@ -334,5 +379,17 @@ function headViewRegionLink(artists) {
 
 function closeHead() {
   $("#head").html("");
+  $(document).off("mouseup", clickedOutside);
+
+}
+
+function clickedOutside(e) {
+    var container = $("#head");
+
+    if (!$("#head").is(e.target) // if the target of the click isn't the container...
+        && $("#head").has(e.target).length === 0) // ... nor a descendant of the container
+    {
+        closeHead();
+    }
 }
 

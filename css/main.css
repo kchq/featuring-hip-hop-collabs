@@ -48,7 +48,8 @@ body {
   font-family: "syncopateBold";
 }
 
-#narrationEventPreviewNextYearBackground, #narrationEventPreviewPreviousYearBackground, .narrationEventPreviewNextYearText, .narrationEventPreviewPreviousYearText {
+#narrationEventPreviewNextYearBackground, #narrationEventPreviewPreviousYearBackground, 
+.narrationEventPreviewNextYearText, .narrationEventPreviewPreviousYearText, #closeMenuText {
   cursor: pointer;
 }
 
