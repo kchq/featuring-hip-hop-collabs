@@ -36,6 +36,21 @@ var regionTip = d3.tip()
     return "<div>" + d.name + "</div>";
   });
 
+var regionLinkTip = d3.tip()
+  .attr('class', 'd3-region-tip d3-region-link-tip')
+  .direction('c')
+  .html(function(d) {
+    var hidden = '';
+    if (d.numLinks === 0) {
+      d3.selectAll(".d3-region-link-tip").attr("class", "d3-region-tip d3-region-link-tip hidden");
+      hidden = ' hidden';
+    } else {
+      d3.selectAll(".d3-region-link-tip").attr("class", "d3-region-tip d3-region-link-tip");
+    }
+    return "<div class='" + hidden + "'>" + d.numLinks + " tracks</div>";
+  });
+
+
 var width, height, mapTranslateLeft, mainVisTop, mainVisLeft, narrationLeft, narrationTop, narrationWidth, centered, timelineEventDescriptions, timelineEvents, slider;
 var svg, svgNarration, g, gn, gt;
 var artistNodes, artistMap, artistLink, artistLinksInformation;
@@ -304,7 +319,7 @@ function setUpRegionLinks() {
   regionLink = svg.selectAll('.regionLink')
         .data(regionLinks)
         .enter();
-  regionLink.append('line')
+  regionLinkInteraction = regionLink.append('line')
         .attr('class', 'regionLinkInteractionArea')
         .attr('x1', function(d) { return regionNodes[d.source].x  - mapTranslateLeft; })
         .attr('y1', function(d) { return regionNodes[d.source].y; })
@@ -328,15 +343,12 @@ function setUpRegionLinks() {
         .attr('x2', function(d) { return regionNodes[d.target].x; })
         .attr('y2', function(d) { return regionNodes[d.target].y; })
         .style("stroke-width", "0px")
-        .on("mouseenter", function(d) {
-          d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#ddd");
-        })
-        .on("mouseout", function(d) {
-          d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#777");
-        })
         .on("click", function(d) {
           regionLinkClickHandler(d);
-        });;
+        });
+
+  addRegionLinkTooltips(regionLinkInteraction);
+  addRegionLinkTooltips(regionLink);
 
   force.start();
 }
@@ -393,6 +405,11 @@ function updateRegionLinks() {
     return Math.max(0, 1 + Math.log(d.numLinks)) + 15 + "px";
   });
 
+  var regionLinkTemp = regionLink.filter(function(d, i) { return d.numLinks !== 0 });
+  console.log(regionLinkTemp);
+  if (regionLinkTemp) {
+    regionLinkTemp.call(regionLinkTip);
+  }
 }
 
 function calculateLinks(link) {
@@ -435,6 +452,21 @@ function regionLinkClickHandler(regionLink) {
     }
   }
   headViewRegionLink(artists, false);
+}
+
+function addRegionLinkTooltips(regionLink) {
+  var regionLinkTemp = regionLink.filter(function(d, i) { return d.numLinks !== 0 });
+  if (regionLinkTemp) {
+    regionLinkTemp.call(regionLinkTip);
+  }
+  regionLink.on("mouseenter", function(d) {
+    d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#ddd");
+    regionLinkTip.show(d);
+  });
+  regionLink.on("mouseout", function(d) {
+    d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#777");
+    regionLinkTip.hide(d);
+  });
 }
 
 // ======= Functions to create and modify the slider ======= 
@@ -528,6 +560,10 @@ function zoomOut() {
     var regionNode = svg.selectAll('.regionNode');
     addRegionTooltips(regionNode);
 
+    var regionLink = svg.selectAll('.regionLink');
+    addRegionLinkTooltips(regionLink);
+
+    artistLink.style("stroke-width", "0px");
     g.transition()
       .duration(750)
       .attr("transform", "translate(" + (width / 2 - mapTranslateLeft) + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")

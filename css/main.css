@@ -118,6 +118,11 @@ li.list-group-item.artistCollabs {
   left: 0;
 }
 
+.d3-region-tip.hidden {
+  opacity: 0;
+  pointer-events: 'none'
+}
+
 .sourceArtist, .targetArtist {
   width: 50%;
   float: left;
