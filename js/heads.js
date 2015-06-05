@@ -113,6 +113,9 @@ function addImages(node1, node2) {
 
 // Shows artist detailed view in head to head fashion only displaying a single artist
 function headViewSingleArtist(artist) {
+
+    headStart();
+
     var artistFormatted = getArtistImageName(artist.name);
     var artistImage = "imgs/" + artistFormatted + ".png";
     var imgWidth = imageWidth * 1.5
@@ -193,16 +196,15 @@ function headViewSingleArtist(artist) {
     var frameHeight = Math.max(headHeight * 0.4, frameWidth + 80);
 
     var collabsList = $("<div id='collabsList'>");
-    collabsList.css("left", headWidth - collabsWidth - headWidth * 0.02 + "px")
+    collabsList.css("left", headWidth - collabsWidth + "px")
         .css("top", headHeight - collabsHeight * 2.35 +/* headHeight * 0.02 + */"px")
         .css("width", collabsWidth + "px")
-        .css("height", collabsHeight * .8 + "px")
-        .css("position", "absolute")
-        .css("max-height", collabsHeight); 
+        .css("height", headHeight - 330 - 5 - (headHeight - collabsHeight * 2.35) + "px")
+        .css("position", "absolute");
 
     var ul = $("<ul class='list-group collab'>");
     ul.css("height", collabsHeight + "px")
-        .css("max-height", collabsHeight)
+        .css("max-height", headHeight - 330 - 5 - (headHeight - collabsHeight * 2.35) + "px")
         .css("border", "2px")
         .css("width", collabsWidth + "px")
         .css("border-style", "solid")
@@ -251,6 +253,8 @@ function headViewSingleArtist(artist) {
 }
 
 function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
+
+   headStart();
 
    svgHead = d3.select("#head")
     .style("left", xStart + "px")
@@ -326,6 +330,9 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
 }
 
 function headViewRegionLink(artists) {
+
+    headStart();
+
     svgHead = d3.select("#head")
         .style("left", xStart + "px")
         .style("top", yStart + "px")
@@ -388,12 +395,27 @@ function headViewRegionLink(artists) {
       .style("text-anchor", "start")
       .text(function(d) { return "\u2718";})
       .on("click", closeHead);
+  
+  $(document).mouseup(clickedOutside);
+
 }
 
 function closeHead() {
   $("#head").html("");
   $(document).off("mouseup", clickedOutside);
+  zoom.on("zoom", function() {
+    if (isZoomed) {
+      moveThroughTimeRegionalScrolling();
+    } else {
+      moveThroughTimeScrolling();
+    }
+  });
+  narrationEventPreviewListenSetup();
 
+}
+
+function headStart() {
+  zoom.on("zoom", null);
 }
 
 function clickedOutside(e) {

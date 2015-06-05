@@ -452,6 +452,10 @@ function drawSlider() {
                       .call(zoom)
                       .on("mousedown.zoom", null)
                       .on("dblclick.zoom", null);
+
+  $(".d3-slider-handle").on("mousedown", function() {
+    closeHead();
+  });
 }
 
 var throttleTimer;
