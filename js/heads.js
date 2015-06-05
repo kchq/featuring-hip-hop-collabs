@@ -214,8 +214,7 @@ function headViewSingleArtist(artist) {
         .css("position", "absolute");
 
     var ul = $("<ul class='list-group collab'>");
-    ul.css("height", collabsHeight + "px")
-        .css("max-height", headHeight - 330 - 5 - (headHeight - collabsHeight * 2.35) + "px")
+    ul.css("max-height", headHeight - 330 - 5 - (headHeight - collabsHeight * 2.35) + "px")
         .css("border", "2px")
         .css("width", collabsWidth + "px")
         .css("border-style", "solid")
@@ -235,7 +234,6 @@ function headViewSingleArtist(artist) {
           var str = "<li class='list-group-item'> + <b>" + trk.title + "</b>, " + trk.release_title + "<br/> -";
           str += trk.artist_credit.join(", ");
           var li = ul.append(str);
-          console.log(trk);
           if (trk.spotifyURI !== undefined) {
             var uriArray = trk.spotifyURI.split(":");
             uriList += uriArray[2] + ",";
@@ -258,9 +256,6 @@ function headViewSingleArtist(artist) {
                 .css("height", "330px")
                 .css("position", "absolute");
     $("#head").append(spotifyFrame);
-    $("#head").on("click", function() {
-
-    });
 
     gh.append("text")
       .attr("x", headWidth * 0.02)
@@ -321,7 +316,6 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
     var uriArray = uri.split(":");
     uriList += uriArray[2] + ",";
   });
-  console.log(uriList);
   var spotifyFrame = $("<iframe>");
   spotifyFrame.attr("src", "https://embed.spotify.com/?uri=spotify:trackset:Some Demo Collaborations:" + uriList)
                 .attr("frameborder", "0")
@@ -398,7 +392,6 @@ function headViewRegionLink(artists) {
     $("#head").append(artistCollabsList);
 
     // add li for each distinct artist-artist collaboration
-    console.log(artists);
     for (var source in artists) {
         var li = d3.select("ul").selectAll(".dummy") // this doesn't exist so it won't override anything, this is a concern cause we're in a for loop
             .data(artists[source])
@@ -406,7 +399,7 @@ function headViewRegionLink(artists) {
             .append("li")
             .attr("class", "list-group-item artistCollabs")
             .html(function(d) { return "<div class='artistPair'><div class='sourceArtist'>" + artistNodes[source].name + "</div><div class='targetArtist'>" + artistNodes[d.target].name + "</div></div>"; });
-        li.on("click", function(d) { prevArtists = artists; closeHead(); console.log(d.linksPerYear); headViewMultipleArtist(d.linksPerYear, true); });
+        li.on("click", function(d) { prevArtists = artists; closeHead(); headViewMultipleArtist(d.linksPerYear, true); });
     } 
 
     gh.append("text")

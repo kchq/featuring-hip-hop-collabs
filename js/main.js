@@ -467,6 +467,7 @@ function throttle() {
 // ======= Functions to handle zooming in and out of regions ======= 
 
 function zoomToRegion(region) {
+  zoom.on("zoom", null);
   var x, y, k;
   var lon = region.zlon;
   var lat = region.zlat;
@@ -476,25 +477,29 @@ function zoomToRegion(region) {
   
   // hide stuff already on screen
   hideRegions();
-  
-  zoom.on("zoom", function() {
-    moveThroughTimeRegionalScrolling();
-  });
-  slider.on("slide", function(evt, value) {
-    moveThroughTimeRegionalSliding(value);
-  });
+
   g.on("dblclick", zoomOut);
   g.transition()
     .duration(750)
     .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
     .style("stroke-width", 1.5 / k + "px")
     .each("end", function() {
+
       createRegionalArtists(region.id, x, y, k);
+
+      zoom.on("zoom", function() {
+        moveThroughTimeRegionalScrolling();
+      });
+      slider.on("slide", function(evt, value) {
+        moveThroughTimeRegionalSliding(value);
+      });
+
     });
   isZoomed = true;
 }
 
 function zoomOut() {
+  zoom.on("zoom", null);
   if (inNY) {
     inNY = false;
     svg.selectAll(".currentArtistNode").remove();
@@ -543,19 +548,18 @@ var currentRegion, currentX, currentY, currentK, currentArtistLinks;
 var inNY = false;
 
 function shouldShowArtist(region, node) {
+  var t = (node.start_year <= currentYear) && (node.end_year === 'present'||
+             node.end_year >= currentYear);
   if (region == 'NE') {
     if (node.state != 'NY' && !inNY) {
-      return true;
+      return t;
     } else if (inNY) {
-      return (node.start_year <= currentYear) && (node.end_year === 'present'||
-             node.end_year >= currentYear);
+      return t;
     } else {
       return false;
     }
   } else {
     var r = node.region === region;
-    var t = (node.start_year <= currentYear) && (node.end_year === 'present'||
-             node.end_year >= currentYear);
     return r && t;
   }
 }
