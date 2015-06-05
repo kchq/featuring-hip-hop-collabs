@@ -408,32 +408,32 @@ function regionLinkClickHandler(regionLink) {
   for (var year in regionLink.linksPerYear) {
     var linksInYear = regionLink.linksPerYear[year];
     for (var index in linksInYear) {
-      var source = linksInYear[index];
-      if (!(linksInYear[index].source in artists)) {
-        artists[linksInYear[index].source] = [{ "target": linksInYear[index].target, "linksPerYear": {} }];
-      } else {
-        var targetExists = false;
-        for (var targetIndex in artists[linksInYear[index].source]) {
-          if (linksInYear[index].target === artists[linksInYear[index].source][targetIndex].target) {
-            targetExists = true;
-            break;
+      var track = linksInYear[index];
+      // if the source artist isn't in the dict, add them
+      if (!(track.source in artists)) {
+        artists[track.source] = [];
+      }
+      var targetExists = false;
+      for (var targetIndex in artists[track.source]) {
+        if (track.target === artists[track.source][targetIndex].target) {
+          targetExists = true;
+          if (year in artists[track.source][targetIndex].linksPerYear) {
+            artists[track.source][targetIndex].linksPerYear[year].push(track); 
+          } else {
+            artists[track.source][targetIndex].linksPerYear[year] = [track];
           }
-        }
-        if (!targetExists) {
-          artists[linksInYear[index].source].push({ "target": linksInYear[index].target, "linksPerYear": {} });
+          break;
         }
       }
-        
-      for (var targetIndex in artists[linksInYear[index].source]) {
-        if (artists[linksInYear[index].source][targetIndex].linksPerYear[year] == undefined) {
-          artists[linksInYear[index].source][targetIndex].linksPerYear[year] = [linksInYear[index]];
-        } else {
-          artists[linksInYear[index].source][targetIndex].linksPerYear[year].push(linksInYear[index]); 
-        }
+      // if the target artist does not already exist, add them to the source
+      if (!targetExists) {
+        var yearTrack = {};
+        yearTrack[year] = [track];
+        artists[track.source].push({ "target": track.target, "linksPerYear": yearTrack });
       }
     }
   }
-  headViewRegionLink(artists);
+  headViewRegionLink(artists, false);
 }
 
 // ======= Functions to create and modify the slider ======= 
@@ -677,7 +677,7 @@ function drawRegionalArtists(region, x, y, k) {
   });
   artistNode.on("click", function(d) {
     headViewSingleArtist(d);
-    //headViewMultipleArtist();
+    //headViewMultipleArtist(null, false);
   });
 
   updateArtistLinks(artistLinksTemp);

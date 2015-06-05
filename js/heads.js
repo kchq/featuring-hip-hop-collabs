@@ -7,6 +7,8 @@ image2X = xStart * .3
 imageY = yStart * .4
 imageWidth = headWidth * 0.20
 
+prevArtists = null;
+
 function headSetup(artistNode1, artistNode2) {
 //    var artistImage1 = "imgs/" + getArtistImageName(artistNode1.name) + ".png";
   //  var artistImage2 = "imgs/" + getArtistImageName(artistNode2.name) + ".png";
@@ -53,7 +55,7 @@ function addImages(node1, node2) {
 
 
    svgHead.append('clipPath')
-      .attr("id", getArtistImageName("50 Cent"))
+      .attr("id", getArtistImageName(node1.name))
       .attr("class", "clippath")
       .append("circle")
       .attr("cx",  image1X + imageWidth / 2)
@@ -68,7 +70,7 @@ function addImages(node1, node2) {
         .attr("width", imageWidth)
         .attr("height", imageWidth)
         // preserve size of circle across different regions, because each region has a different scale
-        .attr("clip-path", function(d) { return "url(#" + getArtistImageName("50 Cent") + ")"; });
+        .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node1.name) + ")"; });
         
     gh.append("circle")
         .attr("id", "50_centring") //function(d) { return getArtistImageName(d.name) + "ring"; })
@@ -80,7 +82,7 @@ function addImages(node1, node2) {
         .style("stroke-width", "2px");
 
     svgHead.append('clipPath')
-      .attr("id", getArtistImageName("Earl Sweatshirt"))
+      .attr("id", getArtistImageName(node2.name))
       .attr("class", "clippath")
       .append("circle")
       .attr("cx",  image2X + imageWidth / 2)
@@ -94,7 +96,7 @@ function addImages(node1, node2) {
         .attr("y", imageY)
         .attr("width", imageWidth) 
         .attr("height", imageWidth)
-        .attr("clip-path", function(d) { return "url(#" + getArtistImageName("Earl Sweatshirt") + ")"; });
+        .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node2.name) + ")"; });
         
     gh.append("circle")
         .attr("id", "earl_sweatshirtring") //function(d) { return getArtistImageName(d.name) + "ring"; })
@@ -248,7 +250,7 @@ function headViewSingleArtist(artist) {
     $(document).mouseup(clickedOutside);
 }
 
-function headViewMultipleArtist() {
+function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
 
    svgHead = d3.select("#head")
     .style("left", xStart + "px")
@@ -270,7 +272,12 @@ function headViewMultipleArtist() {
     .style("stroke-width", $(window).width() * 0.005)
         .style("opacity", 0.8);
 
-  var links = artistLinksInformation[4].linksPerYear;
+  var links;
+  if (linksPerYear) {
+    links = linksPerYear;
+  } else {
+    links = artistLinksInformation[4].linksPerYear;
+  }
   var spotifyURIs = new Set();
   var linksForSingleYear;
   for (var year in links) {
@@ -308,7 +315,12 @@ function headViewMultipleArtist() {
     .style("font-size", headWidth * 0.07)
     .style("text-anchor", "start")
     .text(function(d) { return "\u2718";})
-    .on("click", closeHead);
+    .on("click", function() {
+        closeHead();
+        if (fromRegionLinkView) {
+          headViewRegionLink(prevArtists);  
+        }
+    });
 
   $(document).mouseup(clickedOutside);
 }
@@ -357,6 +369,7 @@ function headViewRegionLink(artists) {
     $("#head").append(artistCollabsList);
 
     // add li for each distinct artist-artist collaboration
+    console.log(artists);
     for (var source in artists) {
         var li = d3.select("ul").selectAll(".dummy") // this doesn't exist so it won't override anything, this is a concern cause we're in a for loop
             .data(artists[source])
@@ -364,7 +377,7 @@ function headViewRegionLink(artists) {
             .append("li")
             .attr("class", "list-group-item artistCollabs")
             .html(function(d) { return "<div class='artistPair'><div class='sourceArtist'>" + artistNodes[source].name + "</div><div class='targetArtist'>" + artistNodes[d.target].name + "</div></div>"; });
-        li.on("click", function(d) { console.log(d) });
+        li.on("click", function(d) { prevArtists = artists; closeHead(); console.log(d.linksPerYear); headViewMultipleArtist(d.linksPerYear, true); });
     } 
 
     gh.append("text")
