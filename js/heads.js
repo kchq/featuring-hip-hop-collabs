@@ -410,8 +410,6 @@ function closeHead() {
       moveThroughTimeScrolling();
     }
   });
-  narrationEventPreviewListenSetup();
-
 }
 
 function headStart() {
