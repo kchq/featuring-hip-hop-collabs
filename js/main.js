@@ -166,7 +166,6 @@ function searchArtist() {
         }
         zoomToRegion(node);
         
-        console.log(currentYear + " " + startYear + " " + endYear);
         if (currentYear < startYear || currentYear > endYear) {
           moveThroughTimeRegionalSliding(startYear);
         }

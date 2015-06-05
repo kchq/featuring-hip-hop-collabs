@@ -128,3 +128,7 @@ li.list-group-item.artistCollabs {
   float: left;
   text-align: center;
 }
+
+#search {
+  outline: none;
+}
