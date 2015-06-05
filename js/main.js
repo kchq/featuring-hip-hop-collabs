@@ -123,6 +123,11 @@ function setUpSearch() {
         searchArtist();
       }
    });
+
+   console.log(Object.keys(artistMap));
+   $("#search").autocomplete ({
+      source: Object.keys(artistMap)
+    });
 }
 
 function searchArtist() {
