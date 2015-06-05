@@ -114,10 +114,6 @@ ul .collab {
   left: 0;
 }
 
-li.list-group-item.artistCollabs {
-  height: 40px;
-}
-
 .sourceArtist, .targetArtist {
   width: 50%;
   float: left;

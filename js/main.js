@@ -472,6 +472,7 @@ function throttle() {
 // ======= Functions to handle zooming in and out of regions ======= 
 
 function zoomToRegion(region) {
+  zoom.on("zoom", null);
   var x, y, k;
   var lon = region.zlon;
   var lat = region.zlat;
@@ -479,12 +480,7 @@ function zoomToRegion(region) {
   y = projection([-1*lon, lat])[1];
   k = region.scale;
   hideRegions();
-  zoom.on("zoom", function() {
-    moveThroughTimeRegionalScrolling();
-  });
-  slider.on("slide", function(evt, value) {
-    moveThroughTimeRegionalSliding(value);
-  });
+
   g.on("dblclick", zoomOut);
   g.transition()
     .duration(750)
@@ -492,11 +488,18 @@ function zoomToRegion(region) {
     .style("stroke-width", 1.5 / k + "px")
     .each("end", function() {
       drawRegionalArtists(region.id, x, y, k);
+      zoom.on("zoom", function() {
+        moveThroughTimeRegionalScrolling();
+      });
+      slider.on("slide", function(evt, value) {
+        moveThroughTimeRegionalSliding(value);
+      });
     });
   isZoomed = true;
 }
 
 function zoomOut() {
+  zoom.on("zoom", null);
   if (inNY) {
     inNY = false;
     svg.selectAll(".artistNode").remove();
