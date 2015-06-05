@@ -308,15 +308,19 @@ function headViewRegionLink(artists) {
         .css("border-width", "3px")
         .css("overflow", "auto");
 
-    // add li for each distinct artist-artist collaboration
-    for (var source in artists) {
-        for (var target in artists[source]) {
-            ul.append("<li class='list-group-item artistCollabs'> <div class='artistPair'><div class='sourceArtist'>" + artistNodes[source].name + "</div><div class='targetArtist'>" + artistNodes[target].name + "</div></div>");
-        }
-    }
-    
     artistCollabsList.append(ul);
     $("#head").append(artistCollabsList);
+
+    // add li for each distinct artist-artist collaboration
+    for (var source in artists) {
+        var li = d3.select("ul").selectAll(".dummy") // this doesn't exist so it won't override anything, this is a concern cause we're in a for loop
+            .data(artists[source])
+            .enter()
+            .append("li")
+            .attr("class", "list-group-item artistCollabs")
+            .html(function(d) { return "<div class='artistPair'><div class='sourceArtist'>" + artistNodes[source].name + "</div><div class='targetArtist'>" + artistNodes[d.target].name + "</div></div>"; });
+        li.on("click", function(d) { console.log(d) });
+    } 
 
     gh.append("text")
       .attr("x", headWidth * 0.02)
@@ -326,8 +330,6 @@ function headViewRegionLink(artists) {
       .style("text-anchor", "start")
       .text(function(d) { return "\u2718";})
       .on("click", closeHead);
-
-
 }
 
 function closeHead() {
