@@ -38,7 +38,7 @@ var regionTip = d3.tip()
 
 var width, height, mapTranslateLeft, mainVisTop, mainVisLeft, narrationLeft, narrationTop, narrationWidth, centered, timelineEventDescriptions, timelineEvents, slider;
 var svg, svgNarration, g, gn, gt;
-var artistNodes, artistMap, artistLink;
+var artistNodes, artistMap, artistLink, artistLinksInformation;
 var regionNode, regionLink, regionLinks;
 
 var isZoomed = false;
@@ -119,39 +119,44 @@ function setUpSearch() {
   $("#searchArea").css("top", ($(window).height() * 0.045) + "px");
   $("#searchArea").css("position", "absolute");
 
-   $("#searchbutton").click(function () {
-      $("#searchError").text("");
-      var selectedVal = document.getElementById('search').value;
-      
-
-
-      var artistNode = artistNodes[artistMap[selectedVal]];
-      var startYear = parseInt(artistNode.start_year);
-      var endYear = artistNode.end_year;
-      if (endYear == "present") {
-        endYear = presentYear;
-      } else {
-        endYear = parseInt(endYear);
+   $("#searchbutton").on("click", searchArtist);
+   $("#searchArea").on("keypress", function(e) {
+      if (e.keyCode == 13) {
+        searchArtist();
       }
-      regionNodes.forEach(function(node) {
-        if (node.id === artistNode.region) {
-          zoomOut();
-          zoomToRegion(node);
-          
-          if (currentYear < startYear || currentYear > endYear) {
-            moveThroughTimeRegionalSliding(startYear);
-          }
-          if (node.id === "NE" && artistNode.state === "NY") {
-            setTimeout(function() {
-              $("#nyCircle").d3Click();
-              console.log(artistNode);
-            }, 1500);
-          }
-        } 
-
-      });
-      
    });
+}
+
+function searchArtist() {
+    $("#searchError").text("");
+    var selectedVal = document.getElementById('search').value;
+
+    var artistNode = artistNodes[artistMap[selectedVal]];
+    var startYear = parseInt(artistNode.start_year);
+    var endYear = artistNode.end_year;
+    if (endYear == "present") {
+      endYear = presentYear;
+    } else {
+      endYear = parseInt(endYear);
+    }
+    regionNodes.forEach(function(node) {
+      if (node.id === artistNode.region) {
+        zoomOut();
+        zoomToRegion(node);
+        
+        console.log(currentYear + " " + startYear + " " + endYear);
+        if (currentYear < startYear || currentYear > endYear) {
+          moveThroughTimeRegionalSliding(startYear);
+        }
+        if (node.id === "NE" && artistNode.state === "NY") {
+          setTimeout(function() {
+            $("#nyCircle").d3Click();
+            console.log(artistNode);
+          }, 1500);
+        }
+      } 
+
+    });
 }
 
 // ======= Functions to create the Map ======= 
@@ -600,7 +605,7 @@ function drawRegionalArtists(region, x, y, k) {
   artistForce.nodes(artistNodesTemp);
 
   var artistLinksTemp = createArtistLinks(region, artistNodesTemp, k, x, y);
-
+  artistLinksInformation = artistLinksTemp;
   var artistNode = svg.selectAll(".artistNode")
       .data(artistNodesTemp)
       .enter().append("g")
@@ -672,6 +677,7 @@ function drawRegionalArtists(region, x, y, k) {
   });
   artistNode.on("click", function(d) {
     headViewSingleArtist(d);
+    //headViewMultipleArtist();
   });
 
   updateArtistLinks(artistLinksTemp);
