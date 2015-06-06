@@ -51,7 +51,11 @@ var regionLinkTip = d3.tip()
     } else {
       d3.selectAll(".d3-region-link-tip").attr("class", "d3-region-tip d3-region-link-tip");
     }
-    return "<div class='" + hidden + "'>" + d.numLinks + " tracks</div>";
+    var tracks = "track";
+    if (d.numLinks > 1) {
+      tracks += "s";
+    }
+    return "<div class='" + hidden + "'>" + d.numLinks + " " + tracks + "</div>";
   });
 
 
@@ -453,6 +457,9 @@ function updateRegionLinks() {
     // });
 
   d3.selectAll(".regionLinkInteractionArea").style("stroke-width", function(d) {
+    if (d.numLinks === 0) {
+      return "0px";
+    }
     return Math.max(0, 1 + Math.log(d.numLinks)) + 15 + "px";
   });
 
@@ -472,8 +479,12 @@ function calculateLinks(link) {
 }
 
 function regionLinkClickHandler(regionLink) {
+  d3.selectAll(".d3-region-tip").remove();
   var artists = {};
   for (var year in regionLink.linksPerYear) {
+    if (year > currentYear) {
+      continue;
+    }
     var linksInYear = regionLink.linksPerYear[year];
     for (var index in linksInYear) {
       var track = linksInYear[index];

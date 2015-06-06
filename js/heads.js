@@ -426,6 +426,9 @@ function headViewRegionLink(artists) {
 
 function closeHead() {
   $("#head").html("");
+  if (!isZoomed) {
+    updateRegionLinks();
+  }
   $(document).off("mouseup", clickedOutside);
   zoom.on("zoom", function() {
     if (isZoomed) {
