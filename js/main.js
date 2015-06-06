@@ -18,15 +18,19 @@ const startYear = 1965;
 const birthYear = 1967;
 const presentYear = 2015;
 
-const scrollSensitivity = 2.0; // higher equals more sensitive
+const scrollSensitivity = 2; // higher equals more sensitive
 const artistCircleSize = 7;
 
 var prevYear = startYear;
 var currentYear = startYear;
+var scaleExtentGeometric = Math.round(((presentYear - startYear) / scrollSensitivity) + 1);
+var scaleExtentLinear = Math.round(Math.log(scaleExtentGeometric) + 1);
 
 var zoom = d3.behavior.zoom()
-  .scaleExtent([1,((presentYear - startYear) / scrollSensitivity) + 1])
+  //.scaleExtent([1, scaleExtentGeometric])
   .on("zoom", function() {
+    // console.log(zoom.scale() + " " + zoomMapping(zoom.scale()));
+    // console.log(scaleExtentGeometric + " " + scaleExtentLinear);
     moveThroughTimeScrolling();
   });
 
@@ -994,10 +998,25 @@ function artistMouseLeave(d) {
 // ======= Functions for handling scrolling ======= 
 
 function moveThroughTimeScrolling() {
-  currentYear = Math.round((d3.event.scale - 1) * scrollSensitivity + startYear);
-  slider.value(currentYear);
-  updateRegions();
-  updateNarration();
+  if (d3.event.sourceEvent.type=='wheel'){
+      if (d3.event.sourceEvent.wheelDeltaY){
+        if (d3.event.sourceEvent.wheelDeltaY > 0){
+          currentYear = Math.min(presentYear, Math.round(currentYear + d3.event.sourceEvent.wheelDeltaY/30 + 1));
+        } else if (d3.event.sourceEvent.wheelDelta < 0) {
+          currentYear = Math.max(startYear, Math.round(currentYear + d3.event.sourceEvent.wheelDeltaY/30 - 1));
+        }
+      } 
+
+    slider.value(currentYear);
+    updateRegions();
+    updateNarration();
+
+    zoom.on("zoom", null);
+    setTimeout(function(){
+      zoom.on("zoom", moveThroughTimeScrolling);
+    }, 150);
+  }
+
 }
 
 // called when the user slides to zoom, moves through years from 1967 to 2015
@@ -1010,10 +1029,23 @@ function moveThroughTimeSliding(newYear) {
 }
 
 function moveThroughTimeRegionalScrolling() {
-  currentYear = Math.round((d3.event.scale - 1) * scrollSensitivity + startYear);
-  slider.value(currentYear);
-  updateRegionalArtists(currentRegion, currentX, currentY, currentK);
-  updateNarration();
+  if (d3.event.sourceEvent.type=='wheel'){
+      if (d3.event.sourceEvent.wheelDeltaY){
+        if (d3.event.sourceEvent.wheelDeltaY > 0){
+          currentYear = Math.min(presentYear, Math.round(currentYear + d3.event.sourceEvent.wheelDeltaY/30 + 1));
+        } else if (d3.event.sourceEvent.wheelDelta < 0) {
+          currentYear = Math.max(startYear, Math.round(currentYear + d3.event.sourceEvent.wheelDeltaY/30 - 1));
+        }
+      } 
+    slider.value(currentYear);
+    updateRegionalArtists(currentRegion, currentX, currentY, currentK);
+    updateNarration();
+
+    zoom.on("zoom", null);
+    setTimeout(function(){
+      zoom.on("zoom", moveThroughTimeRegionalScrolling);
+    }, 150);
+  }
 }
 
 function moveThroughTimeRegionalSliding(newYear) {
