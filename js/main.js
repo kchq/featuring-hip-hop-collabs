@@ -428,8 +428,11 @@ function computeRegionLinks(){
 function getLink(links, sourceIndex, targetIndex) {
   for (var i = 0; i < links.length; i++) {
     var link = links[i];
-    if (link.source == sourceIndex && link.target == targetIndex) {
+    if (link.source === sourceIndex && link.target === targetIndex) {
       // found the link
+      return link;
+    } else if (link.target === sourceIndex && link.source === targetIndex) {
+      // found the link in the other direction but that's fine
       return link;
     }
   }
