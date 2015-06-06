@@ -249,17 +249,19 @@ function headViewSingleArtist(artist) {
       $("#head").append(collabsList);
     }
     
-    var spotifyFrame = $("<iframe>");
-    spotifyFrame.attr("src", "https://embed.spotify.com/?uri=spotify:trackset:Collaboration Song Demos:" + uriList)
-                .attr("frameborder", "0")
-                .attr("id", "spotifyFrame")
-                .attr("allowTransparency", "true")
-                .css("left", headWidth - 250 - 2 + "px")
-                .css("top", headHeight - 330 - 2 + "px")
-                .css("width", "250px")
-                .css("height", "330px")
-                .css("position", "absolute");
-    $("#head").append(spotifyFrame);
+    if (uriList !== "") {
+      var spotifyFrame = $("<iframe>");
+      spotifyFrame.attr("src", "https://embed.spotify.com/?uri=spotify:trackset:Collaboration Song Demos:" + uriList)
+                  .attr("frameborder", "0")
+                  .attr("id", "spotifyFrame")
+                  .attr("allowTransparency", "true")
+                  .css("left", headWidth - 250 - 2 + "px")
+                  .css("top", headHeight - 330 - 2 + "px")
+                  .css("width", "250px")
+                  .css("height", "330px")
+                  .css("position", "absolute");
+      $("#head").append(spotifyFrame);
+    }
 
     gh.append("text")
       .attr("x", headWidth * 0.02)
@@ -320,17 +322,20 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
     var uriArray = uri.split(":");
     uriList += uriArray[2] + ",";
   });
-  var spotifyFrame = $("<iframe>");
-  spotifyFrame.attr("src", "https://embed.spotify.com/?uri=spotify:trackset:Some Demo Collaborations:" + uriList)
-                .attr("frameborder", "0")
-                .attr("id", "spotifyFrame")
-                .attr("allowTransparency", "true")
-                .css("left", headWidth - 250 - 2 + "px")
-                .css("top", headHeight - 330 - 2 + "px")
-                .css("width", "250px")
-                .css("height", "330px")
-                .css("position", "absolute");
-  $("#head").append(spotifyFrame);
+
+  if (uriList !== "") {
+    var spotifyFrame = $("<iframe>");
+    spotifyFrame.attr("src", "https://embed.spotify.com/?uri=spotify:trackset:Some Demo Collaborations:" + uriList)
+                  .attr("frameborder", "0")
+                  .attr("id", "spotifyFrame")
+                  .attr("allowTransparency", "true")
+                  .css("left", headWidth - 250 - 2 + "px")
+                  .css("top", headHeight - 330 - 2 + "px")
+                  .css("width", "250px")
+                  .css("height", "330px")
+                  .css("position", "absolute");
+    $("#head").append(spotifyFrame);
+  }
 
   gh.append("text")
     .attr("x", headWidth * 0.02)
