@@ -146,14 +146,14 @@ function headViewSingleArtist(artist) {
         .attr("id", artistFormatted + "Large")
         .attr("class", "clippath")
         .append("circle")
-        .attr("cx", image2X * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
+        .attr("cx", image1X * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
         .attr("cy", imageY + imageWidth * (3/2) / 2)      
         .attr("r", (imageWidth * 3/2) / 2)
         .attr("clipPathUnits", "userSpaceOnUse");
 
     gh.append("image")
         .attr("xlink:href", artistImage)
-        .attr("x", image2X * .5)
+        .attr("x", image1X * .5)
         .attr("y", imageY)
         .attr("width", imageWidth * 3/2)
         .attr("height", imageWidth * 3/2)
@@ -162,32 +162,36 @@ function headViewSingleArtist(artist) {
 
     gh.append("circle")
         .attr("id", "50_centring") //function(d) { return getArtistImageName(d.name) + "ring"; })
-        .attr("cx", image2X * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
+        .attr("cx", image1X * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
         .attr("cy", imageY + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
         .attr("r", (imageWidth * 3/2) / 2)
         .style("fill", "none")
         .style("stroke", "#000")
         .style("stroke-width", "2px");
 
-    var artistBio = $("<div id='artistBio'>");
-    artistBio.css("height", "330px")
-             .css("width", imageWidth * 2 + "px")
-             .css("padding-left", "5px")
-             .css("left", "8px")
-             .css("top", headHeight - headHeight * .40 + "px")
-             .css("position", "absolute")
-             .css("font-size", headWidth * 0.4 * 0.04);
+    
     var artistName = $("<p id='artistNameHead'>");
-
-    size = Math.max(7, artist.name.length)
-    artistName.css("font-size", headWidth / (Math.log(size) * 5))
+    size = Math.min(6, artist.name.length)
+    artistName.css("font-size", size + "vmin")
         //.css('color', 'black');
         .css("text-align", "center")
-        .css("left", image2X * .5 - 50) 
-        .css("top", headHeight - headHeight * .50)
-        .css("width", imageWidth * 3/2 + 100)
+        .css("left", image1X * .5 - 50 + "px") 
+        .css("top", imageY + imageWidth * 3/2 + "px")
+        .css("width", imageWidth * 3/2 + 100 + "px")
+        .css("height", headHeight * 0.2 + "px")
         .css("position", "absolute");
     artistName.text(artist.name);
+
+    var artistBio = $("<div id='artistBio'>");
+    artistBio.css("height", headHeight * 0.4 + "px")
+             .css("width", headWidth - 250 - 10 + "px")
+             .css("left", "0px")
+             .css("top", headHeight - headHeight * .40 + "px")
+             .css("position", "absolute")
+             .css("font-size", headWidth * 0.02)
+             .css("border", "3px solid black")
+             .css("background-color", "white")
+             .css("padding-left", headWidth * 0.02 + "px");
 
     var artistOrigin = $("<p>");
     artistOrigin.text("Artist Origin is " + artist.city + ", " + artist.state);
@@ -195,12 +199,28 @@ function headViewSingleArtist(artist) {
     var artistYear = $("<p>");
     artistYear.text("Artist Career began " + artist.start_year);
 
+    var artistLinks = $("<p>");
+    artistLinks.html(artist.external_links);
+
     //artistBio.append(artistName);
     artistBio.append(artistOrigin);
     artistBio.append(artistYear);
+    artistBio.append(artistLinks);
     $("#head").append(artistBio);
     $("#head").append(artistName);
+    $(".external_links").css("height", artistBio.height() * 0.4 + "px")
+                        .css("list-style", "none")
+                        .css("padding-left", "0px");
 
+    for (var i = 0; i < regionNodes.length; i++) {
+      if (regionNodes[i].id !== artist.region) {
+        var id1 = regionNodes[regionIndexMap.indexOf(artist.region)].id + "-" + regionNodes[i].id;
+        var id2 = regionNodes[i].id + "-" + regionNodes[regionIndexMap.indexOf(artist.region)].id;
+        console.log(d3.select("#" + id1));
+        console.log(d3.select("#" + id2));
+
+      }
+    }
 
     var spotifyFrame = $("<iframe>");
     var collabsWidth = headWidth * .55;
@@ -210,13 +230,13 @@ function headViewSingleArtist(artist) {
 
     var collabsList = $("<div id='collabsList'>");
     collabsList.css("left", headWidth - collabsWidth + "px")
-        .css("top", headHeight - collabsHeight * 2.35 +/* headHeight * 0.02 + */"px")
+        .css("top", /* headHeight * 0.02 + */"0px")
         .css("width", collabsWidth + "px")
-        .css("height", headHeight - 330 - 5 - (headHeight - collabsHeight * 2.35) + "px")
+        .css("height", headHeight - 330 - 10 + "px")
         .css("position", "absolute");
 
     var ul = $("<ul class='list-group collab'>");
-    ul.css("max-height", headHeight - 330 - 5 - (headHeight - collabsHeight * 2.35) + "px")
+    ul.css("max-height", headHeight - 330 - 10 + "px")
         .css("border", "2px")
         .css("width", collabsWidth + "px")
         .css("border-style", "solid")
@@ -310,12 +330,14 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
   var spotifyURIs = new Set();
   var linksForSingleYear;
   for (var year in links) {
+    if (parseInt(year) <= currentYear) {
       linksForSingleYear = links[year];
       for (var i = 0; i < linksForSingleYear.length; i++) {
         if (linksForSingleYear[i].spotifyURI !== undefined) {
           spotifyURIs.add(linksForSingleYear[i].spotifyURI);
         }
       }
+    }
   }
 
   var uriList = "";
