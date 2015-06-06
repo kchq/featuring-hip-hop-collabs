@@ -512,7 +512,7 @@ function regionLinkClickHandler(regionLink) {
       }
     }
   }
-  headViewRegionLink(artists, false);
+  headViewRegionLink(artists, regionLink.source.name, regionLink.target.name);
 }
 
 function addRegionLinkTooltips(regionLink) {

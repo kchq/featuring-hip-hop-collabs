@@ -8,6 +8,8 @@ imageY = yStart * .4
 imageWidth = headWidth * 0.20
 
 prevArtists = null;
+prevSource = null;
+prevTarget = null;
 
 function headSetup(artistNode1, artistNode2) {
 //    var artistImage1 = "imgs/" + getArtistImageName(artistNode1.name) + ".png";
@@ -347,14 +349,15 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
     .on("click", function() {
         closeHead();
         if (fromRegionLinkView) {
-          headViewRegionLink(prevArtists);  
+          headViewRegionLink(prevArtists, prevSource, prevTarget);  
         }
     });
 
   $(document).mouseup(clickedOutside);
 }
 
-function headViewRegionLink(artists) {
+
+function headViewRegionLink(artists, regionSource, regionTarget) {
 
     headStart();
 
@@ -377,24 +380,47 @@ function headViewRegionLink(artists) {
         .style("stroke", "black")
         .style("stroke-width", $(window).width() * 0.005)
         .style("opacity", 0.8);
-
-    var artistCollabHeight = headHeight * 0.8;
+    
+    var artistCollabHeight = headHeight * 0.7;
     var artistCollabWidth = headWidth * 0.8;
+
+    var regionNames = $("<div id='regionNames'>");
+    var sourceName = $("<div id='sourceRegion'>");
+    var targetName = $("<div id='targetRegion'>");
+
+    size = Math.max(7, headHeight * 0.1)
+    regionNames.css("font-size", headWidth / (Math.log(size) * 5))
+        .css("width", artistCollabWidth + "px")
+        .css("height", headHeight * 0.2 + "px")
+        .css("left", headWidth * 0.1 + "px") 
+        .css("top", "0px")
+        .css("position", "absolute");
+
+    sourceName
+      .css("height", headHeight * 0.2 + "px")
+      .css("line-height", headHeight * 0.2 + "px")
+      .text(regionSource);
+    targetName
+      .css("height", headHeight * 0.2 + "px")
+      .css("line-height", headHeight * 0.2 + "px")
+      .text(regionTarget);
+    regionNames.append(sourceName).append(targetName);
+    $("#head").append(regionNames);
+
     var artistCollabsList = $("<div id='artistCollabsList'>");
     artistCollabsList.css("left", headWidth * 0.1 + "px")
-        .css("top", headHeight * 0.15 + "px")
+        .css("top", headHeight * 0.2 + "px")
         .css("width", artistCollabWidth + "px")
         .css("height", artistCollabHeight + "px")
         .css("position", "absolute")
         .css("max-height", headHeight); 
 
-    var ul = $("<ul class='list-group collab'>");
+    var ul = $("<ul class='list-group regionLinkUL'>");
     ul.css("height", artistCollabHeight + "px")
         .css("max-height", headHeight)
-        .css("border", "2px")
         .css("width", artistCollabWidth + "px")
-        .css("border-style", "solid")
-        .css("border-width", "3px")
+        .css("border-radius", "0px")
+        .css("box-shadow", "none")
         .css("overflow", "auto");
 
     artistCollabsList.append(ul);
@@ -406,9 +432,9 @@ function headViewRegionLink(artists) {
             .data(artists[source])
             .enter()
             .append("li")
-            .attr("class", "list-group-item artistCollabs")
+            .attr("class", "artistCollabs")
             .html(function(d) { return "<div class='artistPair'><div class='sourceArtist'>" + artistNodes[source].name + "</div><div class='targetArtist'>" + artistNodes[d.target].name + "</div></div>"; });
-        li.on("click", function(d) { prevArtists = artists; closeHead(); headViewMultipleArtist(d.linksPerYear, true); });
+        li.on("click", function(d) { prevArtists = artists; prevSource = regionSource; prevTarget = regionTarget; closeHead(); headViewMultipleArtist(d.linksPerYear, true); });
     } 
 
     gh.append("text")

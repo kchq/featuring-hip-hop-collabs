@@ -74,7 +74,7 @@ body {
   cursor: pointer;
 }
 
-ul li:nth-child(even) {
+.list-group-item:nth-child(even) {
     background-color: #E0E0E0;
 }
 
@@ -86,8 +86,22 @@ ul .collab {
     padding-left: 0px;
 }
 
-li.list-group-item.artistCollabs {
+ul.regionLinkUL {
+  list-style-type: none;
+}
+
+li.artistCollabs {
   height: 40px;
+  border: 1px solid rgba(0,0,0,0);
+  background: rgba(20, 20, 20, 0.6);
+  margin-bottom: 2px;
+  color: white;
+  font-family: "syncopateRegular";
+}
+
+li.artistCollabs:hover {
+  background: rgba(50, 50, 50, 0.9);
+  text-shadow: 2px 2px #222;
 }
 
 .d3-region-tip {
@@ -127,6 +141,15 @@ li.list-group-item.artistCollabs {
   width: 50%;
   float: left;
   text-align: center;
+  height: 40px; /* has to be the same as the li height */
+  line-height: 40px;
+}
+
+#sourceRegion, #targetRegion {
+  width: 50%;
+  float: left;
+  text-align: center;
+  font-family: "bombing";
 }
 
 #search {
