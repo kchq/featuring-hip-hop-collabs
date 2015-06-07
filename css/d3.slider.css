@@ -74,7 +74,10 @@
 }
 
 .d3-slider-axis text {
-    font-size: 11px;
+    font-size: 14px;
+    fill: white;
+    letter-spacing: 2px;
+    font-family: "paintBrush";
 }
 
 .d3-slider-vertical .d3-slider-handle {

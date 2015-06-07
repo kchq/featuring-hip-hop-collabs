@@ -1,6 +1,6 @@
 // Sets up the narration bar on the left
 
-narrationWidth = $(window).width() * 0.20;
+narrationWidth = $(window).width() * 0.15;
 narrationLeft = 0;
 narrationTop = 0;
 currentNextEventYear = 0;
@@ -59,6 +59,8 @@ function restOfNarrationSetup() {
 		.style("left", narrationLeft + "px")
 		.style("top", narrationTop + "px")
 		.style("position", "absolute")
+		.style("background-image", "url('imgs/concrete_seamless.png')")
+		.style("background-repeat", "repeat")
 		.append("svg")
 		.attr("width", narrationWidth)
 		.attr("height", height)
@@ -73,28 +75,24 @@ function restOfNarrationSetup() {
 		.attr("id", "narrationBackground")
 		.attr("width", narrationWidth)
 		.attr("height", height)
-		.style("fill", "white")
-		.style("stroke", "black")
-		.style("stroke-width", $(window).width() * 0.005);
+		.style("fill", "rgba(0,0,0,0.1)");
 
 	gn.append("rect")
 		.attr("id", "narrationEventPreviewNextYearBackground")
 		.attr("class", "timelineJumperNext")
-		.attr("width", narrationWidth * 0.988)
+		.attr("width", narrationWidth)
 		.attr("height", height * 0.08)
-		.attr("rx", narrationWidth * 0.01)
-		.attr("ry",  narrationWidth * 0.01)
-		.style("fill", "#aaa")
+		.style("fill", "#313446")
+		.style("fill-opacity", 0.8);
 
 	gn.append("rect")
 		.attr("id", "narrationEventPreviewPreviousYearBackground")
 		.attr("class", "timelineJumperPrev")
-		.attr("width", narrationWidth * 0.988)
+		.attr("width", narrationWidth)
 		.attr("height", height * 0.08)
 		.attr("y", height * 0.92)
-		.attr("rx", narrationWidth * 0.01)
-		.attr("ry",  narrationWidth * 0.01)
-		.style("fill", "#aaa")
+		.style("fill", "#313446")
+		.style("fill-opacity", 0.8);
 
     updateNarration();
 }
@@ -113,27 +111,27 @@ function updateNarration() {
 		currentNextEventYear = parseInt(relativeInfo.nextEventYr);
 		gn.append("text")
 		  	  .attr("class", "narrationEventPreviewNextYearText timelineJumperNext")
-			  .attr("x", narrationWidth * 0.02)
+			  .attr("x", narrationWidth * 0.05)
 			  .attr("y", height * 0.05)
 	          .style("font-size", narrationWidth * 0.2)
-		      .style("fill", "white")
+		      .style("fill", "#aaa")
 		      .text(function(d) { return "\uFFEA";});
 
 		gn.append("text")
 		  	.attr("class", "narrationEventPreviewNextYearText timelineJumperNext")
-			  .attr("x", narrationWidth * 0.9)
+			  .attr("x", narrationWidth * 0.85)
 			  .attr("y", height * 0.05)
 	          .style("font-size", narrationWidth * 0.2)
-		      .style("fill", "white")
+		      .style("fill", "#aaa")
 		      .text(function(d) { return "\uFFEA";});
 
 		gn.append("text")
 		  .attr("class", "narrationEventPreviewNextYearText timelineJumperNext")
 		  .attr("x", narrationWidth/2)
 		  .attr("y", height * 0.05)
-          .style("font-size", narrationWidth/20)
+          .style("font-size", narrationWidth/14)
 	      .style("text-anchor", "middle")
-	      .style("fill", "white")
+	      .style("fill", "#aaa")
 	      .text(function(d) { return "Next Event " + relativeInfo.nextEventYr});
 	} else {
 		currentNextEventYear = 0;
@@ -144,27 +142,27 @@ function updateNarration() {
 		currentPreviousEventYear = parseInt(relativeInfo.prevEventYr);
 		gn.append("text")
 		  	  .attr("class", "narrationEventPreviewPreviousYearText timelineJumperPrev")
-			  .attr("x", narrationWidth * 0.02)
+			  .attr("x", narrationWidth * 0.05)
 			  .attr("y", height * 0.975)
 	          .style("font-size", narrationWidth * 0.2)
-		      .style("fill", "white")
+		      .style("fill", "#aaa")
 		      .text(function(d) { return "\uFFEC";});
 
 		gn.append("text")
 		  	  .attr("class", "narrationEventPreviewPreviousYearText timelineJumperPrev")
-			  .attr("x", narrationWidth * 0.9)
+			  .attr("x", narrationWidth * 0.85)
 			  .attr("y", height * 0.975)
 	          .style("font-size", narrationWidth * 0.2)
-		      .style("fill", "white")
+		      .style("fill", "#aaa")
 		      .text(function(d) { return "\uFFEC";});
 
 		gn.append("text")
 		  .attr("class", "narrationEventPreviewPreviousYearText timelineJumperPrev")
 		  .attr("x", narrationWidth/2)
 		  .attr("y", height * 0.97)
-    	  .style("font-size", narrationWidth/20)
+    	  .style("font-size", narrationWidth/14)
 	      .style("text-anchor", "middle")
-	      .style("fill", "white")
+	      .style("fill", "#aaa")
 	      .text(function(d) { return "Previous Event " + relativeInfo.prevEventYr;});
 
 	} else {
@@ -176,10 +174,9 @@ function updateNarration() {
 		.attr("id", "narrationYearText")
 	    .attr("x", narrationWidth/9)
 	    .attr("y", height * 0.2)
-	    .style("font-size", narrationWidth/10)
+	    .style("font-size", narrationWidth/4)
 	    .style("text-anchor", "start")
-	   	.style("fill", "white")
-		.style("stroke", "black")
+	   	.style("fill", "black")
 	    .text(function(d) { return currentYear; });
 
 	// only add event descriptions if they exist
@@ -195,11 +192,11 @@ function updateNarration() {
 			gn.append("text")
 		  		.attr("class", "narrationEventText")
 		  		.attr("id", "narrationEvent" + eventNo)
-				.attr("x", currX)
-		        .attr("y", currY)
-		        .style("font-size", size)
-		        .style("text-anchor", "start")
-		        .text(function(d) { return "";});
+					.attr("x", currX)
+	        .attr("y", currY + 20)
+	        .style("font-size", size * 1.5)
+	        .style("text-anchor", "start")
+	        .text(function(d) { return "";});
 
 		     // used to make sure the texts wrap around the svg correctly
 		     // when they overflow
