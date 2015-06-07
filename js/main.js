@@ -464,12 +464,6 @@ function updateRegionLinks() {
         return Math.max(0, 1.25 * Math.log(4 * d.numLinks)) + "px"; 
       }
     });
-    // .attr("class", function(d) { 
-    //   if (d.source == d.target) {
-    //     // somehow set the border of this svg
-    //     return "selfLink";
-    //   }
-    // });
 
   d3.selectAll(".regionLinkInteractionArea").style("stroke-width", function(d) {
     if (d.numLinks === 0) {
@@ -636,6 +630,8 @@ function zoomOut() {
     addRegionLinkTooltips(regionLink);
 
     artistLink.style("stroke-width", "0px");
+    d3.selectAll(".artistLinkInteractionArea").style("stroke-width", "0px");
+
     g.transition()
       .duration(750)
       .attr("transform", "translate(" + (width / 2 - mapTranslateLeft) + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
@@ -916,18 +912,54 @@ function createArtistLinks(region, k, x, y) {
   filterArtistLinks(artistLinksTemp);
 
   artistLink = svg.selectAll('.artistLink')
-        .data(artistLinksTemp)
-        .enter().append('line')
-        .attr('class', 'artistLink')
-        .attr('x1', function(d) { return d.sourceX; })
-        .attr('y1', function(d) { return d.sourceY; })
-        .attr('x2', function(d) { return d.targetX; })
-        .attr('y2', function(d) { return d.targetY; })
-        .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-        .style("stroke-width", "0px")
-        .on("click", function(d) {
-          headViewMultipleArtist(d.linksPerYear, false);
-        });
+      .data(artistLinksTemp)
+      .enter();
+
+  artistLinkInteraction = artistLink.append('line')
+      .attr('class', 'artistLinkInteractionArea')
+      .attr('x1', function(d) { return d.sourceX; })
+      .attr('y1', function(d) { return d.sourceY; })
+      .attr('x2', function(d) { return d.targetX; })
+      .attr('y2', function(d) { return d.targetY; })
+      .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+      .style("stroke-width", "0px")
+      .on("mouseenter", function(d) {
+        d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
+          .style("stroke", "#ddd");
+      })
+      .on("mouseleave", function(d) {
+        d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
+          .style("stroke", "#777");
+      })
+      .on("click", function(d) {
+        headViewMultipleArtist(d.linksPerYear, false);
+      });
+
+  artistLink = artistLink.append('line')
+    .attr('class', 'artistLink')
+    .attr('id', function(d) {
+      return "index" + d.source + "-index" + d.target;
+    })
+    .attr('x1', function(d) { return d.sourceX; })
+    .attr('y1', function(d) { return d.sourceY; })
+    .attr('x2', function(d) { return d.targetX; })
+    .attr('y2', function(d) { return d.targetY; })
+    .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+    .style("stroke-width", "0px")
+    .on("mouseenter", function(d) {
+      d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
+        .style("stroke", "#ddd");
+    })
+    .on("mouseleave", function(d) {
+      d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
+        .style("stroke", "#777");
+    })
+    .on("click", function(d) {
+      headViewMultipleArtist(d.linksPerYear, false);
+    });
+    
+
+  //addRegionLinkTooltips(regionLinkInteraction);
 
   return artistLinksTemp;
 }
@@ -1018,6 +1050,20 @@ function updateArtistLinks(scale) {
         return "0px";
       }
     });
+
+  d3.selectAll(".artistLinkInteractionArea").style("stroke-width", function(d) {
+      if (d.source != d.target &&
+          shouldShowArtist(currentRegion, d.source) &&
+          shouldShowArtist(currentRegion, d.target)) {
+        var width = Math.max(0, (3.0 / scale) * Math.log(2 * d.numLinks)) + 2;
+        if (width < 5) {
+          width += 5;
+        }
+        return width + "px"; 
+      } else {
+        return "0px";
+      }
+    });
 }
 
 function artistMouseEnter(d) {
@@ -1049,12 +1095,19 @@ function artistMouseLeave(d) {
 // ======= Functions for handling scrolling ======= 
 
 function moveThroughTimeScrolling() {
+  var firefox = false;
   if (d3.event.sourceEvent.type=='wheel'){
-      if (d3.event.sourceEvent.wheelDeltaY){
-        if (d3.event.sourceEvent.wheelDeltaY > 0){
-          currentYear = Math.min(presentYear, Math.round(currentYear + d3.event.sourceEvent.wheelDeltaY/30 + 1));
-        } else if (d3.event.sourceEvent.wheelDelta < 0) {
-          currentYear = Math.max(startYear, Math.round(currentYear + d3.event.sourceEvent.wheelDeltaY/30 - 1));
+      var deltaY = d3.event.sourceEvent.wheelDeltaY;
+      if (!deltaY) {
+        // firefox
+        deltaY = -1 * d3.event.sourceEvent.deltaY;
+        firefox = true;
+      } 
+      if (deltaY){
+        if (deltaY > 0){
+          currentYear = Math.min(presentYear, Math.round(currentYear + deltaY/30 + 1));
+        } else if (deltaY < 0) {
+          currentYear = Math.max(startYear, Math.round(currentYear + deltaY/30 - 1));
         }
       } 
 
@@ -1062,10 +1115,12 @@ function moveThroughTimeScrolling() {
     updateRegions();
     updateNarration();
 
-    zoom.on("zoom", null);
-    setTimeout(function(){
-      zoom.on("zoom", moveThroughTimeScrolling);
-    }, 150);
+    if (!firefox) {
+      zoom.on("zoom", null);
+      setTimeout(function(){
+        zoom.on("zoom", moveThroughTimeScrolling);
+      }, 150);
+    }
   }
 
 }
