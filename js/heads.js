@@ -414,7 +414,8 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
         .css("top", headHeight - 330 - 2 + "px")
         .css("width", collabsWidth + "px")
         .css("height", "330px")
-        .css("position", "absolute");
+        .css("position", "absolute")
+        .css("background-color", "white");
 
   var ul = $("<ul class='list-group collab'>");
     ul.css("border", "2px")

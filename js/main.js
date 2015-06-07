@@ -178,12 +178,12 @@ function setUpSearch() {
   $("#searchError").css("font-weight", "bold");
   $("#searchError").css("padding-left", "10px");
   $("#searchError").css("left", ($(window).width() * 0.72) + "px");
-  $("#searchError").css("top", ($(window).height() * 0.08) + "px");
+  $("#searchError").css("top", ($(window).height() * 0.03) + "px");
   $("#searchError").css("position", "absolute");
 
   $("#searchArea").css("padding-left", "10px");
   $("#searchArea").css("left", ($(window).width() * 0.72) + "px");
-  $("#searchArea").css("top", ($(window).height() * 0.045) + "px");
+  $("#searchArea").css("top", ($(window).height() * 0.01) + "px");
   $("#searchArea").css("position", "absolute");
 
    $("#searchbutton").on("click", searchArtist);
