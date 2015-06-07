@@ -41,6 +41,7 @@ var prevYear = startYear;
 var currentYear = startYear;
 var scaleExtentGeometric = Math.round(((presentYear - startYear) / scrollSensitivity) + 1);
 var scaleExtentLinear = Math.round(Math.log(scaleExtentGeometric) + 1);
+var searchedArtist = "";
 
 var zoom = d3.behavior.zoom()
   //.scaleExtent([1, scaleExtentGeometric])
@@ -48,6 +49,12 @@ var zoom = d3.behavior.zoom()
     // console.log(zoom.scale() + " " + zoomMapping(zoom.scale()));
     // console.log(scaleExtentGeometric + " " + scaleExtentLinear);
     moveThroughTimeScrolling();
+  });
+
+var artistTip = d3.tip()
+  .attr('class', 'd3-region-tip')
+  .html(function(d) {
+    return "<div>" + d.name + "</div>"
   });
 
 var regionTip = d3.tip()
@@ -114,6 +121,7 @@ function init(error) {
   createRegions();
   setUpRegions();
   setUpSearch();
+  //introSetup();
 }
 
 // redraws everything
@@ -186,17 +194,22 @@ function searchArtist() {
         if (isZoomed) {
           zoomOut();
         }
+
+        if (currentYear < startYear || currentYear > endYear) {
+          moveThroughTimeSliding(startYear);
+        }
+
         zoomToRegion(node);
         
-        if (currentYear < startYear || currentYear > endYear) {
-          moveThroughTimeRegionalSliding(startYear);
-        }
+
         if (node.id === "NE" && artistNode.state === "NY") {
           setTimeout(function() {
             $("#nyCircle").d3Click();
-            console.log(artistNode);
+            searchedArtist = artistNode.name;
           }, 1500);
-        }
+        } else {
+          searchedArtist = artistNode.name;
+        } 
       } 
 
     });
@@ -837,6 +850,9 @@ function setUpCurrentArtistNodes(region, x, y, k) {
           return "artistNode";
         }
       })
+      .attr("name", function(d) {
+        return d.name;
+      })
       .call(artistForce.drag);
 
   artistForce.start();
@@ -897,13 +913,16 @@ function setUpCurrentArtistNodes(region, x, y, k) {
     .style("stroke-width", "0.5px");
 
   // draw a ring on hover
+  currentArtistNode.call(artistTip);
   currentArtistNode.on("mouseenter", function(d) { 
     if (d == nyNode) { return; }
     artistMouseEnter(d);
+    artistTip.show(d);
   });
   currentArtistNode.on("mouseleave", function(d) { 
     if (d == nyNode) { return; }
     artistMouseLeave(d);
+    artistTip.hide(d);
   });
   currentArtistNode.on("click", function(d) {
     if (d == nyNode) { return; }
@@ -932,10 +951,24 @@ function getArtistImageName(name) {
 }
 
 function updateRegionalArtists(region, x, y, k) {
-  svg.selectAll(".currentArtistNode")
+  var currentArtistNode = svg.selectAll(".currentArtistNode")
     .style("display", function(d) {
       if (!shouldShowArtist(region, d)) {
         return "none";
+      }
+    });
+
+    currentArtistNode.each(function(d) {
+      if (d.name === searchedArtist) {
+        
+        setTimeout(function() {
+          artistMouseEnter(d, 3);
+        }, 200);
+        searchedArtist = "";
+
+        setTimeout(function() {
+          artistMouseLeave(d);
+        }, 2000);
       }
     });
 
@@ -1108,17 +1141,21 @@ function updateArtistLinks(scale) {
     });
 }
 
-function artistMouseEnter(d) {
+function artistMouseEnter(d, scale) {
+  var circleSize = artistCircleSize;
+  if (scale) {
+    circleSize = artistCircleSize * scale;
+  }
   $("#" + getArtistImageName(d.name) + "_mask")
-    .attr("r", artistCircleSize);
+    .attr("r", circleSize);
   $("#" + getArtistImageName(d.name) + "_image")
-    .attr("x", function() { xy = getXY(d); if (xy == null) return; return xy[0] - artistCircleSize; })
-    .attr("y", function() { xy = getXY(d); if (xy == null) return; return xy[1] - artistCircleSize; })
-    .attr("width", artistCircleSize * 2)
-    .attr("height", artistCircleSize * 2);
+    .attr("x", function() { xy = getXY(d); if (xy == null) return; return xy[0] - circleSize; })
+    .attr("y", function() { xy = getXY(d); if (xy == null) return; return xy[1] - circleSize; })
+    .attr("width", circleSize * 2)
+    .attr("height", circleSize * 2);
   $("#" + getArtistImageName(d.name) + "_ring")
     .css("stroke", "#FF5655")
-    .attr("r", artistCircleSize);
+    .attr("r", circleSize);
 }
 
 function artistMouseLeave(d) {
@@ -1177,22 +1214,32 @@ function moveThroughTimeSliding(newYear) {
 }
 
 function moveThroughTimeRegionalScrolling() {
+  var firefox = false;
   if (d3.event.sourceEvent.type=='wheel'){
-      if (d3.event.sourceEvent.wheelDeltaY){
-        if (d3.event.sourceEvent.wheelDeltaY > 0){
-          currentYear = Math.min(presentYear, Math.round(currentYear + d3.event.sourceEvent.wheelDeltaY/30 + 1));
-        } else if (d3.event.sourceEvent.wheelDelta < 0) {
-          currentYear = Math.max(startYear, Math.round(currentYear + d3.event.sourceEvent.wheelDeltaY/30 - 1));
+      var deltaY = d3.event.sourceEvent.wheelDeltaY;
+      if (!deltaY) {
+        // firefox
+        deltaY = -1 * d3.event.sourceEvent.deltaY;
+        firefox = true;
+      } 
+      if (deltaY){
+        if (deltaY > 0){
+          currentYear = Math.min(presentYear, Math.round(currentYear + deltaY/30 + 1));
+        } else if (deltaY < 0) {
+          currentYear = Math.max(startYear, Math.round(currentYear + deltaY/30 - 1));
         }
       } 
+
     slider.value(currentYear);
     updateRegionalArtists(currentRegion, currentX, currentY, currentK);
     updateNarration();
 
-    zoom.on("zoom", null);
-    setTimeout(function(){
-      zoom.on("zoom", moveThroughTimeRegionalScrolling);
-    }, 150);
+    if (!firefox) {
+      zoom.on("zoom", null);
+      setTimeout(function(){
+        zoom.on("zoom", moveThroughTimeRegionalScrolling);
+      }, 150);
+    }
   }
 }
 
@@ -1247,11 +1294,31 @@ function parseData() {
         var sourceIndex = artistMap[artist];
         if (sourceIndex >= 0) {
           var targetArtists = collabs[artist];
+
+          //Iterate through each collabing artist
           for (var targetArtist in targetArtists) {
             var targetIndex = artistMap[targetArtist];
             var tracks = targetArtists[targetArtist]
+
+            //Iterate through each artists songs
             for (var i = 0; i < tracks.length; i++) {
                 singleHeadCollabMap[artist].push(tracks[i]);
+                if (singleHeadCollabMap[targetArtist] == undefined) {
+                   singleHeadCollabMap[targetArtist] = [];
+                }
+                singleHeadCollabMap[targetArtist].push(tracks[i]);
+                /*   
+                //Iterate through artist credit to give credit bi-directionally.
+                for (var j = 0; j < tracks[i].artist_credit.length; j++) {
+                    var otherArtist = tracks[i].artist_credit[j];
+                    if (otherArtist !== artist) {
+                       if (singleHeadCollabMap[artist] == undefined) {
+                          singleHeadCollabMap[artist] = [];
+                       }
+                       singleHeadCollabMap[otherArtist].push(tracks[i]);
+                    }
+                }
+                */
             }
             if (targetIndex >= 0) {
               // we have both a source and a target, so let's add all the songs as links

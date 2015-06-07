@@ -38,6 +38,18 @@ body {
     src: url("../graffiti/Bombing.ttf");
 }
 
+
+@font-face {
+    font-family: "amsterdam";
+    src: url("../graffiti/amsterdam.ttf");
+}
+
+@font-face {
+  font-family: "paintBrush";
+  src: url("../graffiti/GraffitiPaintBrush.ttf");
+}
+
+
 .narrationEventText, .narationEventPreviewText {
   font-family: "syncopateRegular";
 }
@@ -59,9 +71,29 @@ body {
   cursor: pointer;
 }
 
-#artistNameHead {
+#artistNameHead, .artistNameHead {
     font-family: "bombing";
     font-size: "50px";
+}
+
+#title {
+   font-family: "bombing";
+   font-size: "100px"; 
+   font-style: italic;
+}
+
+
+#subtitle {
+   font-family: "amsterdam";
+}
+
+#sliderIntroTitle {
+   font-family: "bombing";
+   font-size: "35x"; 
+   font-style: italic;
+}
+
+#titleDiv {
 }
 
 .regionLink, .artistLink {
@@ -96,7 +128,9 @@ li.artistCollabs {
   background: rgba(20, 20, 20, 0.6);
   margin-bottom: 2px;
   color: white;
-  font-family: "syncopateRegular";
+  font-family: "paintBrush";
+  font-size: 30px;
+  cursor: pointer;
 }
 
 li.artistCollabs:hover {
@@ -149,9 +183,40 @@ li.artistCollabs:hover {
   width: 50%;
   float: left;
   text-align: center;
-  font-family: "bombing";
+  font-family: "paintBrush";
+  font-size: 50px;
+  font-weight: bold;
+  letter-spacing: 3px;
 }
 
 #search {
   outline: none;
+}
+
+.btn {
+  background: #393d40;
+  background-image: -webkit-linear-gradient(top, #747c80, #32414a);
+  background-image: -moz-linear-gradient(top, #747c80, #32414a);
+  background-image: -ms-linear-gradient(top, #747c80, #32414a);
+  background-image: -o-linear-gradient(top, #747c80, #32414a);
+  background-image: linear-gradient(to bottom, #747c80, #32414a);
+  -webkit-border-radius: 8;
+  -moz-border-radius: 8;
+  border-radius: 8px;
+  font-family: "amsterdam";
+  color: #ffffff;
+  font-size: 30px;
+  padding: 12px 20px 12px 20px;
+  border: solid #000000 1px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #919ba1;
+  background-image: -webkit-linear-gradient(top, #919ba1, #abbcc7);
+  background-image: -moz-linear-gradient(top, #919ba1, #abbcc7);
+  background-image: -ms-linear-gradient(top, #919ba1, #abbcc7);
+  background-image: -o-linear-gradient(top, #919ba1, #abbcc7);
+  background-image: linear-gradient(to bottom, #919ba1, #abbcc7);
+  text-decoration: none;
 }
