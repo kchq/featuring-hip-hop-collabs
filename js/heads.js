@@ -353,11 +353,33 @@ function headViewSingleArtist(artist) {
     $(document).mouseup(clickedOutside);
 }
 
+
 function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
+   var spotifyFrame = $("<iframe>");
+   var collabsWidth = headWidth * .55;
+   var collabsHeight = headHeight * .4;
+   var frameWidth = Math.max(headWidth * 0.4, 250);
+   var frameHeight = Math.max(headHeight * 0.4, frameWidth + 80);
 
    headStart();
    console.log(linksPerYear);
    console.log(fromRegionLinkView);
+    
+   var source;
+   var dest;
+
+   //Find source and dest artist, yeah its ugly. I know it, babe.
+   for (var links in linksPerYear) {
+       linksYear = linksPerYear[links];
+       for (var i = 0; i < linksYear.length; i++) {
+           source = artistNodes[linksYear[i].source];
+           dest = artistNodes[linksYear[i].target];
+           break;
+       }
+       break;
+    }
+
+
    svgHead = d3.select("#head")
     .style("left", xStart + "px")
     .style("top", yStart + "px")
@@ -378,6 +400,36 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
     .style("stroke-width", $(window).width() * 0.005)
         .style("opacity", 0.8);
 
+  var collabsList = $("<div id='collabsList'>");
+    collabsList.css("left", headWidth - collabsWidth + "px")
+        .css("top", "0px")
+        .css("width", collabsWidth + "px")
+        .css("height", headHeight - 330 - 10 + "px")
+        .css("position", "absolute");
+
+  var ul = $("<ul class='list-group collab'>");
+    ul.css("max-height", headHeight - 330 - 10 + "px")
+        .css("border", "2px")
+        .css("width", collabsWidth + "px")
+        .css("border-style", "solid")
+        .css("border-width", "3px");
+
+    
+  for (var links in linksPerYear) {
+      linksYear = linksPerYear[links];
+      for (var i = 0; i < linksYear.length; i++) {
+          trk = linksYear[i];
+          var str = "<li class='list-group-item'> + <b>" + trk.title + "</b>, " + trk.release_title + "<br/> -";
+          str += trk.artist_credit.join(", ");
+          var li = ul.append(str);
+      }
+  }
+  
+  collabsList.append(ul); 
+  $("#head").append(collabsList);
+    
+  var uriList = "";
+  var numListItems = 0;
   var links;
   if (linksPerYear) {
     links = linksPerYear;
@@ -435,7 +487,7 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
   $(document).mouseup(clickedOutside);
 }
 
-
+//Pairwise comparison in outer view
 function headViewRegionLink(artists, regionSource, regionTarget) {
 
     headStart();
