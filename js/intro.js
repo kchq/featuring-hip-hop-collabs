@@ -110,7 +110,6 @@ function helpBoxUp() {
         setup = true;
         text = $("<h1 id='sliderIntroTitle'>")
             .text("< Move the slider or use the scroll wheel \n to select the year in history")
-
             sliderDiv = $('#sliderIntro')
             .css("left", $(window).width() * 0.20 + 90) 
             .css("top", yStart * 8.5) 
@@ -121,17 +120,18 @@ function helpBoxUp() {
         helpDiv = $("<div id='helpDiv'>")
             .css("left", "0px")// xStart * .8 + "px") 
             .css("top", "0px")//yStart * 7 + "px") 
-            .css("width", introWidth * 1.2)
+            .css("width", introWidth * 1.24)
             .css("position", "absolute")
             .css("height", introHeight / 2)
-            .css("padding-left", "15px");
+            .css("padding-left", "15px")
+            .css("text-align", "left");
 
         svgHelp = d3.select("#helpBox")
-            .style("left", xStart * .8 + "px")
+            .style("left", xStart * .80 + "px")
             .style("top", yStart * 7 + "px")
             .style("position", "absolute")
             .append("svg")
-            .attr("width", introWidth * 1.2)
+            .attr("width", introWidth * 1.24)
             .attr("height", introHeight)
             .attr("id", "headSVG");
 
@@ -139,16 +139,38 @@ function helpBoxUp() {
 
         rect = gh.append("rect")
             .attr("id", "introRect")
-            .attr("width", introWidth * 1.2)
+            .attr("width", introWidth * 1.24)
             .attr("height", introHeight / 2)
             .style("fill", "white")
             .style("stroke", "black")
             .style("stroke-width", $(window).width() * 0.005)
             .style("opacity", 0.9);
 
-        helpIntro = $("<h3>").text("Navigate through the Hip-Hop collaboration history by scrolling or dragging the slider on the left");
+        /*d3.select("#helpBox")
+            .append("text")
+            .style("left", 0 + "px")
+            .style("top", 0 + "px")
+            .attr("id", "closeMenuText2")
+            .style("font-size", headWidth * 0.07)
+            .style("text-anchor", "start")
+            .text(function(d) { return "\u2718";})
+            .on("click", helpBoxDown);*/
+        
+        exitHelp = $("<p id='closeMenuText2'>")
+            .text("\u2718")
+            .on("click", helpBoxDown)
+            .css('cursor', 'pointer')
+            .css("padding-top", "5px")
+            .css("font-size", "30px");
+        
+        helpIntro = $("<h4>").text("-Navigate through history by scrolling or dragging the slider on the left");
+        helpIntro2 = $("<h4>").text("-Select a link between artists to see a list of their collaborations");
+        helpIntro3 = $("<h4>").text("-Click on a region to explore the collaboration developement over time");
 
+        helpDiv.append(exitHelp);
         helpDiv.append(helpIntro);
+        helpDiv.append(helpIntro2);
+        helpDiv.append(helpIntro3);
         $("#helpBox").append(helpDiv);
 
         
