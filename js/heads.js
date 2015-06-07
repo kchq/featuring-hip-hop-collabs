@@ -369,6 +369,9 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeInde
    if (artistNodeIndex1 !== undefined && artistNodeIndex2 !== undefined) {
       source = artistNodes[artistNodeIndex1];
       dest = artistNodes[artistNodeIndex2];
+      delete linksPerYear["sourceId"];
+      delete linksPerYear["targetId"];
+      
    } else {
 
      //Find source and dest artist, yeah its ugly. I know it, babe.
@@ -382,6 +385,8 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeInde
          break;
       }
     }
+    
+    console.log(linksPerYear);
 
    svgHead = d3.select("#head")
     .style("left", xStart + "px")
@@ -403,43 +408,13 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeInde
     .style("stroke-width", $(window).width() * 0.005)
         .style("opacity", 0.8);
 
-  var collabsList = $("<div id='collabsList'>");
-    collabsList.css("left", "0px")
-        .css("top", headHeight - 330 - 2 + "px")
-        .css("width", collabsWidth + "px")
-        .css("height", "330px")
-        .css("position", "absolute")
-        .css("background-color", "white");
-
-  var ul = $("<ul class='list-group collab'>");
-    ul.css("border", "2px")
-        .css("width", collabsWidth + "px")
-        .css("height", "330px")
-        .css("border-style", "solid")
-        .css("border-width", "3px");
-
-    
-  for (var links in linksPerYear) {
-      linksYear = linksPerYear[links];
-      for (var i = 0; i < linksYear.length; i++) {
-          trk = linksYear[i];
-          var str = "<li class='list-group-item'> + <b>" + trk.title + "</b>, " + trk.release_title + "<br/> -";
-          str += trk.artist_credit.join(", ");
-          var li = ul.append(str);
-      }
-  }
-  
-  collabsList.append(ul); 
-  $("#head").append(collabsList);
-    
   var uriList = "";
   var numListItems = 0;
   var links;
   if (linksPerYear) {
     links = linksPerYear;
-  } else {
-    links = artistLinksInformation[4].linksPerYear;
-  }
+  } 
+
   var spotifyURIs = new Set();
   var linksForSingleYear;
   for (var year in links) {
@@ -454,7 +429,7 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeInde
   }
 
   var uriList = "";
-  addImages(artistNodes[linksForSingleYear[0].source], artistNodes[linksForSingleYear[0].target]);
+  addImages(source, dest);
   spotifyURIs.forEach(function(uri) {
     var uriArray = uri.split(":");
     uriList += uriArray[2] + ",";
@@ -473,6 +448,36 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeInde
                   .css("position", "absolute");
     $("#head").append(spotifyFrame);
   }
+
+
+  var collabsList = $("<div id='collabsList'>");
+    collabsList.css("left", "0px")
+        .css("top", headHeight - 330 - 2 + "px")
+        .css("width", collabsWidth + "px")
+        .css("height", "330px")
+        .css("position", "absolute")
+        .css("background-color", "white");
+
+  var ul = $("<ul class='list-group collab'>");
+    ul.css("border", "2px")
+        .css("width", collabsWidth + "px")
+        .css("height", "330px")
+        .css("border-style", "solid")
+        .css("border-width", "3px");
+
+    
+  for (var year in links) {
+      for (var i = 0; i < links[year].length; i++) {
+          trk = links[year][i];
+          var str = "<li class='list-group-item'> + <b>" + trk.title + "</b>, " + trk.release_title + "<br/> -";
+          str += trk.artist_credit.join(", ");
+          var li = ul.append(str);
+      }
+  }
+  
+  collabsList.append(ul); 
+  $("#head").append(collabsList);
+    
 
     var artistName1 = $("<p class='artistNameHead'>");
     var size = Math.min(6, source.name.length)
@@ -635,22 +640,26 @@ function headViewRegionLink(artists) {
     for (var i in sorted_keys) {
         var pair = sorted_keys[i];
         var p = [artists[pair]];
+
+        var sourceId = pair.split("_")[0];
+        var targetId = pair.split("_")[1];
+        if (artistNodes[sourceId].region != source) {
+          sourceId = pair.split("_")[1];
+          targetId = pair.split("_")[0];
+        }
+        sourceArtist = artistNodes[sourceId];
+        targetArtist = artistNodes[targetId];
+        p[0].sourceId = sourceId;
+        p[0].targetId = targetId;
+
         var li = d3.select("ul").selectAll(".dummy") // this doesn't exist so it won't override anything, this is a concern cause we're in a for loop
             .data(p)
             .enter()
             .append("li")
             .attr("class", "artistCollabs")
-            .html(function(d) { 
-              var sourceId = pair.split("_")[0];
-              var targetId = pair.split("_")[1];
-              if (artistNodes[sourceId].region != source) {
-                sourceId = pair.split("_")[1];
-                targetId = pair.split("_")[0];
-              }
-              var sourceArtist = artistNodes[sourceId];
-              var targetArtist = artistNodes[targetId];
+            .html(function(d) {
               return "<div class='artistPair'><div class='sourceArtist'>" + sourceArtist.name + "</div><div class='targetArtist'>" + targetArtist.name + "</div></div>"; });
-        li.on("click", function(d) { prevArtists = artists; closeHead(); headViewMultipleArtist(d, true, sourceId, targetId); });
+        li.on("click", function(d) { prevArtists = artists; closeHead(); headViewMultipleArtist(d, true, d.sourceId, d.targetId); });
     } 
 
     gh.append("text")
