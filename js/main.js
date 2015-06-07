@@ -24,7 +24,8 @@ var bezierScale = {
   "NC-NE": [5.0, 20.0],
   "NC-MW": [5.0, -2.0],
   "SC-NE": [5.0, 50.0],
-  "MW-NE": [5.0, 5.0]
+  "MW-NE": [5.0, 5.0],
+  "NC-SC": [-15.0, -100.0]
 };
 
 var nyNode = {"id":"NY", "name": "New York", "lon": 74.0059, "lat": 40.7127, "zlon": 73.7, "zlat": 40.65, "color": "#1662A4", "ringColor": "#024274", "scale": 54 };
@@ -403,6 +404,7 @@ function setUpRegionLinks() {
   regionLink = svg.selectAll('.regionLink')
         .data(regionLinks)
         .enter();
+
   regionLinkInteraction = regionLink.append('path')
         .attr('class', 'regionLinkInteractionArea')
         .attr("mask", "url(#regionMask)")
@@ -413,19 +415,14 @@ function setUpRegionLinks() {
         })
         .on("mouseleave", function(d) {
           d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#777");
-        })
-        .on("click", function(d) {
-          regionLinkClickHandler(d);
         });
+
   regionLink = regionLink.append('path')
         .attr('class', 'regionLink')
         .attr('id', function(d) { return regionNodes[d.source].id + "-" + regionNodes[d.target].id })
         .attr("mask", "url(#regionMask)")
         .attr("fill", "none")
-        .style("stroke-width", "0px")
-        .on("click", function(d) {
-          regionLinkClickHandler(d);
-        });
+        .style("stroke-width", "0px");
 
   addRegionLinkTooltips(regionLinkInteraction);
   addRegionLinkTooltips(regionLink);
@@ -471,19 +468,57 @@ function updateRegionLinks() {
     calculateLinks(d);
   });
 
+  regionLinkInteraction.forEach(function(d) {
+    calculateLinks(d);
+  });
+
   d3.selectAll(".regionLink")
     .style("stroke-width", function(d) { 
       if (d.source != d.target) {
-        return Math.max(0, 1.25 * Math.log(4 * d.numLinks)) + "px"; 
+        return Math.max(0, 1.25 * Math.log(4 * d.numLinks)) + "px";
+      }
+    })
+    .style("cursor",  function(d) { 
+      if (d.source != d.target) {
+        if (d.numLinks > 0) {
+          return "pointer";
+        } else {
+          return "auto";
+        }
+      }
+    });
+
+  regionLink.on("click", function(d) {
+    if (d.numLinks > 0) {
+      regionLinkClickHandler(d);
+    } else {
+      return null;
+    }
+  });
+
+  regionLinkInteraction.on("click", function(d) {
+      if (d.numLinks > 0) {
+        regionLinkClickHandler(d);
+      } else {
+        return null;
       }
     });
 
   d3.selectAll(".regionLinkInteractionArea").style("stroke-width", function(d) {
-    if (d.numLinks === 0) {
-      return "0px";
-    }
-    return Math.max(0, 1 + Math.log(d.numLinks)) + 15 + "px";
-  });
+      if (d.numLinks === 0) {
+        return "0px";
+      }
+      return Math.max(0, 1 + Math.log(d.numLinks)) + 15 + "px";
+    })
+    .style("cursor",  function(d) { 
+      if (d.source != d.target) {
+        if (d.numLinks > 0) {
+          return "pointer";
+        } else {
+          return "auto";
+        }
+      }
+    });
 
   var regionLinkTemp = regionLink.filter(function(d, i) { return d.numLinks !== 0 });
   if (regionLinkTemp) {
@@ -680,6 +715,7 @@ function zoomOut() {
     var regionNode = svg.selectAll('.regionNode');
     addRegionTooltips(regionNode);
 
+    // setUpRegionLinks();
     var regionLink = svg.selectAll('.regionLink');
     addRegionLinkTooltips(regionLink);
 

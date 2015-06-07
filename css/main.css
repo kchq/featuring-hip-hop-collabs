@@ -98,12 +98,10 @@ body {
 
 .regionLink, .artistLink {
   stroke: #777;
-  cursor: pointer;
 }
 
 .regionLinkInteractionArea, .artistLinkInteractionArea {
   stroke: rgba(0,0,0,0);
-  cursor: pointer;
 }
 
 .list-group-item:nth-child(even) {
