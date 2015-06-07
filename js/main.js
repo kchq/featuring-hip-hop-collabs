@@ -623,27 +623,20 @@ function regionLinkClickHandler(regionLink) {
     for (var index in linksInYear) {
       var track = linksInYear[index];
       // if the source artist isn't in the dict, add them
-      if (!(track.source in artists)) {
-        artists[track.source] = [];
+      var liy;
+      if ((track.source + "_" + track.target) in artists) {
+        liy = artists[track.source + "_" + track.target];
+      } else if ((track.target + "_" + track.source) in artists) {
+        liy = artists[track.target + "_" + track.source];
+      } else {
+        liy = artists[track.source + "_" + track.target] = {};
       }
-      var targetExists = false;
-      for (var targetIndex in artists[track.source]) {
-        if (track.target === artists[track.source][targetIndex].target) {
-          targetExists = true;
-          if (year in artists[track.source][targetIndex].linksPerYear) {
-            artists[track.source][targetIndex].linksPerYear[year].push(track); 
-          } else {
-            artists[track.source][targetIndex].linksPerYear[year] = [track];
-          }
-          break;
-        }
+      if (year in liy) {
+        liy[year].push(track);
+      } else {
+        liy[year] = [track];
       }
       // if the target artist does not already exist, add them to the source
-      if (!targetExists) {
-        var yearTrack = {};
-        yearTrack[year] = [track];
-        artists[track.source].push({ "target": track.target, "linksPerYear": yearTrack });
-      }
     }
   }
   headViewRegionLink(artists, regionLink.source.name, regionLink.target.name);
