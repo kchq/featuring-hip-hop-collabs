@@ -541,7 +541,7 @@ function addRegionLinkTooltips(regionLink) {
   if (regionLinkTemp) {
     regionLinkTemp.call(regionLinkTip);
   }
-  regionLink.on("mouseenter", function(d) {
+  regionLink.on("mouseover", function(d) {
     d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#ddd");
     regionLinkTip.show(d);
   });
