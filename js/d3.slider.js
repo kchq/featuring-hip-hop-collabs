@@ -90,7 +90,7 @@ return function module() {
           .attr("xlink:href", "#")
           .attr('id', "handle-one")
           .attr('src', 'imgs/music_symbol.png')
-          .style("width", $(window).width() * 0.025 + "px")
+          .style("width", $(window).height() * 0.025 + "px")
           .style("height", $(window).height() * 0.025 + "px")
           .on("click", stopPropagation)
           .call(drag);

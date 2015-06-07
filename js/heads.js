@@ -270,17 +270,22 @@ function headViewSingleArtist(artist) {
     var artistCity = $("<p id='rapperCity'>");
     artistCity.css("font-size", size/1.7 + "vmin")
       .css("text-align", "center")
-      .css("left", image1X * .5 - 50 + "px") 
-      .css("top", imageY + imageWidth * 3/2 - size*5 + "px")
+      .css("left", image1X * .5 - 20 + "px") 
+      .css("top", imageY + imageWidth * 3/2 + imageWidth * 0.3 + "px")
       .css("width", (imageWidth * 3/2 + 100)/4 + "px")
       .css("position", "absolute");
-    artistCity.text(artist.city);
+
+    if (String(artist.city).length > 11) { 
+      artistCity.text(String(artist.city).substring(0, 11));
+    } else {
+      artistCity.text(artist.city);
+    }
 
     var artistYear1 = $("<p id='rapperYear'>");
     artistYear1.css("font-size", size/1.7+ "vmin")
       .css("text-align", "center")
-      .css("left", image1X * .5 + imageWidth * 1.3 + "px") 
-      .css("top", imageY + imageWidth * 3/2 - size*5 + "px")
+      .css("left", image1X * .5 + imageWidth * 0.9 + "px") 
+      .css("top", imageY + imageWidth * 3/2 + imageWidth * 0.3 + "px")
       .css("width", (imageWidth * 3/2 + 100)/4 + "px")
       .css("position", "absolute");
     artistYear1.text(artist.start_year);
@@ -314,6 +319,7 @@ function headViewSingleArtist(artist) {
                             .css("float", "left")
                             .css("height", artistBio.height() * 0.9 + "px")
                             .css("max-height", artistBio.height() * 0.9 + "px")
+                            .css("min-height", artistBio.height() * 0.9 + "px")
                             .css("width", artistBio.width() * 0.55 + "px")
                             .css("padding-bottom", headHeight * 0.3 + "px")
                             .css("margin-left", artistBio.width() * 0.05 + "px")

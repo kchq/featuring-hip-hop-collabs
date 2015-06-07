@@ -239,3 +239,7 @@ li.artistCollabs:hover {
   font-family: "paintbrush";
 }
 
+#head {
+  z-index: 3;
+}
+
