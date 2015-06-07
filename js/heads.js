@@ -78,7 +78,7 @@ function addImages(node1, node2) {
         });
         
     gh.append("circle")
-        .attr("id", "50_centring") //function(d) { return getArtistImageName(d.name) + "ring"; })
+        .attr("id", getArtistImageName(node1.name) + "ring") //function(d) { return getArtistImageName(d.name) + "ring"; })
         .attr("cx", image1X + imageWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
         .attr("cy", imageY + imageWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
         .attr("r", imageWidth / 2)
@@ -109,7 +109,7 @@ function addImages(node1, node2) {
         });
         
     gh.append("circle")
-        .attr("id", "earl_sweatshirtring") //function(d) { return getArtistImageName(d.name) + "ring"; })
+        .attr("id", getArtistImageName(node2.name) + "ring") //function(d) { return getArtistImageName(d.name) + "ring"; })
         .attr("cx", image2X + imageWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
         .attr("cy", imageY + imageWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
         .attr("r", imageWidth / 2)
