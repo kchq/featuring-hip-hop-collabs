@@ -143,6 +143,7 @@ li.artistCollabs:hover {
   padding: 4px;
   background: rgba(151, 151, 160, 1);
   border-radius: 2px;
+  font-size: 20px;
 }
 
 /* Creates a small triangle extender for the tooltip */
@@ -189,6 +190,11 @@ li.artistCollabs:hover {
 
 #search {
   outline: none;
+  font-size: 20px;
+}
+
+.ui-menu-item {
+  font-family: "paintBrush";
 }
 
 .btn {
