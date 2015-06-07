@@ -44,6 +44,11 @@ body {
     src: url("../graffiti/amsterdam.ttf");
 }
 
+@font-face {
+  font-family: "paintBrush";
+  src: url("../graffiti/GraffitiPaintBrush.ttf");
+}
+
 
 .narrationEventText, .narationEventPreviewText {
   font-family: "syncopateRegular";
@@ -66,7 +71,7 @@ body {
   cursor: pointer;
 }
 
-#artistNameHead {
+#artistNameHead, .artistNameHead {
     font-family: "bombing";
     font-size: "50px";
 }
@@ -123,7 +128,9 @@ li.artistCollabs {
   background: rgba(20, 20, 20, 0.6);
   margin-bottom: 2px;
   color: white;
-  font-family: "syncopateRegular";
+  font-family: "paintBrush";
+  font-size: 30px;
+  cursor: pointer;
 }
 
 li.artistCollabs:hover {
@@ -170,13 +177,16 @@ li.artistCollabs:hover {
   text-align: center;
   height: 40px; /* has to be the same as the li height */
   line-height: 40px;
+  overflow: hidden;
 }
 
-#sourceRegion, #targetRegion {
+#sourceRegion, #targetRegion, #helpDiv {
   width: 50%;
   float: left;
   text-align: center;
-  font-family: "bombing";
+  font-family: "paintBrush";
+  font-weight: bold;
+  letter-spacing: 3px;
 }
 
 #search {

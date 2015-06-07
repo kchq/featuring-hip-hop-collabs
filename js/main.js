@@ -31,6 +31,14 @@ var prevYear = startYear;
 var currentYear = startYear;
 var scaleExtentGeometric = Math.round(((presentYear - startYear) / scrollSensitivity) + 1);
 var scaleExtentLinear = Math.round(Math.log(scaleExtentGeometric) + 1);
+var searchedArtist = "";
+
+var mouseX;
+var mouseY;
+$(document).mousemove( function(e) {
+   mouseX = e.pageX; 
+   mouseY = e.pageY;
+}); 
 
 var zoom = d3.behavior.zoom()
   //.scaleExtent([1, scaleExtentGeometric])
@@ -38,6 +46,37 @@ var zoom = d3.behavior.zoom()
     // console.log(zoom.scale() + " " + zoomMapping(zoom.scale()));
     // console.log(scaleExtentGeometric + " " + scaleExtentLinear);
     moveThroughTimeScrolling();
+  });
+
+var artistTip = d3.tip()
+  .attr('class', 'd3-region-tip')
+  .html(function(d) {
+    return "<div>" + d.name + "</div>"
+  });
+
+var artistLinkTip = d3.tip()
+  .attr('class', 'd3-region-tip')
+  .direction('c')
+  .html(function(d) {
+    var linksPerYear = d.linksPerYear;
+    var artist1;
+    var artist2;
+    for (var links in linksPerYear) {
+         linksYear = linksPerYear[links];
+         for (var i = 0; i < linksYear.length; i++) {
+             artist1 = artistNodes[linksYear[i].source];
+             artist2 = artistNodes[linksYear[i].target];
+             break;
+         }
+         break;
+    }
+
+    if (artist1 !== undefined && artist2 !== undefined) {
+      console.log(artist1.name + " " + artist2.name);
+      return "<div>" + artist1.name + " and " + artist2.name + "</div>";
+    } else {
+      return "yay";
+    }
   });
 
 var regionTip = d3.tip()
@@ -139,12 +178,12 @@ function setUpSearch() {
   $("#searchError").css("font-weight", "bold");
   $("#searchError").css("padding-left", "10px");
   $("#searchError").css("left", ($(window).width() * 0.72) + "px");
-  $("#searchError").css("top", ($(window).height() * 0.08) + "px");
+  $("#searchError").css("top", ($(window).height() * 0.03) + "px");
   $("#searchError").css("position", "absolute");
 
   $("#searchArea").css("padding-left", "10px");
   $("#searchArea").css("left", ($(window).width() * 0.72) + "px");
-  $("#searchArea").css("top", ($(window).height() * 0.045) + "px");
+  $("#searchArea").css("top", ($(window).height() * 0.01) + "px");
   $("#searchArea").css("position", "absolute");
 
    $("#searchbutton").on("click", searchArtist);
@@ -180,17 +219,22 @@ function searchArtist() {
         if (isZoomed) {
           zoomOut();
         }
+
+        if (currentYear < startYear || currentYear > endYear) {
+          moveThroughTimeSliding(startYear);
+        }
+
         zoomToRegion(node);
         
-        if (currentYear < startYear || currentYear > endYear) {
-          moveThroughTimeRegionalSliding(startYear);
-        }
+
         if (node.id === "NE" && artistNode.state === "NY") {
           setTimeout(function() {
             $("#nyCircle").d3Click();
-            console.log(artistNode);
+            searchedArtist = artistNode.name;
           }, 1500);
-        }
+        } else {
+          searchedArtist = artistNode.name;
+        } 
       } 
 
     });
@@ -543,7 +587,7 @@ function addRegionLinkTooltips(regionLink) {
   if (regionLinkTemp) {
     regionLinkTemp.call(regionLinkTip);
   }
-  regionLink.on("mouseenter", function(d) {
+  regionLink.on("mouseover", function(d) {
     d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#ddd");
     regionLinkTip.show(d);
   });
@@ -810,6 +854,9 @@ function setUpCurrentArtistNodes(region, x, y, k) {
           return "artistNode";
         }
       })
+      .attr("name", function(d) {
+        return d.name;
+      })
       .call(artistForce.drag);
 
   artistForce.start();
@@ -870,13 +917,16 @@ function setUpCurrentArtistNodes(region, x, y, k) {
     .style("stroke-width", "0.5px");
 
   // draw a ring on hover
+  currentArtistNode.call(artistTip);
   currentArtistNode.on("mouseenter", function(d) { 
     if (d == nyNode) { return; }
     artistMouseEnter(d);
+    artistTip.show(d);
   });
   currentArtistNode.on("mouseleave", function(d) { 
     if (d == nyNode) { return; }
     artistMouseLeave(d);
+    artistTip.hide(d);
   });
   currentArtistNode.on("click", function(d) {
     if (d == nyNode) { return; }
@@ -905,10 +955,24 @@ function getArtistImageName(name) {
 }
 
 function updateRegionalArtists(region, x, y, k) {
-  svg.selectAll(".currentArtistNode")
+  var currentArtistNode = svg.selectAll(".currentArtistNode")
     .style("display", function(d) {
       if (!shouldShowArtist(region, d)) {
         return "none";
+      }
+    });
+
+    currentArtistNode.each(function(d) {
+      if (d.name === searchedArtist) {
+        
+        setTimeout(function() {
+          artistMouseEnter(d, 3);
+        }, 200);
+        searchedArtist = "";
+
+        setTimeout(function() {
+          artistMouseLeave(d);
+        }, 2000);
       }
     });
 
@@ -937,13 +1001,17 @@ function createArtistLinks(region, k, x, y) {
       .attr('y2', function(d) { return d.targetY; })
       .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
       .style("stroke-width", "0px")
+      .call(artistLinkTip)
       .on("mouseenter", function(d) {
         d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
           .style("stroke", "#ddd");
+        artistLinkTip.show(d);
       })
       .on("mouseleave", function(d) {
         d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
           .style("stroke", "#777");
+        artistLinkTip.hide(d);
+
       })
       .on("click", function(d) {
         headViewMultipleArtist(d.linksPerYear, false);
@@ -1080,17 +1148,21 @@ function updateArtistLinks(scale) {
     });
 }
 
-function artistMouseEnter(d) {
+function artistMouseEnter(d, scale) {
+  var circleSize = artistCircleSize;
+  if (scale) {
+    circleSize = artistCircleSize * scale;
+  }
   $("#" + getArtistImageName(d.name) + "_mask")
-    .attr("r", artistCircleSize);
+    .attr("r", circleSize);
   $("#" + getArtistImageName(d.name) + "_image")
-    .attr("x", function() { xy = getXY(d); if (xy == null) return; return xy[0] - artistCircleSize; })
-    .attr("y", function() { xy = getXY(d); if (xy == null) return; return xy[1] - artistCircleSize; })
-    .attr("width", artistCircleSize * 2)
-    .attr("height", artistCircleSize * 2);
+    .attr("x", function() { xy = getXY(d); if (xy == null) return; return xy[0] - circleSize; })
+    .attr("y", function() { xy = getXY(d); if (xy == null) return; return xy[1] - circleSize; })
+    .attr("width", circleSize * 2)
+    .attr("height", circleSize * 2);
   $("#" + getArtistImageName(d.name) + "_ring")
     .css("stroke", "#FF5655")
-    .attr("r", artistCircleSize);
+    .attr("r", circleSize);
 }
 
 function artistMouseLeave(d) {
@@ -1149,22 +1221,32 @@ function moveThroughTimeSliding(newYear) {
 }
 
 function moveThroughTimeRegionalScrolling() {
+  var firefox = false;
   if (d3.event.sourceEvent.type=='wheel'){
-      if (d3.event.sourceEvent.wheelDeltaY){
-        if (d3.event.sourceEvent.wheelDeltaY > 0){
-          currentYear = Math.min(presentYear, Math.round(currentYear + d3.event.sourceEvent.wheelDeltaY/30 + 1));
-        } else if (d3.event.sourceEvent.wheelDelta < 0) {
-          currentYear = Math.max(startYear, Math.round(currentYear + d3.event.sourceEvent.wheelDeltaY/30 - 1));
+      var deltaY = d3.event.sourceEvent.wheelDeltaY;
+      if (!deltaY) {
+        // firefox
+        deltaY = -1 * d3.event.sourceEvent.deltaY;
+        firefox = true;
+      } 
+      if (deltaY){
+        if (deltaY > 0){
+          currentYear = Math.min(presentYear, Math.round(currentYear + deltaY/30 + 1));
+        } else if (deltaY < 0) {
+          currentYear = Math.max(startYear, Math.round(currentYear + deltaY/30 - 1));
         }
       } 
+
     slider.value(currentYear);
     updateRegionalArtists(currentRegion, currentX, currentY, currentK);
     updateNarration();
 
-    zoom.on("zoom", null);
-    setTimeout(function(){
-      zoom.on("zoom", moveThroughTimeRegionalScrolling);
-    }, 150);
+    if (!firefox) {
+      zoom.on("zoom", null);
+      setTimeout(function(){
+        zoom.on("zoom", moveThroughTimeRegionalScrolling);
+      }, 150);
+    }
   }
 }
 
