@@ -589,6 +589,21 @@ function updateRegionLinks() {
 }
 
 function pathCalculation(d) {
+  var xMult = 5.0;
+  var yMult = 15.0;
+  
+  var newMult = bezierScale[d.source.id + "-" + d.target.id];
+  if (newMult === undefined) {
+    newMult = bezierScale[d.target.id + "-" + d.source.id];
+  }
+  if (newMult !== undefined) {
+    xMult = newMult[0];
+    yMult = newMult[1];
+  }
+  return bezierPath(d, xMult, yMult);
+}
+
+function bezierPath(d, xMult, yMult) {
   if (d.source != d.target) {
     var start = d.source;
     var end = d.target;
@@ -607,20 +622,8 @@ function pathCalculation(d) {
 
     var xDiff = xEnd - xStart;
     var yDiff = Math.abs(yEnd - yStart);
-    var xMult = 5.0;
-    var yMult = 15.0;
-    
-    var newMult = bezierScale[d.source.id + "-" + d.target.id];
-    if (newMult === undefined) {
-      newMult = bezierScale[d.target.id + "-" + d.source.id];
-    }
-    if (newMult !== undefined) {
-      xMult = newMult[0];
-      yMult = newMult[1];
-    }
-
     var xOffset = xStart + transform * xMult * yDiff / xDiff;
-    var yOffset = yEnd + (yMult * xDiff / yDiff) * transform; // yStart + (transform * Math.abs(yEnd - yStart) / 4.0);
+    var yOffset = yEnd + (yMult * xDiff / yDiff) * transform;
 
     return 'M' + xStart + ', ' + yStart + ' ' +
            'C' + xStart + ', ' + yStart + ', ' +
@@ -1080,32 +1083,31 @@ function createArtistLinks(region, k, x, y) {
       .data(artistLinksTemp)
       .enter();
 
-  artistLinkInteraction = artistLink.append('line')
+  artistLinkInteraction = artistLink.append('path')
       .data(artistLinksTemp)
       .attr('class', 'artistLinkInteractionArea')
-      .attr('x1', function(d) { return d.sourceX; })
-      .attr('y1', function(d) { return d.sourceY; })
-      .attr('x2', function(d) { return d.targetX; })
-      .attr('y2', function(d) { return d.targetY; })
+      // .attr('x1', function(d) { return d.sourceX; })
+      // .attr('y1', function(d) { return d.sourceY; })
+      // .attr('x2', function(d) { return d.targetX; })
+      // .attr('y2', function(d) { return d.targetY; })
       .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+      .attr("fill", "none")
       .style("stroke-width", "0px")
       .call(artistLinkTip);
 
-  artistLink = artistLink.append('line')
+  artistLink = artistLink.append('path')
     .attr('class', 'artistLink')
     .attr('id', function(d) {
       return "index" + d.source + "-index" + d.target;
     })
-    .attr('x1', function(d) { return d.sourceX; })
-    .attr('y1', function(d) { return d.sourceY; })
-    .attr('x2', function(d) { return d.targetX; })
-    .attr('y2', function(d) { return d.targetY; })
+    // .attr('x1', function(d) { return d.sourceX; })
+    // .attr('y1', function(d) { return d.sourceY; })
+    // .attr('x2', function(d) { return d.targetX; })
+    // .attr('y2', function(d) { return d.targetY; })
     .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+    .attr("fill", "none")
     .style("stroke-width", "0px");
     
-
-  //addRegionLinkTooltips(regionLinkInteraction);
-
   return artistLinksTemp;
 }
 
@@ -1254,7 +1256,13 @@ function updateArtistLinks(scale) {
     }
   });
 
-  artistLink.style("stroke-width", function(d) {
+  artistLink.attr('d', function(d) {
+      if (d.numLinks > 0 && d.source != d.target &&
+          shouldShowArtist(currentRegion, d.source) &&
+          shouldShowArtist(currentRegion, d.target)) {
+        return bezierPathArtist(d, 2.0 / scale, 5.0 / scale);      }
+    })
+    .style("stroke-width", function(d) {
       if (d.source != d.target &&
           shouldShowArtist(currentRegion, d.source) &&
           shouldShowArtist(currentRegion, d.target)) {
@@ -1273,7 +1281,14 @@ function updateArtistLinks(scale) {
       }
     });
 
-  d3.selectAll(".artistLinkInteractionArea").style("stroke-width", function(d) {
+  d3.selectAll(".artistLinkInteractionArea").attr('d', function(d) {
+      if (d.numLinks > 0 && d.source != d.target &&
+          shouldShowArtist(currentRegion, d.source) &&
+          shouldShowArtist(currentRegion, d.target)) {
+        return bezierPathArtist(d, 2.0 / scale, 5.0 / scale);
+      }
+    })
+    .style("stroke-width", function(d) {
       if (d.source != d.target &&
           shouldShowArtist(currentRegion, d.source) &&
           shouldShowArtist(currentRegion, d.target)) {
@@ -1296,6 +1311,37 @@ function updateArtistLinks(scale) {
       }
     });
 
+}
+
+function bezierPathArtist(d, xMult, yMult) {
+  if (d.source != d.target) {
+    var xStart = d.sourceX;
+    var yStart = d.sourceY;
+    var xEnd = d.targetX;
+    var yEnd = d.targetY;
+    if (d.sourceX > d.targetX) {
+      xStart = d.targetX;
+      yStart = d.targetY;
+      xEnd = d.sourceX;
+      yEnd = d.sourceY;
+    }
+    var transform = 1;
+    if (yStart > yEnd) {
+      transform = -1;
+    }
+    // xStart -= mapTranslateLeft;
+    // xEnd -= mapTranslateLeft;
+
+    var xDiff = xEnd - xStart;
+    var yDiff = Math.abs(yEnd - yStart);
+    var xOffset = xStart + transform * xMult * yDiff / xDiff;
+    var yOffset = yEnd + (yMult * xDiff / yDiff) * transform;
+
+    return 'M' + xStart + ', ' + yStart + ' ' +
+           'C' + xStart + ', ' + yStart + ', ' +
+           xOffset + ', ' + yOffset + ', ' + 
+           xEnd + ', ' + yEnd;
+  }
 }
 
 
