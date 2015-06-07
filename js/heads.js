@@ -641,14 +641,16 @@ function headViewRegionLink(artists) {
             .append("li")
             .attr("class", "artistCollabs")
             .html(function(d) { 
-              var sourceArtist = artistNodes[pair.split("_")[0]];
-              var targetArtist = artistNodes[pair.split("_")[1]];
-              if (sourceArtist.region != source) {
-                sourceArtist = artistNodes[pair.split("_")[1]];
-                targetArtist = artistNodes[pair.split("_")[0]];
+              var sourceId = pair.split("_")[0];
+              var targetId = pair.split("_")[1];
+              if (artistNodes[sourceId].region != source) {
+                sourceId = pair.split("_")[1];
+                targetId = pair.split("_")[0];
               }
+              var sourceArtist = artistNodes[sourceId];
+              var targetArtist = artistNodes[targetId];
               return "<div class='artistPair'><div class='sourceArtist'>" + sourceArtist.name + "</div><div class='targetArtist'>" + targetArtist.name + "</div></div>"; });
-        li.on("click", function(d) { prevArtists = artists; closeHead(); headViewMultipleArtist(d, true); });
+        li.on("click", function(d) { prevArtists = artists; closeHead(); headViewMultipleArtist(d, true, sourceId, targetId); });
     } 
 
     gh.append("text")
