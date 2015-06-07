@@ -3,12 +3,18 @@
 // lat and lon are the coordinates of where the region circle are drawn, zlat and zlon are the center of zoom when 
 // the region is zoomed in on
 var regionNodes = [
-  {"id":"W", "name": "Washington", "lon": 122.3331, "lat": 47.609, "zlon": 122.3331, "zlat": 47.609, "color": "#3AA827", "ringColor": "#1A9817", "scale": 32, "numArtists":0, "artistsPerYear":{}},
-  {"id":"NE", "name": "North East", "lon": 74.0059, "lat": 40.7127, "zlon": 76, "zlat": 40.5, "color": "#4682B4", "ringColor": "#265294", "scale": 7, "numArtists":0, "artistsPerYear":{}},
-  {"id":"NC", "name": "North California", "lon": 122, "lat": 37.8, "zlon": 121.8, "zlat": 38.1, "color": "#FFE303", "ringColor": "#EEC900", "scale": 24, "numArtists":0, "artistsPerYear":{}},
-  {"id":"SC", "name": "South California", "lon": 118.5, "lat": 34.2, "zlon": 118.6, "zlat": 34, "color": "#E39612", "ringColor": "#C37602", "scale": 36, "numArtists":0, "artistsPerYear":{}},
-  {"id":"S", "name": "South", "lon": 85, "lat": 32, "zlon": 86, "zlat": 32, "color": "#BF113A", "ringColor": "#9F011A", "scale": 2.3, "numArtists":0, "artistsPerYear":{}},
-  {"id":"MW", "name": "Mid West", "lon": 87.6847, "lat": 40, "zlon": 87.2, "zlat": 41.5, "color": "#A314A8", "ringColor": "#830488", "scale": 4, "numArtists":0, "artistsPerYear":{}}
+  {"id":"W", "name": "Washington", "lon": 122.3331, "lat": 47.609, "zlon": 122.3331, "zlat": 47.609, "color": "#3AA827", "ringColor": "#1A9817", "scale": 32, "numArtists":0, "artistsPerYear":{},
+   "points": [ { "lat": 49,  "lon": 122},  { "lat": 47.5,  "lon": 120}, { "lat": 45.5,  "lon": 122}, { "lat": 47.5,  "lon": 125} ] },
+  {"id":"NE", "name": "North East", "lon": 74.0059, "lat": 40.7127, "zlon": 76, "zlat": 40.5, "color": "#4682B4", "ringColor": "#265294", "scale": 7, "numArtists":0, "artistsPerYear":{},
+   "points": [ { "lat": 41,  "lon": 83}, { "lat": 43,  "lon": 72}, { "lat": 41,  "lon": 73}, {"lat": 39, "lon": 74}, { "lat": 38,  "lon": 77} ] },
+  {"id":"NC", "name": "North California", "lon": 122, "lat": 37.8, "zlon": 121.8, "zlat": 38.1, "color": "#FFE303", "ringColor": "#EEC900", "scale": 24, "numArtists":0, "artistsPerYear":{},
+  "points": [ { "lat": 40,  "lon": 123.5}, { "lat": 39,  "lon": 120}, { "lat": 37,  "lon": 121}, { "lat": 36.5,  "lon": 122}, { "lat": 37.5,  "lon": 124} ] },
+  {"id":"SC", "name": "South California", "lon": 118.5, "lat": 34.2, "zlon": 118.6, "zlat": 34, "color": "#E39612", "ringColor": "#C37602", "scale": 36, "numArtists":0, "artistsPerYear":{},
+   "points": [ { "lat": 37.5,  "lon": 120}, { "lat": 34,  "lon": 115}, { "lat": 31.5,  "lon": 116.5}, { "lat": 34,  "lon": 122} ] },
+  {"id":"S", "name": "South", "lon": 85, "lat": 32, "zlon": 86, "zlat": 32, "color": "#BF113A", "ringColor": "#9F011A", "scale": 2.3, "numArtists":0, "artistsPerYear":{},
+   "points": [ { "lat": 36,  "lon": 90}, { "lat": 39.5,  "lon": 70}, { "lat": 24,  "lon": 79}, { "lat": 24,  "lon": 81}, { "lat": 27,  "lon": 90}, { "lat": 29.5,  "lon": 102.5} ] },
+  {"id":"MW", "name": "Mid West", "lon": 87.6847, "lat": 39, "zlon": 87.2, "zlat": 41.5, "color": "#A314A8", "ringColor": "#830488", "scale": 4, "numArtists":0, "artistsPerYear":{},
+   "points": [ { "lat": 40,  "lon": 96}, { "lat": 38.5,  "lon": 95}, { "lat": 38,  "lon": 87}, { "lat": 37,  "lon": 84}, { "lat": 41,  "lon": 80}, { "lat": 43,  "lon": 83}, { "lat": 46,  "lon": 93}, { "lat": 45,  "lon": 94} ]}
 ]
 
 var nyNode = {"id":"NY", "name": "New York", "lon": 74.0059, "lat": 40.7127, "zlon": 73.7, "zlat": 40.65, "color": "#1662A4", "ringColor": "#024274", "scale": 54 };
@@ -94,6 +100,7 @@ function init(error) {
   setupMap();
   drawMap();
   drawSlider();
+  svg.append("defs");
   createRegions();
   setUpRegions();
   setUpSearch();
@@ -258,48 +265,6 @@ function createRegions() {
     node["y"] = regionY;
     node["fixed"] = true;
   });
-
-  var pathBlobs = svg.append("g")
-                     .attr("transform", "translate(" + (-1 * mapTranslateLeft) + ",0)");
-  var regionBlobs = { "W": { "points": [ { "lat": 49,  "lon": 122},  { "lat": 47.5,  "lon": 120},
-                                  { "lat": 45.5,  "lon": 122}, { "lat": 47.5,  "lon": 125} ],
-                              "color": "green" },
-                      "NC": { "points": [ { "lat": 40,  "lon": 123.5}, { "lat": 38.5,  "lon": 120}, { "lat": 36.5,  "lon": 120}, 
-                                  { "lat": 35.5,  "lon": 122}, { "lat": 37.5,  "lon": 124} ],
-                              "color": "yellow" },
-                      "SC": { "points": [ { "lat": 37.5,  "lon": 120}, { "lat": 34,  "lon": 115}, { "lat": 31.5,  "lon": 116.5}, 
-                                  { "lat": 34,  "lon": 122} ],
-                              "color": "orange" },
-                      "MW": { "points": [ { "lat": 38.5,  "lon": 95}, { "lat": 38,  "lon": 84}, { "lat": 41,  "lon": 80}, 
-                                  { "lat": 43,  "lon": 83}, { "lat": 45,  "lon": 94} ],
-                              "color": "magenta" },
-                      "S": { "points": [ { "lat": 35,  "lon": 90}, { "lat": 40,  "lon": 71}, { "lat": 24,  "lon": 80}, 
-                                  { "lat": 27,  "lon": 90}, { "lat": 30,  "lon": 100} ],
-                              "color": "red" },
-                      "NE": { "points": [ { "lat": 41,  "lon": 83}, { "lat": 43,  "lon": 72}, 
-                                  { "lat": 41,  "lon": 73}, {"lat": 39, "lon": 74}, { "lat": 38,  "lon": 77} ],
-                              "color": "blue" } 
-                    };
-  for (var region in regionBlobs) {
-    var regionBlob = regionBlobs[region];
-    var lineFunction = d3.svg.line()
-      .x(function(d) { return projection([-1*d.lon,d.lat])[0]; })
-      .y(function(d) { return projection([-1*d.lon,d.lat])[1]; })
-      .interpolate("basis-closed");
-    pathBlobs.append("path")
-        .attr("d", lineFunction(regionBlob.points))
-        .attr("stroke", "black")
-        .attr("stroke-width", 2)
-        .attr("class", "regionBlob")
-        .attr("fill", regionBlob.color)
-        .style("opacity", 0.2)
-        .on("mouseenter", function() {
-          d3.select(this).style("opacity", 0.5);
-        })
-        .on("mouseout", function() {
-          d3.select(this).style("opacity", 0.2);
-        });
-  }
 }
 
 function setUpRegions() {
@@ -307,43 +272,87 @@ function setUpRegions() {
 
   // path first for correct z-index ordering
   setUpRegionLinks();
+  var lineFunction = d3.svg.line()
+      .x(function(d) { return projection([-1*d.lon,d.lat])[0]; })
+      .y(function(d) { return projection([-1*d.lon,d.lat])[1]; })
+      .interpolate("basis-closed");
+
+  var regionNodeMasks = svg.selectAll(".regionMaskBLeh")
+    .data(regionNodes)
+    .enter().append("g")
+    .append("path")
+      .attr("transform", "translate(" + (-1 * mapTranslateLeft) + ",0)")
+      .attr("d", function(d) { return lineFunction(d.points); })
+      .attr("fill", "black");
+
+  // the mask shows anything that is white and hides parts that are black.
+  var mask = d3.select("defs").append("svg:mask")
+                 .attr("id", "regionMask");
+  mask.append("rect").attr("width", "100%").attr("height", "100%").attr("fill", "white");
+  for (var i = 0; i < regionNodes.length; i++) {
+    mask.node().appendChild(regionNodeMasks[0][i]);
+  }
 
   regionNode = svg.selectAll(".regionNode")
     .data(regionNodes)
     .enter().append("g")
-    .attr("class", "regionNode")
-    .attr("title", function(d) { return d.id; })
-    .call(force.drag)
-    .append("svg:circle")
-      .style("fill", function(d) {
-        return d.color;
-      })
+    .append("path")
+      .attr("transform", "translate(" + (-1 * mapTranslateLeft) + ",0)")
+      .attr("d", function(d) { return lineFunction(d.points); })
+      .attr("stroke", "black")
+      .attr("stroke-width", 2)
+      .attr("class", "regionNode")
+      .attr("fill", function(d) { return d.color; })
+      .style("opacity", 0.3)
       .on("click", function(d) {
         zoomToRegion(d); 
       });
+
   addRegionTooltips(regionNode);
+  
+  for (var artist in artistNodes) {
+    var node = artistNodes[artist];
+    if (node.start_year <= currentYear && (node.end_year === 'present'||
+             node.end_year >= currentYear)) {
+      svg.append("circle")
+        .attr("transform", "translate(" + (-1 * mapTranslateLeft) + ",0)")
+        .attr("class", "tinyArtistDot")
+        .attr("cx", function() { xy = getXY(node); if (xy == null) return; return xy[0] })
+        .attr("cy", function() { xy = getXY(node); if (xy == null) return; return xy[1] })
+        .attr("r", 3)
+        .attr("fill", "#000");
+    }
+  }
 }
 
 function updateRegions() {
-  regionNodes.forEach(function(d) {
-    calculateArtists(d);
-  });
-
-  d3.selectAll("circle").transition().duration(100).attr("r", function(d) { 
-    return Math.max(0, 10 * Math.log(d.numArtists) + 4); 
-  });
-
+  d3.selectAll(".tinyArtistDot").remove();
+  for (var artist in artistNodes) {
+    var node = artistNodes[artist];
+    if (node.start_year <= currentYear && (node.end_year === 'present'||
+             node.end_year >= currentYear)) {
+      svg.append("circle")
+        .attr("transform", "translate(" + (-1 * mapTranslateLeft) + ",0)")
+        .attr("class", "tinyArtistDot")
+        .attr("cx", function() { xy = getXY(node); if (xy == null) return; return xy[0] })
+        .attr("cy", function() { xy = getXY(node); if (xy == null) return; return xy[1] })
+        .attr("r", 3)
+        .attr("fill", "#000");
+    }
+  }
   updateRegionLinks();
 }
 
 function addRegionTooltips(regionNode) {
   regionNode.call(regionTip);
   regionNode.on("mouseover", function(d) {
+    d3.select(this).style("opacity", 0.5);
     d3.select(this).style("stroke-width", "3px").style("stroke", d.ringColor);
     regionTip.show(d);
   });
   regionNode.on("mouseout", function(d) {
-    d3.select(this).style("stroke-width", "0px");
+    d3.select(this).style("opacity", 0.3);
+    d3.select(this).style("stroke-width", "2px").style("stroke", d.ringColor);;
     regionTip.hide(d);
   });
 }
@@ -353,7 +362,7 @@ function hideRegions() {
   regionLink.style("stroke-width", "0px");
   d3.selectAll(".regionLinkInteractionArea").style("stroke-width", "0px");
   d3.selectAll(".d3-region-tip").remove();
-  d3.selectAll(".regionBlob").style("visibility", "hidden");
+  d3.selectAll(".regionNode").style("visibility", "hidden");
 }
 
 function calculateArtists(node) {
@@ -381,6 +390,7 @@ function setUpRegionLinks() {
         .attr('y1', function(d) { return regionNodes[d.source].y; })
         .attr('x2', function(d) { return regionNodes[d.target].x  - mapTranslateLeft; })
         .attr('y2', function(d) { return regionNodes[d.target].y; })
+        .attr("mask", "url(#regionMask)")
         .style("stroke-width", "0px")
         .on("mouseenter", function(d) {
           d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#ddd");
@@ -398,6 +408,7 @@ function setUpRegionLinks() {
         .attr('y1', function(d) { return regionNodes[d.source].y; })
         .attr('x2', function(d) { return regionNodes[d.target].x; })
         .attr('y2', function(d) { return regionNodes[d.target].y; })
+        .attr("mask", "url(#regionMask)")
         .style("stroke-width", "0px")
         .on("click", function(d) {
           regionLinkClickHandler(d);
@@ -429,8 +440,11 @@ function computeRegionLinks(){
 function getLink(links, sourceIndex, targetIndex) {
   for (var i = 0; i < links.length; i++) {
     var link = links[i];
-    if (link.source == sourceIndex && link.target == targetIndex) {
+    if (link.source === sourceIndex && link.target === targetIndex) {
       // found the link
+      return link;
+    } else if (link.target === sourceIndex && link.source === targetIndex) {
+      // found the link in the other direction but that's fine
       return link;
     }
   }
@@ -597,12 +611,14 @@ function zoomToRegion(region) {
 
 function zoomOut() {
   zoom.on("zoom", null);
+  // hide stuff already on screen
+  svg.selectAll(".currentArtistNode").remove();
+  svg.selectAll(".artistLink").remove();
+  svg.selectAll(".clippath").remove();
+  svg.selectAll("#nyCircle").remove();
+  svg.selectAll("#nyBlob").remove();
   if (inNY) {
     inNY = false;
-    svg.selectAll(".currentArtistNode").remove();
-    svg.selectAll(".artistLink").remove();
-    svg.selectAll(".clippath").remove();
-    svg.selectAll("#nyCircle").remove();
     zoomToRegion(regionNodes[1]);
   } else {
     if (currentRegion === 'NE') {
@@ -612,12 +628,6 @@ function zoomOut() {
     x = width / 2;
     y = height / 2;
     k = 1;
-
-    // hide stuff already on screen
-    svg.selectAll(".currentArtistNode").remove();
-    svg.selectAll(".artistLink").remove();
-    svg.selectAll(".clippath").remove();
-    svg.selectAll("#nyCircle").remove();
 
     var regionNode = svg.selectAll('.regionNode');
     addRegionTooltips(regionNode);
@@ -637,7 +647,7 @@ function zoomOut() {
         slider.on("slide", function(evt, value) {
           moveThroughTimeSliding(value);
         });
-        d3.selectAll(".regionBlob").style("visibility", "visible");
+        d3.selectAll(".regionNode").style("visibility", "visible");
         updateRegions();
       });
     isZoomed = false;
@@ -710,44 +720,69 @@ function createRegionalArtists(region, x, y, k) {
 
   if (region === 'NE' && !inNY) {
     svg.append('circle')
-        .attr("id", "nyCircle")
-        .attr("fill", nyNode.color)
-        .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-        .attr("cx", projection([-1*lon, lat])[0])
-        .attr("cy", projection([-1*lon, lat])[1])
-        .attr("r", function(d) { 
-          return Math.max(0, 10 * Math.log(nyCount) + 4) / k; 
-        })
-        .on("click", function() {
-          svg.selectAll(".currentArtistNode").remove();
-          svg.selectAll(".artistLink").remove();
-          svg.selectAll(".clippath").remove();
-          svg.selectAll("#nyCircle").remove();
-          currentK = nyK;
-          d3.selectAll(".d3-region-tip").remove();
-          g.transition()
-            .duration(750)
-            .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + nyK + ")translate(" + -nyX + "," + -nyY + ")")
-            .style("stroke-width", 1.5 / nyK + "px")
-            .each("end", function() {
-              inNY = true;
-              var artistLinksTemp = createArtistLinks(region, nyK, nyX, nyY);
-              currentArtistLinks = artistLinksTemp;
-              setUpCurrentArtistNodes(region, nyX, nyY, nyK);
-            });
+      .attr("id", "nyCircle")
+      .attr("fill", nyNode.color)
+      .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+      .attr("cx", projection([-1*lon, lat])[0])
+      .attr("cy", projection([-1*lon, lat])[1])
+      .attr("r", function(d) { 
+        return Math.max(0, 10 * Math.log(nyCount) + 4) / k; 
+      })
+      .on("click", function() {
+        svg.selectAll(".currentArtistNode").remove();
+        svg.selectAll(".artistLink").remove();
+        svg.selectAll(".clippath").remove();
+        svg.selectAll("#nyCircle").remove();
+        svg.selectAll("#nyBlob").remove();
+        currentK = nyK;
+        d3.selectAll(".d3-region-tip").remove();
+        g.transition()
+          .duration(750)
+          .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + nyK + ")translate(" + -nyX + "," + -nyY + ")")
+          .style("stroke-width", 1.5 / nyK + "px")
+          .each("end", function() {
+            inNY = true;
+            var artistLinksTemp = createArtistLinks(region, nyK, nyX, nyY);
+            currentArtistLinks = artistLinksTemp;
+            setUpCurrentArtistNodes(region, nyX, nyY, nyK);
+          });
+      });
+
+    nyCircle = d3.select("#nyCircle");
+
+    nyCircle.call(regionTip);
+    nyCircle.on("mouseover", function() {
+        d3.select(this).style("stroke-width", 0.5 + "px").style("stroke", nyNode.ringColor);
+          regionTip.show(nyNode);
+        });
+    nyCircle.on("mouseout", function() {
+        d3.select(this).style("stroke-width", "0px");
+          regionTip.hide(nyNode);
         });
 
-      nyCircle = d3.select("#nyCircle");
-
-      nyCircle.call(regionTip);
-      nyCircle.on("mouseover", function() {
-          d3.select(this).style("stroke-width", 0.5 + "px").style("stroke", nyNode.ringColor);
-            regionTip.show(nyNode);
-          });
-      nyCircle.on("mouseout", function() {
-          d3.select(this).style("stroke-width", "0px");
-            regionTip.hide(nyNode);
-          });
+    var nyBlob = { "points": [ { "lat": 40.93, "lon": 73.83},  { "lat": 40.845, "lon": 73.3},
+                                { "lat": 40.7297, "lon": 73}, { "lat": 40.4, "lon": 73.89 },
+                                { "lat": 40.545, "lon": 74.16 }, { "lat": 40.76, "lon": 74.03 } ],
+                            "color": "blue" };
+    var nyBlobOhYeah = svg.append("g")
+                          .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
+    var lineFunction = d3.svg.line()
+      .x(function(d) { return projection([-1*d.lon,d.lat])[0]; })
+      .y(function(d) { return projection([-1*d.lon,d.lat])[1]; })
+      .interpolate("basis-closed");
+    nyBlobOhYeah.append("path")
+        .attr("d", lineFunction(nyBlob.points))
+        .attr("stroke", "black")
+        .attr("stroke-width", 0.5)
+        .attr("id", "nyBlob")
+        .attr("fill", nyBlob.color)
+        .style("opacity", 0.2)
+        .on("mouseenter", function() {
+          d3.select(this).style("opacity", 0.5);
+        })
+        .on("mouseout", function() {
+          d3.select(this).style("opacity", 0.2);
+        });
   }
 
   setUpCurrentArtistNodes(region, x, y, k);
@@ -777,7 +812,7 @@ function setUpCurrentArtistNodes(region, x, y, k) {
     if (xy == null) {
       return;
     }
-    svg.append('clipPath')
+    d3.select("defs").append('clipPath')
       .attr("id", getArtistImageName(d.name))
       .attr("class", "clippath")
       .append("circle")
@@ -975,8 +1010,12 @@ function updateArtistLinks(scale) {
   });
 
   artistLink.style("stroke-width", function(d) {
-      if (d.source != d.target) {
+      if (d.source != d.target &&
+          shouldShowArtist(currentRegion, d.source) &&
+          shouldShowArtist(currentRegion, d.target)) {
         return Math.max(0, (3.0 / scale) * Math.log(2 * d.numLinks)) + "px"; 
+      } else {
+        return "0px";
       }
     });
 }
@@ -1111,11 +1150,31 @@ function parseData() {
         var sourceIndex = artistMap[artist];
         if (sourceIndex >= 0) {
           var targetArtists = collabs[artist];
+
+          //Iterate through each collabing artist
           for (var targetArtist in targetArtists) {
             var targetIndex = artistMap[targetArtist];
             var tracks = targetArtists[targetArtist]
+
+            //Iterate through each artists songs
             for (var i = 0; i < tracks.length; i++) {
                 singleHeadCollabMap[artist].push(tracks[i]);
+                if (singleHeadCollabMap[targetArtist] == undefined) {
+                   singleHeadCollabMap[targetArtist] = [];
+                }
+                singleHeadCollabMap[targetArtist].push(tracks[i]);
+                /*   
+                //Iterate through artist credit to give credit bi-directionally.
+                for (var j = 0; j < tracks[i].artist_credit.length; j++) {
+                    var otherArtist = tracks[i].artist_credit[j];
+                    if (otherArtist !== artist) {
+                       if (singleHeadCollabMap[artist] == undefined) {
+                          singleHeadCollabMap[artist] = [];
+                       }
+                       singleHeadCollabMap[otherArtist].push(tracks[i]);
+                    }
+                }
+                */
             }
             if (targetIndex >= 0) {
               // we have both a source and a target, so let's add all the songs as links
