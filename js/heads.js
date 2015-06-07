@@ -3,7 +3,7 @@ yStart = $(window).height() * 0.05
 headHeight= $(window).height() * 0.90;
 headWidth = $(window).width() * 0.70;
 image1X = xStart * .3;
-image2X = xStart * 1.9;
+image2X = xStart * 1.3;
 imageY = yStart * .4
 imageWidth = headWidth * 0.20
 
@@ -557,20 +557,21 @@ function headViewRegionLink(artists, regionSource, regionTarget) {
     var targetName = $("<div id='targetRegion'>");
 
     size = Math.max(7, headHeight * 0.1)
-    regionNames.css("font-size", headWidth / (Math.log(size) * 5))
-        .css("width", artistCollabWidth + "px")
+    regionNames.css("width", artistCollabWidth + "px")
         .css("height", headHeight * 0.2 + "px")
         .css("left", headWidth * 0.1 + "px") 
         .css("top", "0px")
         .css("position", "absolute");
 
     sourceName
-      .css("height", headHeight * 0.2 + "px")
+      .css("max-height", headHeight * 0.1 + "px")
       .css("line-height", headHeight * 0.2 + "px")
+      .css("font-size", headWidth * 0.04 + "px")
       .text(regionSource);
     targetName
-      .css("height", headHeight * 0.2 + "px")
+      .css("max-height", headHeight * 0.1 + "px")
       .css("line-height", headHeight * 0.2 + "px")
+      .css("font-size", headWidth * 0.04 + "px")
       .text(regionTarget);
     regionNames.append(sourceName).append(targetName);
     $("#head").append(regionNames);
