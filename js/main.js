@@ -653,11 +653,11 @@ function addRegionLinkTooltips(regionLink) {
   if (regionLinkTemp) {
     regionLinkTemp.call(regionLinkTip);
   }
-  regionLink.on("mouseover", function(d) {
+  regionLink.on("mouseenter", function(d) {
     d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#ddd");
     regionLinkTip.show(d);
   });
-  regionLink.on("mouseout", function(d) {
+  regionLink.on("mouseleave", function(d) {
     d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#777");
     regionLinkTip.hide(d);
   });

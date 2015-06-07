@@ -525,7 +525,8 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
 
 //Pairwise comparison in outer view
 function headViewRegionLink(artists) {
-    artist_keys = Object.keys(artists).sort();
+    var sortedArtists = {};
+
     var source;
     var target;
     for (var pair in artists) {
@@ -533,7 +534,18 @@ function headViewRegionLink(artists) {
       var target = artistNodes[pair.split("_")[1]].region;
       break;
     }
+    for (var pair in artists) {
+      var key;
+      if (artistNodes[pair.split("_")[0]].region === source) {
+        key = pair.split("_")[0] + "_" + pair.split("_")[1];
+      } else {
+        key = pair.split("_")[1] + "_" + pair.split("_")[0];
+      }
+      sortedArtists[key] = artists[pair];
+    }
 
+
+    artists = sortedArtists;
     var sourceText;
     var targetText;
 
@@ -614,7 +626,17 @@ function headViewRegionLink(artists) {
     $("#head").append(artistCollabsList);
 
     // add li for each distinct artist-artist collaboration
-    for (var pair in artists) {
+    var sorted_keys = Object.keys(artists).sort(function(a, b) {
+      if (artistNodes[a.split("_")[0]].name < artistNodes[b.split("_")[0]].name) {
+        return -1;
+      } else if (artistNodes[a.split("_")[0]].name > artistNodes[b.split("_")[0]].name) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+    for (var i in sorted_keys) {
+        var pair = sorted_keys[i];
         var p = [artists[pair]];
         var li = d3.select("ul").selectAll(".dummy") // this doesn't exist so it won't override anything, this is a concern cause we're in a for loop
             .data(p)
