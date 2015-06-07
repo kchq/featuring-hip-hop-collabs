@@ -182,6 +182,7 @@ function headViewSingleArtist(artist) {
    //FOR EACH LINK ADD ONE OF THESE, OK? COOl
 
   var regionAbbrs = ["NE", "S", "SC", "NC", "MW", "W"];
+  var regionFullNames = ["North East", "South", "South California", "North California", "MidWest", "Washington"]
   var collabsWithOtherRegion = new Map();
   for (var i = 0; i < regionAbbrs.length; i++) {
     collabsWithOtherRegion.set(regionAbbrs[i], 0);
@@ -210,6 +211,7 @@ function headViewSingleArtist(artist) {
 
     var uriList = "";
     var numListItems = 0;
+    var numSpotifyItems = 0;
 
     for (var i = 0; i < singleHeadCollabMap[artist.name].length; i++) { //var track in singleHeadCollabMap[artist.name]) {
         var trk = singleHeadCollabMap[artist.name][i];
@@ -227,9 +229,10 @@ function headViewSingleArtist(artist) {
           totalCollaborationsWithOtherRegion++;
           collabsWithOtherRegion.set(targetRegion, regionCollabCount);
           
-          if (trk.spotifyURI !== undefined) {
+          if (trk.spotifyURI !== undefined && numSpotifyItems < 80) {
             var uriArray = trk.spotifyURI.split(":");
             uriList += uriArray[2] + ",";
+            numSpotifyItems++;
           }
         }
 
@@ -294,11 +297,12 @@ function headViewSingleArtist(artist) {
                             .css("text-anchor", "center");
 
     var artistCollabInfo = artistCollabDiv.append("<canvas id='collabChart'>")
-                            .css("float", "right")
+                            .css("float", "left")
                             .css("height", artistBio.height() * 0.5 + "px")
                             .css("max-height", artistBio.height() * 0.5 + "px")
                             .css("width", artistBio.width() * 0.55 + "px")
-                            .css("padding-bottom", headHeight * 0.3 + "px");
+                            .css("padding-bottom", headHeight * 0.3 + "px")
+                            .css("margin-left", "5px");
     //artistBio.append(artistName);
     artistBio.append(artistOrigin);
     artistBio.append(artistYear);
@@ -308,17 +312,17 @@ function headViewSingleArtist(artist) {
     $("#head").append(artistBio);
     $("#head").append(artistName);
     $(".external_links").css("height", artistBio.height() * 0.7 + "px")
-                        .css("width", artistBio.width() * 0.4 + "px")
+                        .css("width", artistBio.width() * 0.3 + "px")
                         .css("list-style", "none")
                         .css("padding-left", "0px");
 
   // $("#collabChart").css("padding-bottom", headHeight * 0.025 + "px");
-  $("#collabChart").css("width", artistBio.width() * 0.55 + "px")
+  $("#collabChart").css("width", artistBio.width() * 0.65 + "px")
   $("#collabChart").css("height", artistBio.height() * 0.5 + "px")
     artistCollabInfo = document.getElementById("collabChart").getContext("2d");
 
     var barData = {
-      labels : regionAbbrs,
+      labels : regionFullNames,
       datasets : [
         {
           label: "Collaborations by Region",
@@ -335,6 +339,13 @@ function headViewSingleArtist(artist) {
     }
 
     var chart = new Chart(artistCollabInfo).Bar(barData);
+    chart.datasets[0].bars[0].fillColor = "rgb(96,99,106)";
+    chart.datasets[0].bars[1].fillColor = "rgb(165,172,175)";
+    chart.datasets[0].bars[2].fillColor = "rgb(65,68,81)";
+    chart.datasets[0].bars[3].fillColor = "rgb(148,145,123)";
+    chart.datasets[0].bars[4].fillColor = "rgb(143,135,130)";
+    chart.datasets[0].bars[5].fillColor = "rgb(207,207,207)";
+    chart.update();
     
     var rapperTitle = $("<h1 id='rapperName'>");
     rapperTitle.text(artist.name);
@@ -423,7 +434,13 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeInde
       for (var i = 0; i < linksForSingleYear.length; i++) {
         if (linksForSingleYear[i].spotifyURI !== undefined) {
           spotifyURIs.add(linksForSingleYear[i].spotifyURI);
+          if (spotifyURIs.size >= 80) {
+            break;
+          }
         }
+      }
+      if (spotifyURIs.size >= 80) {
+        break;
       }
     }
   }
