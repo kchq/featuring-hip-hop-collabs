@@ -57,7 +57,7 @@ function addImages(node1, node2) {
 
 
    svgHead.append('clipPath')
-      .attr("id", getArtistImageName(node1.name) + "head1")
+      .attr("id", getArtistImageName(node1.name))
       .attr("class", "clippath")
       .append("circle")
       .attr("cx",  image1X + imageWidth / 2)
@@ -72,7 +72,7 @@ function addImages(node1, node2) {
         .attr("width", imageWidth)
         .attr("height", imageWidth)
         // preserve size of circle across different regions, because each region has a different scale
-        .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node1.name) + "head1)"; });
+        .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node1.name) + ")"; });
         
     gh.append("circle")
         .attr("id", "50_centring") //function(d) { return getArtistImageName(d.name) + "ring"; })
@@ -84,7 +84,7 @@ function addImages(node1, node2) {
         .style("stroke-width", "2px");
 
     svgHead.append('clipPath')
-      .attr("id", getArtistImageName(node2.name) + "head2")
+      .attr("id", getArtistImageName(node2.name))
       .attr("class", "clippath")
       .append("circle")
       .attr("cx",  image2X + imageWidth / 2)
@@ -98,7 +98,7 @@ function addImages(node1, node2) {
         .attr("y", imageY)
         .attr("width", imageWidth) 
         .attr("height", imageWidth)
-        .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node2.name) + "head2)"; });
+        .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node2.name) + ")"; });
         
     gh.append("circle")
         .attr("id", "earl_sweatshirtring") //function(d) { return getArtistImageName(d.name) + "ring"; })
@@ -229,7 +229,6 @@ function headViewSingleArtist(artist) {
 
    //FOR EACH LINK ADD ONE OF THESE, OK? COOl
     var uriList = "";
-    var numListItems = 0;
     for (var i = 0; i < singleHeadCollabMap[artist.name].length; i++) { //var track in singleHeadCollabMap[artist.name]) {
         var trk = singleHeadCollabMap[artist.name][i];
         
@@ -237,7 +236,6 @@ function headViewSingleArtist(artist) {
           var str = "<li class='list-group-item'> + <b>" + trk.title + "</b>, " + trk.release_title + "<br/> -";
           str += trk.artist_credit.join(", ");
           var li = ul.append(str);
-          numListItems++;
           if (trk.spotifyURI !== undefined) {
             var uriArray = trk.spotifyURI.split(":");
             uriList += uriArray[2] + ",";
@@ -247,9 +245,7 @@ function headViewSingleArtist(artist) {
     }
     collabsList.append(ul); 
 
-    if (numListItems > 0) {
-      $("#head").append(collabsList);
-    }
+    $("#head").append(collabsList);
     
     if (uriList !== "") {
       var spotifyFrame = $("<iframe>");
@@ -280,7 +276,8 @@ function headViewSingleArtist(artist) {
 function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
 
    headStart();
-
+   console.log(linksPerYear);
+   console.log(fromRegionLinkView);
    svgHead = d3.select("#head")
     .style("left", xStart + "px")
     .style("top", yStart + "px")

@@ -97,6 +97,7 @@ function init(error) {
   createRegions();
   setUpRegions();
   setUpSearch();
+  introSetup();
 }
 
 // redraws everything
