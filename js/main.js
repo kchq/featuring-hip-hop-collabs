@@ -379,8 +379,12 @@ function addRegionTooltips(regionNode) {
 
 function hideRegions() {
   d3.selectAll("circle").attr("r", 0);
-  regionLink.style("stroke-width", "0px");
-  d3.selectAll(".regionLinkInteractionArea").style("stroke-width", "0px");
+  regionLink.style("stroke-width", "0px")
+    .style("cursor", "auto")
+    .on("click", null);
+  d3.selectAll(".regionLinkInteractionArea").style("stroke-width", "0px")
+    .style("cursor", "auto")
+    .on("click", null);
   d3.selectAll(".d3-region-tip").remove();
   d3.selectAll(".regionNode").style("visibility", "hidden");
 }
@@ -1041,9 +1045,6 @@ function createArtistLinks(region, k, x, y) {
       .on("mouseleave", function(d) {
         d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
           .style("stroke", "#777");
-      })
-      .on("click", function(d) {
-        headViewMultipleArtist(d.linksPerYear, false);
       });
 
   artistLink = artistLink.append('line')
@@ -1064,9 +1065,6 @@ function createArtistLinks(region, k, x, y) {
     .on("mouseleave", function(d) {
       d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
         .style("stroke", "#777");
-    })
-    .on("click", function(d) {
-      headViewMultipleArtist(d.linksPerYear, false);
     });
     
 
@@ -1152,6 +1150,30 @@ function updateArtistLinks(scale) {
     calculateLinks(d);
   });
 
+  artistLinkInteraction.forEach(function(d) {
+    calculateLinks(d);
+  });
+
+  d3.selectAll(".artistLinkInteractionArea").on("click", function(d) {
+    if (d.numLinks > 0 && d.source != d.target &&
+          shouldShowArtist(currentRegion, d.source) &&
+          shouldShowArtist(currentRegion, d.target)) {
+      headViewMultipleArtist(d.linksPerYear, false);
+    } else {
+      return null;
+    }
+  });
+
+  d3.selectAll(".artistLink").on("click", function(d) {
+    if (d.numLinks > 0 && d.source != d.target &&
+          shouldShowArtist(currentRegion, d.source) &&
+          shouldShowArtist(currentRegion, d.target)) {
+      headViewMultipleArtist(d.linksPerYear, false);
+    } else {
+      return null;
+    }
+  });
+
   artistLink.style("stroke-width", function(d) {
       if (d.source != d.target &&
           shouldShowArtist(currentRegion, d.source) &&
@@ -1160,22 +1182,42 @@ function updateArtistLinks(scale) {
       } else {
         return "0px";
       }
+    })
+    .style("cursor",  function(d) { 
+      if (d.numLinks > 0 && d.source != d.target &&
+          shouldShowArtist(currentRegion, d.source) &&
+          shouldShowArtist(currentRegion, d.target)) {
+        return "pointer";
+      } else {
+        return "auto";
+      }
     });
 
   d3.selectAll(".artistLinkInteractionArea").style("stroke-width", function(d) {
       if (d.source != d.target &&
           shouldShowArtist(currentRegion, d.source) &&
           shouldShowArtist(currentRegion, d.target)) {
-        var width = Math.max(0, (3.0 / scale) * Math.log(2 * d.numLinks)) + 2;
-        if (width < 5) {
-          width += 5;
+        var width = Math.max(0, (3.0 / scale) * Math.log(2 * d.numLinks)) + 5.0 / scale ;
+        if (d.numLinks < 5) {
+          width += 20.0 / scale;
         }
-        return width + "px"; 
+        return width + "px";
       } else {
         return "0px";
       }
+    })
+    .style("cursor",  function(d) { 
+      if (d.numLinks > 0 && d.source != d.target &&
+          shouldShowArtist(currentRegion, d.source) &&
+          shouldShowArtist(currentRegion, d.target)) {
+        return "pointer";
+      } else {
+        return "auto";
+      }
     });
+
 }
+
 
 function artistMouseEnter(d, scale) {
   var circleSize = artistCircleSize;
