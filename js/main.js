@@ -1009,8 +1009,12 @@ function updateArtistLinks(scale) {
   });
 
   artistLink.style("stroke-width", function(d) {
-      if (d.source != d.target) {
+      if (d.source != d.target &&
+          shouldShowArtist(currentRegion, d.source) &&
+          shouldShowArtist(currentRegion, d.target)) {
         return Math.max(0, (3.0 / scale) * Math.log(2 * d.numLinks)) + "px"; 
+      } else {
+        return "0px";
       }
     });
 }
