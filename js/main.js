@@ -13,9 +13,19 @@ var regionNodes = [
    "points": [ { "lat": 37.5,  "lon": 120}, { "lat": 34,  "lon": 115}, { "lat": 31.5,  "lon": 116.5}, { "lat": 34,  "lon": 122} ] },
   {"id":"S", "name": "South", "lon": 85, "lat": 32, "zlon": 86, "zlat": 32, "color": "#BF113A", "ringColor": "#9F011A", "scale": 2.3, "numArtists":0, "artistsPerYear":{},
    "points": [ { "lat": 36,  "lon": 90}, { "lat": 39.5,  "lon": 70}, { "lat": 24,  "lon": 79}, { "lat": 24,  "lon": 81}, { "lat": 27,  "lon": 90}, { "lat": 29.5,  "lon": 102.5} ] },
-  {"id":"MW", "name": "Mid West", "lon": 87.6847, "lat": 39, "zlon": 87.2, "zlat": 41.5, "color": "#A314A8", "ringColor": "#830488", "scale": 4, "numArtists":0, "artistsPerYear":{},
+  {"id":"MW", "name": "Mid West", "lon": 87.6847, "lat": 41, "zlon": 87.2, "zlat": 41.5, "color": "#A314A8", "ringColor": "#830488", "scale": 4, "numArtists":0, "artistsPerYear":{},
    "points": [ { "lat": 40,  "lon": 96}, { "lat": 38.5,  "lon": 95}, { "lat": 38,  "lon": 87}, { "lat": 37,  "lon": 84}, { "lat": 41,  "lon": 80}, { "lat": 43,  "lon": 83}, { "lat": 46,  "lon": 93}, { "lat": 45,  "lon": 94} ]}
 ]
+
+var bezierScale = {
+  "W-SC": [11.0, -5000.0],
+  "W-MW": [1000.0, 2.0],
+  "NC-S": [5.0, -30.0],
+  "NC-NE": [5.0, 20.0],
+  "NC-MW": [5.0, -2.0],
+  "SC-NE": [5.0, 50.0],
+  "MW-NE": [5.0, 5.0]
+};
 
 var nyNode = {"id":"NY", "name": "New York", "lon": 74.0059, "lat": 40.7127, "zlon": 73.7, "zlat": 40.65, "color": "#1662A4", "ringColor": "#024274", "scale": 54 };
 const regionIndexMap = ["W", "NE", "NC", "SC", "S", "MW"];
@@ -120,18 +130,15 @@ function tick() {
   regionNode.attr("cx", function(d) { return d.x - mapTranslateLeft; })
       .attr("cy", function(d) { return d.y; });
 
-  regionLink.attr('x1', function(d) { return d.source.x - mapTranslateLeft; })
-    .attr('y1', function(d) { return d.source.y; })
-    .attr('x2', function(d) { return d.target.x - mapTranslateLeft; })
-    .attr('y2', function(d) { return d.target.y; });
-  
+  regionLink.attr('d', function(d) { 
+      return pathCalculation(d); 
+    }); 
+ 
   d3.selectAll(".regionLinkInteractionArea")
-    .attr('x1', function(d) { return d.source.x - mapTranslateLeft; })
-    .attr('y1', function(d) { return d.source.y; })
-    .attr('x2', function(d) { return d.target.x - mapTranslateLeft; })
-    .attr('y2', function(d) { return d.target.y; });
+    .attr('d', function(d) { 
+      return pathCalculation(d); 
+    }); 
 }
-
 
 function setUpSearch() {
   $("#searchError").css("color", "red");
@@ -383,13 +390,10 @@ function setUpRegionLinks() {
   regionLink = svg.selectAll('.regionLink')
         .data(regionLinks)
         .enter();
-  regionLinkInteraction = regionLink.append('line')
+  regionLinkInteraction = regionLink.append('path')
         .attr('class', 'regionLinkInteractionArea')
-        .attr('x1', function(d) { return regionNodes[d.source].x  - mapTranslateLeft; })
-        .attr('y1', function(d) { return regionNodes[d.source].y; })
-        .attr('x2', function(d) { return regionNodes[d.target].x  - mapTranslateLeft; })
-        .attr('y2', function(d) { return regionNodes[d.target].y; })
         .attr("mask", "url(#regionMask)")
+        .attr("fill", "none")
         .style("stroke-width", "0px")
         .on("mouseenter", function(d) {
           d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#ddd");
@@ -400,14 +404,11 @@ function setUpRegionLinks() {
         .on("click", function(d) {
           regionLinkClickHandler(d);
         });
-  regionLink = regionLink.append('line')
+  regionLink = regionLink.append('path')
         .attr('class', 'regionLink')
         .attr('id', function(d) { return regionNodes[d.source].id + "-" + regionNodes[d.target].id })
-        .attr('x1', function(d) { return regionNodes[d.source].x; })
-        .attr('y1', function(d) { return regionNodes[d.source].y; })
-        .attr('x2', function(d) { return regionNodes[d.target].x; })
-        .attr('y2', function(d) { return regionNodes[d.target].y; })
         .attr("mask", "url(#regionMask)")
+        .attr("fill", "none")
         .style("stroke-width", "0px")
         .on("click", function(d) {
           regionLinkClickHandler(d);
@@ -474,6 +475,47 @@ function updateRegionLinks() {
   var regionLinkTemp = regionLink.filter(function(d, i) { return d.numLinks !== 0 });
   if (regionLinkTemp) {
     regionLinkTemp.call(regionLinkTip);
+  }
+}
+
+function pathCalculation(d) {
+  if (d.source != d.target) {
+    var start = d.source;
+    var end = d.target;
+    if (d.source.x > d.target.x) {
+      start = d.target;
+      end = d.source;
+    }
+    var transform = 1;
+    if (start.y > end.y) {
+      transform = -1;
+    }
+    var yStart = start.y;
+    var yEnd = end.y;
+    var xStart = start.x - mapTranslateLeft;
+    var xEnd = end.x - mapTranslateLeft;
+
+    var xDiff = xEnd - xStart;
+    var yDiff = Math.abs(yEnd - yStart);
+    var xMult = 5.0;
+    var yMult = 15.0;
+    
+    var newMult = bezierScale[d.source.id + "-" + d.target.id];
+    if (newMult === undefined) {
+      newMult = bezierScale[d.target.id + "-" + d.source.id];
+    }
+    if (newMult !== undefined) {
+      xMult = newMult[0];
+      yMult = newMult[1];
+    }
+
+    var xOffset = xStart + transform * xMult * yDiff / xDiff;
+    var yOffset = yEnd + (yMult * xDiff / yDiff) * transform; // yStart + (transform * Math.abs(yEnd - yStart) / 4.0);
+
+    return 'M' + xStart + ', ' + yStart + ' ' +
+           'C' + xStart + ', ' + yStart + ', ' +
+           xOffset + ', ' + yOffset + ', ' + 
+           xEnd + ', ' + yEnd;
   }
 }
 
@@ -915,6 +957,7 @@ function createArtistLinks(region, k, x, y) {
       .enter();
 
   artistLinkInteraction = artistLink.append('line')
+      .data(artistLinksTemp)
       .attr('class', 'artistLinkInteractionArea')
       .attr('x1', function(d) { return d.sourceX; })
       .attr('y1', function(d) { return d.sourceY; })
