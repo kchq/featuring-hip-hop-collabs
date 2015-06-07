@@ -386,7 +386,6 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
        break;
     }
 
-
    svgHead = d3.select("#head")
     .style("left", xStart + "px")
     .style("top", yStart + "px")

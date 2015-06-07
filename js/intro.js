@@ -1,17 +1,14 @@
-xStart = $(window).width() * 0.30;
-yStart = $(window).height() * 0.10 
-introHeight= $(window).height() * 0.550;
+xStartIntro = $(window).width() * 0.30;
+yStartIntro = $(window).height() * 0.10 
+introHeight = $(window).height() * 0.550;
 introWidth = $(window).width() * 0.50;
-image1X = xStart * .3;
-image2X = xStart * 1.3;
-imageY = yStart * .4
-imageWidth = headWidth * 0.20
+imageWidth = headWidth * 0.20;
 setup = false;
 
 function introSetup() {
     svgHead = d3.select("#intro")
-		.style("left", xStart + "px")
-		.style("top", yStart + "px")
+		.style("left", xStartIntro + "px")
+		.style("top", yStartIntro + "px")
 		.style("position", "absolute")
 		.append("svg")
 		.attr("width", introWidth)
@@ -31,11 +28,11 @@ function introSetup() {
 
     var titleDiv = $("<div id='titleDiv'>")
         .css("left", 0) 
-        .css("top", yStart) 
+        .css("top", yStartIntro) 
         .css("width", introWidth)
         .css("position", "absolute")
         .css("text-align", "center")
-        .css("height", introHeight - yStart)
+        .css("height", introHeight - yStartIntro)
         .css("padding-bottom", "2px");   
 
     var title = $("<h1 id='title'>");
@@ -112,14 +109,14 @@ function helpBoxUp() {
             .text("< Move the slider or use the scroll wheel \n to select the year in history")
             sliderDiv = $('#sliderIntro')
             .css("left", $(window).width() * 0.20 + 90) 
-            .css("top", yStart * 8.5) 
+            .css("top", yStartIntro * 8.5) 
             .css("width", introWidth * 1.2)
             .css("position", "absolute");
         //.append(text);
         //
         helpDiv = $("<div id='helpDiv'>")
-            .css("left", "0px")// xStart * .8 + "px") 
-            .css("top", "0px")//yStart * 7 + "px") 
+            .css("left", "0px")// xStartIntro * .8 + "px") 
+            .css("top", "0px")//yStartIntro * 7 + "px") 
             .css("width", introWidth * 1.24)
             .css("position", "absolute")
             .css("height", introHeight / 2)
@@ -127,8 +124,8 @@ function helpBoxUp() {
             .css("text-align", "left");
 
         svgHelp = d3.select("#helpBox")
-            .style("left", xStart * .80 + "px")
-            .style("top", yStart * 7 + "px")
+            .style("left", xStartIntro * .80 + "px")
+            .style("top", yStartIntro * 7 + "px")
             .style("position", "absolute")
             .append("svg")
             .attr("width", introWidth * 1.24)
