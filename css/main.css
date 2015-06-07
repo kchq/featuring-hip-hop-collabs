@@ -69,7 +69,7 @@ body {
   cursor: pointer;
 }
 
-.regionLinkInteractionArea {
+.regionLinkInteractionArea, .artistLinkInteractionArea {
   stroke: rgba(0,0,0,0);
   cursor: pointer;
 }
