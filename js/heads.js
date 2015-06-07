@@ -3,7 +3,7 @@ yStart = $(window).height() * 0.05
 headHeight= $(window).height() * 0.90;
 headWidth = $(window).width() * 0.70;
 image1X = xStart * .3;
-image2X = xStart * 1.3;
+image2X = xStart * 1.9;
 imageY = yStart * .4
 imageWidth = headWidth * 0.20
 

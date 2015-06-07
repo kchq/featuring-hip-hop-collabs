@@ -33,6 +33,13 @@ var scaleExtentGeometric = Math.round(((presentYear - startYear) / scrollSensiti
 var scaleExtentLinear = Math.round(Math.log(scaleExtentGeometric) + 1);
 var searchedArtist = "";
 
+var mouseX;
+var mouseY;
+$(document).mousemove( function(e) {
+   mouseX = e.pageX; 
+   mouseY = e.pageY;
+}); 
+
 var zoom = d3.behavior.zoom()
   //.scaleExtent([1, scaleExtentGeometric])
   .on("zoom", function() {
@@ -45,6 +52,31 @@ var artistTip = d3.tip()
   .attr('class', 'd3-region-tip')
   .html(function(d) {
     return "<div>" + d.name + "</div>"
+  });
+
+var artistLinkTip = d3.tip()
+  .attr('class', 'd3-region-tip')
+  .direction('c')
+  .html(function(d) {
+    var linksPerYear = d.linksPerYear;
+    var artist1;
+    var artist2;
+    for (var links in linksPerYear) {
+         linksYear = linksPerYear[links];
+         for (var i = 0; i < linksYear.length; i++) {
+             artist1 = artistNodes[linksYear[i].source];
+             artist2 = artistNodes[linksYear[i].target];
+             break;
+         }
+         break;
+    }
+
+    if (artist1 !== undefined && artist2 !== undefined) {
+      console.log(artist1.name + " " + artist2.name);
+      return "<div>" + artist1.name + " and " + artist2.name + "</div>";
+    } else {
+      return "yay";
+    }
   });
 
 var regionTip = d3.tip()
@@ -955,13 +987,17 @@ function createArtistLinks(region, k, x, y) {
       .attr('y2', function(d) { return d.targetY; })
       .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
       .style("stroke-width", "0px")
+      .call(artistLinkTip)
       .on("mouseenter", function(d) {
         d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
           .style("stroke", "#ddd");
+        artistLinkTip.show(d);
       })
       .on("mouseleave", function(d) {
         d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
           .style("stroke", "#777");
+        artistLinkTip.hide(d);
+
       })
       .on("click", function(d) {
         headViewMultipleArtist(d.linksPerYear, false);
