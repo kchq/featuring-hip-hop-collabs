@@ -221,6 +221,20 @@ function setupMap() {
     .attr("height", height)
     .style("fill", "rgba(0,0,0,0)");
 
+  var help = $("<button id='help' class='btn'>")
+      .text(" ? ")
+      .css("font-size", "30px")
+      .css("margin-top", "30px")
+      .css("margin-right", "10px")
+      .css("margin-bottom", "10px")
+      .css("position", "absolute")
+      .css("bottom", "0")
+      .css("right", "0px")
+      .css("padding-left", "15px")
+      .css("padding-right", "15px")
+      .css("line-height", "30px")
+      .css("background", "#788187");
+
   mapTranslateLeft = $(window).width() * 0.07;
 
   g.attr("transform", "translate(" + (-1 * mapTranslateLeft) + ",0)");

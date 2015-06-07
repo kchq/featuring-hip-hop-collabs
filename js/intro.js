@@ -6,7 +6,7 @@ image1X = xStart * .3;
 image2X = xStart * 1.3;
 imageY = yStart * .4
 imageWidth = headWidth * 0.20
-
+setup = false;
 
 function introSetup() {
     svgHead = d3.select("#intro")
@@ -52,7 +52,7 @@ function introSetup() {
             .css("margin-top", "30px")
             .css("margin-bottom", "10px")
 
-    var help = $("<button id='help' class='btn'>")
+    var helpIntro = $("<button class='btn help'>")
             .text(" ? ")
             .css("font-size", "30px")
             .css("margin-top", "30px")
@@ -65,32 +65,105 @@ function introSetup() {
             .css("padding-right", "15px")
             .css("line-height", "30px")
             .css("background", "#788187");
+
+    
+    var helpStandard = $("<button class='btn help'>")
+            .text(" ? ")
+            .css("font-size", "30px")
+            .css("margin-top", "30px")
+            .css("margin-right", "10px")
+            .css("margin-bottom", "10px")
+            .css("position", "absolute")
+            .css("bottom", "0")
+            .css("right", $(window).width() * .2)
+            .css("padding-left", "15px")
+            .css("padding-right", "15px")
+            .css("line-height", "30px")
+            .css("background", "#788187");
+
             //.css("float", "right");
 
     subtitle.text("A Brief History of Hip Hop Collaborations in the United States");
     titleDiv.append(title);
     titleDiv.append(subtitle);
     titleDiv.append(gotIt);
-    titleDiv.append(help);
+    titleDiv.append(helpIntro);
+    $("#mapContainer").append(helpStandard);
 
     $("#intro").append(titleDiv);
     $("#goingIn").click(function() {
         tearDownIntros();
     });
-    setUpIntros();
+
+     $(".help").click(function() {
+        helpBoxUp();
+     });
+
     blurBackground();
 
 }
 
-function setUpIntros() {
-    text = $("<h1 id='sliderIntroTitle'>")
-        .text("< Move the slider or use the scroll wheel \n to select the year in history")
-    $('#sliderIntro')
-        .css("left", $(window).width() * 0.20 + 90) 
-        .css("top", yStart * 8.5) 
-        .css("width", introWidth)
-        .css("position", "absolute")
-        .append(text);
+function helpBoxUp() {
+    if (setup) {
+        $("#helpBox").show();
+    } else {
+        setup = true;
+        text = $("<h1 id='sliderIntroTitle'>")
+            .text("< Move the slider or use the scroll wheel \n to select the year in history")
+
+            sliderDiv = $('#sliderIntro')
+            .css("left", $(window).width() * 0.20 + 90) 
+            .css("top", yStart * 8.5) 
+            .css("width", introWidth * 1.2)
+            .css("position", "absolute");
+        //.append(text);
+        //
+        helpDiv = $("<div id='helpDiv'>")
+            .css("left", "0px")// xStart * .8 + "px") 
+            .css("top", "0px")//yStart * 7 + "px") 
+            .css("width", introWidth * 1.2)
+            .css("position", "absolute")
+            .css("height", introHeight / 2)
+            .css("padding-left", "15px");
+
+        svgHelp = d3.select("#helpBox")
+            .style("left", xStart * .8 + "px")
+            .style("top", yStart * 7 + "px")
+            .style("position", "absolute")
+            .append("svg")
+            .attr("width", introWidth * 1.2)
+            .attr("height", introHeight)
+            .attr("id", "headSVG");
+
+        gh = svgHelp.append("g");
+
+        rect = gh.append("rect")
+            .attr("id", "introRect")
+            .attr("width", introWidth * 1.2)
+            .attr("height", introHeight / 2)
+            .style("fill", "white")
+            .style("stroke", "black")
+            .style("stroke-width", $(window).width() * 0.005)
+            .style("opacity", 0.9);
+
+        helpIntro = $("<h3>").text("Navigate through the Hip-Hop collaboration history by scrolling or dragging the slider on the left");
+
+        helpDiv.append(helpIntro);
+        $("#helpBox").append(helpDiv);
+
+        
+    }
+    $(".help").click(function() {
+        helpBoxDown();
+    });
+    //$("#helpBox").append(legend);
+}
+
+function helpBoxDown() {
+    $("#helpBox").hide();
+    $(".help").click(function() {
+        helpBoxUp();
+     });
 }
 
 function tearDownIntros() {
