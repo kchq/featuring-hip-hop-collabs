@@ -49,9 +49,8 @@ body {
   src: url("../graffiti/GraffitiPaintBrush.ttf");
 }
 
-
 .narrationEventText, .narationEventPreviewText {
-  font-family: "syncopateRegular";
+  font-family: "paintBrush";
 }
 
 #gNext, #gPrev {
@@ -63,8 +62,13 @@ body {
 }
 
 #narrationYearText, .narrationEventPreviewNextYearText, .narrationEventPreviewPreviousYearText {
-  font-family: "syncopateBold";
+  font-family: "paintBrush";
 }
+
+#narrationEventPreviewNextYearBackground:hover, #narrationEventPreviewPreviousYearBackground:hover {
+  opacity: 0.8;
+}
+
 
 #narrationEventPreviewNextYearBackground, #narrationEventPreviewPreviousYearBackground, 
 .narrationEventPreviewNextYearText, .narrationEventPreviewPreviousYearText, #closeMenuText {
@@ -73,6 +77,10 @@ body {
 
 #artistNameHead, .artistNameHead {
     font-family: "bombing";
+}
+
+#rapperCity, #rapperYear, #collabsList {
+    font-family: "paintBrush";
 }
 
 #title {
@@ -96,7 +104,7 @@ body {
 }
 
 .regionLink, .artistLink {
-  stroke: #999;
+  stroke: #eee;
 }
 
 .regionLinkInteractionArea, .artistLinkInteractionArea {
@@ -229,5 +237,9 @@ li.artistCollabs:hover {
 
 .blur {
     -webkit-filter: blur(15px) grayscale(.5) opacity(0.5) contrast(70%);
+}
+
+#artistBio {
+  font-family: "paintbrush";
 }
 

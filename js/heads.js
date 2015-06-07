@@ -255,7 +255,7 @@ function headViewSingleArtist(artist) {
       $("#head").append(spotifyFrame);
     }
 
-  var artistName = $("<p id='artistNameHead'>");
+    var artistName = $("<p id='artistNameHead'>");
     size = Math.min(6, artist.name.length)
     artistName.css("font-size", size + "vmin")
         //.css('color', 'black');
@@ -266,6 +266,24 @@ function headViewSingleArtist(artist) {
         .css("height", headHeight * 0.2 + "px")
         .css("position", "absolute");
     artistName.text(artist.name);
+
+    var artistCity = $("<p id='rapperCity'>");
+    artistCity.css("font-size", size/1.7 + "vmin")
+      .css("text-align", "center")
+      .css("left", image1X * .5 - 50 + "px") 
+      .css("top", imageY + imageWidth * 3/2 - size*5 + "px")
+      .css("width", (imageWidth * 3/2 + 100)/4 + "px")
+      .css("position", "absolute");
+    artistCity.text(artist.city);
+
+    var artistYear1 = $("<p id='rapperYear'>");
+    artistYear1.css("font-size", size/1.7+ "vmin")
+      .css("text-align", "center")
+      .css("left", image1X * .5 + imageWidth * 1.3 + "px") 
+      .css("top", imageY + imageWidth * 3/2 - size*5 + "px")
+      .css("width", (imageWidth * 3/2 + 100)/4 + "px")
+      .css("position", "absolute");
+    artistYear1.text(artist.start_year);
 
     var artistBio = $("<div id='artistBio'>");
     artistBio.css("height", headHeight * 0.4 + "px")
@@ -278,12 +296,6 @@ function headViewSingleArtist(artist) {
              .css("background-color", "white")
              .css("padding-left", headWidth * 0.02 + "px");
 
-    var artistOrigin = $("<p>");
-    artistOrigin.text("Artist Origin is " + artist.city + ", " + artist.state);
-
-    var artistYear = $("<p>");
-    artistYear.text("Artist Career began " + artist.start_year);
-
     var artistExternalLinks = $("<p>")
                                 .css("float", "left");
     artistExternalLinks.html(artist.external_links);
@@ -291,34 +303,38 @@ function headViewSingleArtist(artist) {
 
     var artistCollabDiv = $("<div>")
                             .css("padding", "0px")
-                            .css("height", artistBio.height() * 0.7 + "px")
+                            .css("height", artistBio.height() * 0.9 + "px")
+                            .css("max-height", artistBio.height() * 0.9 + "px")
+                            .css("min-height", artistBio.height() * 0.9 + "px")
                             .append("Artist Collaborations By Region")
                             .css("font-size", headHeight * 0.03 + "px")
                             .css("text-anchor", "center");
 
     var artistCollabInfo = artistCollabDiv.append("<canvas id='collabChart'>")
                             .css("float", "left")
-                            .css("height", artistBio.height() * 0.5 + "px")
-                            .css("max-height", artistBio.height() * 0.5 + "px")
+                            .css("height", artistBio.height() * 0.9 + "px")
+                            .css("max-height", artistBio.height() * 0.9 + "px")
                             .css("width", artistBio.width() * 0.55 + "px")
                             .css("padding-bottom", headHeight * 0.3 + "px")
-                            .css("margin-left", "5px");
-    //artistBio.append(artistName);
-    artistBio.append(artistOrigin);
-    artistBio.append(artistYear);
+                            .css("margin-left", artistBio.width() * 0.05 + "px")
+                            .css("margin-top", artistBio.height() * 0.1 + "px");
+
     artistBio.append(artistExternalLinks);
     artistBio.append(artistCollabDiv);
 
     $("#head").append(artistBio);
     $("#head").append(artistName);
+    $("#head").append(artistCity);
+    $("#head").append(artistYear1);
     $(".external_links").css("height", artistBio.height() * 0.7 + "px")
                         .css("width", artistBio.width() * 0.3 + "px")
                         .css("list-style", "none")
-                        .css("padding-left", "0px");
+                        .css("padding-left", "0px")
+                        .css("margin-top", artistBio.height() * 0.1 + "px");
 
   // $("#collabChart").css("padding-bottom", headHeight * 0.025 + "px");
   $("#collabChart").css("width", artistBio.width() * 0.65 + "px")
-  $("#collabChart").css("height", artistBio.height() * 0.5 + "px")
+  $("#collabChart").css("height", artistBio.height() * 0.8 + "px")
     artistCollabInfo = document.getElementById("collabChart").getContext("2d");
 
     var barData = {
@@ -338,7 +354,9 @@ function headViewSingleArtist(artist) {
       ]
     }
 
-    var chart = new Chart(artistCollabInfo).Bar(barData);
+    var options = { scaleFontFamily : "'paintBrush'" }
+
+    var chart = new Chart(artistCollabInfo).Bar(barData, options);
     chart.datasets[0].bars[0].fillColor = "rgb(96,99,106)";
     chart.datasets[0].bars[1].fillColor = "rgb(165,172,175)";
     chart.datasets[0].bars[2].fillColor = "rgb(65,68,81)";
@@ -346,10 +364,11 @@ function headViewSingleArtist(artist) {
     chart.datasets[0].bars[4].fillColor = "rgb(143,135,130)";
     chart.datasets[0].bars[5].fillColor = "rgb(207,207,207)";
     chart.update();
+
+    console.log(chart.pointLabelFontFamily);
     
     var rapperTitle = $("<h1 id='rapperName'>");
     rapperTitle.text(artist.name);
-
 
     gh.append("text")
       .attr("x", headWidth * 0.02)
@@ -484,11 +503,13 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeInde
 
     
   for (var year in links) {
-      for (var i = 0; i < links[year].length; i++) {
-          trk = links[year][i];
-          var str = "<li class='list-group-item'> + <b>" + trk.title + "</b>, " + trk.release_title + "<br/> -";
-          str += trk.artist_credit.join(", ");
-          var li = ul.append(str);
+      if (parseInt(year) <= currentYear) {
+        for (var i = 0; i < links[year].length; i++) {
+            trk = links[year][i];
+            var str = "<li class='list-group-item'> + <b>" + trk.title + "</b>, " + trk.release_title + "<br/> -";
+            str += trk.artist_credit.join(", ");
+            var li = ul.append(str);
+        }
       }
   }
   
