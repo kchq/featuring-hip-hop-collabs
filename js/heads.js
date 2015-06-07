@@ -146,14 +146,14 @@ function headViewSingleArtist(artist) {
         .attr("id", artistFormatted + "Large")
         .attr("class", "clippath")
         .append("circle")
-        .attr("cx", image2X * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
+        .attr("cx", image1X * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
         .attr("cy", imageY + imageWidth * (3/2) / 2)      
         .attr("r", (imageWidth * 3/2) / 2)
         .attr("clipPathUnits", "userSpaceOnUse");
 
     gh.append("image")
         .attr("xlink:href", artistImage)
-        .attr("x", image2X * .5)
+        .attr("x", image1X * .5)
         .attr("y", imageY)
         .attr("width", imageWidth * 3/2)
         .attr("height", imageWidth * 3/2)
@@ -162,74 +162,47 @@ function headViewSingleArtist(artist) {
 
     gh.append("circle")
         .attr("id", "50_centring") //function(d) { return getArtistImageName(d.name) + "ring"; })
-        .attr("cx", image2X * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
+        .attr("cx", image1X * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
         .attr("cy", imageY + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
         .attr("r", (imageWidth * 3/2) / 2)
         .style("fill", "none")
         .style("stroke", "#000")
         .style("stroke-width", "2px");
 
-    var artistBio = $("<div id='artistBio'>");
-    artistBio.css("height", "330px")
-             .css("width", imageWidth * 2 + "px")
-             .css("padding-left", "5px")
-             .css("left", "8px")
-             .css("top", headHeight - headHeight * .40 + "px")
-             .css("position", "absolute")
-             .css("font-size", headWidth * 0.4 * 0.04);
-    var artistName = $("<p id='artistNameHead'>");
+//    collabsList.append(rapperTitle);
 
-    size = Math.max(7, artist.name.length)
-    artistName.css("font-size", headWidth / (Math.log(size) * 5))
-        //.css('color', 'black');
-        .css("text-align", "center")
-        .css("left", image2X * .5 - 50) 
-        .css("top", headHeight - headHeight * .50)
-        .css("width", imageWidth * 3/2 + 100)
-        .css("position", "absolute");
-    artistName.text(artist.name);
+   //FOR EACH LINK ADD ONE OF THESE, OK? COOl
 
-    var artistOrigin = $("<p>");
-    artistOrigin.text("Artist Origin is " + artist.city + ", " + artist.state);
+  var regionAbbrs = ["NE", "S", "SC", "NC", "MW", "W"];
+  var collabsWithOtherRegion = new Map();
+  for (var i = 0; i < regionAbbrs.length; i++) {
+    collabsWithOtherRegion.set(regionAbbrs[i], 0);
+  }
+  var totalCollaborationsWithOtherRegion = 0;
 
-    var artistYear = $("<p>");
-    artistYear.text("Artist Career began " + artist.start_year);
+  var spotifyFrame = $("<iframe>");
+  var collabsWidth = headWidth * .55;
+  var collabsHeight = headHeight * .4;
+  var frameWidth = Math.max(headWidth * 0.4, 250);
+  var frameHeight = Math.max(headHeight * 0.4, frameWidth + 80);
 
-    //artistBio.append(artistName);
-    artistBio.append(artistOrigin);
-    artistBio.append(artistYear);
-    $("#head").append(artistBio);
-    $("#head").append(artistName);
-
-
-    var spotifyFrame = $("<iframe>");
-    var collabsWidth = headWidth * .55;
-    var collabsHeight = headHeight * .4;
-    var frameWidth = Math.max(headWidth * 0.4, 250);
-    var frameHeight = Math.max(headHeight * 0.4, frameWidth + 80);
-
-    var collabsList = $("<div id='collabsList'>");
+  var collabsList = $("<div id='collabsList'>");
     collabsList.css("left", headWidth - collabsWidth + "px")
-        .css("top", headHeight - collabsHeight * 2.35 +/* headHeight * 0.02 + */"px")
+        .css("top", /* headHeight * 0.02 + */"0px")
         .css("width", collabsWidth + "px")
-        .css("height", headHeight - 330 - 5 - (headHeight - collabsHeight * 2.35) + "px")
+        .css("height", headHeight - 330 - 10 + "px")
         .css("position", "absolute");
 
-    var ul = $("<ul class='list-group collab'>");
-    ul.css("max-height", headHeight - 330 - 5 - (headHeight - collabsHeight * 2.35) + "px")
+  var ul = $("<ul class='list-group collab'>");
+    ul.css("max-height", headHeight - 330 - 10 + "px")
         .css("border", "2px")
         .css("width", collabsWidth + "px")
         .css("border-style", "solid")
         .css("border-width", "3px");
 
-    var rapperTitle = $("<h1 id='rapperName'>");
-    rapperTitle.text(artist.name);
-
-//    collabsList.append(rapperTitle);
-
-   //FOR EACH LINK ADD ONE OF THESE, OK? COOl
     var uriList = "";
     var numListItems = 0;
+
     for (var i = 0; i < singleHeadCollabMap[artist.name].length; i++) { //var track in singleHeadCollabMap[artist.name]) {
         var trk = singleHeadCollabMap[artist.name][i];
         
@@ -238,6 +211,14 @@ function headViewSingleArtist(artist) {
           str += trk.artist_credit.join(", ");
           var li = ul.append(str);
           numListItems++;
+
+          // update collaborations with other regions
+          var targetRegion = artistNodes[trk.target].region;
+          var regionCollabCount = collabsWithOtherRegion.get(targetRegion);
+          regionCollabCount++;
+          totalCollaborationsWithOtherRegion++;
+          collabsWithOtherRegion.set(targetRegion, regionCollabCount);
+          
           if (trk.spotifyURI !== undefined) {
             var uriArray = trk.spotifyURI.split(":");
             uriList += uriArray[2] + ",";
@@ -264,6 +245,103 @@ function headViewSingleArtist(artist) {
                   .css("position", "absolute");
       $("#head").append(spotifyFrame);
     }
+
+  var artistName = $("<p id='artistNameHead'>");
+    size = Math.min(6, artist.name.length)
+    artistName.css("font-size", size + "vmin")
+        //.css('color', 'black');
+        .css("text-align", "center")
+        .css("left", image1X * .5 - 50 + "px") 
+        .css("top", imageY + imageWidth * 3/2 + "px")
+        .css("width", imageWidth * 3/2 + 100 + "px")
+        .css("height", headHeight * 0.2 + "px")
+        .css("position", "absolute");
+    artistName.text(artist.name);
+
+    var artistBio = $("<div id='artistBio'>");
+    artistBio.css("height", headHeight * 0.4 + "px")
+             .css("width", headWidth - 250 - 10 + "px")
+             .css("left", "0px")
+             .css("top", headHeight - headHeight * .40 + "px")
+             .css("position", "absolute")
+             .css("font-size", headWidth * 0.02)
+             .css("border", "3px solid black")
+             .css("background-color", "white")
+             .css("padding-left", headWidth * 0.02 + "px");
+
+    var artistOrigin = $("<p>");
+    artistOrigin.text("Artist Origin is " + artist.city + ", " + artist.state);
+
+    var artistYear = $("<p>");
+    artistYear.text("Artist Career began " + artist.start_year);
+
+    var artistExternalLinks = $("<p>")
+                                .css("float", "left");
+    artistExternalLinks.html(artist.external_links);
+
+
+    var artistCollabDiv = $("<div>")
+                            .css("padding", "0px")
+                            .css("height", artistBio.height() * 0.7 + "px")
+                            .append("Artist Collaborations By Region")
+                            .css("font-size", headHeight * 0.03 + "px")
+                            .css("text-anchor", "center");
+
+    var artistCollabInfo = artistCollabDiv.append("<canvas id='collabChart'>")
+                            .css("float", "right")
+                            .css("height", artistBio.height() * 0.5 + "px")
+                            .css("max-height", artistBio.height() * 0.5 + "px")
+                            .css("width", artistBio.width() * 0.55 + "px")
+                            .css("padding-bottom", headHeight * 0.3 + "px");
+    //artistBio.append(artistName);
+    artistBio.append(artistOrigin);
+    artistBio.append(artistYear);
+    artistBio.append(artistExternalLinks);
+    artistBio.append(artistCollabDiv);
+
+    $("#head").append(artistBio);
+    $("#head").append(artistName);
+    $(".external_links").css("height", artistBio.height() * 0.7 + "px")
+                        .css("width", artistBio.width() * 0.4 + "px")
+                        .css("list-style", "none")
+                        .css("padding-left", "0px");
+
+  // $("#collabChart").css("padding-bottom", headHeight * 0.025 + "px");
+  $("#collabChart").css("width", artistBio.width() * 0.55 + "px")
+  $("#collabChart").css("height", artistBio.height() * 0.5 + "px")
+    artistCollabInfo = document.getElementById("collabChart").getContext("2d");
+
+    var barData = {
+      labels : regionAbbrs,
+      datasets : [
+        {
+          label: "Collaborations by Region",
+          fillColor : "#48A497",
+          strokeColor : "black",
+          data : [collabsWithOtherRegion.get(regionAbbrs[0]),
+                  collabsWithOtherRegion.get(regionAbbrs[1]),
+                  collabsWithOtherRegion.get(regionAbbrs[2]),
+                  collabsWithOtherRegion.get(regionAbbrs[3]),
+                  collabsWithOtherRegion.get(regionAbbrs[4]),
+                  collabsWithOtherRegion.get(regionAbbrs[5])]
+        }
+      ]
+    }
+
+//  var regionAbbrs = ["NE", "S", "NC", "SC", "MW", "W"];
+    var chart = new Chart(artistCollabInfo).Bar(barData);
+    chart.datasets[0].bars[0].fillColor = "#4682B4";
+    chart.datasets[0].bars[1].fillColor = "#BF113A";
+    chart.datasets[0].bars[2].fillColor = "#FFE303";
+    chart.datasets[0].bars[3].fillColor = "#E39612";
+    chart.datasets[0].bars[4].fillColor = "#A314A8";
+    chart.datasets[0].bars[5].fillColor = "#3AA827";
+    chart.update();
+
+
+    var rapperTitle = $("<h1 id='rapperName'>");
+    rapperTitle.text(artist.name);
+
 
     gh.append("text")
       .attr("x", headWidth * 0.02)
@@ -310,12 +388,14 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
   var spotifyURIs = new Set();
   var linksForSingleYear;
   for (var year in links) {
+    if (parseInt(year) <= currentYear) {
       linksForSingleYear = links[year];
       for (var i = 0; i < linksForSingleYear.length; i++) {
         if (linksForSingleYear[i].spotifyURI !== undefined) {
           spotifyURIs.add(linksForSingleYear[i].spotifyURI);
         }
       }
+    }
   }
 
   var uriList = "";
@@ -477,5 +557,12 @@ function clickedOutside(e) {
     {
         closeHead();
     }
+}
+
+function regionLinkSingleArtistInfo(regionLink) {
+  for (var year in regionLink.linksPerYear) {
+    console.log(year);
+  }
+
 }
 
