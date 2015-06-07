@@ -113,7 +113,7 @@ function helpBoxUp() {
             .css("width", introWidth * 1.2)
             .css("position", "absolute");
         //.append(text);
-        //
+        
         helpDiv = $("<div id='helpDiv'>")
             .css("left", "0px")// xStartIntro * .8 + "px") 
             .css("top", "0px")//yStartIntro * 7 + "px") 
@@ -142,28 +142,16 @@ function helpBoxUp() {
             .style("stroke", "black")
             .style("stroke-width", $(window).width() * 0.005)
             .style("opacity", 0.9);
-
-        /*d3.select("#helpBox")
-            .append("text")
-            .style("left", 0 + "px")
-            .style("top", 0 + "px")
-            .attr("id", "closeMenuText2")
-            .style("font-size", headWidth * 0.07)
-            .style("text-anchor", "start")
-            .text(function(d) { return "\u2718";})
-            .on("click", helpBoxDown);*/
         
         exitHelp = $("<p id='closeMenuText2'>")
             .text("\u2718")
             .on("click", helpBoxDown)
             .css('cursor', 'pointer')
-            .css("padding-top", "5px")
+            .css("padding-top", "10px")
             .css("padding-right", "5px")
             .css("font-size", "30px")
             .css("display", "inline");
-
             //.text("Speech is my hammer, bang the world into shape. Now let it fall. -Mos Def")
-
 
         helpTitle = $("<h3>")
             .text("Visualize and Interact with the Evolution of Hip-Hop Collaborations in the United States")
@@ -176,14 +164,12 @@ function helpBoxUp() {
         helpIntro3 = $("<h4>").text("-Click on a region to explore the intra-region collaborations");
         helpIntro4 = $("<h6>").text("Please contact quinnkcq@gmail.com to report incorrect data or offer suggestions. Thanks for checking out our project! -Feat. Kevin, Sonja, Riley, Vinod").css("font-family", "unicode");
 
-
         helpDiv.append(exitHelp);
         helpDiv.append(helpTitle);
         helpDiv.append(helpIntro);
         helpDiv.append(helpIntro2);
         helpDiv.append(helpIntro3);
         helpDiv.append(helpIntro4);
-
         $("#helpBox").append(helpDiv);
     }
     
