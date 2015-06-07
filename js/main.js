@@ -182,12 +182,6 @@ function tick() {
 }
 
 function setUpSearch() {
-  $("#searchError").css("color", "red");
-  $("#searchError").css("font-weight", "bold");
-  $("#searchError").css("padding-left", "10px");
-  $("#searchError").css("left", ($(window).width() * 0.72) + "px");
-  $("#searchError").css("top", ($(window).height() * 0.03) + "px");
-  $("#searchError").css("position", "absolute");
 
   $("#searchArea").css("padding-left", "10px");
   $("#searchArea").css("left", ($(window).width() * 0.72) + "px");
@@ -201,6 +195,13 @@ function setUpSearch() {
       }
    });
 
+   $("#search").on("click", function() {
+    if (document.getElementById('search').value === "Artist Not Found") {
+      document.getElementById('search').value = "";
+      $("#search").css("color", "black");
+    }
+   });
+
    $("#search").autocomplete ({
       source: Object.keys(artistMap)
     });
@@ -211,41 +212,46 @@ function setUpSearch() {
 }
 
 function searchArtist() {
-    $("#searchError").text("");
     var selectedVal = document.getElementById('search').value;
 
     var artistNode = artistNodes[artistMap[selectedVal]];
-    var startYear = parseInt(artistNode.start_year);
-    var endYear = artistNode.end_year;
-    if (endYear == "present") {
-      endYear = presentYear;
-    } else {
-      endYear = parseInt(endYear);
-    }
-    regionNodes.forEach(function(node) {
-      if (node.id === artistNode.region) {
-        if (isZoomed) {
-          zoomOut();
-        }
 
-        if (currentYear < startYear || currentYear > endYear) {
-          moveThroughTimeSliding(startYear);
-        }
+    if (artistNode !== undefined) {
+      var startYear = parseInt(artistNode.start_year);
+      var endYear = artistNode.end_year;
+      if (endYear == "present") {
+        endYear = presentYear;
+      } else {
+        endYear = parseInt(endYear);
+      }
+      regionNodes.forEach(function(node) {
+        if (node.id === artistNode.region) {
+          if (isZoomed) {
+            zoomOut();
+          }
 
-        zoomToRegion(node);
-        
+          if (currentYear < startYear || currentYear > endYear) {
+            moveThroughTimeSliding(startYear);
+          }
 
-        if (node.id === "NE" && artistNode.state === "NY") {
-          setTimeout(function() {
-            $("#nyCircle").d3Click();
+          zoomToRegion(node);
+          
+
+          if (node.id === "NE" && artistNode.state === "NY") {
+            setTimeout(function() {
+              $("#nyCircle").d3Click();
+              searchedArtist = artistNode.name;
+            }, 1500);
+          } else {
             searchedArtist = artistNode.name;
-          }, 1500);
-        } else {
-          searchedArtist = artistNode.name;
+          } 
         } 
-      } 
 
-    });
+      });
+    } else {
+      document.getElementById('search').value="Artist Not Found";
+      $("#search").css("color", "red");
+    }
 }
 
 // ======= Functions to create the Map ======= 
