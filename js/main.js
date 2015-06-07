@@ -13,9 +13,20 @@ var regionNodes = [
    "points": [ { "lat": 37.5,  "lon": 120}, { "lat": 34,  "lon": 115}, { "lat": 31.5,  "lon": 116.5}, { "lat": 34,  "lon": 122} ] },
   {"id":"S", "name": "South", "lon": 85, "lat": 32, "zlon": 86, "zlat": 32, "color": "#BF113A", "ringColor": "#9F011A", "scale": 2.3, "numArtists":0, "artistsPerYear":{},
    "points": [ { "lat": 36,  "lon": 90}, { "lat": 39.5,  "lon": 70}, { "lat": 24,  "lon": 79}, { "lat": 24,  "lon": 81}, { "lat": 27,  "lon": 90}, { "lat": 29.5,  "lon": 102.5} ] },
-  {"id":"MW", "name": "Mid West", "lon": 87.6847, "lat": 39, "zlon": 87.2, "zlat": 41.5, "color": "#A314A8", "ringColor": "#830488", "scale": 4, "numArtists":0, "artistsPerYear":{},
+  {"id":"MW", "name": "Mid West", "lon": 87.6847, "lat": 41, "zlon": 87.2, "zlat": 41.5, "color": "#A314A8", "ringColor": "#830488", "scale": 4, "numArtists":0, "artistsPerYear":{},
    "points": [ { "lat": 40,  "lon": 96}, { "lat": 38.5,  "lon": 95}, { "lat": 38,  "lon": 87}, { "lat": 37,  "lon": 84}, { "lat": 41,  "lon": 80}, { "lat": 43,  "lon": 83}, { "lat": 46,  "lon": 93}, { "lat": 45,  "lon": 94} ]}
 ]
+
+var bezierScale = {
+  "W-SC": [11.0, -5000.0],
+  "W-MW": [1000.0, 2.0],
+  "NC-S": [5.0, -30.0],
+  "NC-NE": [5.0, 20.0],
+  "NC-MW": [5.0, -2.0],
+  "SC-NE": [5.0, 50.0],
+  "MW-NE": [5.0, 5.0],
+  "NC-SC": [-15.0, -100.0]
+};
 
 var nyNode = {"id":"NY", "name": "New York", "lon": 74.0059, "lat": 40.7127, "zlon": 73.7, "zlat": 40.65, "color": "#1662A4", "ringColor": "#024274", "scale": 54 };
 const regionIndexMap = ["W", "NE", "NC", "SC", "S", "MW"];
@@ -160,26 +171,17 @@ function tick() {
   regionNode.attr("cx", function(d) { return d.x - mapTranslateLeft; })
       .attr("cy", function(d) { return d.y; });
 
-  regionLink.attr('x1', function(d) { return d.source.x - mapTranslateLeft; })
-    .attr('y1', function(d) { return d.source.y; })
-    .attr('x2', function(d) { return d.target.x - mapTranslateLeft; })
-    .attr('y2', function(d) { return d.target.y; });
-  
+  regionLink.attr('d', function(d) { 
+      return pathCalculation(d); 
+    }); 
+ 
   d3.selectAll(".regionLinkInteractionArea")
-    .attr('x1', function(d) { return d.source.x - mapTranslateLeft; })
-    .attr('y1', function(d) { return d.source.y; })
-    .attr('x2', function(d) { return d.target.x - mapTranslateLeft; })
-    .attr('y2', function(d) { return d.target.y; });
+    .attr('d', function(d) { 
+      return pathCalculation(d); 
+    }); 
 }
 
-
 function setUpSearch() {
-  $("#searchError").css("color", "red");
-  $("#searchError").css("font-weight", "bold");
-  $("#searchError").css("padding-left", "10px");
-  $("#searchError").css("left", ($(window).width() * 0.72) + "px");
-  $("#searchError").css("top", ($(window).height() * 0.03) + "px");
-  $("#searchError").css("position", "absolute");
 
   $("#searchArea").css("padding-left", "10px");
   $("#searchArea").css("left", ($(window).width() * 0.72) + "px");
@@ -193,6 +195,13 @@ function setUpSearch() {
       }
    });
 
+   $("#search").on("click", function() {
+    if (document.getElementById('search').value === "Artist Not Found") {
+      document.getElementById('search').value = "";
+      $("#search").css("color", "black");
+    }
+   });
+
    $("#search").autocomplete ({
       source: Object.keys(artistMap)
     });
@@ -203,41 +212,46 @@ function setUpSearch() {
 }
 
 function searchArtist() {
-    $("#searchError").text("");
     var selectedVal = document.getElementById('search').value;
 
     var artistNode = artistNodes[artistMap[selectedVal]];
-    var startYear = parseInt(artistNode.start_year);
-    var endYear = artistNode.end_year;
-    if (endYear == "present") {
-      endYear = presentYear;
-    } else {
-      endYear = parseInt(endYear);
-    }
-    regionNodes.forEach(function(node) {
-      if (node.id === artistNode.region) {
-        if (isZoomed) {
-          zoomOut();
-        }
 
-        if (currentYear < startYear || currentYear > endYear) {
-          moveThroughTimeSliding(startYear);
-        }
+    if (artistNode !== undefined) {
+      var startYear = parseInt(artistNode.start_year);
+      var endYear = artistNode.end_year;
+      if (endYear == "present") {
+        endYear = presentYear;
+      } else {
+        endYear = parseInt(endYear);
+      }
+      regionNodes.forEach(function(node) {
+        if (node.id === artistNode.region) {
+          if (isZoomed) {
+            zoomOut();
+          }
 
-        zoomToRegion(node);
-        
+          if (currentYear < startYear || currentYear > endYear) {
+            moveThroughTimeSliding(startYear);
+          }
 
-        if (node.id === "NE" && artistNode.state === "NY") {
-          setTimeout(function() {
-            $("#nyCircle").d3Click();
+          zoomToRegion(node);
+          
+
+          if (node.id === "NE" && artistNode.state === "NY") {
+            setTimeout(function() {
+              $("#nyCircle").d3Click();
+              searchedArtist = artistNode.name;
+            }, 1500);
+          } else {
             searchedArtist = artistNode.name;
-          }, 1500);
-        } else {
-          searchedArtist = artistNode.name;
+          } 
         } 
-      } 
 
-    });
+      });
+    } else {
+      document.getElementById('search').value="Artist Not Found";
+      $("#search").css("color", "red");
+    }
 }
 
 // ======= Functions to create the Map ======= 
@@ -417,8 +431,12 @@ function addRegionTooltips(regionNode) {
 
 function hideRegions() {
   d3.selectAll("circle").attr("r", 0);
-  regionLink.style("stroke-width", "0px");
-  d3.selectAll(".regionLinkInteractionArea").style("stroke-width", "0px");
+  regionLink.style("stroke-width", "0px")
+    .style("cursor", "auto")
+    .on("click", null);
+  d3.selectAll(".regionLinkInteractionArea").style("stroke-width", "0px")
+    .style("cursor", "auto")
+    .on("click", null);
   d3.selectAll(".d3-region-tip").remove();
   d3.selectAll(".regionNode").style("visibility", "hidden");
 }
@@ -442,35 +460,25 @@ function setUpRegionLinks() {
   regionLink = svg.selectAll('.regionLink')
         .data(regionLinks)
         .enter();
-  regionLinkInteraction = regionLink.append('line')
+
+  regionLinkInteraction = regionLink.append('path')
         .attr('class', 'regionLinkInteractionArea')
-        .attr('x1', function(d) { return regionNodes[d.source].x  - mapTranslateLeft; })
-        .attr('y1', function(d) { return regionNodes[d.source].y; })
-        .attr('x2', function(d) { return regionNodes[d.target].x  - mapTranslateLeft; })
-        .attr('y2', function(d) { return regionNodes[d.target].y; })
         .attr("mask", "url(#regionMask)")
+        .attr("fill", "none")
         .style("stroke-width", "0px")
         .on("mouseenter", function(d) {
           d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#ddd");
         })
         .on("mouseleave", function(d) {
           d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#777");
-        })
-        .on("click", function(d) {
-          regionLinkClickHandler(d);
         });
-  regionLink = regionLink.append('line')
+
+  regionLink = regionLink.append('path')
         .attr('class', 'regionLink')
         .attr('id', function(d) { return regionNodes[d.source].id + "-" + regionNodes[d.target].id })
-        .attr('x1', function(d) { return regionNodes[d.source].x; })
-        .attr('y1', function(d) { return regionNodes[d.source].y; })
-        .attr('x2', function(d) { return regionNodes[d.target].x; })
-        .attr('y2', function(d) { return regionNodes[d.target].y; })
         .attr("mask", "url(#regionMask)")
-        .style("stroke-width", "0px")
-        .on("click", function(d) {
-          regionLinkClickHandler(d);
-        });
+        .attr("fill", "none")
+        .style("stroke-width", "0px");
 
   addRegionLinkTooltips(regionLinkInteraction);
   addRegionLinkTooltips(regionLink);
@@ -516,23 +524,102 @@ function updateRegionLinks() {
     calculateLinks(d);
   });
 
+  regionLinkInteraction.forEach(function(d) {
+    calculateLinks(d);
+  });
+
   d3.selectAll(".regionLink")
     .style("stroke-width", function(d) { 
       if (d.source != d.target) {
-        return Math.max(0, 1.25 * Math.log(4 * d.numLinks)) + "px"; 
+        return Math.max(0, 1.25 * Math.log(4 * d.numLinks)) + "px";
+      }
+    })
+    .style("cursor",  function(d) { 
+      if (d.source != d.target) {
+        if (d.numLinks > 0) {
+          return "pointer";
+        } else {
+          return "auto";
+        }
+      }
+    });
+
+  regionLink.on("click", function(d) {
+    if (d.numLinks > 0) {
+      regionLinkClickHandler(d);
+    } else {
+      return null;
+    }
+  });
+
+  regionLinkInteraction.on("click", function(d) {
+      if (d.numLinks > 0) {
+        regionLinkClickHandler(d);
+      } else {
+        return null;
       }
     });
 
   d3.selectAll(".regionLinkInteractionArea").style("stroke-width", function(d) {
-    if (d.numLinks === 0) {
-      return "0px";
-    }
-    return Math.max(0, 1 + Math.log(d.numLinks)) + 15 + "px";
-  });
+      if (d.numLinks === 0) {
+        return "0px";
+      }
+      return Math.max(0, 1 + Math.log(d.numLinks)) + 15 + "px";
+    })
+    .style("cursor",  function(d) { 
+      if (d.source != d.target) {
+        if (d.numLinks > 0) {
+          return "pointer";
+        } else {
+          return "auto";
+        }
+      }
+    });
 
   var regionLinkTemp = regionLink.filter(function(d, i) { return d.numLinks !== 0 });
   if (regionLinkTemp) {
     regionLinkTemp.call(regionLinkTip);
+  }
+}
+
+function pathCalculation(d) {
+  if (d.source != d.target) {
+    var start = d.source;
+    var end = d.target;
+    if (d.source.x > d.target.x) {
+      start = d.target;
+      end = d.source;
+    }
+    var transform = 1;
+    if (start.y > end.y) {
+      transform = -1;
+    }
+    var yStart = start.y;
+    var yEnd = end.y;
+    var xStart = start.x - mapTranslateLeft;
+    var xEnd = end.x - mapTranslateLeft;
+
+    var xDiff = xEnd - xStart;
+    var yDiff = Math.abs(yEnd - yStart);
+    var xMult = 5.0;
+    var yMult = 15.0;
+    
+    var newMult = bezierScale[d.source.id + "-" + d.target.id];
+    if (newMult === undefined) {
+      newMult = bezierScale[d.target.id + "-" + d.source.id];
+    }
+    if (newMult !== undefined) {
+      xMult = newMult[0];
+      yMult = newMult[1];
+    }
+
+    var xOffset = xStart + transform * xMult * yDiff / xDiff;
+    var yOffset = yEnd + (yMult * xDiff / yDiff) * transform; // yStart + (transform * Math.abs(yEnd - yStart) / 4.0);
+
+    return 'M' + xStart + ', ' + yStart + ' ' +
+           'C' + xStart + ', ' + yStart + ', ' +
+           xOffset + ', ' + yOffset + ', ' + 
+           xEnd + ', ' + yEnd;
   }
 }
 
@@ -556,27 +643,20 @@ function regionLinkClickHandler(regionLink) {
     for (var index in linksInYear) {
       var track = linksInYear[index];
       // if the source artist isn't in the dict, add them
-      if (!(track.source in artists)) {
-        artists[track.source] = [];
+      var liy;
+      if ((track.source + "_" + track.target) in artists) {
+        liy = artists[track.source + "_" + track.target];
+      } else if ((track.target + "_" + track.source) in artists) {
+        liy = artists[track.target + "_" + track.source];
+      } else {
+        liy = artists[track.source + "_" + track.target] = {};
       }
-      var targetExists = false;
-      for (var targetIndex in artists[track.source]) {
-        if (track.target === artists[track.source][targetIndex].target) {
-          targetExists = true;
-          if (year in artists[track.source][targetIndex].linksPerYear) {
-            artists[track.source][targetIndex].linksPerYear[year].push(track); 
-          } else {
-            artists[track.source][targetIndex].linksPerYear[year] = [track];
-          }
-          break;
-        }
+      if (year in liy) {
+        liy[year].push(track);
+      } else {
+        liy[year] = [track];
       }
       // if the target artist does not already exist, add them to the source
-      if (!targetExists) {
-        var yearTrack = {};
-        yearTrack[year] = [track];
-        artists[track.source].push({ "target": track.target, "linksPerYear": yearTrack });
-      }
     }
   }
   headViewRegionLink(artists, regionLink.source.name, regionLink.target.name);
@@ -587,11 +667,11 @@ function addRegionLinkTooltips(regionLink) {
   if (regionLinkTemp) {
     regionLinkTemp.call(regionLinkTip);
   }
-  regionLink.on("mouseover", function(d) {
+  regionLink.on("mouseenter", function(d) {
     d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#ddd");
     regionLinkTip.show(d);
   });
-  regionLink.on("mouseout", function(d) {
+  regionLink.on("mouseleave", function(d) {
     d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#777");
     regionLinkTip.hide(d);
   });
@@ -684,6 +764,7 @@ function zoomOut() {
     var regionNode = svg.selectAll('.regionNode');
     addRegionTooltips(regionNode);
 
+    // setUpRegionLinks();
     var regionLink = svg.selectAll('.regionLink');
     addRegionLinkTooltips(regionLink);
 
@@ -994,6 +1075,7 @@ function createArtistLinks(region, k, x, y) {
       .enter();
 
   artistLinkInteraction = artistLink.append('line')
+      .data(artistLinksTemp)
       .attr('class', 'artistLinkInteractionArea')
       .attr('x1', function(d) { return d.sourceX; })
       .attr('y1', function(d) { return d.sourceY; })
@@ -1001,21 +1083,7 @@ function createArtistLinks(region, k, x, y) {
       .attr('y2', function(d) { return d.targetY; })
       .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
       .style("stroke-width", "0px")
-      .call(artistLinkTip)
-      .on("mouseenter", function(d) {
-        d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
-          .style("stroke", "#ddd");
-        artistLinkTip.show(d);
-      })
-      .on("mouseleave", function(d) {
-        d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
-          .style("stroke", "#777");
-        artistLinkTip.hide(d);
-
-      })
-      .on("click", function(d) {
-        headViewMultipleArtist(d.linksPerYear, false);
-      });
+      .call(artistLinkTip);
 
   artistLink = artistLink.append('line')
     .attr('class', 'artistLink')
@@ -1027,18 +1095,7 @@ function createArtistLinks(region, k, x, y) {
     .attr('x2', function(d) { return d.targetX; })
     .attr('y2', function(d) { return d.targetY; })
     .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-    .style("stroke-width", "0px")
-    .on("mouseenter", function(d) {
-      d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
-        .style("stroke", "#ddd");
-    })
-    .on("mouseleave", function(d) {
-      d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
-        .style("stroke", "#777");
-    })
-    .on("click", function(d) {
-      headViewMultipleArtist(d.linksPerYear, false);
-    });
+    .style("stroke-width", "0px");
     
 
   //addRegionLinkTooltips(regionLinkInteraction);
@@ -1123,6 +1180,74 @@ function updateArtistLinks(scale) {
     calculateLinks(d);
   });
 
+  artistLinkInteraction.forEach(function(d) {
+    calculateLinks(d);
+  });
+
+  d3.selectAll(".artistLinkInteractionArea").on("click", function(d) {
+    if (d.numLinks > 0 && d.source != d.target &&
+          shouldShowArtist(currentRegion, d.source) &&
+          shouldShowArtist(currentRegion, d.target)) {
+      headViewMultipleArtist(d.linksPerYear, false);
+    } else {
+      return null;
+    }
+  })
+  .on("mouseenter", function(d) {
+    if (d.numLinks > 0 && d.source != d.target &&
+        shouldShowArtist(currentRegion, d.source) &&
+        shouldShowArtist(currentRegion, d.target)) {
+      d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
+        .style("stroke", "#ddd");
+      artistLinkTip.show(d);
+    } else {
+      return null;
+    }
+  })
+  .on("mouseleave", function(d) {
+    if (d.numLinks > 0 && d.source != d.target &&
+        shouldShowArtist(currentRegion, d.source) &&
+        shouldShowArtist(currentRegion, d.target)) {
+      d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
+        .style("stroke", "#777");
+      artistLinkTip.hide(d);
+    } else {
+      return null;
+    }
+  });
+
+  d3.selectAll(".artistLink").on("click", function(d) {
+    if (d.numLinks > 0 && d.source != d.target &&
+          shouldShowArtist(currentRegion, d.source) &&
+          shouldShowArtist(currentRegion, d.target)) {
+      headViewMultipleArtist(d.linksPerYear, false);
+    } else {
+      return null;
+    }
+  })
+  .on("mouseenter", function(d) {
+    if (d.numLinks > 0 && d.source != d.target &&
+        shouldShowArtist(currentRegion, d.source) &&
+        shouldShowArtist(currentRegion, d.target)) {
+      d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
+        .style("stroke", "#ddd");
+      artistLinkTip.show(d);
+    } else {
+      return null;
+    }
+  })
+  .on("mouseleave", function(d) {
+    if (d.numLinks > 0 && d.source != d.target &&
+        shouldShowArtist(currentRegion, d.source) &&
+        shouldShowArtist(currentRegion, d.target)) {
+      d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
+        .style("stroke", "#777");
+      artistLinkTip.hide(d);
+    } else {
+      return null;
+    }
+  });
+
   artistLink.style("stroke-width", function(d) {
       if (d.source != d.target &&
           shouldShowArtist(currentRegion, d.source) &&
@@ -1131,22 +1256,42 @@ function updateArtistLinks(scale) {
       } else {
         return "0px";
       }
+    })
+    .style("cursor",  function(d) { 
+      if (d.numLinks > 0 && d.source != d.target &&
+          shouldShowArtist(currentRegion, d.source) &&
+          shouldShowArtist(currentRegion, d.target)) {
+        return "pointer";
+      } else {
+        return "auto";
+      }
     });
 
   d3.selectAll(".artistLinkInteractionArea").style("stroke-width", function(d) {
       if (d.source != d.target &&
           shouldShowArtist(currentRegion, d.source) &&
           shouldShowArtist(currentRegion, d.target)) {
-        var width = Math.max(0, (3.0 / scale) * Math.log(2 * d.numLinks)) + 2;
-        if (width < 5) {
-          width += 5;
+        var width = Math.max(0, (3.0 / scale) * Math.log(2 * d.numLinks)) + 5.0 / scale ;
+        if (d.numLinks < 5) {
+          width += 20.0 / scale;
         }
-        return width + "px"; 
+        return width + "px";
       } else {
         return "0px";
       }
+    })
+    .style("cursor",  function(d) { 
+      if (d.numLinks > 0 && d.source != d.target &&
+          shouldShowArtist(currentRegion, d.source) &&
+          shouldShowArtist(currentRegion, d.target)) {
+        return "pointer";
+      } else {
+        return "auto";
+      }
     });
+
 }
+
 
 function artistMouseEnter(d, scale) {
   var circleSize = artistCircleSize;

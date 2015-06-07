@@ -8,8 +8,6 @@ imageY = yStart * .4
 imageWidth = headWidth * 0.20
 
 prevArtists = null;
-prevSource = null;
-prevTarget = null;
 
 function headSetup(artistNode1, artistNode2) {
 //    var artistImage1 = "imgs/" + getArtistImageName(artistNode1.name) + ".png";
@@ -518,7 +516,7 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
         currentLink = null;
         closeHead();
         if (fromRegionLinkView) {
-          headViewRegionLink(prevArtists, prevSource, prevTarget);  
+          headViewRegionLink(prevArtists);  
         }
     });
 
@@ -526,7 +524,38 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
 }
 
 //Pairwise comparison in outer view
-function headViewRegionLink(artists, regionSource, regionTarget) {
+function headViewRegionLink(artists) {
+    var sortedArtists = {};
+
+    var source;
+    var target;
+    for (var pair in artists) {
+      var source = artistNodes[pair.split("_")[0]].region;
+      var target = artistNodes[pair.split("_")[1]].region;
+      break;
+    }
+    for (var pair in artists) {
+      var key;
+      if (artistNodes[pair.split("_")[0]].region === source) {
+        key = pair.split("_")[0] + "_" + pair.split("_")[1];
+      } else {
+        key = pair.split("_")[1] + "_" + pair.split("_")[0];
+      }
+      sortedArtists[key] = artists[pair];
+    }
+
+
+    artists = sortedArtists;
+    var sourceText;
+    var targetText;
+
+    for (region in regionNodes) {
+      if (regionNodes[region].id === source) {
+        sourceText = regionNodes[region].name;
+      } else if (regionNodes[region].id === target) {
+        targetText = regionNodes[region].name;
+      }
+    } 
 
     headStart();
 
@@ -568,12 +597,12 @@ function headViewRegionLink(artists, regionSource, regionTarget) {
       .css("max-height", headHeight * 0.1 + "px")
       .css("line-height", headHeight * 0.2 + "px")
       .css("font-size", headWidth * 0.04 + "px")
-      .text(regionSource);
+      .text(sourceText);
     targetName
       .css("max-height", headHeight * 0.1 + "px")
       .css("line-height", headHeight * 0.2 + "px")
       .css("font-size", headWidth * 0.04 + "px")
-      .text(regionTarget);
+      .text(targetText);
     regionNames.append(sourceName).append(targetName);
     $("#head").append(regionNames);
 
@@ -597,14 +626,32 @@ function headViewRegionLink(artists, regionSource, regionTarget) {
     $("#head").append(artistCollabsList);
 
     // add li for each distinct artist-artist collaboration
-    for (var source in artists) {
+    var sorted_keys = Object.keys(artists).sort(function(a, b) {
+      if (artistNodes[a.split("_")[0]].name < artistNodes[b.split("_")[0]].name) {
+        return -1;
+      } else if (artistNodes[a.split("_")[0]].name > artistNodes[b.split("_")[0]].name) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+    for (var i in sorted_keys) {
+        var pair = sorted_keys[i];
+        var p = [artists[pair]];
         var li = d3.select("ul").selectAll(".dummy") // this doesn't exist so it won't override anything, this is a concern cause we're in a for loop
-            .data(artists[source])
+            .data(p)
             .enter()
             .append("li")
             .attr("class", "artistCollabs")
-            .html(function(d) { return "<div class='artistPair'><div class='sourceArtist'>" + artistNodes[source].name + "</div><div class='targetArtist'>" + artistNodes[d.target].name + "</div></div>"; });
-        li.on("click", function(d) { prevArtists = artists; prevSource = regionSource; prevTarget = regionTarget; closeHead(); headViewMultipleArtist(d.linksPerYear, true); });
+            .html(function(d) { 
+              var sourceArtist = artistNodes[pair.split("_")[0]];
+              var targetArtist = artistNodes[pair.split("_")[1]];
+              if (sourceArtist.region != source) {
+                sourceArtist = artistNodes[pair.split("_")[1]];
+                targetArtist = artistNodes[pair.split("_")[0]];
+              }
+              return "<div class='artistPair'><div class='sourceArtist'>" + sourceArtist.name + "</div><div class='targetArtist'>" + targetArtist.name + "</div></div>"; });
+        li.on("click", function(d) { prevArtists = artists; closeHead(); headViewMultipleArtist(d, true); });
     } 
 
     gh.append("text")
