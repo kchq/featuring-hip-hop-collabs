@@ -178,7 +178,7 @@ li.artistCollabs:hover {
   overflow: hidden;
 }
 
-#sourceRegion, #targetRegion {
+#sourceRegion, #targetRegion, #helpDiv {
   width: 50%;
   float: left;
   text-align: center;
@@ -218,3 +218,17 @@ li.artistCollabs:hover {
   background-image: linear-gradient(to bottom, #919ba1, #abbcc7);
   text-decoration: none;
 }
+
+
+.background {
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+} 
+
+.blur {
+    -webkit-filter: blur(15px) grayscale(.5) opacity(0.5) contrast(70%);
+}
+
