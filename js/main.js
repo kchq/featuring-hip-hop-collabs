@@ -193,6 +193,9 @@ function setUpSearch() {
    $("#searchArea").on("keypress", function(e) {
       if (e.keyCode == 13) {
         searchArtist();
+      } else if (document.getElementById('search').value === "Artist Not Found") {
+        document.getElementById('search').value = "";
+        $("#search").css("color", "black");
       }
    });
 
