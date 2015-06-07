@@ -1048,12 +1048,19 @@ function artistMouseLeave(d) {
 // ======= Functions for handling scrolling ======= 
 
 function moveThroughTimeScrolling() {
+  var firefox = false;
   if (d3.event.sourceEvent.type=='wheel'){
-      if (d3.event.sourceEvent.wheelDeltaY){
-        if (d3.event.sourceEvent.wheelDeltaY > 0){
-          currentYear = Math.min(presentYear, Math.round(currentYear + d3.event.sourceEvent.wheelDeltaY/30 + 1));
-        } else if (d3.event.sourceEvent.wheelDelta < 0) {
-          currentYear = Math.max(startYear, Math.round(currentYear + d3.event.sourceEvent.wheelDeltaY/30 - 1));
+      var deltaY = d3.event.sourceEvent.wheelDeltaY;
+      if (!deltaY) {
+        // firefox
+        deltaY = -1 * d3.event.sourceEvent.deltaY;
+        firefox = true;
+      } 
+      if (deltaY){
+        if (deltaY > 0){
+          currentYear = Math.min(presentYear, Math.round(currentYear + deltaY/30 + 1));
+        } else if (deltaY < 0) {
+          currentYear = Math.max(startYear, Math.round(currentYear + deltaY/30 - 1));
         }
       } 
 
@@ -1061,10 +1068,12 @@ function moveThroughTimeScrolling() {
     updateRegions();
     updateNarration();
 
-    zoom.on("zoom", null);
-    setTimeout(function(){
-      zoom.on("zoom", moveThroughTimeScrolling);
-    }, 150);
+    if (!firefox) {
+      zoom.on("zoom", null);
+      setTimeout(function(){
+        zoom.on("zoom", moveThroughTimeScrolling);
+      }, 150);
+    }
   }
 
 }
