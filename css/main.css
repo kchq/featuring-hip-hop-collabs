@@ -75,6 +75,10 @@ body {
     font-family: "bombing";
 }
 
+#rapperCity, #rapperYear, #collabsList {
+    font-family: "paintBrush";
+}
+
 #title {
    font-family: "bombing";
    font-size: "100px"; 
@@ -229,5 +233,9 @@ li.artistCollabs:hover {
 
 .blur {
     -webkit-filter: blur(15px) grayscale(.5) opacity(0.5) contrast(70%);
+}
+
+#artistBio {
+  font-family: "paintbrush";
 }
 
