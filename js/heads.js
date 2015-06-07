@@ -57,7 +57,7 @@ function addImages(node1, node2) {
 
 
    svgHead.append('clipPath')
-      .attr("id", getArtistImageName(node1.name))
+      .attr("id", getArtistImageName(node1.name) + "2")
       .attr("class", "clippath")
       .append("circle")
       .attr("cx",  image1X + imageWidth / 2)
@@ -72,7 +72,7 @@ function addImages(node1, node2) {
         .attr("width", imageWidth)
         .attr("height", imageWidth)
         // preserve size of circle across different regions, because each region has a different scale
-        .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node1.name) + ")"; });
+        .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node1.name) + "2)"; });
         
     gh.append("circle")
         .attr("id", "50_centring") //function(d) { return getArtistImageName(d.name) + "ring"; })
@@ -84,7 +84,7 @@ function addImages(node1, node2) {
         .style("stroke-width", "2px");
 
     svgHead.append('clipPath')
-      .attr("id", getArtistImageName(node2.name))
+      .attr("id", getArtistImageName(node2.name) + "2")
       .attr("class", "clippath")
       .append("circle")
       .attr("cx",  image2X + imageWidth / 2)
@@ -98,7 +98,7 @@ function addImages(node1, node2) {
         .attr("y", imageY)
         .attr("width", imageWidth) 
         .attr("height", imageWidth)
-        .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node2.name) + ")"; });
+        .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node2.name) + "2)"; });
         
     gh.append("circle")
         .attr("id", "earl_sweatshirtring") //function(d) { return getArtistImageName(d.name) + "ring"; })
