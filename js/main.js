@@ -1260,7 +1260,7 @@ function updateArtistLinks(scale) {
       if (d.numLinks > 0 && d.source != d.target &&
           shouldShowArtist(currentRegion, d.source) &&
           shouldShowArtist(currentRegion, d.target)) {
-        return bezierPathArtist(d, 2.0 / scale, 5.0 / scale);      }
+        return bezierPathArtist(d, 2.0 / scale, 2.0 / scale);      }
     })
     .style("stroke-width", function(d) {
       if (d.source != d.target &&
@@ -1285,7 +1285,7 @@ function updateArtistLinks(scale) {
       if (d.numLinks > 0 && d.source != d.target &&
           shouldShowArtist(currentRegion, d.source) &&
           shouldShowArtist(currentRegion, d.target)) {
-        return bezierPathArtist(d, 2.0 / scale, 5.0 / scale);
+        return bezierPathArtist(d, 2.0 / scale, 2.0 / scale);
       }
     })
     .style("stroke-width", function(d) {
