@@ -322,7 +322,7 @@ function headViewSingleArtist(artist) {
       datasets : [
         {
           label: "Collaborations by Region",
-          fillColor : "#48A497",
+          fillColor : "#aaa",
           strokeColor : "black",
           data : [collabsWithOtherRegion.get(regionAbbrs[0]),
                   collabsWithOtherRegion.get(regionAbbrs[1]),
@@ -334,17 +334,8 @@ function headViewSingleArtist(artist) {
       ]
     }
 
-//  var regionAbbrs = ["NE", "S", "NC", "SC", "MW", "W"];
     var chart = new Chart(artistCollabInfo).Bar(barData);
-    chart.datasets[0].bars[0].fillColor = "#4682B4";
-    chart.datasets[0].bars[1].fillColor = "#BF113A";
-    chart.datasets[0].bars[2].fillColor = "#FFE303";
-    chart.datasets[0].bars[3].fillColor = "#E39612";
-    chart.datasets[0].bars[4].fillColor = "#A314A8";
-    chart.datasets[0].bars[5].fillColor = "#3AA827";
-    chart.update();
-
-
+    
     var rapperTitle = $("<h1 id='rapperName'>");
     rapperTitle.text(artist.name);
 
@@ -362,7 +353,7 @@ function headViewSingleArtist(artist) {
 }
 
 
-function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
+function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeIndex1, artistNodeIndex2) {
 
    var spotifyFrame = $("<iframe>");
    var collabsWidth = headWidth * .55;
@@ -375,15 +366,21 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
    var source;
    var dest;
 
-   //Find source and dest artist, yeah its ugly. I know it, babe.
-   for (var links in linksPerYear) {
-       linksYear = linksPerYear[links];
-       for (var i = 0; i < linksYear.length; i++) {
-           source = artistNodes[linksYear[i].source];
-           dest = artistNodes[linksYear[i].target];
-           break;
-       }
-       break;
+   if (artistNodeIndex1 !== undefined && artistNodeIndex2 !== undefined) {
+      source = artistNodes[artistNodeIndex1];
+      dest = artistNodes[artistNodeIndex2];
+   } else {
+
+     //Find source and dest artist, yeah its ugly. I know it, babe.
+     for (var links in linksPerYear) {
+         linksYear = linksPerYear[links];
+         for (var i = 0; i < linksYear.length; i++) {
+             source = artistNodes[linksYear[i].source];
+             dest = artistNodes[linksYear[i].target];
+             break;
+         }
+         break;
+      }
     }
 
    svgHead = d3.select("#head")
@@ -500,6 +497,7 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
         .css("height", headHeight * 0.2 + "px")
         .css("position", "absolute");
     artistName2.text(dest.name);
+    //console.log(artistName1.text() + " " + artistName2.text());
 
     $("#head").append(artistName1);
     $("#head").append(artistName2);
@@ -694,12 +692,5 @@ function clickedOutside(e) {
     {
         closeHead();
     }
-}
-
-function regionLinkSingleArtistInfo(regionLink) {
-  for (var year in regionLink.linksPerYear) {
-    console.log(year);
-  }
-
 }
 
