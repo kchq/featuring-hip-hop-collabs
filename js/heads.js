@@ -1,9 +1,9 @@
-xStart = $(window).width() * 0.30;
-yStart = $(window).height() * 0.10 
-headHeight= $(window).height() * .80;
-headWidth = $(window).width() * 0.60;
+xStart = $(window).width() * 0.25;
+yStart = $(window).height() * 0.05 
+headHeight= $(window).height() * 0.90;
+headWidth = $(window).width() * 0.70;
 image1X = xStart * .3;
-image2X = xStart * 1.3;
+image2X = xStart * 1.9;
 imageY = yStart * .4
 imageWidth = headWidth * 0.20
 
@@ -72,7 +72,12 @@ function addImages(node1, node2) {
         .attr("width", imageWidth)
         .attr("height", imageWidth)
         // preserve size of circle across different regions, because each region has a different scale
-        .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node1.name) + ")"; });
+        .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node1.name) + ")"; })
+        .style("cursor", "pointer")
+        .on("click", function() { 
+          closeHead();
+          headViewSingleArtist(node1);
+        });
         
     gh.append("circle")
         .attr("id", "50_centring") //function(d) { return getArtistImageName(d.name) + "ring"; })
@@ -98,7 +103,12 @@ function addImages(node1, node2) {
         .attr("y", imageY)
         .attr("width", imageWidth) 
         .attr("height", imageWidth)
-        .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node2.name) + ")"; });
+        .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node2.name) + ")"; })
+        .style("cursor", "pointer")
+        .on("click", function() {
+          closeHead();
+          headViewSingleArtist(node2);
+        });
         
     gh.append("circle")
         .attr("id", "earl_sweatshirtring") //function(d) { return getArtistImageName(d.name) + "ring"; })
@@ -355,6 +365,7 @@ function headViewSingleArtist(artist) {
 
 
 function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
+
    var spotifyFrame = $("<iframe>");
    var collabsWidth = headWidth * .55;
    var collabsHeight = headHeight * .4;
@@ -362,8 +373,6 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
    var frameHeight = Math.max(headHeight * 0.4, frameWidth + 80);
 
    headStart();
-   console.log(linksPerYear);
-   console.log(fromRegionLinkView);
     
    var source;
    var dest;
@@ -401,16 +410,16 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
         .style("opacity", 0.8);
 
   var collabsList = $("<div id='collabsList'>");
-    collabsList.css("left", headWidth - collabsWidth + "px")
-        .css("top", "0px")
+    collabsList.css("left", "0px")
+        .css("top", headHeight - 330 - 2 + "px")
         .css("width", collabsWidth + "px")
-        .css("height", headHeight - 330 - 10 + "px")
+        .css("height", "330px")
         .css("position", "absolute");
 
   var ul = $("<ul class='list-group collab'>");
-    ul.css("max-height", headHeight - 330 - 10 + "px")
-        .css("border", "2px")
+    ul.css("border", "2px")
         .css("width", collabsWidth + "px")
+        .css("height", "330px")
         .css("border-style", "solid")
         .css("border-width", "3px");
 
@@ -470,6 +479,33 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
     $("#head").append(spotifyFrame);
   }
 
+    var artistName1 = $("<p class='artistNameHead'>");
+    var size = Math.min(6, source.name.length)
+    artistName1.css("font-size", size + "vmin")
+        //.css('color', 'black');
+        .css("text-align", "center")
+        .css("left", image1X - imageWidth/2 + "px") 
+        .css("top", imageY + imageWidth + "px")
+        .css("width", imageWidth * 3/2 + 100 + "px")
+        .css("height", headHeight * 0.2 + "px")
+        .css("position", "absolute");
+    artistName1.text(source.name);
+
+    var artistName2 = $("<p class='artistNameHead'>");
+    size = Math.min(6, dest.name.length)
+    artistName2.css("font-size", size + "vmin")
+        //.css('color', 'black');
+        .css("text-align", "center")
+        .css("left", image2X - imageWidth/2 + "px") 
+        .css("top", imageY + imageWidth + "px")
+        .css("width", imageWidth * 3/2 + 100 + "px")
+        .css("height", headHeight * 0.2 + "px")
+        .css("position", "absolute");
+    artistName2.text(dest.name);
+
+    $("#head").append(artistName1);
+    $("#head").append(artistName2);
+
   gh.append("text")
     .attr("x", headWidth * 0.02)
     .attr("y", headHeight * 0.09)
@@ -478,6 +514,7 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
     .style("text-anchor", "start")
     .text(function(d) { return "\u2718";})
     .on("click", function() {
+        currentLink = null;
         closeHead();
         if (fromRegionLinkView) {
           headViewRegionLink(prevArtists, prevSource, prevTarget);  
@@ -583,6 +620,7 @@ function headViewRegionLink(artists, regionSource, regionTarget) {
 
 function closeHead() {
   $("#head").html("");
+
   if (!isZoomed) {
     updateRegionLinks();
   }
