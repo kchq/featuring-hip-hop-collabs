@@ -41,6 +41,12 @@ var zoom = d3.behavior.zoom()
     moveThroughTimeScrolling();
   });
 
+var artistTip = d3.tip()
+  .attr('class', 'd3-region-tip')
+  .html(function(d) {
+    return "<div>" + d.name + "</div>"
+  });
+
 var regionTip = d3.tip()
   .attr('class', 'd3-region-tip')
   .html(function(d) {
@@ -865,13 +871,16 @@ function setUpCurrentArtistNodes(region, x, y, k) {
     .style("stroke-width", "0.5px");
 
   // draw a ring on hover
+  currentArtistNode.call(artistTip);
   currentArtistNode.on("mouseenter", function(d) { 
     if (d == nyNode) { return; }
     artistMouseEnter(d);
+    artistTip.show(d);
   });
   currentArtistNode.on("mouseleave", function(d) { 
     if (d == nyNode) { return; }
     artistMouseLeave(d);
+    artistTip.hide(d);
   });
   currentArtistNode.on("click", function(d) {
     if (d == nyNode) { return; }
