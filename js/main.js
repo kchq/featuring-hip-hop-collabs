@@ -154,7 +154,8 @@ function init(error) {
   createRegions();
   setUpRegions();
   setUpSearch();
-  introSetup();
+  //introSetup();
+  tearDownIntros();
 }
 
 // redraws everything
@@ -262,6 +263,8 @@ function setupMap() {
     .style("width", width + "px")
     .style("left", $(window).width() * 0.2 + "px")
     .style("position", "absolute")
+    .style("background-image", "url('imgs/footer_lodyas.png')")
+    .style("background-repeat", "repeat")
     .append("svg")
     .attr("width", width)
     .attr("height", height)
@@ -277,7 +280,7 @@ function setupMap() {
     .attr("class", "background")
     .attr("width", width)
     .attr("height", height)
-    .style("fill", "rgba(0,0,0,0)");
+    .style("fill", "none");
 
   var help = $("<button id='help' class='btn'>")
       .text(" ? ")
@@ -371,11 +374,11 @@ function setUpRegions() {
     .append("path")
       .attr("transform", "translate(" + (-1 * mapTranslateLeft) + ",0)")
       .attr("d", function(d) { return lineFunction(d.points); })
-      .attr("stroke", "black")
+      .attr("stroke", "#242424")
       .attr("stroke-width", 2)
       .attr("class", "regionNode")
-      .attr("fill", function(d) { return d.color; })
-      .style("opacity", 0.3)
+      .attr("fill", "white")
+      .style("opacity", 0.4)
       .on("click", function(d) {
         zoomToRegion(d); 
       });
@@ -419,12 +422,12 @@ function addRegionTooltips(regionNode) {
   regionNode.call(regionTip);
   regionNode.on("mouseover", function(d) {
     d3.select(this).style("opacity", 0.5);
-    d3.select(this).style("stroke-width", "3px").style("stroke", d.ringColor);
+    d3.select(this).style("stroke-width", "3px");
     regionTip.show(d);
   });
   regionNode.on("mouseout", function(d) {
     d3.select(this).style("opacity", 0.3);
-    d3.select(this).style("stroke-width", "2px").style("stroke", d.ringColor);;
+    d3.select(this).style("stroke-width", "2px");
     regionTip.hide(d);
   });
 }
@@ -467,10 +470,10 @@ function setUpRegionLinks() {
         .attr("fill", "none")
         .style("stroke-width", "0px")
         .on("mouseenter", function(d) {
-          d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#ddd");
+          d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#fff");
         })
         .on("mouseleave", function(d) {
-          d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#777");
+          d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#999"); // needs to be the same as .regionLink in main.css
         });
 
   regionLink = regionLink.append('path')
@@ -668,11 +671,11 @@ function addRegionLinkTooltips(regionLink) {
     regionLinkTemp.call(regionLinkTip);
   }
   regionLink.on("mouseenter", function(d) {
-    d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#ddd");
+    d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#fff");
     regionLinkTip.show(d);
   });
   regionLink.on("mouseleave", function(d) {
-    d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#777");
+    d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#999"); // needs to be the same as .regionLink in main.css
     regionLinkTip.hide(d);
   });
 }
@@ -1198,7 +1201,7 @@ function updateArtistLinks(scale) {
         shouldShowArtist(currentRegion, d.source) &&
         shouldShowArtist(currentRegion, d.target)) {
       d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
-        .style("stroke", "#ddd");
+        .style("stroke", "#fff");
       artistLinkTip.show(d);
     } else {
       return null;
@@ -1209,7 +1212,7 @@ function updateArtistLinks(scale) {
         shouldShowArtist(currentRegion, d.source) &&
         shouldShowArtist(currentRegion, d.target)) {
       d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
-        .style("stroke", "#777");
+        .style("stroke", "#999"); // needs to be the same as .regionLink in main.css
       artistLinkTip.hide(d);
     } else {
       return null;
@@ -1230,7 +1233,7 @@ function updateArtistLinks(scale) {
         shouldShowArtist(currentRegion, d.source) &&
         shouldShowArtist(currentRegion, d.target)) {
       d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
-        .style("stroke", "#ddd");
+        .style("stroke", "#fff");
       artistLinkTip.show(d);
     } else {
       return null;
@@ -1241,7 +1244,7 @@ function updateArtistLinks(scale) {
         shouldShowArtist(currentRegion, d.source) &&
         shouldShowArtist(currentRegion, d.target)) {
       d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
-        .style("stroke", "#777");
+        .style("stroke", "#999"); // needs to be the same as .artistLink in main.css
       artistLinkTip.hide(d);
     } else {
       return null;
