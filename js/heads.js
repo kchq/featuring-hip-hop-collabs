@@ -73,8 +73,8 @@ function addImages(node1, node2) {
         .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node1.name) + "2)"; })
         .style("cursor", "pointer")
         .on("click", function() { 
-          closeHead();
-          headViewSingleArtist(node1);
+          closeHead(false);
+          headViewSingleArtist(node1, false);
         });
         
     gh.append("circle")
@@ -104,8 +104,8 @@ function addImages(node1, node2) {
         .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node2.name) + "2)"; })
         .style("cursor", "pointer")
         .on("click", function() {
-          closeHead();
-          headViewSingleArtist(node2);
+          closeHead(false);
+          headViewSingleArtist(node2, false);
         });
         
     gh.append("circle")
@@ -122,10 +122,12 @@ function addImages(node1, node2) {
 }
 
 // Shows artist detailed view in head to head fashion only displaying a single artist
-function headViewSingleArtist(artist) {
+function headViewSingleArtist(artist, fromOther) {
 
     headStart();
-
+    if (!fromOther) {
+        blurBackground();
+    }
     var artistFormatted = getArtistImageName(artist.name);
     var artistImage = "imgs/" + artistFormatted + ".png";
     var imgWidth = imageWidth * 1.5
@@ -373,6 +375,7 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeInde
    var frameHeight = Math.max(headHeight * 0.4, frameWidth + 80);
 
    headStart();
+   blurBackground();
     
    var source;
    var dest;
@@ -692,7 +695,13 @@ function headViewRegionLink(artists) {
 
 }
 
-function closeHead() {
+
+//@param exit: boolean to determine whether or not closeHead is 
+//taking you back to main view (as opposed to other view) 
+function closeHead(noExit) {
+  if (!noExit) {
+    unblurBackground();
+  }
   $("#head").html("");
 
   if (!isZoomed) {

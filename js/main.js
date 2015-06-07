@@ -183,14 +183,16 @@ function tick() {
 }
 
 function setUpSearch() {
-
   $("#searchArea").css("padding-left", "10px");
   $("#searchArea").css("left", ($(window).width() * 0.72) + "px");
   $("#searchArea").css("top", ($(window).height() * 0.01) + "px");
-  $("#searchArea").css("position", "absolute");
-
-   $("#searchbutton").on("click", searchArtist);
-   $("#searchArea").on("keypress", function(e) {
+  $("#searchArea").css("font-family", "paintBrush");
+  $("#searchArea").css("position", "absolute")
+  $("#search").css("font", "15px");
+  $("#searchButton").css("font-family", "paintBrush");
+  $("#search").css("font-family", "paintBrush");
+  $("#searchbutton").on("click", searchArtist);
+  $("#searchArea").on("keypress", function(e) {
       if (e.keyCode == 13) {
         searchArtist();
       } else if (document.getElementById('search').value === "Artist Not Found") {

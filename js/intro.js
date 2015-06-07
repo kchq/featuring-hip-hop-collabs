@@ -112,7 +112,6 @@ function helpBoxUp() {
             .css("top", yStartIntro * 8.5) 
             .css("width", introWidth * 1.2)
             .css("position", "absolute");
-        //.append(text);
         
         helpDiv = $("<div id='helpDiv'>")
             .css("left", "0px")// xStartIntro * .8 + "px") 
@@ -194,11 +193,18 @@ function tearDownIntros() {
     var content = $('#mapContainer').removeClass("blur");
 }
 
+function unblurBackground() {
+    var content = $('#slider').removeClass("blur");
+    var content = $('#searchArea').removeClass("blur");
+    var content = $('#narration').removeClass("blur");
+    var content = $('#mapContainer').removeClass("blur");
+}
+
 function blurBackground() {
-    var content = $('#slider').addClass("background");
-    var content = $('#searchArea').addClass("background");
-    var content = $('#narration').addClass("background");
-    var content = $('#mapContainer').addClass("background");
+    var content = $('#slider').addClass("blue");
+    var content = $('#searchArea').addClass("blur");
+    var content = $('#narration').addClass("blur");
+    var content = $('#mapContainer').addClass("blur");
 /*
     var content = $('#slider').css("-webkit-filter", "blur(15px) grayscale(.5) opacity(0.5) contrast(70%) ")
         .css("-webkit-transition", "all 1s ease-out")
