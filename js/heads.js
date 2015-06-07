@@ -414,7 +414,8 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView) {
         .css("top", headHeight - 330 - 2 + "px")
         .css("width", collabsWidth + "px")
         .css("height", "330px")
-        .css("position", "absolute");
+        .css("position", "absolute")
+        .css("background-color", "white");
 
   var ul = $("<ul class='list-group collab'>");
     ul.css("border", "2px")
@@ -557,20 +558,21 @@ function headViewRegionLink(artists, regionSource, regionTarget) {
     var targetName = $("<div id='targetRegion'>");
 
     size = Math.max(7, headHeight * 0.1)
-    regionNames.css("font-size", headWidth / (Math.log(size) * 5))
-        .css("width", artistCollabWidth + "px")
+    regionNames.css("width", artistCollabWidth + "px")
         .css("height", headHeight * 0.2 + "px")
         .css("left", headWidth * 0.1 + "px") 
         .css("top", "0px")
         .css("position", "absolute");
 
     sourceName
-      .css("height", headHeight * 0.2 + "px")
+      .css("max-height", headHeight * 0.1 + "px")
       .css("line-height", headHeight * 0.2 + "px")
+      .css("font-size", headWidth * 0.04 + "px")
       .text(regionSource);
     targetName
-      .css("height", headHeight * 0.2 + "px")
+      .css("max-height", headHeight * 0.1 + "px")
       .css("line-height", headHeight * 0.2 + "px")
+      .css("font-size", headWidth * 0.04 + "px")
       .text(regionTarget);
     regionNames.append(sourceName).append(targetName);
     $("#head").append(regionNames);

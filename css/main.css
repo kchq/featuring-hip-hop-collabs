@@ -175,6 +175,7 @@ li.artistCollabs:hover {
   text-align: center;
   height: 40px; /* has to be the same as the li height */
   line-height: 40px;
+  overflow: hidden;
 }
 
 #sourceRegion, #targetRegion {
@@ -182,7 +183,6 @@ li.artistCollabs:hover {
   float: left;
   text-align: center;
   font-family: "paintBrush";
-  font-size: 50px;
   font-weight: bold;
   letter-spacing: 3px;
 }
