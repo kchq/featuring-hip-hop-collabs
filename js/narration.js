@@ -181,7 +181,7 @@ function updateNarration() {
 	gn.append("text")
 		.attr("id", "narrationYearText")
 	    .attr("x", narrationWidth/9)
-	    .attr("y", height * 0.2)
+	    .attr("y", height * 0.14)
 	    .style("font-size", narrationWidth/4)
 	    .style("text-anchor", "start")
 	   	.style("fill", "black")
@@ -191,7 +191,7 @@ function updateNarration() {
 	var eventsForYear = timelineEventDescriptions.get("" + currentYear);
 	if (eventsForYear != undefined) {
 		var currX = narrationWidth/9;
-		var currY = height * 0.21;
+		var currY = height * 0.15;
 		var size = narrationWidth/25;
 		var eventNo = 0;
 

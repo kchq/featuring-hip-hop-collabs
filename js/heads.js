@@ -3,9 +3,10 @@ yStart = $(window).height() * 0.05
 headHeight= $(window).height() * 0.90;
 headWidth = $(window).width() * 0.70;
 image1X = xStart * .3;
-image2X = xStart * 1.9;
+image2X = xStart * 1.8;
 imageY = yStart * .4;
 imageWidth = headWidth * 0.20;
+imageWidthDual = headWidth * 0.25;
 
 image1A = $(window).width() * 0.25;
 
@@ -24,8 +25,8 @@ function headSetup(artistNode1, artistNode2) {
 function addData(gh, node1, node2){
     dataArtist1 = gh.append("text")
         .attr("class", "head headname")
-		.attr("x", image1X + imageWidth / 2)
-		.attr("y", imageY + imageWidth * 1.2)
+		.attr("x", image1X + imageWidthDual / 2)
+		.attr("y", imageY + imageWidthDual * 1.2)
 	    .style("font-size", narrationWidth * 0.1)
         .style("text-anchor", "middle")
 		.style("fill", "black")
@@ -42,8 +43,8 @@ function addData(gh, node1, node2){
 
     dataArtist2 = gh.append("text")
         .attr("class", "head headname")
-		.attr("x", image2X + imageWidth / 2)
-		.attr("y", imageY + imageWidth * 1.2)
+		.attr("x", image2X + imageWidthDual / 2)
+		.attr("y", imageY + imageWidthDual * 1.2)
 	    .style("font-size", narrationWidth * 0.1)
 		.style("fill", "black")
         .style("text-anchor", "middle") 
@@ -52,6 +53,7 @@ function addData(gh, node1, node2){
 }
 
 function addImages(node1, node2) {
+
     var artistImage1 = "imgs/" + getArtistImageName(node1.name) + ".png";
     var artistImage2 = "imgs/" + getArtistImageName(node2.name) + ".png";;
 
@@ -60,17 +62,17 @@ function addImages(node1, node2) {
       .attr("id", getArtistImageName(node1.name) + "2")
       .attr("class", "clippath")
       .append("circle")
-      .attr("cx",  image1X + imageWidth / 2)
-      .attr("cy", imageY + imageWidth / 2)
-      .attr("r", imageWidth / 2)
+      .attr("cx",  image1X + imageWidthDual / 2)
+      .attr("cy", imageY + imageWidthDual / 2)
+      .attr("r", imageWidthDual / 2)
       .attr("clipPathUnits", "userSpaceOnUse");
 
     gh.append("image")
         .attr("xlink:href", artistImage1)
         .attr("x", image1X)
         .attr("y", imageY)
-        .attr("width", imageWidth)
-        .attr("height", imageWidth)
+        .attr("width", imageWidthDual)
+        .attr("height", imageWidthDual)
         // preserve size of circle across different regions, because each region has a different scale
         .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node1.name) + "2)"; })
         .style("cursor", "pointer")
@@ -89,9 +91,9 @@ function addImages(node1, node2) {
         
     gh.append("circle")
         .attr("id", getArtistImageName(node1.name) + "ring") //function(d) { return getArtistImageName(d.name) + "ring"; })
-        .attr("cx", image1X + imageWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
-        .attr("cy", imageY + imageWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
-        .attr("r", imageWidth / 2)
+        .attr("cx", image1X + imageWidthDual / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
+        .attr("cy", imageY + imageWidthDual / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
+        .attr("r", imageWidthDual / 2)
         .style("fill", "none")
         .style("stroke", "#000")
         .style("stroke-width", "2px");
@@ -100,17 +102,17 @@ function addImages(node1, node2) {
       .attr("id", getArtistImageName(node2.name) + "2")
       .attr("class", "clippath")
       .append("circle")
-      .attr("cx",  image2X + imageWidth / 2)
-      .attr("cy", imageY + imageWidth / 2)
-      .attr("r", imageWidth / 2)
+      .attr("cx",  image2X + imageWidthDual / 2)
+      .attr("cy", imageY + imageWidthDual / 2)
+      .attr("r", imageWidthDual / 2)
       .attr("clipPathUnits", "userSpaceOnUse"); 
 
     gh.append("image")
         .attr("xlink:href", artistImage2)
         .attr("x", image2X)
         .attr("y", imageY)
-        .attr("width", imageWidth) 
-        .attr("height", imageWidth)
+        .attr("width", imageWidthDual) 
+        .attr("height", imageWidthDual)
         .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node2.name) + "2)"; })
         .style("cursor", "pointer")
         .on("mouseenter", function() {
@@ -128,9 +130,9 @@ function addImages(node1, node2) {
         
     gh.append("circle")
         .attr("id", getArtistImageName(node2.name) + "ring") //function(d) { return getArtistImageName(d.name) + "ring"; })
-        .attr("cx", image2X + imageWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
-        .attr("cy", imageY + imageWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
-        .attr("r", imageWidth / 2)
+        .attr("cx", image2X + imageWidthDual / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
+        .attr("cy", imageY + imageWidthDual / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
+        .attr("r", imageWidthDual / 2)
         // preserve size of circle across different regions, because each region has a different scale
         .style("fill", "none")
         .style("stroke", "#000")
@@ -212,7 +214,7 @@ var regionAbbrs = ["NE", "S", "SC", "NC", "MW", "W"];
         var trk = singleHeadCollabMap[artist.name][i];
         
         if (trk.release_year !== undefined && parseInt(trk.release_year) <= currentYear) {
-          var str = "<li class='list-group-item'> + <b>" + trk.title + "</b>, " + trk.release_title + "<br/> -";
+          var str = "<li class='artistCollabs'> + <b>" + trk.title + "</b>, " + trk.release_title + "<br/> -";
           str += trk.artist_credit.join(", ");
           var li = ul.append(str);
           numListItems++;
@@ -252,7 +254,7 @@ var regionAbbrs = ["NE", "S", "SC", "NC", "MW", "W"];
     }
 
     if (numListItems != 0) {
-      collabDivWidth = headWidth - 250 - 10;
+      collabDivWidth = headWidth - 250;
 
     }
 
@@ -466,7 +468,7 @@ if (collabDivWidth === headWidth) {
 
 function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeIndex1, artistNodeIndex2) {
    var spotifyFrame = $("<iframe>");
-   var collabsWidth = headWidth * .55;
+   var collabsWidth = headWidth - 250;
    var collabsHeight = headHeight * .4;
    var frameWidth = Math.max(headWidth * 0.4, 250);
    var frameHeight = Math.max(headHeight * 0.4, frameWidth + 80);
@@ -497,8 +499,6 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeInde
       }
     }
     
-    console.log(linksPerYear);
-
    svgHead = d3.select("#head")
     .style("left", xStart + "px")
     .style("top", yStart + "px")
@@ -521,6 +521,7 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeInde
 
   var uriList = "";
   var numListItems = 0;
+  var numSpotifyItems = 0;
   var links;
   if (linksPerYear) {
     links = linksPerYear;
@@ -532,7 +533,9 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeInde
     if (parseInt(year) <= currentYear) {
       linksForSingleYear = links[year];
       for (var i = 0; i < linksForSingleYear.length; i++) {
+        numListItems++;
         if (linksForSingleYear[i].spotifyURI !== undefined) {
+          numSpotifyItems++;
           spotifyURIs.add(linksForSingleYear[i].spotifyURI);
           if (spotifyURIs.size >= 80) {
             break;
@@ -545,86 +548,154 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeInde
     }
   }
 
-  var uriList = "";
   addImages(source, dest);
-  spotifyURIs.forEach(function(uri) {
-    var uriArray = uri.split(":");
-    uriList += uriArray[2] + ",";
-  });
+  if (numSpotifyItems > 0) {
+    var uriList = "";
+    spotifyURIs.forEach(function(uri) {
+      var uriArray = uri.split(":");
+      uriList += uriArray[2] + ",";
+    });
 
-  if (uriList !== "") {
-    var spotifyFrame = $("<iframe>");
-    spotifyFrame.attr("src", "https://embed.spotify.com/?uri=spotify:trackset:Some Demo Collaborations:" + uriList)
-                  .attr("frameborder", "0")
-                  .attr("id", "spotifyFrame")
-                  .attr("allowTransparency", "true")
-                  .css("left", headWidth - 250 - 2 + "px")
-                  .css("top", headHeight - 330 - 2 + "px")
-                  .css("width", "250px")
-                  .css("height", "330px")
-                  .css("position", "absolute");
-    $("#head").append(spotifyFrame);
+    if (uriList !== "") {
+      var spotifyFrame = $("<iframe>");
+      spotifyFrame.attr("src", "https://embed.spotify.com/?uri=spotify:trackset:Some Demo Collaborations:" + uriList)
+                    .attr("frameborder", "0")
+                    .attr("id", "spotifyFrame")
+                    .attr("allowTransparency", "true")
+                    .css("left", headWidth - 250 - 2 + "px")
+                    .css("top", headHeight - 330 - 2 + "px")
+                    .css("width", "250px")
+                    .css("height", "330px")
+                    .css("position", "absolute");
+      $("#head").append(spotifyFrame);
+    }
+  } else {
+    collabsWidth = headWidth;
   }
 
 
-  var collabsList = $("<div id='collabsList'>");
-    collabsList.css("left", "0px")
-        .css("top", headHeight - 330 - 2 + "px")
-        .css("width", collabsWidth + "px")
-        .css("height", "330px")
-        .css("position", "absolute")
-        .css("background-color", "white");
+  // var collabsList = $("<div id='collabsList'>");
+  //   collabsList.css("left", "0px")
+  //       .css("top", headHeight - 330 - 2 + "px")
+  //       .css("width", collabsWidth + "px")
+  //       .css("height", "330px")
+  //       .css("position", "absolute")
+  //       .css("background-color", "white");
 
-  var ul = $("<ul class='list-group collab'>");
-    ul.css("border", "2px")
-        .css("width", collabsWidth + "px")
-        .css("height", "330px")
-        .css("border-style", "solid")
-        .css("border-width", "3px");
+  // $("#head").append(collabsList);
 
-    
+  // var ul = $("<ul class='list-group collab'>");
+  //   ul.css("border", "2px")
+  //       .css("width", collabsWidth + "px")
+  //       .css("height", "330px")
+  //       .css("border-style", "solid")
+  //       .css("border-width", "3px");
+
+  
+
+
+  // column definitions
+  var columns = [
+      { head: 'Track Title', cl: 'track', html: ƒ('track') },
+      { head: 'Album Title', cl: 'release_title', html: ƒ('release_title') },
+      { head: 'Year', cl: 'year', html: ƒ('year') },
+  ];
+
+  var collabData = [];
   for (var year in links) {
       if (parseInt(year) <= currentYear) {
         for (var i = 0; i < links[year].length; i++) {
+            var singleTuple = {};
             trk = links[year][i];
-            var str = "<li class='list-group-item'> + <b>" + trk.title + "</b>, " + trk.release_title + "<br/> -";
-            str += trk.artist_credit.join(", ");
-            var li = ul.append(str);
+            singleTuple["track"] = trk.title;
+            singleTuple["release_title"] = trk.release_title;
+            singleTuple["year"] = year;
+            collabData.push(singleTuple);
+            //var str = "<li class='artistCollabs'> + <b>" + trk.title + "</b>, " + trk.release_title + "<br/> -";
+            // str += trk.artist_credit.join(", ");
+            // var li = ul.append(str);
         }
       }
   }
-  
-  collabsList.append(ul); 
-  $("#head").append(collabsList);
+
+    var tableDiv = d3.select("#head").append('div')
+                      .style("top", headHeight - 330 - 2 + "px")
+                      .style("width", collabsWidth + "px")
+                      .style("height", "330px")
+                      .style("position", "absolute")
+                      .style("overflow-y", "scroll")
+                      .style("overflow-x", "hidden");
+
+   var table = tableDiv.append('table')
+                      .style("width", collabsWidth + "px")
+                      .style("height", "330px")
+                      .style("border-collapse", "separate")
+                      .style("background-color", "white")
+                      .style("border-spacing", "2px");
+
+  // create table header
+  table.append('thead').append('tr')
+    .selectAll('th')
+    .data(columns).enter()
+    .append('th')
+    .attr('class', ƒ('cl'))
+    .attr('class', 'tableHead')
+    .text(ƒ('head'));
+
+  // create table body
+  table.append('tbody')
+    .selectAll('tr')
+    .data(collabData).enter()
+    .append('tr')
+    .attr('class', 'tableCell')
+    .selectAll('td')
+    .data(function(row, i) {
+        return columns.map(function(c) {
+            // compute cell values for this specific row
+            var cell = {};
+            d3.keys(c).forEach(function(k) {
+                cell[k] = typeof c[k] == 'function' ? c[k](row,i) : c[k];
+            });
+            return cell;
+        });
+    }).enter()
+    .append('td')
+    .html(ƒ('html'))
+    .attr('class', ƒ('cl'));
+
+  // collabsList.append(ul); 
+  // $("#head").append(collabsList);
     
+    console.log(collabData);
 
-    var artistName1 = $("<p class='artistNameHead'>");
-    var size = Math.min(6, source.name.length)
-    artistName1.css("font-size", size + "vmin")
-        //.css('color', 'black');
-        .css("text-align", "center")
-        .css("left", image1X - imageWidth/2 + "px") 
-        .css("top", imageY + imageWidth + "px")
-        .css("width", imageWidth * 3/2 + 100 + "px")
-        .css("height", headHeight * 0.2 + "px")
-        .css("position", "absolute");
-    artistName1.text(source.name);
 
-    var artistName2 = $("<p class='artistNameHead'>");
-    size = Math.min(6, dest.name.length)
-    artistName2.css("font-size", size + "vmin")
-        //.css('color', 'black');
-        .css("text-align", "center")
-        .css("left", image2X - imageWidth/2 + "px") 
-        .css("top", imageY + imageWidth + "px")
-        .css("width", imageWidth * 3/2 + 100 + "px")
-        .css("height", headHeight * 0.2 + "px")
-        .css("position", "absolute");
-    artistName2.text(dest.name);
-    //console.log(artistName1.text() + " " + artistName2.text());
+  var artistName1 = $("<p class='artistNameHead'>");
+  var size = 7;
+  artistName1.css("font-size", size + "vmin")
+      //.css('color', 'black');
+      .css("text-align", "center")
+      .css("left", image1X - imageWidthDual/2 + "px") 
+      .css("top", imageY + imageWidthDual + "px")
+      .css("width", imageWidthDual * 3/2 + 100 + "px")
+      .css("height", headHeight * 0.2 + "px")
+      .css("position", "absolute");
+  artistName1.text(source.name);
 
-    $("#head").append(artistName1);
-    $("#head").append(artistName2);
+  var artistName2 = $("<p class='artistNameHead'>");
+  size = 7;
+  artistName2.css("font-size", size + "vmin")
+      //.css('color', 'black');
+      .css("text-align", "center")
+      .css("left", image2X - imageWidthDual/2 + "px") 
+      .css("top", imageY + imageWidthDual + "px")
+      .css("width", imageWidthDual * 3/2 + 100 + "px")
+      .css("height", headHeight * 0.2 + "px")
+      .css("position", "absolute");
+  artistName2.text(dest.name);
+  //console.log(artistName1.text() + " " + artistName2.text());
+
+  $("#head").append(artistName1);
+  $("#head").append(artistName2);
 
   gh.append("text")
     .attr("x", headWidth * 0.02)
@@ -655,20 +726,33 @@ function headViewRegionLink(artists) {
       var target = artistNodes[pair.split("_")[1]].region;
       break;
     }
-    for (var pair in artists) {
-      var key;
-      if (artistNodes[pair.split("_")[0]].region === source) {
-        key = pair.split("_")[0] + "_" + pair.split("_")[1];
-      } else {
-        key = pair.split("_")[1] + "_" + pair.split("_")[0];
+
+    if (source.region === undefined || target.region === undefined) {
+      // we have an artist to NY link
+      for (var pair in artists) {
+        var key;
+        if (artistNodes[pair.split("_")[0]].state !== "NY") {
+          key = pair.split("_")[0] + "_" + pair.split("_")[1];
+        } else {
+          key = pair.split("_")[1] + "_" + pair.split("_")[0];
+        }
+        sortedArtists[key] = artists[pair];
       }
-      sortedArtists[key] = artists[pair];
+    } else {
+      for (var pair in artists) {
+        var key;
+        if (artistNodes[pair.split("_")[0]].region === source) {
+          key = pair.split("_")[0] + "_" + pair.split("_")[1];
+        } else {
+          key = pair.split("_")[1] + "_" + pair.split("_")[0];
+        }
+        sortedArtists[key] = artists[pair];
+      }
     }
 
-
     artists = sortedArtists;
-    var sourceText;
-    var targetText;
+    var sourceText = "New York"; // will stay like this if region is undefined
+    var targetText = "New York";
 
     for (region in regionNodes) {
       if (regionNodes[region].id === source) {

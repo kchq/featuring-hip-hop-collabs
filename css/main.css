@@ -158,6 +158,26 @@ li.artistList {
   cursor: pointer;
   padding-left: 8px;
 }
+.tableHead {
+  background-color: #404040;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  font-family: "paintBrush";
+  padding: 20px;
+}
+
+.tableCell {
+  border: 1px solid rgba(0,0,0,0);
+  background: rgba(20, 20, 20, 0.6);
+  height: 40px;
+  font-family: "paintBrush";
+  color: white;
+  margin: 5px;
+  font-size: 20px;
+  text-align: center;
+  padding: 20px;
+}
 
 li.artistCollabs:hover {
   background: rgba(50, 50, 50, 0.9);
