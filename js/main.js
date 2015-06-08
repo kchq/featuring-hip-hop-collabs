@@ -29,7 +29,10 @@ var bezierScale = {
   "NE-S": [-100.0, 15.0]
 };
 
-var nyNode = {"id":"NY", "name": "New York", "lon": 74.0059, "lat": 40.7127, "zlon": 73.7, "zlat": 40.65, "color": "#1662A4", "ringColor": "#024274", "scale": 54 };
+var nyNode = {"id":"NY", "name": "New York", "lon": 74.0059, "lat": 40.7127, "zlon": 73.7, "zlat": 40.65, "color": "#1662A4", "ringColor": "#024274", "scale": 54,
+              "points": [ { "lat": 40.93, "lon": 73.83},  { "lat": 40.845, "lon": 73.3},
+                                { "lat": 40.7297, "lon": 73}, { "lat": 40.4, "lon": 73.89 },
+                                { "lat": 40.545, "lon": 74.16 }, { "lat": 40.76, "lon": 74.03 } ] };
 const regionIndexMap = ["W", "NE", "NC", "SC", "S", "MW"];
 
 const startYear = 1965;
@@ -44,7 +47,7 @@ var currentYear = startYear;
 var scaleExtentGeometric = Math.round(((presentYear - startYear) / scrollSensitivity) + 1);
 var scaleExtentLinear = Math.round(Math.log(scaleExtentGeometric) + 1);
 var searchedArtist = "";
-
+var globalArtistNode;
 
 var highlightLinkColor = "#9F97A2";
 var linkColor = "#123";
@@ -158,8 +161,8 @@ function init(error) {
   createRegions();
   setUpRegions();
   setUpSearch();
-  //introSetup();
-  tearDownIntros();
+  introSetup();
+  //tearDownIntros();
 }
 
 // redraws everything
@@ -315,7 +318,7 @@ function setupMap() {
 // draws the map in the group 'g' (this must be initialized before calling this function)
 function drawMap() {
   d3.json("data/us.json", function(error, us) {
-    // remove alaska and hawaii
+    // remove alaska /and hawaii
     us.objects.states.geometries = us.objects.states.geometries.filter(
       function(state) { 
         return state.id != 2 && state.id != 15; 
@@ -812,8 +815,11 @@ var inNY = false;
 function shouldShowArtist(region, node) {
   var t = (node.start_year <= currentYear) && (node.end_year === 'present'||
              node.end_year >= currentYear);
-  if (region == 'NE') {
-    if (node.state != 'NY' && !inNY) {
+  if (region === 'NE') {
+    if (!inNY && node === nyNode) {
+      return true;
+    }
+    if (node.state !== 'NY' && !inNY) {
       return t;
     } else if (inNY) {
       return t;
@@ -869,97 +875,68 @@ function createRegionalArtists(region, x, y, k) {
 
 
   if (region === 'NE' && !inNY) {
-    svg.append('circle')
-      .attr("id", "nyCircle")
-      .attr("fill", nyNode.color)
-      .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-      .attr("cx", projection([-1*lon, lat])[0])
-      .attr("cy", projection([-1*lon, lat])[1])
-      .attr("r", function(d) { 
-        return Math.max(0, 10 * Math.log(nyCount) + 4) / k; 
-      })
-      .on("click", function() {
-        $("#artistLegendList").remove();
-        svg.selectAll(".currentArtistNode").remove();
-        svg.selectAll(".artistLink").remove();
-        svg.selectAll(".clippath").remove();
-        svg.selectAll("#nyCircle").remove();
-        svg.selectAll("#nyBlob").remove();
-        currentK = nyK;
-        d3.selectAll(".d3-region-tip").remove();
-        g.transition()
-          .duration(750)
-          .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + nyK + ")translate(" + -nyX + "," + -nyY + ")")
-          .style("stroke-width", 1.5 / nyK + "px")
-          .each("end", function() {
-            inNY = true;
-            var artistLinksTemp = createArtistLinks(region, nyK, nyX, nyY);
-            currentArtistLinks = artistLinksTemp;
-            setUpCurrentArtistNodes(region, nyX, nyY, nyK);
-          });
-      });
-
-    nyCircle = d3.select("#nyCircle");
-
-    nyCircle.call(regionTip);
-    nyCircle.on("mouseover", function() {
-        d3.select(this).style("stroke-width", 0.5 + "px").style("stroke", nyNode.ringColor);
-          regionTip.show(nyNode);
-        });
-    nyCircle.on("mouseout", function() {
-        d3.select(this).style("stroke-width", "0px");
-          regionTip.hide(nyNode);
-        });
-
-    var nyBlob = { "points": [ { "lat": 40.93, "lon": 73.83},  { "lat": 40.845, "lon": 73.3},
-                                { "lat": 40.7297, "lon": 73}, { "lat": 40.4, "lon": 73.89 },
-                                { "lat": 40.545, "lon": 74.16 }, { "lat": 40.76, "lon": 74.03 } ],
-                            "color": "blue" };
-    var nyBlobOhYeah = svg.append("g")
-                          .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
     var lineFunction = d3.svg.line()
       .x(function(d) { return projection([-1*d.lon,d.lat])[0]; })
       .y(function(d) { return projection([-1*d.lon,d.lat])[1]; })
       .interpolate("basis-closed");
-    nyBlobOhYeah.append("path")
-        .attr("d", lineFunction(nyBlob.points))
+    var nyBlob = svg.append("g")
+      .append("path")
+        .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+        .attr("d", lineFunction(nyNode.points))
         .attr("stroke", "black")
         .attr("stroke-width", 0.5)
+        .attr("stroke-opacity", 0.5)
         .attr("id", "nyBlob")
-        .attr("fill", nyBlob.color)
-        .style("opacity", 0.2)
-        .on("mouseenter", function() {
-          d3.select(this).style("opacity", 0.5);
-        })
-        .on("mouseout", function() {
-          d3.select(this).style("opacity", 0.2);
+        .attr("fill", "#BFB7C2")
+        .style("opacity", 1.0)
+        .on("click", function() {
+          svg.selectAll(".currentArtistNode").remove();
+          svg.selectAll(".artistLink").remove();
+          svg.selectAll(".clippath").remove();
+          svg.selectAll("#nyBlob").remove();
+          currentK = nyK;
+          d3.selectAll(".d3-region-tip").remove();
+          g.transition()
+            .duration(750)
+            .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + nyK + ")translate(" + -nyX + "," + -nyY + ")")
+            .style("stroke-width", 1.5 / nyK + "px")
+            .each("end", function() {
+              inNY = true;
+              var artistLinksTemp = createArtistLinks(region, nyK, nyX, nyY);
+              currentArtistLinks = artistLinksTemp;
+              setUpCurrentArtistNodes(region, nyX, nyY, nyK);
+            });
         });
+
+    setUpCurrentArtistNodes(region, x, y, k);
+    nyBlob.call(regionTip);
+    nyBlob.on("mouseover", function() {
+      d3.select(this).style("stroke-width", 0.7 + "px").style("fill", "#CFC7D2").style("stroke-opacity", 0.7);
+      regionTip.show(nyNode);
+    });
+    nyBlob.on("mouseout", function() {
+      d3.select(this).style("stroke-width", 0.5 + "px").style("fill", "#BFB7C2").style("stroke-opacity", 0.5);
+      regionTip.hide(nyNode);
+    });
+
+    // For some reason the mask isn't working - if someone wants to took into it then great, but I'm done *crying* k thnx bye - Sonja
+    var nyMask = svg
+      .append("path")
+      .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+      .attr("d", function(d) { return lineFunction(nyNode.points); })
+      .style("fill", "black");
+
+    // the mask shows anything that is white and hides parts that are black.
+    var mask = d3.select("defs").append("svg:mask")
+                   .attr("id", "nyMask").attr("maskUnits", "userSpaceOnUse");
+    mask.append("rect").attr("width", "100%").attr("height", "100%").style("fill", "white");
+    mask.node().appendChild(nyMask[0][0]);
   }
   setUpCurrentArtistNodes(region, x, y, k);
 }
 
 function setUpCurrentArtistNodes(region, x, y, k) {
     //Setup legend for artist view
-    /*svgHead = d3.select("#legend")
-        .style("left", xStart * .8 + "px")
-        .style("top", yStart * 6 + "px")
-        .style("position", "absolute")
-        .append("svg")
-        .attr("width", headWidth / 3)
-        .attr("height", headHeight / 8)
-        .attr("id", "headSVG");
-
-    gh = svgHead.append("g");*/
-
-    /*gh.append("rect")
-        .attr("id", "headRect")
-        .attr("width", headWidth / 3)
-        .attr("height", headHeight / 4)
-        .style("fill", "white")
-        .style("stroke", "black")
-        .style("stroke-width", $(window).width() * 0.005)
-        .style("opacity", 0.8);*/
-
     var artistCollabHeight = headHeight * 0.7;
     var artistCollabWidth = headWidth * 0.8;
 
@@ -969,26 +946,29 @@ function setUpCurrentArtistNodes(region, x, y, k) {
     size = Math.max(7, headHeight * 0.1)
     
     var artistLegendList = $("<div id='artistLegendList'>");
-    artistLegendList.css("left", xStart * .8 + "px")
-        .css("top", xStart * .2  + "px")
-        .css("width", headWidth / 5 + "px")
+    artistLegendList.css("left", 0 + "px")
+        .css("top", xStart * 1.03  + "px")
+        .css("width", narrationWidth + "px")
         //.css("height", headHeight / 8 + "px")
         .css("position", "absolute")
-        //.css("max-height", headHeight / 8)
+        .css("max-height", headHeight / 10)
         .css("display", "inline-block"); 
 
+    var instruct = $("<h5>").text("scroll and select artist below").css("text-align", "center");
     var ul = $("<ul id='legendUl' class='list-group regionLinkUL'>");
     ul.css("overflow", "auto")
         //css("height", headHeight / 8 + "px")
-        //.css("max-height", headHeight / 8)
+        .css("max-height", headHeight / 2.5)
         //.css("width", artistCollabWidth + "px")
         .css("border-radius", "0px")
         .css("box-shadow", "none");
      
+    artistLegendList.append(instruct);
     artistLegendList.append(ul);
     $("#legend").append(artistLegendList);
   //end legend code
-  
+
+  globalArtistNode = svg.selectAll(".currentArtistNode");
   var artistNode = svg.selectAll(".currentArtistNode")
       .data(artistNodes)
       .enter().append("g")
@@ -1132,7 +1112,7 @@ function updateRegionalArtists(region, x, y, k) {
 function drawLegend(artistsActive) {
     var ul = $("#legendUl");
     for (var i = 0; i < artistsActive.length; i++) {
-        artist = artistsActive[i];
+        var artist = artistsActive[i];
         var find = getArtistImageName(artist.name);
         while(find.indexOf("$") != -1) {
             find = find.replace("$", "s");
@@ -1146,31 +1126,50 @@ function drawLegend(artistsActive) {
                 .addClass("artistList")
                 .attr("id", find + "exists")
                 .text(name)
-                .click(function() { assignHighlights(artist, find); });//.html(function(d) { return "<div id='" +  + "' class='artistPair'>" + artist.name + "</div>"; });
+                .attr("artistIndex", artist.name)
+                .click(function(d) { assignHighlightsGhetto(d); });//.html(function(d) { return "<div id='" +  + "' class='artistPair'>" + artist.name + "</div>"; });
             ul.append(li);
         }
         //li.on("click", function(d) { prevArtists = artists; closeHead(); headViewMultipleArtist(d, true, d.sourceId, d.targetId); });
     }      
 }
+var prevMouseOver;
+function assignHighlightsGhetto(d) {
+    var id = d.target.id;
+    var artistName = $("#" + id).attr("artistIndex");
+    var id = artistMap[artistName];
+    var artistObj = artistNodes[id];
+    highlightArtistLinks(artistObj);
+    var find = getArtistImageName(artistObj.name);
+    while(find.indexOf("$") != -1) {
+        find = find.replace("$", "s");
+    }
+    
+//    globalArtistNode = d3.selectAll(".currentArtistNode");
 
-function assignHighlights(artist, find) {
-    highlightArtistLinks(artist);
-    $("#" + find + "exists").click(function()  { removeHighlights(artist, find) });
-
+    $(".artistList").css("background", "");
+    $("#" + find + "exists").off("click").css("background", "black");
+    $("#" + find + "exists").click(function(e) { removeHighlights(artistObj, find); });
 }
 
-function assignHighlights(artist, find) {
-    unhighlightArtistLinks(artist);
-    $("#" + find + "exists").click(function()  { assignHighlights(artist, find) });
+function assignHighlights(artistObj, findAss) {
+    highlightArtistLinks(artistObj);
+    $(".artistList").css("background", "");
+    $("#" + findAss + "exists").off("click").css("background", "black");
+    $("#" + findAss + "exists").click(function(e) { e.preventDefault(); removeHighlights(artistObj, findAss) });
 }
 
-
+function removeHighlights(artistObj, findAss) {
+    unhighlightArtistLinks(artistObj);
+    $(".artistList").css("background", "");
+    $("#" + findAss + "exists").off("click");
+    $("#" + findAss + "exists").click(function(e) { e.preventDefault(); assignHighlights(artistObj, findAss) });
+}
 
 // ======= Functions to handle drawing links in a region ======= 
 
 function createArtistLinks(region, k, x, y) {
   var artistLinksTemp = computeArtistLinks(region);
-
   artistForce.links(artistLinksTemp);
 
   filterArtistLinks(artistLinksTemp);
@@ -1184,14 +1183,17 @@ function createArtistLinks(region, k, x, y) {
       .attr('class', 'artistLinkInteractionArea')
       .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
       .attr("fill", "none")
+      .style("mask", "url(#nyMask)")
       .style("stroke-width", "0px")
       .call(artistLinkTip);
 
   artistLink = artistLink.append('path')
     .attr('class', 'artistLink')
     .attr('id', function(d) {
+      console.log(d.source);
       return "index" + d.source + "-index" + d.target;
     })
+    .style("mask", "url(#nyMask)")
     .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
     .attr("fill", "none")
     .style("stroke-width", "0px");
@@ -1225,13 +1227,16 @@ function filterArtistLinks(artistLinksTemp) {
   }
 }
 
+var globalRegionStored;
+
 function computeArtistLinks(region) {
   for (var i = 0; i < regionLinks.length; i++) {
     var link = regionLinks[i];
     if (link.source.id === region && link.target.id === region) {
       // now we have the link for this region, which has the collection of links
       // that we care about, stored in an associative array indexed by year
-      return artistLinksForRegion(link.linksPerYear);
+      globalRegionStored = artistLinksForRegion(link.linksPerYear);
+      return globalRegionStored;
     } else if (link.source.id === region || link.target.id === region) {
       // add some color for an outgoing edge to other region?
     }
@@ -1256,7 +1261,7 @@ function artistLinksForRegion(allLinks) {
       } else if (inNY && artistNodes[link.target].state !== 'NY') {
         targetArtistIndex = -1;
       }
-      if (sourceArtistIndex != -1 && targetArtistIndex != -1) {
+      if ((sourceArtistIndex != -1 && targetArtistIndex != -1) && (targetArtistIndex !== sourceArtistIndex)) {
         // this link is valid and the two artists are currently there
         var artistLink = getLink(artistLinksTemp, sourceArtistIndex, targetArtistIndex);
         if (artistLink.linksPerYear[link.release_year] == undefined) {
@@ -1487,7 +1492,6 @@ function artistMouseEnter(d, scale) {
     .attr("width", circleSize * 2)
     .attr("height", circleSize * 2);
   $("#" + getArtistImageName(d.name) + "_ring")
-    .css("stroke", "#FF5655")
     .attr("r", circleSize);
   highlightArtistLinks(d);
 }
@@ -1501,7 +1505,6 @@ function artistMouseLeave(d) {
     .attr("width", artistCircleSize)
     .attr("height", artistCircleSize);
   $("#" + getArtistImageName(d.name) + "_ring")
-    .css("stroke", "#000")
     .attr("r", artistCircleSize / 2);
   unhighlightArtistLinks(d);
 }

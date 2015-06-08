@@ -108,6 +108,10 @@ body {
 #titleDiv {
 }
 
+.regionNode:hover {
+  cursor: pointer;
+}
+
 .regionLink, .artistLink {
   stroke: #123;
 }
