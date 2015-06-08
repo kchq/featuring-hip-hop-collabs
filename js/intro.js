@@ -147,7 +147,7 @@ function helpBoxUp() {
         rect = gh.append("rect")
             .attr("id", "introRect")
             .attr("width", introWidth * 1.24)
-            .attr("height", Math.min(introHeight / 2, 210))
+            .attr("height", Math.min(introHeight / 2, 270))
             .style("fill", "white")
             .style("stroke", "black")
             .style("stroke-width", $(window).width() * 0.005)
@@ -172,7 +172,8 @@ function helpBoxUp() {
         helpIntro = $("<h4>").text("-Navigate through history by scrolling or dragging the slider on the left");
         helpIntro2 = $("<h4>").text("-Select a link between artists to see a list of their collaborations");
         helpIntro3 = $("<h4>").text("-Click on a region to explore the intra-region collaborations");
-        helpIntro4 = $("<h6>").text("Please contact quinnkcq@gmail.com to report incorrect data or offer suggestions. Thanks for checking out our project! -Feat. Kevin, Sonja, Riley, Vinod").css("font-family", "unicode");
+        helpIntro4 = $("<h4>").text("-DblClick on map to explore the inter-region collaborations");
+        helpIntro5 = $("<h6>").text("Please contact quinnkcq@gmail.com to report incorrect data or offer suggestions. Thanks for checking out our project! -Feat. Kevin, Sonja, Riley, Vinod").css("font-family", "unicode");
 
         helpDiv.append(exitHelp);
         helpDiv.append(helpTitle);
@@ -180,6 +181,7 @@ function helpBoxUp() {
         helpDiv.append(helpIntro2);
         helpDiv.append(helpIntro3);
         helpDiv.append(helpIntro4);
+        helpDiv.append(helpIntro5);
         $("#helpBox").append(helpDiv);
     }
     
