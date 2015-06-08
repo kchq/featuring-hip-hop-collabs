@@ -199,24 +199,28 @@ var regionAbbrs = ["NE", "S", "SC", "NC", "MW", "W"];
         .css("height", headHeight - 330 - 10 + "px")
         .css("position", "absolute");
 
-  var ul = $("<ul class='list-group collab'>");
-    ul.css("max-height", headHeight - 330 - 10 + "px")
-        .css("border", "2px")
-        .css("width", collabsWidth + "px")
-        .css("border-style", "solid")
-        .css("border-width", "3px");
+  // var ul = $("<ul class='list-group collab'>");
+  //   ul.css("max-height", headHeight - 330 - 10 + "px")
+  //       .css("border", "2px")
+  //       .css("width", collabsWidth + "px")
+  //       .css("border-style", "solid")
+  //       .css("border-width", "3px");
 
     var uriList = "";
     var numListItems = 0;
     var numSpotifyItems = 0;
+    var collabData = [];
 
     for (var i = 0; i < singleHeadCollabMap[artist.name].length; i++) { //var track in singleHeadCollabMap[artist.name]) {
         var trk = singleHeadCollabMap[artist.name][i];
         
         if (trk.release_year !== undefined && parseInt(trk.release_year) <= currentYear) {
-          var str = "<li class='artistCollabs'> + <b>" + trk.title + "</b>, " + trk.release_title + "<br/> -";
-          str += trk.artist_credit.join(", ");
-          var li = ul.append(str);
+          var singleTuple = {};
+          singleTuple["track"] = trk.title;
+          singleTuple["release_title"] = trk.release_title;
+          singleTuple["year"] = trk.release_year;
+          collabData.push(singleTuple);
+
           numListItems++;
 
           // update collaborations with other regions
@@ -234,9 +238,63 @@ var regionAbbrs = ["NE", "S", "SC", "NC", "MW", "W"];
         }
 
     }
-    collabsList.append(ul); 
 
-    $("#head").append(collabsList);
+if (numListItems > 0) {
+   // column definitions
+    var columns = [
+        { head: 'Track Title', cl: 'track', html: ƒ('track') },
+        { head: 'Album Title', cl: 'release_title', html: ƒ('release_title') },
+        { head: 'Year', cl: 'year', html: ƒ('year') },
+    ];
+
+
+      var tableDiv = d3.select("#head").append('div')
+                        .style("left", headWidth - collabsWidth + "px")
+                        .style("top", /* headHeight * 0.02 + */"0px")
+                        .style("width", collabsWidth + "px")
+                        .style("height", headHeight - 330 - 10 + "px")
+                        .style("position", "absolute")
+                        .style("overflow-y", "scroll")
+                        .style("overflow-x", "hidden");
+
+     var table = tableDiv.append('table')
+                        .style("width", collabsWidth + "px")
+                        .style("height", headHeight - 330 - 10 + "px")
+                        .style("border-collapse", "separate")
+                        .style("background-color", "white")
+                        .style("border-spacing", "2px");
+
+    // create table header
+    table.append('thead').append('tr')
+      .selectAll('th')
+      .data(columns).enter()
+      .append('th')
+      .attr('class', ƒ('cl'))
+      .attr('class', 'tableHead')
+      .text(ƒ('head'));
+
+    // create table body
+    table.append('tbody')
+      .selectAll('tr')
+      .data(collabData).enter()
+      .append('tr')
+      .attr('class', 'tableCell')
+      .selectAll('td')
+      .data(function(row, i) {
+          return columns.map(function(c) {
+              // compute cell values for this specific row
+              var cell = {};
+              d3.keys(c).forEach(function(k) {
+                  cell[k] = typeof c[k] == 'function' ? c[k](row,i) : c[k];
+              });
+              return cell;
+          });
+      }).enter()
+      .append('td')
+      .html(ƒ('html'))
+      .attr('class', ƒ('cl'));
+    }
+
 
   var collabDivWidth = headWidth;
     if (uriList !== "") {
@@ -666,7 +724,7 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeInde
   // collabsList.append(ul); 
   // $("#head").append(collabsList);
     
-    console.log(collabData);
+  //  console.log(collabData);
 
 
   var artistName1 = $("<p class='artistNameHead'>");

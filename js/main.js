@@ -251,7 +251,7 @@ function searchArtist() {
 
           if (node.id === "NE" && artistNode.state === "NY") {
             setTimeout(function() {
-              $("#nyCircle").d3Click();
+              $("#nyBlob").d3Click();
               searchedArtist = artistNode.name;
             }, 1500);
           } else {
