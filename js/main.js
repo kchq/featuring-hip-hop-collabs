@@ -89,6 +89,13 @@ var artistLinkTip = d3.tip()
 
 var regionTip = d3.tip()
   .attr('class', 'd3-region-tip')
+  .direction(function(d) {
+    if (d.id == "S") {
+      return "w";
+    } else {
+      return "n";
+    }
+  })
   .html(function(d) {
     return "<div>" + d.name + "</div>";
   });
