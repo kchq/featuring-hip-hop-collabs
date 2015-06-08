@@ -186,11 +186,11 @@ function setUpSearch() {
   $("#searchArea").css("padding-left", "10px");
   $("#searchArea").css("left", ($(window).width() * 0.72) + "px");
   $("#searchArea").css("top", ($(window).height() * 0.01) + "px");
-  $("#searchArea").css("font-family", "paintBrush");
+  $("#searchArea").css("font-family", "polo");
   $("#searchArea").css("position", "absolute")
   $("#search").css("font", "15px");
-  $("#searchButton").css("font-family", "paintBrush");
-  $("#search").css("font-family", "paintBrush");
+  $("#searchbutton").css("font-family", "polo");
+  $("#search").css("font-family", "polo");
   $("#searchbutton").on("click", searchArtist);
   $("#searchArea").on("keypress", function(e) {
       if (e.keyCode == 13) {
@@ -219,7 +219,6 @@ function setUpSearch() {
 
 function searchArtist() {
     var selectedVal = document.getElementById('search').value;
-
     var artistNode = artistNodes[artistMap[selectedVal]];
 
     if (artistNode !== undefined) {
