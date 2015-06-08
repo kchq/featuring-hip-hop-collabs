@@ -43,6 +43,15 @@ function introSetup() {
         .css("font-size", "35px")
         .css("text-align", "center");
 
+    var title2 = $("<h1 id='title'>");
+    title2.text("'Feat.'")
+        .css("font-size", "125px")
+        .css("text-align", "center")
+        .css("position", "absolute")
+        .css("bottom", "0")
+        .css("right", $(window).width() * .75);
+
+
     var gotIt = $("<button id='goingIn' class='btn'>")
             .text("I'm Goin' In")
             .css("font-size", "40px")
@@ -72,7 +81,7 @@ function introSetup() {
             .css("margin-bottom", "10px")
             .css("position", "absolute")
             .css("bottom", "0")
-            .css("right", $(window).width() * .2)
+            .css("right", $(window).width() * .146)
             .css("padding-left", "15px")
             .css("padding-right", "15px")
             .css("line-height", "30px")
@@ -86,6 +95,8 @@ function introSetup() {
     titleDiv.append(gotIt);
     titleDiv.append(helpIntro);
     $("#mapContainer").append(helpStandard);
+    $("#mapContainer").append(title2);
+
 
     $("#intro").append(titleDiv);
     $("#goingIn").click(function() {
