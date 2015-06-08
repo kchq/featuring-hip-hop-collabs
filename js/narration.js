@@ -82,7 +82,7 @@ function restOfNarrationSetup() {
 		.attr("class", "timelineJumperNext")
 		.attr("width", narrationWidth)
 		.attr("height", height * 0.08)
-		.style("fill", "#313446")
+		.style("fill", "#123")
 		.style("fill-opacity", 0.8);
 
 	gn.append("rect")
@@ -91,7 +91,7 @@ function restOfNarrationSetup() {
 		.attr("width", narrationWidth)
 		.attr("height", height * 0.08)
 		.attr("y", height * 0.92)
-		.style("fill", "#313446")
+		.style("fill", "#123")
 		.style("fill-opacity", 0.8);
 
     updateNarration();

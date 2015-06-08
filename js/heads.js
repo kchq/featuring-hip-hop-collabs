@@ -74,6 +74,14 @@ function addImages(node1, node2) {
         // preserve size of circle across different regions, because each region has a different scale
         .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node1.name) + "2)"; })
         .style("cursor", "pointer")
+        .on("mouseenter", function() {
+          d3.select("#" + getArtistImageName(node1.name) + "ring").style("stroke", "#9F97A2").style("stroke-width", "4px");
+          d3.select(this).style("opacity", 0.7);
+        })
+        .on("mouseleave", function() {
+          d3.select("#" + getArtistImageName(node1.name) + "ring").style("stroke", "#000").style("stroke-width", "2px");
+          d3.select(this).style("opacity", 1.0);
+        })
         .on("click", function() { 
           closeHead(false);
           headViewSingleArtist(node1, false);
@@ -105,6 +113,14 @@ function addImages(node1, node2) {
         .attr("height", imageWidth)
         .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node2.name) + "2)"; })
         .style("cursor", "pointer")
+        .on("mouseenter", function() {
+          d3.select("#" + getArtistImageName(node2.name) + "ring").style("stroke", "#9F97A2").style("stroke-width", "4px");
+          d3.select(this).style("opacity", 0.7);
+        })
+        .on("mouseleave", function() {
+          d3.select("#" + getArtistImageName(node2.name) + "ring").style("stroke", "#000").style("stroke-width", "2px");
+          d3.select(this).style("opacity", 1.0);
+        })
         .on("click", function() {
           closeHead(false);
           headViewSingleArtist(node2, false);

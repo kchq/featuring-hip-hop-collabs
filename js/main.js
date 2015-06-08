@@ -381,8 +381,8 @@ function setUpRegions() {
       .attr("stroke", "#242424")
       .attr("stroke-width", 2)
       .attr("class", "regionNode")
-      .attr("fill", "#BFB7E2") // #DFD7B2
-      .style("opacity", 0.2)
+      .attr("fill", "#9F97A2") // #DFD7B2
+      .style("opacity", 0.6)
       .on("click", function(d) {
         zoomToRegion(d); 
       });
@@ -425,12 +425,12 @@ function updateRegions() {
 function addRegionTooltips(regionNode) {
   regionNode.call(regionTip);
   regionNode.on("mouseover", function(d) {
-    d3.select(this).style("opacity", 0.4);
+    d3.select(this).style("opacity", 0.8);
     d3.select(this).style("stroke-width", "3px");
     regionTip.show(d);
   });
   regionNode.on("mouseout", function(d) {
-    d3.select(this).style("opacity", 0.2);
+    d3.select(this).style("opacity", 0.6);
     d3.select(this).style("stroke-width", "2px");
     regionTip.hide(d);
   });
@@ -474,13 +474,7 @@ function setUpRegionLinks() {
         .attr('class', 'regionLinkInteractionArea')
         .attr("mask", "url(#regionMask)")
         .attr("fill", "none")
-        .style("stroke-width", "0px")
-        .on("mouseenter", function(d) {
-          d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#fff");
-        })
-        .on("mouseleave", function(d) {
-          d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#fff"); // needs to be the same as .regionLink in main.css
-        });
+        .style("stroke-width", "0px");
 
   regionLink = regionLink.append('path')
         .attr('class', 'regionLink')
@@ -645,7 +639,7 @@ function calculateLinks(link) {
 }
 
 function regionLinkClickHandler(regionLink) {
-  d3.selectAll(".d3-region-tip").remove();
+  d3.selectAll(".d3-region-link-tip").remove();
   var artists = {};
   for (var year in regionLink.linksPerYear) {
     if (year > currentYear) {
@@ -680,11 +674,11 @@ function addRegionLinkTooltips(regionLink) {
     regionLinkTemp.call(regionLinkTip);
   }
   regionLink.on("mouseenter", function(d) {
-    d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#fff");
+    d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#9F97A2");
     regionLinkTip.show(d);
   });
   regionLink.on("mouseleave", function(d) {
-    d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#fff"); // needs to be the same as .regionLink in main.css
+    d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#123"); // needs to be the same as .regionLink in main.css
     regionLinkTip.hide(d);
   });
 }
@@ -1204,7 +1198,7 @@ function updateArtistLinks(scale) {
         shouldShowArtist(currentRegion, d.source) &&
         shouldShowArtist(currentRegion, d.target)) {
       d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
-        .style("stroke", "#fff");
+        .style("stroke", "#9F97A2");
       artistLinkTip.show(d);
     } else {
       return null;
@@ -1215,7 +1209,7 @@ function updateArtistLinks(scale) {
         shouldShowArtist(currentRegion, d.source) &&
         shouldShowArtist(currentRegion, d.target)) {
       d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
-        .style("stroke", "#fff"); // needs to be the same as .regionLink in main.css
+        .style("stroke", "#123"); // needs to be the same as .regionLink in main.css
       artistLinkTip.hide(d);
     } else {
       return null;
@@ -1236,7 +1230,7 @@ function updateArtistLinks(scale) {
         shouldShowArtist(currentRegion, d.source) &&
         shouldShowArtist(currentRegion, d.target)) {
       d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
-        .style("stroke", "#fff");
+        .style("stroke", "#9F97A2");
       artistLinkTip.show(d);
     } else {
       return null;
@@ -1247,7 +1241,7 @@ function updateArtistLinks(scale) {
         shouldShowArtist(currentRegion, d.source) &&
         shouldShowArtist(currentRegion, d.target)) {
       d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
-        .style("stroke", "#fff"); // needs to be the same as .artistLink in main.css
+        .style("stroke", "#123"); // needs to be the same as .artistLink in main.css
       artistLinkTip.hide(d);
     } else {
       return null;
