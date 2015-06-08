@@ -721,7 +721,6 @@ function throttle() {
 
 function zoomToRegion(region) {
   $("#artistLegendList").remove();
-  alert("hello");
   zoom.on("zoom", null);
   var x, y, k;
   var lon = region.zlon;
@@ -843,7 +842,6 @@ function createRegionalArtists(region, x, y, k) {
   currentX = x;
   currentY = y;
   currentK = k;
-  alert("hi");
 
   var nyCount = countNY();
   if (region == 'NE') {
