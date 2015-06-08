@@ -364,6 +364,9 @@ if (numListItems > 0) {
      artistCityLeft = headWidth * 0.1;
      artistYearLeft = headWidth * 0.7;
      size = 10;
+     if (artist.name.length > 10) {
+      size = 6;
+     }
     }
   
     
