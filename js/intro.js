@@ -209,13 +209,15 @@ function unblurBackground() {
     var content = $('#searchArea').removeClass("blur");
     var content = $('#narration').removeClass("blur");
     var content = $('#mapContainer').removeClass("blur");
+    var content = $('#artistLegendList').removeClass("blur");
 }
 
 function blurBackground() {
-    var content = $('#slider').addClass("blue");
+    var content = $('#slider').addClass("blur");
     var content = $('#searchArea').addClass("blur");
     var content = $('#narration').addClass("blur");
     var content = $('#mapContainer').addClass("blur");
+    var content = $('#artistLegendList').addClass("blur");
 /*
     var content = $('#slider').css("-webkit-filter", "blur(15px) grayscale(.5) opacity(0.5) contrast(70%) ")
         .css("-webkit-transition", "all 1s ease-out")
