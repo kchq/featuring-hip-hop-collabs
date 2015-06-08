@@ -1145,12 +1145,25 @@ function drawLegend(artistsActive) {
             li = $("<li>")
                 .addClass("artistList")
                 .attr("id", find + "exists")
-                .text(name);//.html(function(d) { return "<div id='" +  + "' class='artistPair'>" + artist.name + "</div>"; });
+                .text(name)
+                .click(function() { assignHighlights(artist, find); });//.html(function(d) { return "<div id='" +  + "' class='artistPair'>" + artist.name + "</div>"; });
             ul.append(li);
         }
         //li.on("click", function(d) { prevArtists = artists; closeHead(); headViewMultipleArtist(d, true, d.sourceId, d.targetId); });
     }      
 }
+
+function assignHighlights(artist, find) {
+    highlightArtistLinks(artist);
+    $("#" + find + "exists").click(function()  { removeHighlights(artist, find) });
+
+}
+
+function assignHighlights(artist, find) {
+    unhighlightArtistLinks(artist);
+    $("#" + find + "exists").click(function()  { assignHighlights(artist, find) });
+}
+
 
 
 // ======= Functions to handle drawing links in a region ======= 
