@@ -161,8 +161,8 @@ function init(error) {
   createRegions();
   setUpRegions();
   setUpSearch();
-  //introSetup();
-  tearDownIntros();
+  introSetup();
+  //tearDownIntros();
 }
 
 // redraws everything
@@ -1395,7 +1395,6 @@ function artistMouseEnter(d, scale) {
     .attr("width", circleSize * 2)
     .attr("height", circleSize * 2);
   $("#" + getArtistImageName(d.name) + "_ring")
-    .css("stroke", "#FF5655")
     .attr("r", circleSize);
   highlightArtistLinks(d);
 }
@@ -1409,7 +1408,6 @@ function artistMouseLeave(d) {
     .attr("width", artistCircleSize)
     .attr("height", artistCircleSize);
   $("#" + getArtistImageName(d.name) + "_ring")
-    .css("stroke", "#000")
     .attr("r", artistCircleSize / 2);
   unhighlightArtistLinks(d);
 }
