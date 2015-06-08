@@ -120,6 +120,10 @@ body {
   stroke: rgba(0,0,0,0);
 }
 
+.currentArtistNode:hover {
+  cursor: pointer;
+}
+
 .list-group-item:nth-child(even) {
     background-color: #E0E0E0;
 }
