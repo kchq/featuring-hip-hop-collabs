@@ -948,6 +948,7 @@ function setUpCurrentArtistNodes(region, x, y, k) {
     
     var artistLegendList = $("<div id='artistLegendList'>");
     artistLegendList.css("left", 0 + "px")
+        .attr("class", "background")
         .css("top", xStart * 1.04  + "px")
         .css("width", narrationWidth + "px")
         //.css("height", headHeight / 8 + "px")
