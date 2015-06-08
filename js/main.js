@@ -25,7 +25,8 @@ var bezierScale = {
   "NC-MW": [5.0, -2.0],
   "SC-NE": [5.0, 50.0],
   "MW-NE": [5.0, 5.0],
-  "NC-SC": [-15.0, -100.0]
+  "NC-SC": [-15.0, -100.0],
+  "NE-S": [-100.0, 15.0]
 };
 
 var nyNode = {"id":"NY", "name": "New York", "lon": 74.0059, "lat": 40.7127, "zlon": 73.7, "zlat": 40.65, "color": "#1662A4", "ringColor": "#024274", "scale": 54 };
@@ -83,7 +84,6 @@ var artistLinkTip = d3.tip()
     }
 
     if (artist1 !== undefined && artist2 !== undefined) {
-      console.log(artist1.name + " " + artist2.name);
       return "<div>" + artist1.name + " and " + artist2.name + "</div>";
     } else {
       return "yay";
@@ -441,9 +441,11 @@ function hideRegions() {
   d3.selectAll("circle").attr("r", 0);
   regionLink.style("stroke-width", "0px")
     .style("cursor", "auto")
+    .style("visibility", "hidden")
     .on("click", null);
   d3.selectAll(".regionLinkInteractionArea").style("stroke-width", "0px")
     .style("cursor", "auto")
+    .style("visibility", "hidden")
     .on("click", null);
   d3.selectAll(".d3-region-tip").remove();
   d3.selectAll(".regionNode").style("visibility", "hidden");
@@ -591,6 +593,21 @@ function updateRegionLinks() {
 }
 
 function pathCalculation(d) {
+  var xMult = 5.0;
+  var yMult = 15.0;
+  
+  var newMult = bezierScale[d.source.id + "-" + d.target.id];
+  if (newMult === undefined) {
+    newMult = bezierScale[d.target.id + "-" + d.source.id];
+  }
+  if (newMult !== undefined) {
+    xMult = newMult[0];
+    yMult = newMult[1];
+  }
+  return bezierPath(d, xMult, yMult);
+}
+
+function bezierPath(d, xMult, yMult) {
   if (d.source != d.target) {
     var start = d.source;
     var end = d.target;
@@ -609,20 +626,8 @@ function pathCalculation(d) {
 
     var xDiff = xEnd - xStart;
     var yDiff = Math.abs(yEnd - yStart);
-    var xMult = 5.0;
-    var yMult = 15.0;
-    
-    var newMult = bezierScale[d.source.id + "-" + d.target.id];
-    if (newMult === undefined) {
-      newMult = bezierScale[d.target.id + "-" + d.source.id];
-    }
-    if (newMult !== undefined) {
-      xMult = newMult[0];
-      yMult = newMult[1];
-    }
-
     var xOffset = xStart + transform * xMult * yDiff / xDiff;
-    var yOffset = yEnd + (yMult * xDiff / yDiff) * transform; // yStart + (transform * Math.abs(yEnd - yStart) / 4.0);
+    var yOffset = yEnd + (yMult * xDiff / yDiff) * transform;
 
     return 'M' + xStart + ', ' + yStart + ' ' +
            'C' + xStart + ', ' + yStart + ', ' +
@@ -754,6 +759,7 @@ function zoomOut() {
   // hide stuff already on screen
   svg.selectAll(".currentArtistNode").remove();
   svg.selectAll(".artistLink").remove();
+  svg.selectAll(".artistLinkInteractionArea").remove();
   svg.selectAll(".clippath").remove();
   svg.selectAll("#nyCircle").remove();
   svg.selectAll("#nyBlob").remove();
@@ -772,9 +778,11 @@ function zoomOut() {
     var regionNode = svg.selectAll('.regionNode');
     addRegionTooltips(regionNode);
 
-    // setUpRegionLinks();
-    var regionLink = svg.selectAll('.regionLink');
+    
+    var regionLink = svg.selectAll('.regionLink')
+      .style("visibility", "visible");
     addRegionLinkTooltips(regionLink);
+    d3.selectAll(".regionLinkInteractionArea").style("visibility", "visible");
 
     artistLink.style("stroke-width", "0px");
     d3.selectAll(".artistLinkInteractionArea").style("stroke-width", "0px");
@@ -1082,32 +1090,23 @@ function createArtistLinks(region, k, x, y) {
       .data(artistLinksTemp)
       .enter();
 
-  artistLinkInteraction = artistLink.append('line')
+  artistLinkInteraction = artistLink.append('path')
       .data(artistLinksTemp)
       .attr('class', 'artistLinkInteractionArea')
-      .attr('x1', function(d) { return d.sourceX; })
-      .attr('y1', function(d) { return d.sourceY; })
-      .attr('x2', function(d) { return d.targetX; })
-      .attr('y2', function(d) { return d.targetY; })
       .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+      .attr("fill", "none")
       .style("stroke-width", "0px")
       .call(artistLinkTip);
 
-  artistLink = artistLink.append('line')
+  artistLink = artistLink.append('path')
     .attr('class', 'artistLink')
     .attr('id', function(d) {
       return "index" + d.source + "-index" + d.target;
     })
-    .attr('x1', function(d) { return d.sourceX; })
-    .attr('y1', function(d) { return d.sourceY; })
-    .attr('x2', function(d) { return d.targetX; })
-    .attr('y2', function(d) { return d.targetY; })
     .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+    .attr("fill", "none")
     .style("stroke-width", "0px");
     
-
-  //addRegionLinkTooltips(regionLinkInteraction);
-
   return artistLinksTemp;
 }
 
@@ -1256,7 +1255,20 @@ function updateArtistLinks(scale) {
     }
   });
 
-  artistLink.style("stroke-width", function(d) {
+  artistLink.attr('d', function(d) {
+      if (d.numLinks > 0 && d.source != d.target &&
+          shouldShowArtist(currentRegion, d.source) &&
+          shouldShowArtist(currentRegion, d.target)) {
+        var xScale = 2.0 / scale;
+        var yScale = 2.0 / scale;
+        if (inNY) {
+          xScale = 1.0 / scale;
+          yScale = 1.0 / scale;
+        }
+        return bezierPathArtist(d, xScale, yScale);
+      }
+    })
+    .style("stroke-width", function(d) {
       if (d.source != d.target &&
           shouldShowArtist(currentRegion, d.source) &&
           shouldShowArtist(currentRegion, d.target)) {
@@ -1275,7 +1287,20 @@ function updateArtistLinks(scale) {
       }
     });
 
-  d3.selectAll(".artistLinkInteractionArea").style("stroke-width", function(d) {
+  d3.selectAll(".artistLinkInteractionArea").attr('d', function(d) {
+      if (d.numLinks > 0 && d.source != d.target &&
+          shouldShowArtist(currentRegion, d.source) &&
+          shouldShowArtist(currentRegion, d.target)) {
+        var xScale = 2.0 / scale;
+        var yScale = 2.0 / scale;
+        if (inNY) {
+          xScale = 1.0 / scale;
+          yScale = 1.0 / scale;
+        }
+        return bezierPathArtist(d, xScale, yScale);
+      }
+    })
+    .style("stroke-width", function(d) {
       if (d.source != d.target &&
           shouldShowArtist(currentRegion, d.source) &&
           shouldShowArtist(currentRegion, d.target)) {
@@ -1298,6 +1323,42 @@ function updateArtistLinks(scale) {
       }
     });
 
+}
+
+function bezierPathArtist(d, xMult, yMult) {
+  
+  if (d.source != d.target) {
+    var xStart = d.sourceX;
+    var yStart = d.sourceY;
+    var xEnd = d.targetX;
+    var yEnd = d.targetY;
+    var switching = 1.0;
+    if (d.sourceX > d.targetX) {
+      switching = -1.0;
+      xStart = d.targetX;
+      yStart = d.targetY;
+      xEnd = d.sourceX;
+      yEnd = d.sourceY;
+    }
+    var transform = 1;
+    if (yStart > yEnd) {
+      transform = -1;
+    }
+    if (d.source.index == 20 && d.target.index == 91) {
+      // weird specific link case that looked terrible
+      transform = 0;
+    }
+    
+    var xDiff = xEnd - xStart;
+    var yDiff = Math.abs(yEnd - yStart);
+    var xOffset = xStart + transform * xMult * yDiff / xDiff;
+    var yOffset = yEnd + switching * (yMult * xDiff / yDiff) * transform;
+
+    return 'M' + xStart + ', ' + yStart + ' ' +
+           'C' + xStart + ', ' + yStart + ', ' +
+           xOffset + ', ' + yOffset + ', ' + 
+           xEnd + ', ' + yEnd;
+  }
 }
 
 
