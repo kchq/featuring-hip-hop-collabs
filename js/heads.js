@@ -364,6 +364,9 @@ if (numListItems > 0) {
      artistCityLeft = headWidth * 0.1;
      artistYearLeft = headWidth * 0.7;
      size = 10;
+     if (artist.name.length > 10) {
+      size = 6;
+     }
     }
   
     
@@ -877,7 +880,7 @@ function headViewRegionLink(artists) {
         .css("position", "absolute")
         .css("max-height", headHeight); 
 
-    var ul = $("<ul class='list-group regionLinkUL'>");
+    var ul = $("<ul id='artistCollabsListUL' class='list-group regionLinkUL'>");
     ul.css("height", artistCollabHeight + "px")
         .css("max-height", headHeight)
         .css("width", artistCollabWidth + "px")
@@ -913,7 +916,7 @@ function headViewRegionLink(artists) {
         p[0].sourceId = sourceId;
         p[0].targetId = targetId;
 
-        var li = d3.select("ul").selectAll(".dummy") // this doesn't exist so it won't override anything, this is a concern cause we're in a for loop
+        var li = d3.select("#artistCollabsListUL").selectAll(".dummy") // this doesn't exist so it won't override anything, this is a concern cause we're in a for loop
             .data(p)
             .enter()
             .append("li")
