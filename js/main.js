@@ -1138,8 +1138,26 @@ function drawLegend(artistsActive) {
             ul.append(li);
         }
         //li.on("click", function(d) { prevArtists = artists; closeHead(); headViewMultipleArtist(d, true, d.sourceId, d.targetId); });
-    }      
+    }
+    var lis = ul.children();
+    for (var j = 0; j < lis.length; j++) {
+      var child = lis[j];
+      var found = false;
+      for (var i = 0; i < artistsActive.length; i++) {
+        var find = getArtistImageName(artistsActive[i].name);
+        while(find.indexOf("$") != -1) {
+            find = find.replace("$", "s");
+        }
+        if (child.id === (find + "exists")) {
+          found = true;
+        }
+      }
+      if (!found) {
+        child.remove();
+      }
+    }
 }
+
 var prevMouseOver;
 function assignHighlightsGhetto(d) {
     var id = d.target.id;
@@ -1627,7 +1645,7 @@ function parseData() {
           }
           i++;
         } else {
-          console.log("problem adding " + artist.name + " to artist list");
+          // console.log("problem adding " + artist.name + " to artist list");
         }
       });
       callback(err);
@@ -1684,11 +1702,11 @@ function parseData() {
                 artistLinks.push(link);
               }
             } else {
-              console.log("problem with: " + targetArtist + "'s name as target of link");
+              // console.log("problem with: " + targetArtist + "'s name as target of link");
             }
           }
         } else {
-          console.log("problem with: " + artist + "'s name as source of link");
+          // console.log("problem with: " + artist + "'s name as source of link");
         }
       }
       callback(err);
