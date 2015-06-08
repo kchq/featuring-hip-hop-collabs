@@ -196,7 +196,7 @@ var regionAbbrs = ["NE", "S", "SC", "NC", "MW", "W"];
     collabsList.css("left", headWidth - collabsWidth + "px")
         .css("top", /* headHeight * 0.02 + */"0px")
         .css("width", collabsWidth + "px")
-        .css("height", headHeight - 330 - 10 + "px")
+        .css("height", headHeight - 330 + "px")
         .css("position", "absolute");
 
   // var ul = $("<ul class='list-group collab'>");
@@ -252,16 +252,15 @@ if (numListItems > 0) {
                         .style("left", headWidth - collabsWidth + "px")
                         .style("top", /* headHeight * 0.02 + */"0px")
                         .style("width", collabsWidth + "px")
-                        .style("height", headHeight - 330 - 10 + "px")
+                        .style("height", headHeight - 330 + "px")
                         .style("position", "absolute")
                         .style("overflow-y", "scroll")
                         .style("overflow-x", "hidden");
 
      var table = tableDiv.append('table')
                         .style("width", collabsWidth + "px")
-                        .style("height", headHeight - 330 - 10 + "px")
+                        .style("height", headHeight - 330 + "px")
                         .style("border-collapse", "separate")
-                        .style("background-color", "white")
                         .style("border-spacing", "2px");
 
     // create table header
@@ -691,7 +690,6 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeInde
                       .style("width", collabsWidth + "px")
                       .style("height", "330px")
                       .style("border-collapse", "separate")
-                      .style("background-color", "white")
                       .style("border-spacing", "2px");
 
   // create table header
