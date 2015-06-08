@@ -16,7 +16,7 @@ body {
 
 #state-borders {
   fill: none;
-  stroke: #fff;
+  stroke: #666;
   stroke-width: 2px;
   stroke-linejoin: round;
   stroke-linecap: round;
@@ -104,7 +104,7 @@ body {
 }
 
 .regionLink, .artistLink {
-  stroke: #eee;
+  stroke: #123;
 }
 
 .regionLinkInteractionArea, .artistLinkInteractionArea {
@@ -147,7 +147,7 @@ li.artistCollabs:hover {
   line-height: 1;
   font-family: "paintBrush";
   font-weight: bold;
-  color: #474647;
+  color: #123;
   padding: 4px;
   background: rgba(151, 151, 160, 1);
   border-radius: 2px;
@@ -246,11 +246,10 @@ li.artistCollabs:hover {
     -webkit-filter: blur(15px) grayscale(.5) opacity(0.5) contrast(70%);
 }
 
-<<<<<<< HEAD
 #thanks {
     font-family: unicode;
 }
-=======
+
 #artistBio {
   font-family: "paintbrush";
 }
@@ -258,5 +257,3 @@ li.artistCollabs:hover {
 #head {
   z-index: 3;
 }
-
->>>>>>> e7fbbd8293dbe5197852c8704d0486a69031b28e
