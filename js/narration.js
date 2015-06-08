@@ -174,6 +174,7 @@ function updateNarration() {
 	        .attr("y", currY + 20)
 	        .style("font-size", size * 1.5)
 	        .style("text-anchor", "start")
+	        .style("letter-spacing", 0.2)
 	        .text(function(d) { return "";});
 
 		     // used to make sure the texts wrap around the svg correctly
@@ -185,7 +186,7 @@ function updateNarration() {
 		    	  .width(narrationWidth*0.8)
 		    	  .height(height * 0.8)
 		    	  .draw();
-		    currY += parseInt($("#narrationEvent" + eventNo).css("height") + 5);
+		    currY += parseInt($("#narrationEvent" + eventNo).css("height")) + height * 0.02;
 		    eventNo++;
 
 		});

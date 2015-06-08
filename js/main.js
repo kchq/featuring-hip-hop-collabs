@@ -89,6 +89,13 @@ var artistLinkTip = d3.tip()
 
 var regionTip = d3.tip()
   .attr('class', 'd3-region-tip')
+  .direction(function(d) {
+    if (d.id == "S") {
+      return "w";
+    } else {
+      return "n";
+    }
+  })
   .html(function(d) {
     return "<div>" + d.name + "</div>";
   });
@@ -1077,7 +1084,7 @@ function getXY(artistNode) {
 // converts name of artist in artists.csv to name on image file
 // spaces -> '_', quotes are removed, and everything becomes lowercase
 function getArtistImageName(name) {
-  return name.split(' ').join('_').split('\'').join('').split('.').join('').toLowerCase();
+  return name.split(' ').join('_').split('\'').join('').split('.').join('').split('$').join('s').toLowerCase();
 }
 
 function updateRegionalArtists(region, x, y, k) {
