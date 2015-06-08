@@ -7,7 +7,7 @@ image2X = xStart * 1.9;
 imageY = yStart * .4;
 imageWidth = headWidth * 0.20;
 
-image1A = xStart * 0.5;
+image1A = $(window).width() * 0.25;
 
 prevArtists = null;
 
@@ -159,7 +159,7 @@ function headViewSingleArtist(artist, fromOther) {
 		.attr("height", headHeight)
 		.attr("id", "headSVG")
 
-	gh = svgHead.append("g");
+  gh = svgHead.append("g");
 
 	gh.append("rect")
 		.attr("id", "headRect")
@@ -170,38 +170,12 @@ function headViewSingleArtist(artist, fromOther) {
 		.style("stroke-width", $(window).width() * 0.005)
         .style("opacity", 0.8);
 
-   svgHead.append('clipPath')
-        .attr("id", artistFormatted + "Large")
-        .attr("class", "clippath")
-        .append("circle")
-        .attr("cx", image1A * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
-        .attr("cy", imageY + imageWidth * (3/2) / 2)      
-        .attr("r", (imageWidth * 3/2) / 2)
-        .attr("clipPathUnits", "userSpaceOnUse");
 
-    gh.append("image")
-        .attr("xlink:href", artistImage)
-        .attr("x", image1A * .5)
-        .attr("y", imageY)
-        .attr("width", imageWidth * 3/2)
-        .attr("height", imageWidth * 3/2)
-        // preserve size of circle across different regions, because each region has a different scale
-        .attr("clip-path", function(d) { return "url(#" + artistFormatted + "Large" + ")"; });
 
-    gh.append("circle")
-        .attr("id", "50_centring") //function(d) { return getArtistImageName(d.name) + "ring"; })
-        .attr("cx", image1A * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
-        .attr("cy", imageY + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
-        .attr("r", (imageWidth * 3/2) / 2)
-        .style("fill", "none")
-        .style("stroke", "#000")
-        .style("stroke-width", "2px");
 
-//    collabsList.append(rapperTitle);
 
-   //FOR EACH LINK ADD ONE OF THESE, OK? COOl
 
-  var regionAbbrs = ["NE", "S", "SC", "NC", "MW", "W"];
+var regionAbbrs = ["NE", "S", "SC", "NC", "MW", "W"];
   var regionFullNames = ["North East", "South", "South California", "North California", "MidWest", "Washington"]
   var collabsWithOtherRegion = new Map();
   for (var i = 0; i < regionAbbrs.length; i++) {
@@ -260,7 +234,8 @@ function headViewSingleArtist(artist, fromOther) {
     collabsList.append(ul); 
 
     $("#head").append(collabsList);
-    
+
+  var collabDivWidth = headWidth;
     if (uriList !== "") {
       var spotifyFrame = $("<iframe>");
       spotifyFrame.attr("src", "https://embed.spotify.com/?uri=spotify:trackset:Collaboration Song Demos:" + uriList)
@@ -275,22 +250,80 @@ function headViewSingleArtist(artist, fromOther) {
       $("#head").append(spotifyFrame);
     }
 
-    var artistName = $("<p id='artistNameHead'>");
+    if (numListItems != 0) {
+      collabDivWidth = headWidth - 250 - 10;
+
+    }
+
+
+
+
+
+    var imagePositionX = image1A - imageWidth / 2;
+    if (collabDivWidth === headWidth) {
+      imagePositionX = $(window).width() * 0.47;
+    }
+
+   svgHead.append('clipPath')
+        .attr("id", artistFormatted + "Large")
+        .attr("class", "clippath")
+        .append("circle")
+        .attr("cx", imagePositionX * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
+        .attr("cy", imageY + imageWidth * (3/2) / 2)      
+        .attr("r", (imageWidth * 3/2) / 2)
+        .attr("clipPathUnits", "userSpaceOnUse");
+
+    gh.append("image")
+        .attr("xlink:href", artistImage)
+        .attr("x", imagePositionX * .5)
+        .attr("y", imageY)
+        .attr("width", imageWidth * 3/2)
+        .attr("height", imageWidth * 3/2)
+        // preserve size of circle across different regions, because each region has a different scale
+        .attr("clip-path", function(d) { return "url(#" + artistFormatted + "Large" + ")"; });
+
+    gh.append("circle")
+        .attr("id", "50_centring") //function(d) { return getArtistImageName(d.name) + "ring"; })
+        .attr("cx", imagePositionX * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
+        .attr("cy", imageY + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
+        .attr("r", (imageWidth * 3/2) / 2)
+        .style("fill", "none")
+        .style("stroke", "#000")
+        .style("stroke-width", "2px");
+
+//    collabsList.append(rapperTitle);
+
+   //FOR EACH LINK ADD ONE OF THESE, OK? COOl
+
+   var artistCityLeft = imagePositionX * .5 - 40;
+   var artistYearLeft = imagePositionX * .5 + imageWidth * 0.9
+
     size = Math.min(5, artist.name.length)
+    if (collabDivWidth === headWidth) {
+     artistCityLeft = headWidth * 0.1;
+     artistYearLeft = headWidth * 0.7;
+     size = 10;
+    }
+  
+    
+  
+
+    var artistName = $("<p id='artistNameHead'>");
     artistName.css("font-size", size + "vmin")
         //.css('color', 'black');
         .css("text-align", "center")
-        .css("left", image1A * .5 - 50 + "px") 
+        .css("left", imagePositionX * .5 - 50 + "px") 
         .css("top", imageY + imageWidth * 3/2 + "px")
         .css("width", imageWidth * 3/2 + 100 + "px")
         .css("max-height", headHeight * 0.6 - imageY + imageWidth * 3/2 + "px")
         .css("position", "absolute");
     artistName.text(artist.name);
 
+    size = Math.min(5, artist.name.length)
     var artistCity = $("<p id='rapperCity'>");
     artistCity.css("font-size", size/1.7 + "vmin")
       .css("text-align", "center")
-      .css("left", image1A * .5 - 40 + "px") 
+      .css("left", artistCityLeft + "px") 
       .css("top", imageY + imageWidth * 3/2 + imageWidth * 0.25 + "px")
       .css("max-width", (imageWidth * 3/2 + 100)/2 + "px")
       .css("position", "absolute");
@@ -305,7 +338,7 @@ function headViewSingleArtist(artist, fromOther) {
     var artistYear1 = $("<p id='rapperYear'>");
     artistYear1.css("font-size", size/1.7+ "vmin")
       .css("text-align", "center")
-      .css("left", image1A * .5 + imageWidth * 0.9 + "px") 
+      .css("left", artistYearLeft + "px") 
       .css("top", imageY + imageWidth * 3/2 + imageWidth * 0.25 + "px")
       .css("max-width", headWidth * 0.3 + "px")
       .css("max-height", height * 0.15 + "px")
@@ -314,7 +347,7 @@ function headViewSingleArtist(artist, fromOther) {
 
     var artistBio = $("<div id='artistBio'>");
     artistBio.css("height", headHeight * 0.4 + "px")
-             .css("width", headWidth - 250 - 10 + "px")
+             .css("width", collabDivWidth + "px")
              .css("left", "0px")
              .css("top", headHeight - headHeight * .40 + "px")
              .css("position", "absolute")
@@ -324,7 +357,9 @@ function headViewSingleArtist(artist, fromOther) {
              .css("padding-left", headWidth * 0.02 + "px");
 
     var artistExternalLinks = $("<p>")
-                                .css("float", "left");
+                              .css("float", "left");
+
+
     artistExternalLinks.html(artist.external_links);
 
 
@@ -333,9 +368,9 @@ function headViewSingleArtist(artist, fromOther) {
                             .css("height", artistBio.height() * 0.9 + "px")
                             .css("max-height", artistBio.height() * 0.9 + "px")
                             .css("min-height", artistBio.height() * 0.9 + "px")
-                            .append("Artist Collaborations By Region")
-                            .css("font-size", headHeight * 0.03 + "px")
-                            .css("text-anchor", "center");
+                            .css("font-size", artistBio.width() * 0.03 + "px")
+                            .css("text-anchor", "center")
+                            .append("Artist Collaborations By Region");
 
     var artistCollabInfo = artistCollabDiv.append("<canvas id='collabChart'>")
                             .css("float", "left")
@@ -361,9 +396,29 @@ function headViewSingleArtist(artist, fromOther) {
                         .css("margin-top", artistBio.height() * 0.1 + "px");
 
   // $("#collabChart").css("padding-bottom", headHeight * 0.025 + "px");
-  $("#collabChart").css("width", artistBio.width() * 0.65 + "px")
-  $("#collabChart").css("height", artistBio.height() * 0.8 + "px")
-    artistCollabInfo = document.getElementById("collabChart").getContext("2d");
+
+  // if (collabDivWidth === headWidth) {
+  //   artistCollabInfo.css("width", artistBio.width() * 0.25 + "px");
+  //   $(".external_links").css("min-width", artistBio.width() * 0.4 + "px");
+  //   artistCollabDiv.css("font-size", artistBio.width() * 0.01 + "px");
+  // } else {
+  //   $("#collabChart").css("width", artistBio.width() * 0.65 + "px")
+  //   $("#collabChart").css("height", artistBio.height() * 0.8 + "px")
+  //   $(".external_links").css("width", artistBio.width() * 0.3 + "px");
+  // }
+
+if (collabDivWidth === headWidth) {
+  $("#collabChart").css("width", artistBio.width() * 0.65 + "px");
+   $("#collabChart").css("height", artistBio.height() * 0.7 + "px");
+  artistCollabDiv.css("font-size", artistBio.width() * 0.02 + "px");
+  artistCollabInfo.css("margin-left", artistBio.width() * 0.02 + "px")
+
+
+}
+   $("#collabChart").css("width", artistBio.width() * 0.65 + "px");
+   $("#collabChart").css("height", artistBio.height() * 0.8 + "px");
+   $(".external_links").css("width", artistBio.width() * 0.3 + "px");
+  artistCollabInfo = document.getElementById("collabChart").getContext("2d");
 
     var barData = {
       labels : regionFullNames,
@@ -392,8 +447,6 @@ function headViewSingleArtist(artist, fromOther) {
     chart.datasets[0].bars[4].fillColor = "rgb(143,135,130)";
     chart.datasets[0].bars[5].fillColor = "rgb(207,207,207)";
     chart.update();
-
-    console.log(chart.pointLabelFontFamily);
     
     var rapperTitle = $("<h1 id='rapperName'>");
     rapperTitle.text(artist.name);
