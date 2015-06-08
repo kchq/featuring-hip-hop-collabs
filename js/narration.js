@@ -117,27 +117,12 @@ function updateNarration() {
 	// update the next event year preview if one exists
 	if (relativeInfo.nextEventYr !== undefined) {
 		currentNextEventYear = parseInt(relativeInfo.nextEventYr);
-		gn.append("text")
-		  	  .attr("class", "narrationEventPreviewNextYearText timelineJumperNext")
-			  .attr("x", narrationWidth * 0.05)
-			  .attr("y", height * 0.05)
-	          .style("font-size", narrationWidth * 0.2)
-		      .style("fill", "#aaa")
-		      .text(function(d) { return "\uFFEA";});
-
-		gn.append("text")
-		  	.attr("class", "narrationEventPreviewNextYearText timelineJumperNext")
-			  .attr("x", narrationWidth * 0.85)
-			  .attr("y", height * 0.05)
-	          .style("font-size", narrationWidth * 0.2)
-		      .style("fill", "#aaa")
-		      .text(function(d) { return "\uFFEA";});
 
 		gn.append("text")
 		  .attr("class", "narrationEventPreviewNextYearText timelineJumperNext")
 		  .attr("x", narrationWidth/2)
 		  .attr("y", height * 0.05)
-          .style("font-size", narrationWidth/14)
+          .style("font-size", narrationWidth/12)
 	      .style("text-anchor", "middle")
 	      .style("fill", "#aaa")
 	      .text(function(d) { return "Next Event " + relativeInfo.nextEventYr});
@@ -148,27 +133,12 @@ function updateNarration() {
 	// update the previous event year preview if one exists
 	if (relativeInfo.prevEventYr !== undefined) {
 		currentPreviousEventYear = parseInt(relativeInfo.prevEventYr);
-		gn.append("text")
-		  	  .attr("class", "narrationEventPreviewPreviousYearText timelineJumperPrev")
-			  .attr("x", narrationWidth * 0.05)
-			  .attr("y", height * 0.975)
-	          .style("font-size", narrationWidth * 0.2)
-		      .style("fill", "#aaa")
-		      .text(function(d) { return "\uFFEC";});
-
-		gn.append("text")
-		  	  .attr("class", "narrationEventPreviewPreviousYearText timelineJumperPrev")
-			  .attr("x", narrationWidth * 0.85)
-			  .attr("y", height * 0.975)
-	          .style("font-size", narrationWidth * 0.2)
-		      .style("fill", "#aaa")
-		      .text(function(d) { return "\uFFEC";});
 
 		gn.append("text")
 		  .attr("class", "narrationEventPreviewPreviousYearText timelineJumperPrev")
 		  .attr("x", narrationWidth/2)
 		  .attr("y", height * 0.97)
-    	  .style("font-size", narrationWidth/14)
+    	  .style("font-size", narrationWidth/12)
 	      .style("text-anchor", "middle")
 	      .style("fill", "#aaa")
 	      .text(function(d) { return "Previous Event " + relativeInfo.prevEventYr;});
