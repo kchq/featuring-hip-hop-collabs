@@ -264,6 +264,7 @@ li.artistCollabs:hover {
   text-decoration: none;
 }
 
+
 .btn:hover {
   background: #919ba1;
   background-image: -webkit-linear-gradient(top, #919ba1, #abbcc7);
@@ -273,7 +274,6 @@ li.artistCollabs:hover {
   background-image: linear-gradient(to bottom, #919ba1, #abbcc7);
   text-decoration: none;
 }
-
 
 .background {
     -webkit-transition: all 1s ease-in-out;

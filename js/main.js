@@ -77,12 +77,23 @@ var artistLinkTip = d3.tip()
   .attr('class', 'd3-region-tip')
   .direction('c')
   .html(function(d) {
-    var artist1 = d.source;
-    var artist2 = d.target;
+    var linksPerYear = d.linksPerYear;
+    var artist1;
+    var artist2;
+    for (var links in linksPerYear) {
+         linksYear = linksPerYear[links];
+         for (var i = 0; i < linksYear.length; i++) {
+             artist1 = artistNodes[linksYear[i].source];
+             artist2 = artistNodes[linksYear[i].target];
+             break;
+         }
+         break;
+    }
+
     if (artist1 !== undefined && artist2 !== undefined) {
       return "<div>" + artist1.name + " and " + artist2.name + "</div>";
     } else {
-      return "yay"; // lol @ vinod
+      return "yay";
     }
   });
 
@@ -852,9 +863,6 @@ function createRegionalArtists(region, x, y, k) {
     nyNode['nyY'] = nyY;
     if (!inNY) {
       artistNodes.push(nyNode);
-      artistMap[nyNode.name] = artistNodes.length - 1;
-    } else if (nyNode in artistNodes) {
-      artistNodes.remove(nyNode);
     }
   }
 
@@ -923,9 +931,8 @@ function createRegionalArtists(region, x, y, k) {
                    .attr("id", "nyMask").attr("maskUnits", "userSpaceOnUse");
     mask.append("rect").attr("width", "100%").attr("height", "100%").style("fill", "white");
     mask.node().appendChild(nyMask[0][0]);
-  } else {
-    setUpCurrentArtistNodes(region, x, y, k);
   }
+  setUpCurrentArtistNodes(region, x, y, k);
 }
 
 function setUpCurrentArtistNodes(region, x, y, k) {
@@ -940,14 +947,14 @@ function setUpCurrentArtistNodes(region, x, y, k) {
     
     var artistLegendList = $("<div id='artistLegendList'>");
     artistLegendList.css("left", 0 + "px")
-        .css("top", xStart * 1.03  + "px")
+        .css("top", xStart * 1.04  + "px")
         .css("width", narrationWidth + "px")
         //.css("height", headHeight / 8 + "px")
         .css("position", "absolute")
         .css("max-height", headHeight / 10)
         .css("display", "inline-block"); 
 
-    var instruct = $("<h5>").text("scroll and select artist below").css("text-align", "center");
+    var instruct = $("<h5>").text("scroll and select artist below").css("text-align", "center"); 
     var ul = $("<ul id='legendUl' class='list-group regionLinkUL'>");
     ul.css("overflow", "auto")
         //css("height", headHeight / 8 + "px")
@@ -967,14 +974,8 @@ function setUpCurrentArtistNodes(region, x, y, k) {
       .enter().append("g")
       .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
       .attr("class", function(d) {
-        if (d.region === region) {
-          if (region === 'NE') {
-            if ((d.state === 'NY' && inNY) || (d.state !== 'NY' && !inNY)) {
-              return "currentArtistNode artistNode";
-            }
-          } else {
-            return "currentArtistNode artistNode";
-          }
+        if (d.region === region && !(d.state === 'NY' && !inNY)) {
+          return "currentArtistNode artistNode";
         } else {
           return "artistNode";
         }
@@ -1107,7 +1108,7 @@ function updateRegionalArtists(region, x, y, k) {
     updateArtistLinks(k);
 }
 
-
+// TODO kevin legend (remove links dymna,ally too)
 function drawLegend(artistsActive) {
     var ul = $("#legendUl");
     for (var i = 0; i < artistsActive.length; i++) {
@@ -1182,17 +1183,17 @@ function createArtistLinks(region, k, x, y) {
       .attr('class', 'artistLinkInteractionArea')
       .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
       .attr("fill", "none")
-      //.style("mask", "url(#nyMask)")
+      .style("mask", "url(#nyMask)")
       .style("stroke-width", "0px")
       .call(artistLinkTip);
 
   artistLink = artistLink.append('path')
-    .data(artistLinksTemp)
     .attr('class', 'artistLink')
     .attr('id', function(d) {
+      console.log(d.source);
       return "index" + d.source + "-index" + d.target;
     })
-    //.style("mask", "url(#nyMask)")
+    .style("mask", "url(#nyMask)")
     .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
     .attr("fill", "none")
     .style("stroke-width", "0px");
@@ -1260,7 +1261,7 @@ function artistLinksForRegion(allLinks) {
       } else if (inNY && artistNodes[link.target].state !== 'NY') {
         targetArtistIndex = -1;
       }
-      if ((sourceArtistIndex != -1 && targetArtistIndex != -1)) {
+      if ((sourceArtistIndex != -1 && targetArtistIndex != -1) && (targetArtistIndex !== sourceArtistIndex)) {
         // this link is valid and the two artists are currently there
         var artistLink = getLink(artistLinksTemp, sourceArtistIndex, targetArtistIndex);
         if (artistLink.linksPerYear[link.release_year] == undefined) {
@@ -1288,11 +1289,7 @@ function updateArtistLinks(scale) {
     if (d.numLinks > 0 && d.source != d.target &&
           shouldShowArtist(currentRegion, d.source) &&
           shouldShowArtist(currentRegion, d.target)) {
-      if (d.source === nyNode || d.target === nyNode) {
-        regionLinkClickHandler(d);
-      } else {
-        headViewMultipleArtist(d.linksPerYear, false);
-      }
+      headViewMultipleArtist(d.linksPerYear, false);
     } else {
       return null;
     }
@@ -1324,11 +1321,7 @@ function updateArtistLinks(scale) {
     if (d.numLinks > 0 && d.source != d.target &&
           shouldShowArtist(currentRegion, d.source) &&
           shouldShowArtist(currentRegion, d.target)) {
-      if (d.source === nyNode || d.target === nyNode) {
-        regionLinkClickHandler(d);
-      } else {
-        headViewMultipleArtist(d.linksPerYear, false);
-      }
+      headViewMultipleArtist(d.linksPerYear, false);
     } else {
       return null;
     }
