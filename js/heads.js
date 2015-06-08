@@ -4,8 +4,10 @@ headHeight= $(window).height() * 0.90;
 headWidth = $(window).width() * 0.70;
 image1X = xStart * .3;
 image2X = xStart * 1.9;
-imageY = yStart * .4
-imageWidth = headWidth * 0.20
+imageY = yStart * .4;
+imageWidth = headWidth * 0.20;
+
+image1A = xStart * 0.5;
 
 prevArtists = null;
 
@@ -72,6 +74,14 @@ function addImages(node1, node2) {
         // preserve size of circle across different regions, because each region has a different scale
         .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node1.name) + "2)"; })
         .style("cursor", "pointer")
+        .on("mouseenter", function() {
+          d3.select("#" + getArtistImageName(node1.name) + "ring").style("stroke", "#9F97A2").style("stroke-width", "4px");
+          d3.select(this).style("opacity", 0.7);
+        })
+        .on("mouseleave", function() {
+          d3.select("#" + getArtistImageName(node1.name) + "ring").style("stroke", "#000").style("stroke-width", "2px");
+          d3.select(this).style("opacity", 1.0);
+        })
         .on("click", function() { 
           closeHead(false);
           headViewSingleArtist(node1, false);
@@ -103,6 +113,14 @@ function addImages(node1, node2) {
         .attr("height", imageWidth)
         .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node2.name) + "2)"; })
         .style("cursor", "pointer")
+        .on("mouseenter", function() {
+          d3.select("#" + getArtistImageName(node2.name) + "ring").style("stroke", "#9F97A2").style("stroke-width", "4px");
+          d3.select(this).style("opacity", 0.7);
+        })
+        .on("mouseleave", function() {
+          d3.select("#" + getArtistImageName(node2.name) + "ring").style("stroke", "#000").style("stroke-width", "2px");
+          d3.select(this).style("opacity", 1.0);
+        })
         .on("click", function() {
           closeHead(false);
           headViewSingleArtist(node2, false);
@@ -156,14 +174,14 @@ function headViewSingleArtist(artist, fromOther) {
         .attr("id", artistFormatted + "Large")
         .attr("class", "clippath")
         .append("circle")
-        .attr("cx", image1X * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
+        .attr("cx", image1A * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
         .attr("cy", imageY + imageWidth * (3/2) / 2)      
         .attr("r", (imageWidth * 3/2) / 2)
         .attr("clipPathUnits", "userSpaceOnUse");
 
     gh.append("image")
         .attr("xlink:href", artistImage)
-        .attr("x", image1X * .5)
+        .attr("x", image1A * .5)
         .attr("y", imageY)
         .attr("width", imageWidth * 3/2)
         .attr("height", imageWidth * 3/2)
@@ -172,7 +190,7 @@ function headViewSingleArtist(artist, fromOther) {
 
     gh.append("circle")
         .attr("id", "50_centring") //function(d) { return getArtistImageName(d.name) + "ring"; })
-        .attr("cx", image1X * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
+        .attr("cx", image1A * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
         .attr("cy", imageY + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
         .attr("r", (imageWidth * 3/2) / 2)
         .style("fill", "none")
@@ -192,7 +210,7 @@ function headViewSingleArtist(artist, fromOther) {
   var totalCollaborationsWithOtherRegion = 0;
 
   var spotifyFrame = $("<iframe>");
-  var collabsWidth = headWidth * .55;
+  var collabsWidth = headWidth * .47;
   var collabsHeight = headHeight * .4;
   var frameWidth = Math.max(headWidth * 0.4, 250);
   var frameHeight = Math.max(headHeight * 0.4, frameWidth + 80);
@@ -258,23 +276,23 @@ function headViewSingleArtist(artist, fromOther) {
     }
 
     var artistName = $("<p id='artistNameHead'>");
-    size = Math.min(6, artist.name.length)
+    size = Math.min(5, artist.name.length)
     artistName.css("font-size", size + "vmin")
         //.css('color', 'black');
         .css("text-align", "center")
-        .css("left", image1X * .5 - 50 + "px") 
+        .css("left", image1A * .5 - 50 + "px") 
         .css("top", imageY + imageWidth * 3/2 + "px")
         .css("width", imageWidth * 3/2 + 100 + "px")
-        .css("height", headHeight * 0.2 + "px")
+        .css("max-height", headHeight * 0.6 - imageY + imageWidth * 3/2 + "px")
         .css("position", "absolute");
     artistName.text(artist.name);
 
     var artistCity = $("<p id='rapperCity'>");
     artistCity.css("font-size", size/1.7 + "vmin")
       .css("text-align", "center")
-      .css("left", image1X * .5 - 20 + "px") 
-      .css("top", imageY + imageWidth * 3/2 + imageWidth * 0.3 + "px")
-      .css("width", (imageWidth * 3/2 + 100)/4 + "px")
+      .css("left", image1A * .5 - 40 + "px") 
+      .css("top", imageY + imageWidth * 3/2 + imageWidth * 0.25 + "px")
+      .css("max-width", (imageWidth * 3/2 + 100)/2 + "px")
       .css("position", "absolute");
 
     if (String(artist.city).length > 11) { 
@@ -283,14 +301,16 @@ function headViewSingleArtist(artist, fromOther) {
       artistCity.text(artist.city);
     }
 
+    size = Math.min(size, 5);
     var artistYear1 = $("<p id='rapperYear'>");
     artistYear1.css("font-size", size/1.7+ "vmin")
       .css("text-align", "center")
-      .css("left", image1X * .5 + imageWidth * 0.9 + "px") 
-      .css("top", imageY + imageWidth * 3/2 + imageWidth * 0.3 + "px")
-      .css("width", (imageWidth * 3/2 + 100)/4 + "px")
+      .css("left", image1A * .5 + imageWidth * 0.9 + "px") 
+      .css("top", imageY + imageWidth * 3/2 + imageWidth * 0.25 + "px")
+      .css("max-width", headWidth * 0.3 + "px")
+      .css("max-height", height * 0.15 + "px")
       .css("position", "absolute");
-    artistYear1.text(artist.start_year);
+    artistYear1.text("Active Since " + artist.start_year);
 
     var artistBio = $("<div id='artistBio'>");
     artistBio.css("height", headHeight * 0.4 + "px")

@@ -34,6 +34,11 @@ body {
 }
 
 @font-face {
+    font-family: "polo";
+    src: url("../graffiti/polo.ttf");
+}
+
+@font-face {
     font-family: "bombing";
     src: url("../graffiti/Bombing.ttf");
 }
@@ -202,7 +207,7 @@ li.artistCollabs:hover {
 }
 
 .ui-menu-item {
-  font-family: "paintBrush";
+  font-family: "polo";
 }
 
 .btn {
