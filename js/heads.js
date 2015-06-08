@@ -665,20 +665,33 @@ function headViewRegionLink(artists) {
       var target = artistNodes[pair.split("_")[1]].region;
       break;
     }
-    for (var pair in artists) {
-      var key;
-      if (artistNodes[pair.split("_")[0]].region === source) {
-        key = pair.split("_")[0] + "_" + pair.split("_")[1];
-      } else {
-        key = pair.split("_")[1] + "_" + pair.split("_")[0];
+
+    if (source.region === undefined || target.region === undefined) {
+      // we have an artist to NY link
+      for (var pair in artists) {
+        var key;
+        if (artistNodes[pair.split("_")[0]].state !== "NY") {
+          key = pair.split("_")[0] + "_" + pair.split("_")[1];
+        } else {
+          key = pair.split("_")[1] + "_" + pair.split("_")[0];
+        }
+        sortedArtists[key] = artists[pair];
       }
-      sortedArtists[key] = artists[pair];
+    } else {
+      for (var pair in artists) {
+        var key;
+        if (artistNodes[pair.split("_")[0]].region === source) {
+          key = pair.split("_")[0] + "_" + pair.split("_")[1];
+        } else {
+          key = pair.split("_")[1] + "_" + pair.split("_")[0];
+        }
+        sortedArtists[key] = artists[pair];
+      }
     }
 
-
     artists = sortedArtists;
-    var sourceText;
-    var targetText;
+    var sourceText = "New York"; // will stay like this if region is undefined
+    var targetText = "New York";
 
     for (region in regionNodes) {
       if (regionNodes[region].id === source) {

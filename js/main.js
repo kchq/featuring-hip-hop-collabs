@@ -77,23 +77,12 @@ var artistLinkTip = d3.tip()
   .attr('class', 'd3-region-tip')
   .direction('c')
   .html(function(d) {
-    var linksPerYear = d.linksPerYear;
-    var artist1;
-    var artist2;
-    for (var links in linksPerYear) {
-         linksYear = linksPerYear[links];
-         for (var i = 0; i < linksYear.length; i++) {
-             artist1 = artistNodes[linksYear[i].source];
-             artist2 = artistNodes[linksYear[i].target];
-             break;
-         }
-         break;
-    }
-
+    var artist1 = d.source;
+    var artist2 = d.target;
     if (artist1 !== undefined && artist2 !== undefined) {
       return "<div>" + artist1.name + " and " + artist2.name + "</div>";
     } else {
-      return "yay";
+      return "yay"; // lol @ vinod
     }
   });
 
@@ -861,6 +850,7 @@ function createRegionalArtists(region, x, y, k) {
     nyNode['nyY'] = nyY;
     if (!inNY) {
       artistNodes.push(nyNode);
+      artistMap[nyNode.name] = artistNodes.length - 1;
     } else if (nyNode in artistNodes) {
       artistNodes.remove(nyNode);
     }
@@ -1102,9 +1092,9 @@ function createArtistLinks(region, k, x, y) {
       .call(artistLinkTip);
 
   artistLink = artistLink.append('path')
+    .data(artistLinksTemp)
     .attr('class', 'artistLink')
     .attr('id', function(d) {
-      console.log(d.source);
       return "index" + d.source + "-index" + d.target;
     })
     //.style("mask", "url(#nyMask)")
@@ -1200,7 +1190,11 @@ function updateArtistLinks(scale) {
     if (d.numLinks > 0 && d.source != d.target &&
           shouldShowArtist(currentRegion, d.source) &&
           shouldShowArtist(currentRegion, d.target)) {
-      headViewMultipleArtist(d.linksPerYear, false);
+      if (d.source === nyNode || d.target === nyNode) {
+        regionLinkClickHandler(d);
+      } else {
+        headViewMultipleArtist(d.linksPerYear, false);
+      }
     } else {
       return null;
     }
@@ -1232,7 +1226,11 @@ function updateArtistLinks(scale) {
     if (d.numLinks > 0 && d.source != d.target &&
           shouldShowArtist(currentRegion, d.source) &&
           shouldShowArtist(currentRegion, d.target)) {
-      headViewMultipleArtist(d.linksPerYear, false);
+      if (d.source === nyNode || d.target === nyNode) {
+        regionLinkClickHandler(d);
+      } else {
+        headViewMultipleArtist(d.linksPerYear, false);
+      }
     } else {
       return null;
     }
