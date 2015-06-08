@@ -94,6 +94,14 @@ function restOfNarrationSetup() {
 		.style("fill", "#123")
 		.style("fill-opacity", 0.8);
 
+	gn.append("line")
+	  .attr("x1", narrationWidth)
+	  .attr("y1", narrationTop)
+	  .attr("x2", narrationWidth)
+	  .attr("y2", height)
+	  .style("stroke-width", narrationWidth * 0.05)
+	  .style("stroke", "#000");
+
     updateNarration();
 }
 
