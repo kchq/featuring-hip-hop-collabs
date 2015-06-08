@@ -73,8 +73,8 @@ function addImages(node1, node2) {
         .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node1.name) + "2)"; })
         .style("cursor", "pointer")
         .on("click", function() { 
-          closeHead();
-          headViewSingleArtist(node1);
+          closeHead(false);
+          headViewSingleArtist(node1, false);
         });
         
     gh.append("circle")
@@ -104,8 +104,8 @@ function addImages(node1, node2) {
         .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node2.name) + "2)"; })
         .style("cursor", "pointer")
         .on("click", function() {
-          closeHead();
-          headViewSingleArtist(node2);
+          closeHead(false);
+          headViewSingleArtist(node2, false);
         });
         
     gh.append("circle")
@@ -122,10 +122,12 @@ function addImages(node1, node2) {
 }
 
 // Shows artist detailed view in head to head fashion only displaying a single artist
-function headViewSingleArtist(artist) {
+function headViewSingleArtist(artist, fromOther) {
 
     headStart();
-
+    if (!fromOther) {
+        blurBackground();
+    }
     var artistFormatted = getArtistImageName(artist.name);
     var artistImage = "imgs/" + artistFormatted + ".png";
     var imgWidth = imageWidth * 1.5
@@ -270,17 +272,22 @@ function headViewSingleArtist(artist) {
     var artistCity = $("<p id='rapperCity'>");
     artistCity.css("font-size", size/1.7 + "vmin")
       .css("text-align", "center")
-      .css("left", image1X * .5 - 50 + "px") 
-      .css("top", imageY + imageWidth * 3/2 - size*5 + "px")
+      .css("left", image1X * .5 - 20 + "px") 
+      .css("top", imageY + imageWidth * 3/2 + imageWidth * 0.3 + "px")
       .css("width", (imageWidth * 3/2 + 100)/4 + "px")
       .css("position", "absolute");
-    artistCity.text(artist.city);
+
+    if (String(artist.city).length > 11) { 
+      artistCity.text(String(artist.city).substring(0, 11));
+    } else {
+      artistCity.text(artist.city);
+    }
 
     var artistYear1 = $("<p id='rapperYear'>");
     artistYear1.css("font-size", size/1.7+ "vmin")
       .css("text-align", "center")
-      .css("left", image1X * .5 + imageWidth * 1.3 + "px") 
-      .css("top", imageY + imageWidth * 3/2 - size*5 + "px")
+      .css("left", image1X * .5 + imageWidth * 0.9 + "px") 
+      .css("top", imageY + imageWidth * 3/2 + imageWidth * 0.3 + "px")
       .css("width", (imageWidth * 3/2 + 100)/4 + "px")
       .css("position", "absolute");
     artistYear1.text(artist.start_year);
@@ -314,6 +321,7 @@ function headViewSingleArtist(artist) {
                             .css("float", "left")
                             .css("height", artistBio.height() * 0.9 + "px")
                             .css("max-height", artistBio.height() * 0.9 + "px")
+                            .css("min-height", artistBio.height() * 0.9 + "px")
                             .css("width", artistBio.width() * 0.55 + "px")
                             .css("padding-bottom", headHeight * 0.3 + "px")
                             .css("margin-left", artistBio.width() * 0.05 + "px")
@@ -392,6 +400,7 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeInde
    var frameHeight = Math.max(headHeight * 0.4, frameWidth + 80);
 
    headStart();
+   blurBackground();
     
    var source;
    var dest;
@@ -713,7 +722,13 @@ function headViewRegionLink(artists) {
 
 }
 
-function closeHead() {
+
+//@param exit: boolean to determine whether or not closeHead is 
+//taking you back to main view (as opposed to other view) 
+function closeHead(noExit) {
+  if (!noExit) {
+    unblurBackground();
+  }
   $("#head").html("");
 
   if (!isZoomed) {

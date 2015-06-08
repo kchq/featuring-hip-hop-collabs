@@ -11,13 +11,13 @@ body {
 }
 
 #states {
-  fill: #242424;
+  fill: #e5c088;
 }
 
 #state-borders {
   fill: none;
-  stroke: #383838;
-  stroke-width: 1px;
+  stroke: #fff;
+  stroke-width: 2px;
   stroke-linejoin: round;
   stroke-linecap: round;
   pointer-events: none;
@@ -145,13 +145,15 @@ li.artistCollabs:hover {
 
 .d3-region-tip {
   line-height: 1;
-  font-family: monospace;
+  font-family: "paintBrush";
   font-weight: bold;
   color: #474647;
   padding: 4px;
   background: rgba(151, 151, 160, 1);
   border-radius: 2px;
+  font-size: 20px;
 }
+
 /* Creates a small triangle extender for the tooltip */
 .d3-region-tip:after {
   box-sizing: border-box;
@@ -196,6 +198,11 @@ li.artistCollabs:hover {
 
 #search {
   outline: none;
+  font-size: 20px;
+}
+
+.ui-menu-item {
+  font-family: "paintBrush";
 }
 
 .btn {
@@ -239,7 +246,17 @@ li.artistCollabs:hover {
     -webkit-filter: blur(15px) grayscale(.5) opacity(0.5) contrast(70%);
 }
 
+<<<<<<< HEAD
+#thanks {
+    font-family: unicode;
+}
+=======
 #artistBio {
   font-family: "paintbrush";
 }
 
+#head {
+  z-index: 3;
+}
+
+>>>>>>> e7fbbd8293dbe5197852c8704d0486a69031b28e
