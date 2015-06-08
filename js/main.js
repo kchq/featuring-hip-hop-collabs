@@ -1495,7 +1495,7 @@ function bezierPathArtist(d, xMult, yMult) {
     if (yStart > yEnd) {
       transform = -1;
     }
-    if (d.source.index == 20 && d.target.index == 91) {
+    if (d.source.index == 20 && d.target.index == 90) {
       // weird specific link case that looked terrible
       transform = 0;
     }
