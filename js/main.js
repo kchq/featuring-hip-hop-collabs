@@ -45,6 +45,10 @@ var scaleExtentGeometric = Math.round(((presentYear - startYear) / scrollSensiti
 var scaleExtentLinear = Math.round(Math.log(scaleExtentGeometric) + 1);
 var searchedArtist = "";
 
+
+var highlightLinkColor = "#9F97A2";
+var linkColor = "#123";
+
 var mouseX;
 var mouseY;
 $(document).mousemove( function(e) {
@@ -381,7 +385,7 @@ function setUpRegions() {
       .attr("stroke", "#242424")
       .attr("stroke-width", 2)
       .attr("class", "regionNode")
-      .attr("fill", "#9F97A2") // #DFD7B2
+      .attr("fill", highlightLinkColor) // #DFD7B2
       .style("opacity", 0.6)
       .on("click", function(d) {
         zoomToRegion(d); 
@@ -674,11 +678,11 @@ function addRegionLinkTooltips(regionLink) {
     regionLinkTemp.call(regionLinkTip);
   }
   regionLink.on("mouseenter", function(d) {
-    d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#9F97A2");
+    d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", highlightLinkColor);
     regionLinkTip.show(d);
   });
   regionLink.on("mouseleave", function(d) {
-    d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", "#123"); // needs to be the same as .regionLink in main.css
+    d3.selectAll("#" + d.source.id + "-" + d.target.id).style("stroke", linkColor); // needs to be the same as .regionLink in main.css
     regionLinkTip.hide(d);
   });
 }
@@ -1198,7 +1202,7 @@ function updateArtistLinks(scale) {
         shouldShowArtist(currentRegion, d.source) &&
         shouldShowArtist(currentRegion, d.target)) {
       d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
-        .style("stroke", "#9F97A2");
+        .style("stroke", highlightLinkColor);
       artistLinkTip.show(d);
     } else {
       return null;
@@ -1209,7 +1213,7 @@ function updateArtistLinks(scale) {
         shouldShowArtist(currentRegion, d.source) &&
         shouldShowArtist(currentRegion, d.target)) {
       d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
-        .style("stroke", "#123"); // needs to be the same as .regionLink in main.css
+        .style("stroke", linkColor); // needs to be the same as .regionLink in main.css
       artistLinkTip.hide(d);
     } else {
       return null;
@@ -1230,7 +1234,7 @@ function updateArtistLinks(scale) {
         shouldShowArtist(currentRegion, d.source) &&
         shouldShowArtist(currentRegion, d.target)) {
       d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
-        .style("stroke", "#9F97A2");
+        .style("stroke", highlightLinkColor);
       artistLinkTip.show(d);
     } else {
       return null;
@@ -1241,7 +1245,7 @@ function updateArtistLinks(scale) {
         shouldShowArtist(currentRegion, d.source) &&
         shouldShowArtist(currentRegion, d.target)) {
       d3.selectAll("#index" + artistMap[d.source.name] + "-index" + artistMap[d.target.name])
-        .style("stroke", "#123"); // needs to be the same as .artistLink in main.css
+        .style("stroke", linkColor); // needs to be the same as .artistLink in main.css
       artistLinkTip.hide(d);
     } else {
       return null;
@@ -1318,8 +1322,31 @@ function updateArtistLinks(scale) {
 
 }
 
+function highlightArtistLinks(d) {
+  artistLink.style("stroke", function(link) {
+    if (d === link.source || d === link.target) {
+      return linkColor;
+    } else {
+      return highlightLinkColor;
+    }
+  })
+  .style("opacity", function(link) {
+    if (d === link.source || d === link.target) {
+      return 1.0;
+    } else {
+      return 0.25;
+    }
+  });
+}
+
+function unhighlightArtistLinks(d) {
+  artistLink.style("stroke", function(link) {
+      return linkColor;
+  })
+  .style("opacity", 1.0);
+}
+
 function bezierPathArtist(d, xMult, yMult) {
-  
   if (d.source != d.target) {
     var xStart = d.sourceX;
     var yStart = d.sourceY;
@@ -1370,6 +1397,7 @@ function artistMouseEnter(d, scale) {
   $("#" + getArtistImageName(d.name) + "_ring")
     .css("stroke", "#FF5655")
     .attr("r", circleSize);
+  highlightArtistLinks(d);
 }
 
 function artistMouseLeave(d) {
@@ -1383,6 +1411,7 @@ function artistMouseLeave(d) {
   $("#" + getArtistImageName(d.name) + "_ring")
     .css("stroke", "#000")
     .attr("r", artistCircleSize / 2);
+  unhighlightArtistLinks(d);
 }
 
 // ======= Functions for handling scrolling ======= 
