@@ -138,6 +138,18 @@ li.artistCollabs {
   cursor: pointer;
 }
 
+li.artistList {
+  height: 25px;
+  border: 1px solid rgba(0,0,0,0);
+  background: rgba(20, 20, 20, 0.6);
+  margin-bottom: 2px;
+  color: white;
+  font-family: "paintBrush";
+  font-size: 20px;
+  cursor: pointer;
+  padding-left: 8px;
+}
+
 li.artistCollabs:hover {
   background: rgba(50, 50, 50, 0.9);
   text-shadow: 2px 2px #222;

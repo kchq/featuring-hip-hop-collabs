@@ -39,14 +39,17 @@
     background-image: url("../icons/rateyourmusic-favicon.png"); 
     background-size: 16px;
 }
+
 .soundcloud-favicon {
     background-image: url("../icons/soundcloud-favicon.png"); 
     background-size: 16px;
 }
+
 .spotify-favicon {
     background-image: url("../icons/spotify-favicon.png"); 
     background-size: 16px;
 }
+
 .twitter-favicon {
     background-image: url("../icons/twitter-favicon.png"); 
     background-size: 16px;
@@ -56,10 +59,12 @@
     background-image: url("../icons/viaf-favicon.png"); 
     background-size: 16px;
 }
+
 .wikidata-favicon {
     background-image: url("../icons/wikidata-favicon.png"); 
     background-size: 16px;
 }
+
 .wikipedia-favicon {
     background-image: url("../icons/wikipedia-favicon.png"); 
     background-size: 16px;

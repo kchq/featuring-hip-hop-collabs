@@ -718,6 +718,8 @@ function throttle() {
 // ======= Functions to handle zooming in and out of regions ======= 
 
 function zoomToRegion(region) {
+  $("#artistLegendList").remove();
+  alert("hello");
   zoom.on("zoom", null);
   var x, y, k;
   var lon = region.zlon;
@@ -750,6 +752,7 @@ function zoomToRegion(region) {
 }
 
 function zoomOut() {
+  $("#artistLegendList").remove();
   zoom.on("zoom", null);
   // hide stuff already on screen
   svg.selectAll(".currentArtistNode").remove();
@@ -835,6 +838,7 @@ function createRegionalArtists(region, x, y, k) {
   currentX = x;
   currentY = y;
   currentK = k;
+  alert("hi");
 
   var nyCount = countNY();
   if (region == 'NE') {
@@ -872,6 +876,7 @@ function createRegionalArtists(region, x, y, k) {
         return Math.max(0, 10 * Math.log(nyCount) + 4) / k; 
       })
       .on("click", function() {
+        $("#artistLegendList").remove();
         svg.selectAll(".currentArtistNode").remove();
         svg.selectAll(".artistLink").remove();
         svg.selectAll(".clippath").remove();
@@ -927,11 +932,60 @@ function createRegionalArtists(region, x, y, k) {
           d3.select(this).style("opacity", 0.2);
         });
   }
-
   setUpCurrentArtistNodes(region, x, y, k);
 }
 
 function setUpCurrentArtistNodes(region, x, y, k) {
+    //Setup legend for artist view
+    /*svgHead = d3.select("#legend")
+        .style("left", xStart * .8 + "px")
+        .style("top", yStart * 6 + "px")
+        .style("position", "absolute")
+        .append("svg")
+        .attr("width", headWidth / 3)
+        .attr("height", headHeight / 8)
+        .attr("id", "headSVG");
+
+    gh = svgHead.append("g");*/
+
+    /*gh.append("rect")
+        .attr("id", "headRect")
+        .attr("width", headWidth / 3)
+        .attr("height", headHeight / 4)
+        .style("fill", "white")
+        .style("stroke", "black")
+        .style("stroke-width", $(window).width() * 0.005)
+        .style("opacity", 0.8);*/
+
+    var artistCollabHeight = headHeight * 0.7;
+    var artistCollabWidth = headWidth * 0.8;
+
+    var sourceName = $("<div id='sourceRegion'>");
+    var targetName = $("<div id='targetRegion'>");
+
+    size = Math.max(7, headHeight * 0.1)
+    
+    var artistLegendList = $("<div id='artistLegendList'>");
+    artistLegendList.css("left", xStart * .8 + "px")
+        .css("top", xStart * .2  + "px")
+        .css("width", headWidth / 5 + "px")
+        //.css("height", headHeight / 8 + "px")
+        .css("position", "absolute")
+        //.css("max-height", headHeight / 8)
+        .css("display", "inline-block"); 
+
+    var ul = $("<ul id='legendUl' class='list-group regionLinkUL'>");
+    ul.css("overflow", "auto")
+        //css("height", headHeight / 8 + "px")
+        //.css("max-height", headHeight / 8)
+        //.css("width", artistCollabWidth + "px")
+        .css("border-radius", "0px")
+        .css("box-shadow", "none");
+     
+    artistLegendList.append(ul);
+    $("#legend").append(artistLegendList);
+  //end legend code
+  
   var artistNode = svg.selectAll(".currentArtistNode")
       .data(artistNodes)
       .enter().append("g")
@@ -1044,10 +1098,13 @@ function getArtistImageName(name) {
 }
 
 function updateRegionalArtists(region, x, y, k) {
+  artistsActive = [];  
   var currentArtistNode = svg.selectAll(".currentArtistNode")
     .style("display", function(d) {
       if (!shouldShowArtist(region, d)) {
         return "none";
+      } else {
+        artistsActive.push(d);
       }
     });
 
@@ -1064,8 +1121,32 @@ function updateRegionalArtists(region, x, y, k) {
         }, 2000);
       }
     });
-
+    drawLegend(artistsActive);
     updateArtistLinks(k);
+}
+
+
+function drawLegend(artistsActive) {
+    var ul = $("#legendUl");
+    for (var i = 0; i < artistsActive.length; i++) {
+        artist = artistsActive[i];
+        var find = getArtistImageName(artist.name);
+        while(find.indexOf("$") != -1) {
+            find = find.replace("$", "s");
+        }
+        var name = artist.name;
+        if (artist.name.length > 18) {
+            name = artist.name.substring(0, 17) + "...";
+        }
+        if ($("#" + find + "exists").length == 0) {
+            li = $("<li>")
+                .addClass("artistList")
+                .attr("id", find + "exists")
+                .text(name);//.html(function(d) { return "<div id='" +  + "' class='artistPair'>" + artist.name + "</div>"; });
+            ul.append(li);
+        }
+        //li.on("click", function(d) { prevArtists = artists; closeHead(); headViewMultipleArtist(d, true, d.sourceId, d.targetId); });
+    }      
 }
 
 

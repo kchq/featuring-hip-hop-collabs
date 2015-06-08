@@ -148,6 +148,7 @@ function headViewSingleArtist(artist, fromOther) {
 		.attr("width", headWidth)
 		.attr("height", headHeight)
 		.style("fill", "white")
+        .style("background", "#333")
 		.style("stroke", "black")
 		.style("stroke-width", $(window).width() * 0.005)
         .style("opacity", 0.8);
@@ -304,6 +305,7 @@ function headViewSingleArtist(artist, fromOther) {
              .css("padding-left", headWidth * 0.02 + "px");
 
     var artistExternalLinks = $("<p>")
+                                .css("font-family", "paintbrush")
                                 .css("float", "left");
     artistExternalLinks.html(artist.external_links);
 
@@ -392,7 +394,6 @@ function headViewSingleArtist(artist, fromOther) {
 
 
 function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeIndex1, artistNodeIndex2) {
-
    var spotifyFrame = $("<iframe>");
    var collabsWidth = headWidth * .55;
    var collabsHeight = headHeight * .4;
