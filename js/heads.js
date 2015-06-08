@@ -213,7 +213,7 @@ var regionAbbrs = ["NE", "S", "SC", "NC", "MW", "W"];
         var trk = singleHeadCollabMap[artist.name][i];
         
         if (trk.release_year !== undefined && parseInt(trk.release_year) <= currentYear) {
-          var str = "<li class='list-group-item'> + <b>" + trk.title + "</b>, " + trk.release_title + "<br/> -";
+          var str = "<li class='artistCollabs'> + <b>" + trk.title + "</b>, " + trk.release_title + "<br/> -";
           str += trk.artist_credit.join(", ");
           var li = ul.append(str);
           numListItems++;
@@ -253,7 +253,7 @@ var regionAbbrs = ["NE", "S", "SC", "NC", "MW", "W"];
     }
 
     if (numListItems != 0) {
-      collabDivWidth = headWidth - 250 - 10;
+      collabDivWidth = headWidth - 250;
 
     }
 
@@ -469,7 +469,7 @@ if (collabDivWidth === headWidth) {
 function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeIndex1, artistNodeIndex2) {
 
    var spotifyFrame = $("<iframe>");
-   var collabsWidth = headWidth * .55;
+   var collabsWidth = headWidth - 250;
    var collabsHeight = headHeight * .4;
    var frameWidth = Math.max(headWidth * 0.4, 250);
    var frameHeight = Math.max(headHeight * 0.4, frameWidth + 80);
@@ -500,8 +500,6 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeInde
       }
     }
     
-    console.log(linksPerYear);
-
    svgHead = d3.select("#head")
     .style("left", xStart + "px")
     .style("top", yStart + "px")
@@ -577,36 +575,100 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeInde
   }
 
 
-  var collabsList = $("<div id='collabsList'>");
-    collabsList.css("left", "0px")
-        .css("top", headHeight - 330 - 2 + "px")
-        .css("width", collabsWidth + "px")
-        .css("height", "330px")
-        .css("position", "absolute")
-        .css("background-color", "white");
+  // var collabsList = $("<div id='collabsList'>");
+  //   collabsList.css("left", "0px")
+  //       .css("top", headHeight - 330 - 2 + "px")
+  //       .css("width", collabsWidth + "px")
+  //       .css("height", "330px")
+  //       .css("position", "absolute")
+  //       .css("background-color", "white");
 
-  var ul = $("<ul class='list-group collab'>");
-    ul.css("border", "2px")
-        .css("width", collabsWidth + "px")
-        .css("height", "330px")
-        .css("border-style", "solid")
-        .css("border-width", "3px");
+  // $("#head").append(collabsList);
 
-    
+  // var ul = $("<ul class='list-group collab'>");
+  //   ul.css("border", "2px")
+  //       .css("width", collabsWidth + "px")
+  //       .css("height", "330px")
+  //       .css("border-style", "solid")
+  //       .css("border-width", "3px");
+
+  
+
+
+  // column definitions
+  var columns = [
+      { head: 'Track Title', cl: 'track', html: ƒ('track') },
+      { head: 'Album Title', cl: 'release_title', html: ƒ('release_title') },
+      { head: 'Year', cl: 'year', html: ƒ('year') },
+  ];
+
+  var collabData = [];
   for (var year in links) {
       if (parseInt(year) <= currentYear) {
         for (var i = 0; i < links[year].length; i++) {
+            var singleTuple = {};
             trk = links[year][i];
-            var str = "<li class='list-group-item'> + <b>" + trk.title + "</b>, " + trk.release_title + "<br/> -";
-            str += trk.artist_credit.join(", ");
-            var li = ul.append(str);
+            singleTuple["track"] = trk.title;
+            singleTuple["release_title"] = trk.release_title;
+            singleTuple["year"] = year;
+            collabData.push(singleTuple);
+            //var str = "<li class='artistCollabs'> + <b>" + trk.title + "</b>, " + trk.release_title + "<br/> -";
+            // str += trk.artist_credit.join(", ");
+            // var li = ul.append(str);
         }
       }
   }
-  
-  collabsList.append(ul); 
-  $("#head").append(collabsList);
+
+    var tableDiv = d3.select("#head").append('div')
+                      .style("top", headHeight - 330 - 2 + "px")
+                      .style("width", collabsWidth + "px")
+                      .style("height", "330px")
+                      .style("position", "absolute")
+                      .style("overflow-y", "scroll")
+                      .style("overflow-x", "hidden");
+
+   var table = tableDiv.append('table')
+                      .style("width", collabsWidth + "px")
+                      .style("height", "330px")
+                      .style("border-collapse", "separate")
+                      .style("background-color", "white")
+                      .style("border-spacing", "2px");
+
+  // create table header
+  table.append('thead').append('tr')
+    .selectAll('th')
+    .data(columns).enter()
+    .append('th')
+    .attr('class', ƒ('cl'))
+    .attr('class', 'tableHead')
+    .text(ƒ('head'));
+
+  // create table body
+  table.append('tbody')
+    .selectAll('tr')
+    .data(collabData).enter()
+    .append('tr')
+    .attr('class', 'tableCell')
+    .selectAll('td')
+    .data(function(row, i) {
+        return columns.map(function(c) {
+            // compute cell values for this specific row
+            var cell = {};
+            d3.keys(c).forEach(function(k) {
+                cell[k] = typeof c[k] == 'function' ? c[k](row,i) : c[k];
+            });
+            return cell;
+        });
+    }).enter()
+    .append('td')
+    .html(ƒ('html'))
+    .attr('class', ƒ('cl'));
+
+  // collabsList.append(ul); 
+  // $("#head").append(collabsList);
     
+    console.log(collabData);
+
 
   var artistName1 = $("<p class='artistNameHead'>");
   var size = 7;
