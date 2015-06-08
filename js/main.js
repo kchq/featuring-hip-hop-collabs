@@ -1323,27 +1323,27 @@ function updateArtistLinks(scale) {
 }
 
 function highlightArtistLinks(d) {
-  artistLink.style("stroke", function(link) {
-    if (d === link.source || d === link.target) {
-      return linkColor;
-    } else {
-      return highlightLinkColor;
-    }
-  })
-  .style("opacity", function(link) {
-    if (d === link.source || d === link.target) {
-      return 1.0;
-    } else {
-      return 0.25;
-    }
-  });
+    artistLink.style("stroke", function(link) {
+        if (d === link.source || d === link.target) {
+          return linkColor;
+        } else {
+          return highlightLinkColor;
+        }
+      })
+      .style("opacity", function(link) {
+        if (d === link.source || d === link.target) {
+          return 1.0;
+        } else {
+          return 0.25;
+        }
+      });
 }
 
 function unhighlightArtistLinks(d) {
   artistLink.style("stroke", function(link) {
       return linkColor;
-  })
-  .style("opacity", 1.0);
+    })
+    .style("opacity", 1.0);
 }
 
 function bezierPathArtist(d, xMult, yMult) {
