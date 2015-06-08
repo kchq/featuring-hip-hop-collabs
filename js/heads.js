@@ -3,9 +3,10 @@ yStart = $(window).height() * 0.05
 headHeight= $(window).height() * 0.90;
 headWidth = $(window).width() * 0.70;
 image1X = xStart * .3;
-image2X = xStart * 1.9;
+image2X = xStart * 1.8;
 imageY = yStart * .4;
 imageWidth = headWidth * 0.20;
+imageWidthDual = headWidth * 0.25;
 
 image1A = $(window).width() * 0.25;
 
@@ -24,8 +25,8 @@ function headSetup(artistNode1, artistNode2) {
 function addData(gh, node1, node2){
     dataArtist1 = gh.append("text")
         .attr("class", "head headname")
-		.attr("x", image1X + imageWidth / 2)
-		.attr("y", imageY + imageWidth * 1.2)
+		.attr("x", image1X + imageWidthDual / 2)
+		.attr("y", imageY + imageWidthDual * 1.2)
 	    .style("font-size", narrationWidth * 0.1)
         .style("text-anchor", "middle")
 		.style("fill", "black")
@@ -42,8 +43,8 @@ function addData(gh, node1, node2){
 
     dataArtist2 = gh.append("text")
         .attr("class", "head headname")
-		.attr("x", image2X + imageWidth / 2)
-		.attr("y", imageY + imageWidth * 1.2)
+		.attr("x", image2X + imageWidthDual / 2)
+		.attr("y", imageY + imageWidthDual * 1.2)
 	    .style("font-size", narrationWidth * 0.1)
 		.style("fill", "black")
         .style("text-anchor", "middle") 
@@ -52,6 +53,7 @@ function addData(gh, node1, node2){
 }
 
 function addImages(node1, node2) {
+
     var artistImage1 = "imgs/" + getArtistImageName(node1.name) + ".png";
     var artistImage2 = "imgs/" + getArtistImageName(node2.name) + ".png";;
 
@@ -60,17 +62,17 @@ function addImages(node1, node2) {
       .attr("id", getArtistImageName(node1.name) + "2")
       .attr("class", "clippath")
       .append("circle")
-      .attr("cx",  image1X + imageWidth / 2)
-      .attr("cy", imageY + imageWidth / 2)
-      .attr("r", imageWidth / 2)
+      .attr("cx",  image1X + imageWidthDual / 2)
+      .attr("cy", imageY + imageWidthDual / 2)
+      .attr("r", imageWidthDual / 2)
       .attr("clipPathUnits", "userSpaceOnUse");
 
     gh.append("image")
         .attr("xlink:href", artistImage1)
         .attr("x", image1X)
         .attr("y", imageY)
-        .attr("width", imageWidth)
-        .attr("height", imageWidth)
+        .attr("width", imageWidthDual)
+        .attr("height", imageWidthDual)
         // preserve size of circle across different regions, because each region has a different scale
         .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node1.name) + "2)"; })
         .style("cursor", "pointer")
@@ -89,9 +91,9 @@ function addImages(node1, node2) {
         
     gh.append("circle")
         .attr("id", getArtistImageName(node1.name) + "ring") //function(d) { return getArtistImageName(d.name) + "ring"; })
-        .attr("cx", image1X + imageWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
-        .attr("cy", imageY + imageWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
-        .attr("r", imageWidth / 2)
+        .attr("cx", image1X + imageWidthDual / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
+        .attr("cy", imageY + imageWidthDual / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
+        .attr("r", imageWidthDual / 2)
         .style("fill", "none")
         .style("stroke", "#000")
         .style("stroke-width", "2px");
@@ -100,17 +102,17 @@ function addImages(node1, node2) {
       .attr("id", getArtistImageName(node2.name) + "2")
       .attr("class", "clippath")
       .append("circle")
-      .attr("cx",  image2X + imageWidth / 2)
-      .attr("cy", imageY + imageWidth / 2)
-      .attr("r", imageWidth / 2)
+      .attr("cx",  image2X + imageWidthDual / 2)
+      .attr("cy", imageY + imageWidthDual / 2)
+      .attr("r", imageWidthDual / 2)
       .attr("clipPathUnits", "userSpaceOnUse"); 
 
     gh.append("image")
         .attr("xlink:href", artistImage2)
         .attr("x", image2X)
         .attr("y", imageY)
-        .attr("width", imageWidth) 
-        .attr("height", imageWidth)
+        .attr("width", imageWidthDual) 
+        .attr("height", imageWidthDual)
         .attr("clip-path", function(d) { return "url(#" + getArtistImageName(node2.name) + "2)"; })
         .style("cursor", "pointer")
         .on("mouseenter", function() {
@@ -128,9 +130,9 @@ function addImages(node1, node2) {
         
     gh.append("circle")
         .attr("id", getArtistImageName(node2.name) + "ring") //function(d) { return getArtistImageName(d.name) + "ring"; })
-        .attr("cx", image2X + imageWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
-        .attr("cy", imageY + imageWidth / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
-        .attr("r", imageWidth / 2)
+        .attr("cx", image2X + imageWidthDual / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
+        .attr("cy", imageY + imageWidthDual / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
+        .attr("r", imageWidthDual / 2)
         // preserve size of circle across different regions, because each region has a different scale
         .style("fill", "none")
         .style("stroke", "#000")
@@ -522,6 +524,7 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeInde
 
   var uriList = "";
   var numListItems = 0;
+  var numSpotifyItems = 0;
   var links;
   if (linksPerYear) {
     links = linksPerYear;
@@ -533,7 +536,9 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeInde
     if (parseInt(year) <= currentYear) {
       linksForSingleYear = links[year];
       for (var i = 0; i < linksForSingleYear.length; i++) {
+        numListItems++;
         if (linksForSingleYear[i].spotifyURI !== undefined) {
+          numSpotifyItems++;
           spotifyURIs.add(linksForSingleYear[i].spotifyURI);
           if (spotifyURIs.size >= 80) {
             break;
@@ -546,25 +551,29 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeInde
     }
   }
 
-  var uriList = "";
   addImages(source, dest);
-  spotifyURIs.forEach(function(uri) {
-    var uriArray = uri.split(":");
-    uriList += uriArray[2] + ",";
-  });
+  if (numSpotifyItems > 0) {
+    var uriList = "";
+    spotifyURIs.forEach(function(uri) {
+      var uriArray = uri.split(":");
+      uriList += uriArray[2] + ",";
+    });
 
-  if (uriList !== "") {
-    var spotifyFrame = $("<iframe>");
-    spotifyFrame.attr("src", "https://embed.spotify.com/?uri=spotify:trackset:Some Demo Collaborations:" + uriList)
-                  .attr("frameborder", "0")
-                  .attr("id", "spotifyFrame")
-                  .attr("allowTransparency", "true")
-                  .css("left", headWidth - 250 - 2 + "px")
-                  .css("top", headHeight - 330 - 2 + "px")
-                  .css("width", "250px")
-                  .css("height", "330px")
-                  .css("position", "absolute");
-    $("#head").append(spotifyFrame);
+    if (uriList !== "") {
+      var spotifyFrame = $("<iframe>");
+      spotifyFrame.attr("src", "https://embed.spotify.com/?uri=spotify:trackset:Some Demo Collaborations:" + uriList)
+                    .attr("frameborder", "0")
+                    .attr("id", "spotifyFrame")
+                    .attr("allowTransparency", "true")
+                    .css("left", headWidth - 250 - 2 + "px")
+                    .css("top", headHeight - 330 - 2 + "px")
+                    .css("width", "250px")
+                    .css("height", "330px")
+                    .css("position", "absolute");
+      $("#head").append(spotifyFrame);
+    }
+  } else {
+    collabsWidth = headWidth;
   }
 
 
@@ -599,33 +608,33 @@ function headViewMultipleArtist(linksPerYear, fromRegionLinkView, artistNodeInde
   $("#head").append(collabsList);
     
 
-    var artistName1 = $("<p class='artistNameHead'>");
-    var size = Math.min(6, source.name.length)
-    artistName1.css("font-size", size + "vmin")
-        //.css('color', 'black');
-        .css("text-align", "center")
-        .css("left", image1X - imageWidth/2 + "px") 
-        .css("top", imageY + imageWidth + "px")
-        .css("width", imageWidth * 3/2 + 100 + "px")
-        .css("height", headHeight * 0.2 + "px")
-        .css("position", "absolute");
-    artistName1.text(source.name);
+  var artistName1 = $("<p class='artistNameHead'>");
+  var size = 7;
+  artistName1.css("font-size", size + "vmin")
+      //.css('color', 'black');
+      .css("text-align", "center")
+      .css("left", image1X - imageWidthDual/2 + "px") 
+      .css("top", imageY + imageWidthDual + "px")
+      .css("width", imageWidthDual * 3/2 + 100 + "px")
+      .css("height", headHeight * 0.2 + "px")
+      .css("position", "absolute");
+  artistName1.text(source.name);
 
-    var artistName2 = $("<p class='artistNameHead'>");
-    size = Math.min(6, dest.name.length)
-    artistName2.css("font-size", size + "vmin")
-        //.css('color', 'black');
-        .css("text-align", "center")
-        .css("left", image2X - imageWidth/2 + "px") 
-        .css("top", imageY + imageWidth + "px")
-        .css("width", imageWidth * 3/2 + 100 + "px")
-        .css("height", headHeight * 0.2 + "px")
-        .css("position", "absolute");
-    artistName2.text(dest.name);
-    //console.log(artistName1.text() + " " + artistName2.text());
+  var artistName2 = $("<p class='artistNameHead'>");
+  size = 7;
+  artistName2.css("font-size", size + "vmin")
+      //.css('color', 'black');
+      .css("text-align", "center")
+      .css("left", image2X - imageWidthDual/2 + "px") 
+      .css("top", imageY + imageWidthDual + "px")
+      .css("width", imageWidthDual * 3/2 + 100 + "px")
+      .css("height", headHeight * 0.2 + "px")
+      .css("position", "absolute");
+  artistName2.text(dest.name);
+  //console.log(artistName1.text() + " " + artistName2.text());
 
-    $("#head").append(artistName1);
-    $("#head").append(artistName2);
+  $("#head").append(artistName1);
+  $("#head").append(artistName2);
 
   gh.append("text")
     .attr("x", headWidth * 0.02)
