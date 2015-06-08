@@ -861,6 +861,8 @@ function createRegionalArtists(region, x, y, k) {
     nyNode['nyY'] = nyY;
     if (!inNY) {
       artistNodes.push(nyNode);
+    } else if (nyNode in artistNodes) {
+      artistNodes.remove(nyNode);
     }
   }
 
@@ -929,9 +931,9 @@ function createRegionalArtists(region, x, y, k) {
                    .attr("id", "nyMask").attr("maskUnits", "userSpaceOnUse");
     mask.append("rect").attr("width", "100%").attr("height", "100%").style("fill", "white");
     mask.node().appendChild(nyMask[0][0]);
+  } else {
+    setUpCurrentArtistNodes(region, x, y, k);
   }
-
-  setUpCurrentArtistNodes(region, x, y, k);
 }
 
 function setUpCurrentArtistNodes(region, x, y, k) {
@@ -940,8 +942,14 @@ function setUpCurrentArtistNodes(region, x, y, k) {
       .enter().append("g")
       .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
       .attr("class", function(d) {
-        if (d.region === region && !(d.state === 'NY' && !inNY)) {
-          return "currentArtistNode artistNode";
+        if (d.region === region) {
+          if (region === 'NE') {
+            if ((d.state === 'NY' && inNY) || (d.state !== 'NY' && !inNY)) {
+              return "currentArtistNode artistNode";
+            }
+          } else {
+            return "currentArtistNode artistNode";
+          }
         } else {
           return "artistNode";
         }
@@ -1089,7 +1097,7 @@ function createArtistLinks(region, k, x, y) {
       .attr('class', 'artistLinkInteractionArea')
       .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
       .attr("fill", "none")
-      .style("mask", "url(#nyMask)")
+      //.style("mask", "url(#nyMask)")
       .style("stroke-width", "0px")
       .call(artistLinkTip);
 
@@ -1099,7 +1107,7 @@ function createArtistLinks(region, k, x, y) {
       console.log(d.source);
       return "index" + d.source + "-index" + d.target;
     })
-    .style("mask", "url(#nyMask)")
+    //.style("mask", "url(#nyMask)")
     .attr("transform", "translate(" + (width - mapTranslateLeft) / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
     .attr("fill", "none")
     .style("stroke-width", "0px");
@@ -1164,7 +1172,7 @@ function artistLinksForRegion(allLinks) {
       } else if (inNY && artistNodes[link.target].state !== 'NY') {
         targetArtistIndex = -1;
       }
-      if ((sourceArtistIndex != -1 && targetArtistIndex != -1) && (targetArtistIndex !== sourceArtistIndex)) {
+      if ((sourceArtistIndex != -1 && targetArtistIndex != -1)) {
         // this link is valid and the two artists are currently there
         var artistLink = getLink(artistLinksTemp, sourceArtistIndex, targetArtistIndex);
         if (artistLink.linksPerYear[link.release_year] == undefined) {
