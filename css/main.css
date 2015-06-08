@@ -246,11 +246,9 @@ li.artistCollabs:hover {
     -webkit-filter: blur(15px) grayscale(.5) opacity(0.5) contrast(70%);
 }
 
-<<<<<<< HEAD
 #thanks {
     font-family: unicode;
 }
-=======
 #artistBio {
   font-family: "paintbrush";
 }
@@ -258,5 +256,3 @@ li.artistCollabs:hover {
 #head {
   z-index: 3;
 }
-
->>>>>>> e7fbbd8293dbe5197852c8704d0486a69031b28e
