@@ -1190,7 +1190,6 @@ function createArtistLinks(region, k, x, y) {
   artistLink = artistLink.append('path')
     .attr('class', 'artistLink')
     .attr('id', function(d) {
-      console.log(d.source);
       return "index" + d.source + "-index" + d.target;
     })
     .style("mask", "url(#nyMask)")
@@ -1602,7 +1601,7 @@ function parseData() {
       var i = 0;
       artists.forEach(function(artist) {
         // add to correct region node if we have the data for this artist  
-        if (artist.region) {
+        if (artist.region && artist.name !== 'Drake' && artist.name !== 'The Weeknd') {
           artistNodes.push(artist);
           artistMap[artist.name] = i;
           if (regionNodes[regionIndexMap.indexOf(artist.region)].artistsPerYear[artist.start_year] == undefined) {
@@ -1637,28 +1636,29 @@ function parseData() {
           for (var targetArtist in targetArtists) {
             var targetIndex = artistMap[targetArtist];
             var tracks = targetArtists[targetArtist]
-
-            //Iterate through each artists songs
-            for (var i = 0; i < tracks.length; i++) {
-                singleHeadCollabMap[artist].push(tracks[i]);
-                if (singleHeadCollabMap[targetArtist] == undefined) {
-                   singleHeadCollabMap[targetArtist] = [];
-                }
-                singleHeadCollabMap[targetArtist].push(tracks[i]);
-                /*   
-                //Iterate through artist credit to give credit bi-directionally.
-                for (var j = 0; j < tracks[i].artist_credit.length; j++) {
-                    var otherArtist = tracks[i].artist_credit[j];
-                    if (otherArtist !== artist) {
-                       if (singleHeadCollabMap[artist] == undefined) {
-                          singleHeadCollabMap[artist] = [];
-                       }
-                       singleHeadCollabMap[otherArtist].push(tracks[i]);
-                    }
-                }
-                */
-            }
+            
             if (targetIndex >= 0) {
+
+              //Iterate through each artists songs
+              for (var i = 0; i < tracks.length; i++) {
+                  singleHeadCollabMap[artist].push(tracks[i]);
+                  if (singleHeadCollabMap[targetArtist] == undefined) {
+                     singleHeadCollabMap[targetArtist] = [];
+                  }
+                  singleHeadCollabMap[targetArtist].push(tracks[i]);
+                  /*   
+                  //Iterate through artist credit to give credit bi-directionally.
+                  for (var j = 0; j < tracks[i].artist_credit.length; j++) {
+                      var otherArtist = tracks[i].artist_credit[j];
+                      if (otherArtist !== artist) {
+                         if (singleHeadCollabMap[artist] == undefined) {
+                            singleHeadCollabMap[artist] = [];
+                         }
+                         singleHeadCollabMap[otherArtist].push(tracks[i]);
+                      }
+                  }
+                  */
+              }
               // we have both a source and a target, so let's add all the songs as links
               var links = targetArtists[targetArtist];
               for (var i = 0; i < links.length; i++) {
