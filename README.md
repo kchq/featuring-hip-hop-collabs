@@ -6,9 +6,9 @@ The research process took place in person all together.  We searched for relevan
 
 After that, the development process started.  In general, we each picked different features that we wanted to work on and separately developed them.  However, we did this with a lot of communication via Facebook chat and met in person many times to work alongside each other and ask each other questions.   As a result of this, we would sometimes naturally end up working on features in pairs based on how integrated our solo features were.  Based on how many views we ended up creating, there were plenty of features to work on at all times.
 
-==A breakdown of how the workload generally split amongst team members==
+--A breakdown of how the workload generally split amongst team members--
 We also included this information on our webpage
-===Kevin:===
+---Kevin:---
 *domain expert
 *data collection
 *image collection
@@ -18,7 +18,7 @@ We also included this information on our webpage
 *artist list on zoomed in view
 *spotify integration
 *artist collaboration view
-===Vinod:===
+---Vinod:---
 *spotify track uri collection
 *single artist view
 *multiple artist view
@@ -28,7 +28,7 @@ We also included this information on our webpage
 *narration events
 *spotify integration
 *artist collaboration view
-===Sonja:===
+---Sonja:---
 *data collection
 *image collection
 *map setup
@@ -39,7 +39,7 @@ We also included this information on our webpage
 *node/link interaction
 *zooming functionality
 *poster design
-===Riley:===
+---Riley:---
 *parse data into javascript objects
 *links in regional view
 *links in overall view
