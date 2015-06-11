@@ -59,3 +59,5 @@ We also included this information on our project page
 View our visualization, by visiting http://cse512-15s.github.io/fp-kchq-vinodr-sonjak3-rileymp2/visualization
 
 Alternatively, download this repository and run `python -m SimpleHTTPServer 8000` and access this from http://localhost:8000/visualization.
+
+Please be signed in with Spotify before use of this tool. Although you will be prompted to sign in, you may have to restart the visualization to use the Spotify feature if you do not have auto-login enabled.
