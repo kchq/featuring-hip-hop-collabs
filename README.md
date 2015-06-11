@@ -7,7 +7,7 @@ The research process took place in person all together.  We searched for relevan
 After that, the development process started.  In general, we each picked different features that we wanted to work on and separately developed them.  However, we did this with a lot of communication via Facebook chat and met in person many times to work alongside each other and ask each other questions.   As a result of this, we would sometimes naturally end up working on features in pairs based on how integrated our solo features were.  Based on how many views we ended up creating, there were plenty of features to work on at all times.
 
 ###A breakdown of how the workload generally split amongst team members###
-We also included this information on our webpage
+We also included this information on our project page
 
 ####Kevin:####
 * domain expert
