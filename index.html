@@ -41,7 +41,8 @@
 	<section id="team">
 		<div class="bg" data-stellar-background-ratio="0.3"></div>
 		<div class="wrapper">
-			<h2>the team</h2>
+			<h2 style="margin-bottom: 15px;">the team</h2>
+			<div style="text-align: center; margin-bottom: 20px;">Click on a team member or link to see what each person or pair worked on</div>
 			<div id="teamContainer">
 			</div>
 		</div>
@@ -132,29 +133,29 @@
 		  });
 
     var teamNodes = [
-    	{ "name": "Kevin Quinn", "id": "k", "x": 50, "y": 70, 
-    		"data": "domain expert--data collection--data cleaning--single artist view--multiple artist view" },
-    	{ "name": "Riley Porter", "id": "r", "x": 300, "y": 220, 
-    		"data": "link placement in regional view--link placement in overall view--narration events" },
-    	{ "name": "Vinod Rathnam", "id": "v", "x": 550, "y": 10,
+    	{ "name": "Kevin Quinn", "email": "kchq[at]cs.uw.edu", "id": "k", "x": 50, "y": 70, 
+    		"data": "domain expert--data collection--data cleaning--single artist view--multiple artist view--artist list on zoomed in view" },
+    	{ "name": "Riley Porter", "email": "rileymp2[at]cs.uw.edu", "id": "r", "x": 300, "y": 220, 
+    		"data": "parse data into javascript objects--links in regional view--links in overall view--narration events" },
+    	{ "name": "Vinod Rathnam", "email": "vinodr[at]cs.uw.edu", "id": "v", "x": 550, "y": 10,
     		"data": "spotify track uri collection--single artist view--multiple artist view--narration events--timeline and slider implementation" },
-    	{ "name": "Sonja Khan", "id": "s", "x": 800, "y": 150,
-    		"data": "data collection--artist node placement--region design--ui design" }, // 50, 70
+    	{ "name": "Sonja Khan", "email": "sonjak3[at]cs.uw.edu", "id": "s", "x": 800, "y": 150,
+    		"data": "data collection--map setup--artist node placement--region design--view from clicking on links in region view--ui design" }, // 50, 70
     ];
 
     var teamLinks = [
     	// Sonja Kevin
     	{ "source": 3, "target": 0, "ox": 200, "oy": 180, 
-    	"data": "data collection from MusicBrainz" },
+    	"data": "data collection from MusicBrainz--image collection" },
     	// Sonja Riley
     	{ "source": 3, "target": 1, "ox": 600, "oy": 400,
-    	"data": "node/link interaction" },
+    	"data": "node/link interaction--zooming functionality--poster design" },
     	// Riley Vinod
     	{ "source": 1, "target": 2, "ox": 830, "oy": 300,
     	"data": "progress report powerpoint--narration events" },
     	// Kevin Vinod
     	{ "source": 0, "target": 2, "ox": 150, "oy": 30,
-    	"data": "spotify integration--artist views" }
+    	"data": "spotify integration--artist views--artist collaboration view" }
     ];
 
 		svg = d3.select("#teamContainer")
@@ -308,11 +309,17 @@
 	    .style("font-size", "2em")
 	    .text(d.name);
 
-	  gh.append("text")
+	 gh.append("text")
     	.attr("x", image1X)
 	    .attr("y", imageY + imageWidth + 100)
 	    .style("font-size", "1.5em")
 	    .text("5th Year Masters");
+
+	gh.append("text")
+    	.attr("x", image1X)
+	    .attr("y", imageY + imageWidth + 140)
+	    .style("font-size", "1.5em")
+	    .text(d.email);
 
 	  stuff = d.data.split("--");
 	  var text = gh.append("text")
