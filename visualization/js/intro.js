@@ -6,6 +6,8 @@ imageWidth = headWidth * 0.20;
 setup = false;
 
 function introSetup() {
+    $('.d3-region-tip').remove();
+
     svgHead = d3.select("#intro")
 		.style("left", xStartIntro + "px")
 		.style("top", yStartIntro + "px")
@@ -108,7 +110,6 @@ function introSetup() {
      });
 
     blurBackground();
-
 }
 
 function helpBoxUp() {
@@ -204,6 +205,9 @@ function tearDownIntros() {
     var content = $('#searchArea').removeClass("blur");
     var content = $('#narration').removeClass("blur");
     var content = $('#mapContainer').removeClass("blur");
+
+    var regionNode = svg.selectAll('.regionNode');
+    addRegionTooltips(regionNode);
 }
 
 function unblurBackground() {
