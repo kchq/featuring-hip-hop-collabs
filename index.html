@@ -1,50 +1,464 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
+
+<html>
 <head>
-  <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
-  <link href="css/main.css" rel="stylesheet" type="text/css">
-  <link href="css/d3.slider.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-  <link rel="stylesheet" href="css/jquery-ui.css">
-
-  <link href="css/favicons.css" rel="stylesheet" type="text/css">
-  <script src="js/jquery.min.js"></script>
-  <script src="js/queue.v1.min.js"></script>
-  <script src="js/d3.min.js"></script>
-  <script src="js/queue.v1.min.js"></script>
-  <script src="js/topojson.v1.min.js"></script>
-  <script src="js/d3plus.full.min.js"></script>
-  <script src="js/d3.slider.js"></script>
-  <script src="js/d3-tip.js"></script> <!-- this must come before jquery!!! -->
-  <script src="js/jquery.min.js"></script>
-  <script src="js/Chart.min.js"></script>
-  <script src="js/jquery-ui.js"></script>
-  <script src="js/narration.js"></script>
-  <script src="js/heads.js"></script>
-  <script src="js/intro.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/get_key_with_callback.js"></script>
-  <script src="js/d3-jetpack.js"></script>
-
+	<title>feat.</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,300,800,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="style.css" />	
+	<link rel="stylesheet" href="css/colorbox.css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.stellar.min.js"></script>
+	<script type="text/javascript" src="js/jquery.scrollTo-1.4.3.1-min.js"></script>
+	<script type="text/javascript" src="js/jquery.colorbox-min.js"></script>
+	<script type="text/javascript" src="js/d3.min.js"></script>
+	<script type="text/javascript" src="js/d3-tip.js"></script>
 </head>
-<body>
-<!--<h1 id='test'> Hello there HELLO THERE test 50. Cent, P DIDDY, HIP HOP HEADS</h1>-->
-  <div id="content">
-   <div id="mapContainer" class="background blur"></div>
-   <div id="narration" class="background blur"></div>
-   <div id="legend" class="background"></div>
-   <div id="head" class="background"></div>
-   <div id="slider" class="background blur"></div>
-   <div id="sliderIntro" class="background blur"></div>
-   <div id= "searchArea" class="ui-widget background blur">
-    <input id="search">
-    <button id="searchbutton" type="button">Artist Search</button>
-   </div>
-   <div id="searchAreaIntro"></div>
-   <div id="searchError"></div>
-  </div>
-  <div id="intro"></div>
-  <div id="helpBox"></div>
 
+<body>
+	<nav>
+		<div class="wrapper">
+			<h1><a href="#overview">feat.</a></h1>
+			<ul>
+				<li><a href="#overview" class="overview_link">Overview</a></li>
+				<li><a href="#team" class="team_link">The Team</a></li>
+				<li><a href="#poster" class="poster_link">Poster</a></li>
+				<li><a href="#documentation" class="documentation_link">Report</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<section id="overview">
+		<div class="bg" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="45"></div>
+		<div class="overlay"><img src="imgs/down-arrow.png" /></div>
+		<div class="wrapper">
+			<h2>A History of Hip Hop Collaborations <br/> in the United States</h2>
+			<div id="goto"><a href=""><div>Go to Visualization</div></a></div>
+		</div>
+	</section>
+	
+	<section id="team">
+		<div class="bg" data-stellar-background-ratio="0.3"></div>
+		<div class="wrapper">
+			<h2>the team</h2>
+			<div id="teamContainer">
+			</div>
+		</div>
+	</section>
+
+	<section id="poster">
+		<div class="bg" data-stellar-background-ratio="0.5"></div>
+		<div class="wrapper">
+			<h2>Poster</h2>
+			<a href="poster_final.pdf"><img src="imgs/poster.png" /></a>
+		</div>
+	</section>
+
+
+	<section id="documentation">
+		<!--<div class="overlay"></div>-->
+		<div class="bg"></div>
+		<div class="wrapper">
+			<h2>Report</h2>
+			<p><span>Read our <a href="" target="_blank">Full Report</a>.</span></p>
+		</div>
+	</section>
 </body>
+
+<footer>
+	<div class="wrapper">
+		<div class="column">
+			<h3>feat.</h3>
+			<ul>
+				<li><a href="#overview" class="overview_link">Overview</a></li>
+				<li><a href="#team" class="team_link">The Team</a></li>
+				<li><a href="#poster" class="poster_link">Poster</a></li>
+				<li><a href="#documentation" class="documentation_link">Report</a></li>
+			</ul>
+
+			<p class ="bottom">UW CSE 512 - Data Visualization - Spring 2015</p>
+		</div>
+	</div>
+</footer>
+
+<div id="head"></div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".design1").colorbox({rel:'design1', maxHeight: '80%'});
+		$(".design2").colorbox({rel:'design2', maxHeight: '80%'});
+		$(".design3").colorbox({rel:'design3', maxHeight: '80%'});
+		$(".design4").colorbox({inline:true, href:"#instructions"});
+
+		$(window).stellar();
+
+	    if ($(window).height() > 578 ) { 
+	    	$('section').height($(window).height() - 38);
+		}
+
+		$('nav h1 a').click(function(e) {
+			e.preventDefault();
+			$.scrollTo('#overview', 800);
+		});
+
+    $('.overview_link').click(function(e) {
+    	e.preventDefault();
+    	$.scrollTo('#overview', 800);
+    });
+
+    $('.poster_link').click(function(e) {
+    	e.preventDefault();
+    	$.scrollTo('#poster', 800, {offset: {top:-78}});
+    });
+
+    $('.team_link').click(function(e) {
+    	e.preventDefault();
+    	$.scrollTo('#team', 800, {offset: {top:-78}});
+    });
+
+    $('.documentation_link').click(function(e) {
+    	e.preventDefault();
+    	$.scrollTo('#documentation', 800, {offset: {top:-78}});
+    });
+
+    var width = 1024;
+    var height = 450;
+    var size = 200;
+
+    var teamTip = d3.tip()
+		  .attr('class', 'd3-member-tip')
+		  .html(function(d) {
+		    return "<div>" + d.name + "</div>"
+		  });
+
+    var teamNodes = [
+    	{ "name": "Kevin Quinn", "id": "k", "x": 50, "y": 70, 
+    		"data": "domain expert--data collection--data cleaning--single artist view--multiple artist view" },
+    	{ "name": "Riley Porter", "id": "r", "x": 300, "y": 220, 
+    		"data": "link placement in regional view--link placement in overall view--narration events" },
+    	{ "name": "Vinod Rathnam", "id": "v", "x": 550, "y": 10,
+    		"data": "spotify track uri collection--single artist view--multiple artist view--narration events--timeline and slider implementation" },
+    	{ "name": "Sonja Khan", "id": "s", "x": 800, "y": 150,
+    		"data": "data collection--artist node placement--region design--ui design" }, // 50, 70
+    ];
+
+    var teamLinks = [
+    	// Sonja Kevin
+    	{ "source": 3, "target": 0, "ox": 200, "oy": 180, 
+    	"data": "data collection from MusicBrainz" },
+    	// Sonja Riley
+    	{ "source": 3, "target": 1, "ox": 600, "oy": 400,
+    	"data": "node/link interaction" },
+    	// Riley Vinod
+    	{ "source": 1, "target": 2, "ox": 830, "oy": 300,
+    	"data": "progress report powerpoint--narration events" },
+    	// Kevin Vinod
+    	{ "source": 0, "target": 2, "ox": 150, "oy": 30,
+    	"data": "spotify integration--artist views" }
+    ];
+
+		svg = d3.select("#teamContainer")
+			.append("svg")
+			.attr("width", width + "px")
+			.attr("height", height + "px")
+			.attr("id", "teamSvg");
+		defs = svg.append("defs");
+
+
+		var teamLink = svg.selectAll('.teamLink')
+      .data(teamLinks)
+      .enter();
+
+    teamLink.append('path')
+      .attr('class', 'teamLink')
+      .attr('id', function(d) { return teamNodes[d.source].id + "-" + teamNodes[d.target].id })
+      .attr("fill", "none")
+      .attr("d", function(d) { return 'M' + (teamNodes[d.source].x + size / 2) + ', ' + (teamNodes[d.source].y + size / 2) + ' ' +
+            'C' + (teamNodes[d.source].x + size / 2) + ', ' + (teamNodes[d.source].y + size / 2) + ', ' + 
+            d.ox + ', ' + d.oy + ', ' + (teamNodes[d.target].x + size / 2) + ', ' + (teamNodes[d.target].y + size / 2); })
+      .style("stroke-width", "12px")
+      .style("stroke", "#123")
+			.on("mouseenter", function(d) {
+	  		d3.select(this).style("stroke", "#789");
+	  	})
+	  	.on("mouseleave", function(d) {
+		  	d3.select(this).style("stroke", "#123");
+		  })
+	 		.on("click", function(d) {
+		    teamTip.hide(d);
+		 		blurBackground();
+		 		showCollaboration(d, teamNodes);
+		  });
+
+
+		//
+		var teamNode = svg.selectAll(".teamNode")
+			.data(teamNodes)
+			.enter()
+			.append("g")
+			.attr("class", "teamNode");
+	
+		teamNode.each(function(d, i) {
+			d3.select("defs").append('clipPath')
+      .attr("id", d.id)
+      .attr("class", "clippath")
+      .append("circle")
+      .attr("id", d.id + "_mask")
+      .attr("cx", d.x + size / 2)
+      .attr("cy", d.y + size / 2)
+      .attr("r", size / 2);
+    });
+
+		teamNode
+			.append("image")
+    	.attr("id", function(d) { return d.id + "_img" })
+    	.attr("xlink:href", function(d) { return "imgs/" + d.id + ".png"}) 
+    	.attr("x", function(d) { return d.x })
+      .attr("y", function(d) { return d.y })
+      .attr("width", size)
+    	.attr("height", size)
+    	.attr("clip-path", function(d) { return "url('#" + d.id + "')"; });
+
+    teamNode
+			.append("circle")
+    	.attr("id", function(d) { return d.id + "_ring" })
+    	.attr("cx", function(d) { return d.x + size / 2})
+      .attr("cy", function(d) { return d.y + size  / 2})
+      .attr("r", size / 2)
+    	.style("fill", "none")
+	    .style("stroke", "#000")
+	    .style("stroke-width", "2px");
+
+	  teamNode.call(teamTip);
+	  teamNode.on("mouseenter", function(d) {
+	  	d3.select("#" + d.id + "_ring").style("stroke-width", "3px");
+	    teamTip.show(d);
+	  });
+	  teamNode.on("mouseleave", function(d) {
+	  	d3.select("#" + d.id + "_ring").style("stroke-width", "2px");
+	    teamTip.hide(d);
+	  });
+	 	teamNode.on("click", function(d) {
+	 		teamTip.hide(d);
+	 		blurBackground();
+	 		showIndividual(d);
+	  });
+
+	});
+	
+	xStart = $(window).width() * 0.2;
+	yStart = $(window).height() * 0.2;
+	headHeight= $(window).height() * 0.60;
+	headWidth = $(window).width() * 0.60;
+	image1X = xStart * .3;
+	image2X = xStart * 1.8;
+	imageY = yStart * .4;
+	imageWidth = headWidth * 0.20;
+	imageWidthDual = headWidth * 0.25;
+
+	function showIndividual(d) {
+		svgHead = d3.select("#head")
+			.style("left", xStart + "px")
+			.style("top", yStart + "px")
+			.style("position", "fixed")
+			.append("svg")
+			.attr("width", headWidth)
+			.attr("height", headHeight)
+			.attr("id", "headSVG")
+
+	  gh = svgHead.append("g");
+
+		gh.append("rect")
+			.attr("id", "headRect")
+			.attr("width", headWidth)
+			.attr("height", headHeight)
+			.style("fill", "white")
+	        .style("background", "#333")
+			.style("stroke", "black")
+			.style("stroke-width", $(window).width() * 0.005)
+	        .style("opacity", 0.8);
+
+	  svgHead.append('clipPath')
+      .attr("id", d.id + "2")
+      .attr("class", "clippath")
+      .append("circle")
+      .attr("cx",  image1X + imageWidth / 2)
+      .attr("cy", imageY + imageWidth / 2)
+      .attr("r", imageWidth / 2);
+
+    gh.append("image")
+        .attr("xlink:href", "imgs/" + d.id + ".png")
+        .attr("x", image1X)
+        .attr("y", imageY)
+        .attr("width", imageWidth)
+        .attr("height", imageWidth)
+        .attr("clip-path", "url(#" + d.id + "2)");
+
+    gh.append("circle")
+        .attr("cx",  image1X + imageWidth / 2)
+      	.attr("cy", imageY + imageWidth / 2)
+        .attr("r", imageWidth / 2)
+        .style("fill", "none")
+        .style("stroke", "#000")
+        .style("stroke-width", "2px");
+
+    gh.append("text")
+    	.attr("x", image1X)
+	    .attr("y", imageY + imageWidth + 60)
+	    .style("font-size", "2em")
+	    .text(d.name);
+
+	  gh.append("text")
+    	.attr("x", image1X)
+	    .attr("y", imageY + imageWidth + 100)
+	    .style("font-size", "1.5em")
+	    .text("5th Year Masters");
+
+	  stuff = d.data.split("--");
+	  var text = gh.append("text")
+    	.attr("x", image1X + 300)
+	    .attr("y", imageY + 50);
+	  
+	  for (var i = 0; i < stuff.length; i++) {
+        var tspan = text.append('tspan').text(stuff[i]);
+        if (i > 0)
+            tspan.attr('x', image1X + 300).attr('dy', 25);
+    }
+
+	  gh.append("text")
+	    .attr("x", headWidth * 0.02)
+	    .attr("y", headHeight * 0.12)
+	    .attr("id", "closeMenuText")
+	    .style("font-size", headWidth * 0.07)
+	    .style("text-anchor", "start")
+	    .text("\u2718")
+	    .on("click", closeHead);
+	}
+
+	function showCollaboration(d, teamNodes) {
+		svgHead = d3.select("#head")
+			.style("left", xStart + "px")
+			.style("top", yStart + "px")
+			.style("position", "fixed")
+			.append("svg")
+			.attr("width", headWidth)
+			.attr("height", headHeight)
+			.attr("id", "headSVG")
+
+	  gh = svgHead.append("g");
+
+		gh.append("rect")
+			.attr("id", "headRect")
+			.attr("width", headWidth)
+			.attr("height", headHeight)
+			.style("fill", "white")
+	        .style("background", "#333")
+			.style("stroke", "black")
+			.style("stroke-width", $(window).width() * 0.005)
+	        .style("opacity", 0.8);
+
+
+	  svgHead.append('clipPath')
+      .attr("id", teamNodes[d.source].id + "2")
+      .attr("class", "clippath")
+      .append("circle")
+      .attr("cx",  image1X + imageWidth / 2)
+      .attr("cy", imageY + imageWidth / 2)
+      .attr("r", imageWidth / 2);
+
+    gh.append("image")
+        .attr("xlink:href", "imgs/" + teamNodes[d.source].id + ".png")
+        .attr("x", image1X)
+        .attr("y", imageY)
+        .attr("width", imageWidth)
+        .attr("height", imageWidth)
+        .attr("clip-path", "url(#" + teamNodes[d.source].id + "2)");
+
+    gh.append("circle")
+        .attr("cx",  image1X + imageWidth / 2)
+      	.attr("cy", imageY + imageWidth / 2)
+        .attr("r", imageWidth / 2)
+        .style("fill", "none")
+        .style("stroke", "#000")
+        .style("stroke-width", "2px");
+
+    gh.append("text")
+    	.attr("x", image1X)
+	    .attr("y", imageY + imageWidth + 60)
+	    .style("font-size", "2em")
+	    .text(teamNodes[d.source].name);
+
+    svgHead.append('clipPath')
+      .attr("id", teamNodes[d.target].id + "2")
+      .attr("class", "clippath")
+      .append("circle")
+      .attr("cx",  headWidth - image1X - imageWidth / 2)
+      .attr("cy", imageY + imageWidth / 2)
+      .attr("r", imageWidth / 2);
+
+    gh.append("image")
+        .attr("xlink:href", "imgs/" + teamNodes[d.target].id + ".png")
+        .attr("x", headWidth - image1X - imageWidth)
+        .attr("y", imageY)
+        .attr("width", imageWidth)
+        .attr("height", imageWidth)
+        .attr("clip-path", "url(#" + teamNodes[d.target].id + "2)");
+
+    gh.append("circle")
+        .attr("cx",  headWidth - image1X - imageWidth / 2)
+      	.attr("cy", imageY + imageWidth / 2)
+        .attr("r", imageWidth / 2)
+        .style("fill", "none")
+        .style("stroke", "#000")
+        .style("stroke-width", "2px");
+
+    gh.append("text")
+    	.attr("x", headWidth - image1X - imageWidth)
+	    .attr("y", imageY + imageWidth + 60)
+	    .style("font-size", "2em")
+	    .text(teamNodes[d.target].name);
+
+	  stuff = d.data.split("--");
+	  var text = gh.append("text")
+    	.attr("x", image1X + imageWidth + 50)
+	    .attr("y", imageY + 50);
+	  
+	  for (var i = 0; i < stuff.length; i++) {
+        var tspan = text.append('tspan').text(stuff[i]);
+        if (i > 0)
+            tspan.attr('x', image1X + imageWidth + 50).attr('dy', 25);
+    }
+
+	  gh.append("text")
+	    .attr("x", headWidth * 0.02)
+	    .attr("y", headHeight * 0.12)
+	    .attr("id", "closeMenuText")
+	    .style("font-size", headWidth * 0.07)
+	    .style("text-anchor", "start")
+	    .text("\u2718")
+	    .on("click", closeHead);
+	}
+
+	function closeHead() {
+		unblurBackground();
+		d3.select("#head").html("");
+	}
+
+	function blurBackground() {
+		d3.selectAll("nav").style("-webkit-filter", "blur(10px) grayscale(.5) opacity(0.5) contrast(70%)");
+		d3.selectAll("#overview").style("-webkit-filter", "blur(10px) grayscale(.5) opacity(0.5) contrast(70%)");
+		d3.selectAll("#team").style("-webkit-filter", "blur(10px) grayscale(.5) opacity(0.5) contrast(70%)");
+		d3.selectAll("#poster").style("-webkit-filter", "blur(10px) grayscale(.5) opacity(0.5) contrast(70%)");
+		d3.selectAll("#documentation").style("-webkit-filter", "blur(10px) grayscale(.5) opacity(0.5) contrast(70%)");
+	}
+
+	function unblurBackground() {
+		d3.selectAll("nav").style("-webkit-filter", "");
+		d3.selectAll("#overview").style("-webkit-filter", "");
+		d3.selectAll("#team").style("-webkit-filter", "");
+		d3.selectAll("#poster").style("-webkit-filter", "");
+		d3.selectAll("#documentation").style("-webkit-filter", "");
+	}
+</script>
+
+</html>

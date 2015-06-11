@@ -1,0 +1,393 @@
+*{margin:0;padding:0;outline:0;}
+img{border:none;}
+ul {list-style:none;}
+
+header, footer, aside, article, section {display: block;}
+
+
+@font-face {
+    font-family: "bombing";
+    src: url("../graffiti/Bombing.ttf");
+}
+
+
+@font-face {
+    font-family: "amsterdam";
+    src: url("../graffiti/amsterdam.ttf");
+}
+
+@font-face {
+  font-family: "paintBrush";
+  src: url("../graffiti/GraffitiPaintBrush.ttf");
+}
+
+
+body {
+	width: 100%;
+	font-family: 'paintBrush', sans-serif;
+	font-size:16px;
+	color:#242424;
+}
+
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration:underline;
+}
+
+.wrapper {
+	width: 1040px;
+	margin: 0 auto;
+}
+
+h2 {
+	font-family: 'amsterdam';
+	font-weight: normal;
+	font-size: 2.5em;
+	letter-spacing: 0.1em;
+	border-bottom: 1px solid #eee;
+	padding-bottom: 10px;
+	margin-bottom: 30px;
+	text-align:center;
+}
+
+
+/* navigation */
+
+nav {
+	width: 100%;
+	position: fixed;
+	top:0;
+	background-color:#222;
+	z-index:1000;
+}
+
+nav a {
+	color:#fff;
+}
+
+nav h1 {
+	font-family: 'bombing';
+	font-weight: normal;
+	line-height:78px;
+	float:left;
+	margin-right: 60px;
+	font-size: 3.15em;
+	letter-spacing: 0.05em;
+	height:78px;
+	overflow:hidden;
+}
+
+nav h1 a {
+	height:78px;
+	padding-right:10px;
+}
+
+nav h1 a img {
+	height:110px;
+	position:relative;
+	top:-5px;
+}
+
+nav h1 a:hover {
+	text-decoration:none;
+}
+
+nav ul li {
+	display:inline-block;
+}
+
+nav ul li a {
+	display:block;
+	padding: 28px 20px 0 20px;
+	height:50px;
+}
+
+nav ul li:hover a {
+	text-decoration: none;
+	text-shadow: 0.15em 0.12em #626262;
+}
+
+
+/* section */
+
+section {
+	height: 600px;
+	min-height:550px;
+	position:relative;
+}
+
+section .bg {
+	position:absolute;
+	top:0;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+}
+
+section .wrapper {
+	z-index: 100;
+	position:relative;
+}
+
+#overview {
+	padding-top:78px;
+}
+
+#overview .bg{
+	background-image: url('imgs/summary.png');
+	background-size:cover;
+	-webkit-filter: blur(3px) grayscale(100%);
+  -moz-filter: blur(3px) grayscale(100%);
+  -o-filter: blur(3px) grayscale(100%);
+  -ms-filter: blur(3px) grayscale(100%);
+  filter: blur(3px) grayscale(100%);
+}
+
+#overview .overlay {
+	background-color: rgba(0,0,0,0.3);
+	position:absolute;
+	width:100%;
+	height:100%;
+	margin-top:-78px;
+	text-align:center;
+}
+
+#overview .overlay img {
+	width: 50px;
+	position: absolute;
+	bottom: 60px;
+}
+
+#overview .wrapper {
+	bottom: 0px;
+}
+
+#overview h2 {
+	color:#fff;
+	text-shadow: 4px 4px 10px #000;
+	font-size: 3.5em;
+	padding-top:110px;
+	padding-bottom:30px;
+	margin-bottom:0;
+	border-bottom:0;
+	text-align:left;
+}
+
+#overview p {
+	font-size:1.28em;
+	color:#fff;
+	text-shadow: 1px 1px #000;
+	font-weight:300;
+	width:560px;
+}
+
+#overview p span {
+	font-weight:600;
+}
+
+#goto a {
+	background-color: rgba(255,255,255,0.3);
+	width: 300px;
+	height: 80px;
+	display: block;
+}
+
+#goto a:hover {
+	text-decoration: none;
+	background-color: rgba(255,255,255,0.7);
+}
+
+#goto a div {
+	text-align: center;
+	font-family: 'amsterdam';
+	font-size: 2em;
+	letter-spacing: 0.1em;
+	line-height: 80px;
+}
+
+/* poster section */
+
+#poster {
+	min-height: 800px;
+}
+
+#poster .wrapper {
+	padding-top:50px;
+}
+
+#poster .bg {
+	background:url('imgs/concrete_seamless.png') repeat;
+}
+
+#poster h2 {
+	border-bottom:1px solid #aaa;
+	margin-bottom:50px;
+}
+
+#poster img {
+	display: block;
+	margin: 0px auto;
+}
+
+#poster img:hover {
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+/* team */
+
+#team .bg {
+	background-color: #e5c088;
+	color:#123;
+}
+
+#team h2 {
+	margin-bottom:50px;
+	border-bottom: 1px solid #123;
+}
+
+#team .wrapper {
+	padding-top:50px;
+}
+
+.d3-member-tip {
+  line-height: 1;
+  font-family: "paintBrush";
+  font-weight: bold;
+  color: #123;
+  padding: 4px;
+  background: rgba(151, 151, 160, 1);
+  border-radius: 2px;
+  font-size: 20px;
+  z-index: 1000;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-member-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 8px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(151, 151, 160, 1);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-member-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+.teamLink:hover, .teamNode:hover {
+	cursor: pointer;
+}
+
+#head {
+  z-index: 1001;
+}
+
+#closeMenuText:hover {
+	cursor: pointer;
+}
+
+/* documentation */
+
+#documentation .overlay {
+	background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65)));
+	background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
+	background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
+	background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
+	background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
+	z-index: 20;
+	position: absolute;
+	width: 100%;
+	height: 30%;
+	bottom: 0;
+}
+
+#documentation .bg {
+	background: url('imgs/footer_lodyas.png') repeat;
+	background-size: cover;
+}
+
+#documentation .wrapper {
+	padding-top:50px;
+}
+
+#documentation h2 {
+	color: #fff;
+	margin-bottom:50px;
+}
+
+#documentation p {
+	background-color: rgba(0,0,0,0.4);
+	width: 300px;
+	margin: 0 auto;
+	color: #fff;
+	height: 300px;
+	border-radius: 150px;
+	text-align: center;
+	font-weight: 300;
+	font-size: 1.15em;
+}
+
+#documentation p span {
+	position:relative;
+	top: 138px;
+}
+
+#documentation p a {
+	color:#fff;
+	font-weight:600;
+}
+
+
+/* footer */
+
+footer {
+	padding:50px 0;
+	background-color: #151515;
+	color:#ccc;
+	font-size:1em;
+	overflow:hidden;
+}
+
+footer a {
+	color:#ccc;
+}
+
+footer .column {
+	float:left;
+	width:260px;
+}
+
+footer h3 {
+	font-family: 'bombing';
+	font-weight: normal;
+	font-size: 2.5em;
+}
+
+footer ul {
+	margin-bottom:20px;
+}
+
+footer ul li {
+	margin-left:10px;
+}
+
+footer p.bottom {
+	position:absolute;
+	text-transform: uppercase;
+	letter-spacing: 0.01em;
+	color:#787878;
+}
