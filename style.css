@@ -228,12 +228,12 @@ section .wrapper {
 	margin-bottom:50px;
 }
 
-#poster img {
-	display: block;
+#posterDiv {
+	width: 440px;
 	margin: 0px auto;
 }
 
-#poster img:hover {
+#posterDiv img:hover {
 	opacity: 0.8;
 	cursor: pointer;
 }
