@@ -60,4 +60,4 @@ View our visualization, by visiting http://cse512-15s.github.io/fp-kchq-vinodr-s
 
 Alternatively, download this repository and run `python -m SimpleHTTPServer 8000` and access this from http://localhost:8000/visualization.
 
-Please be sign in with Spotify before use of this tool. Although you will be prompted to sign in, you may have to restart feat to use the Spotify feature if you do not have auto-login enabled.
+Please be signed in with Spotify before use of this tool. Although you will be prompted to sign in, you may have to restart the visualization to use the Spotify feature if you do not have auto-login enabled.
