@@ -7,18 +7,18 @@ header, footer, aside, article, section {display: block;}
 
 @font-face {
     font-family: "bombing";
-    src: url("../graffiti/Bombing.ttf");
+    src: url("http://cse512-15s.github.io/fp-kchq-vinodr-sonjak3-rileymp2/graffiti/Bombing.ttf");
 }
 
 
 @font-face {
     font-family: "amsterdam";
-    src: url("../graffiti/amsterdam.ttf");
+    src: url("http://cse512-15s.github.io/fp-kchq-vinodr-sonjak3-rileymp2/visualization/graffiti/amsterdam.ttf");
 }
 
 @font-face {
   font-family: "paintBrush";
-  src: url("../graffiti/GraffitiPaintBrush.ttf");
+  src: url("http://cse512-15s.github.io/fp-kchq-vinodr-sonjak3-rileymp2/visualization/graffiti/GraffitiPaintBrush.ttf");
 }
 
 
