@@ -90,6 +90,13 @@ var artistLinkTip = d3.tip()
 
 var regionTip = d3.tip()
   .attr('class', 'd3-region-tip')
+  .direction(function(d) {
+    if (d.name == "South") {
+      return 'w';
+    } else {
+      return 'c';
+    }
+  })
   .html(function(d) {
     return "<div>" + d.name + "</div>";
   });
