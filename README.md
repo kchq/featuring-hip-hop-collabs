@@ -10,48 +10,48 @@ After that, the development process started.  In general, we each picked differe
 We also included this information on our webpage
 
 ####Kevin:####
-*domain expert
-*data collection
-*image collection
-*data cleaning
-*single artist view
-*multiple artist view
-*artist list on zoomed in view
-*spotify integration
-*artist collaboration view
+* domain expert
+* data collection
+* image collection
+* data cleaning
+* single artist view
+* multiple artist view
+* artist list on zoomed in view
+* spotify integration
+* artist collaboration view
 
 ####Vinod:####
-*spotify track uri collection
-*single artist view
-*multiple artist view
-*narration events
-*timeline and slider implementation
-*progress report powerpoint
-*narration events
-*spotify integration
-*artist collaboration view
+* spotify track uri collection
+* single artist view
+* multiple artist view
+* narration events
+* timeline and slider implementation
+* progress report powerpoint
+* narration events
+* spotify integration
+* artist collaboration view
 
 ####Sonja:####
-*data collection
-*image collection
-*map setup
-*artist node placement
-*region design
-*view from clicking on links in region view
-*ui design
-*node/link interaction
-*zooming functionality
-*poster design
+* data collection
+* image collection
+* map setup
+* artist node placement
+* region design
+* view from clicking on links in region view
+* ui design
+* node/link interaction
+* zooming functionality
+* poster design
 
 ####Riley:####
-*parse data into javascript objects
-*links in regional view
-*links in overall view
-*narration events
-*node/link interaction
-*zooming functionality
-*poster design
-*progress report powerpoint
+* parse data into javascript objects
+* links in regional view
+* links in overall view
+* narration events
+* node/link interaction
+* zooming functionality
+* poster design
+* progress report powerpoint
 	
 
 ## Running Instructions
