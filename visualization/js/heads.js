@@ -181,9 +181,9 @@ function headViewSingleArtist(artist, fromOther) {
   var frameWidth = Math.max(headWidth * 0.4, 250);
   var frameHeight = Math.max(headHeight * 0.4, frameWidth + 80);
 
-  var collabsList = $("<div id='collabsList'>").
+  var collabsList = $("<div id='collabsList'>")
     .css("left", headWidth - collabsWidth + "px")
-    .css("top", /* headHeight * 0.02 + */"0px")
+    .css("top", "0px")
     .css("width", collabsWidth + "px")
     .css("height", headHeight - 330 + "px")
     .css("position", "absolute");
