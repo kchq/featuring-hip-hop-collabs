@@ -201,20 +201,23 @@ function helpBoxDown() {
 
 function tearDownIntros() {
     $("#intro").hide();
-    var content = $('#slider').removeClass("blur");
-    var content = $('#searchArea').removeClass("blur");
-    var content = $('#narration').removeClass("blur");
-    var content = $('#mapContainer').removeClass("blur");
-
+    unblurBackground();
+    // var content = $('#slider').removeClass("blur");
+    // var content = $('#searchArea').removeClass("blur");
+    // var content = $('#narration').removeClass("blur");
+    // var content = $('#mapContainer').removeClass("blur");
     var regionNode = svg.selectAll('.regionNode');
     addRegionTooltips(regionNode);
 }
 
+// Blurs all content other than head and helpbox
+// When adding new content to outer content div,
+// use class background for blurring
 function unblurBackground() {
     $('.background').removeClass("blur");
 }
 
-
+// Unblurs all content other than head and helpbox
 function blurBackground() {
     $('.background').addClass("blur");
 }
