@@ -211,49 +211,12 @@ function tearDownIntros() {
 }
 
 function unblurBackground() {
-    var content = $('#slider').removeClass("blur");
-    var content = $('#searchArea').removeClass("blur");
-    var content = $('#narration').removeClass("blur");
-    var content = $('#mapContainer').removeClass("blur");
-    var content = $('#artistLegendList').removeClass("blur");
+    $('.background').removeClass("blur");
 }
 
+
 function blurBackground() {
-    var content = $('#slider').addClass("blur");
-    var content = $('#searchArea').addClass("blur");
-    var content = $('#narration').addClass("blur");
-    var content = $('#mapContainer').addClass("blur");
-    var content = $('#artistLegendList').addClass("blur");
-/*
-    var content = $('#slider').css("-webkit-filter", "blur(15px) grayscale(.5) opacity(0.5) contrast(70%) ")
-        .css("-webkit-transition", "all 1s ease-out")
-        .css("-moz-transition", "all 1s ease-out")
-        .css("-ms-transition", "all 1s ease-out")
-        .css("-o-transition", "all 1s ease-out")
-        .css("transition", "all 1s ease-out");
-
-    var content = $('#searchArea').css("-webkit-filter", "blur(15px) grayscale(.5) opacity(0.5) contrast(70%) ")
-        .css("-webkit-transition", "all 1s ease-out")
-        .css("-moz-transition", "all 1s ease-out")
-        .css("-ms-transition", "all 1s ease-out")
-        .css("-o-transition", "all 1s ease-out")
-        .css("transition", "all 1s ease-out");
-
-    var content = $('#narration').css("-webkit-filter", "blur(15px) grayscale(.5) opacity(0.5) contrast(70%) ")
-        .css("-webkit-transition", "all 1s ease-out")
-        .css("-moz-transition", "all 1s ease-out")
-        .css("-ms-transition", "all 1s ease-out")
-        .css("-o-transition", "all 1s ease-out")
-        .css("transition", "all 1s ease-out");
-
-    var content = $('#mapContainer').css("-webkit-filter", "blur(15px) grayscale(.5) opacity(0.5) contrast(70%) ")
-        .css("-webkit-transition", "all 1s ease-out")
-        .css("-moz-transition", "all 1s ease-out")
-        .css("-ms-transition", "all 1s ease-out")
-        .css("-o-transition", "all 1s ease-out")
-        .css("transition", "all 1s ease-out");
-*/
-
+    $('.background').addClass("blur");
 }
 
 
