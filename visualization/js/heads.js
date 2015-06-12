@@ -1,21 +1,19 @@
-xStart = $(window).width() * 0.25;
-yStart = $(window).height() * 0.05 
-headHeight= $(window).height() * 0.90;
-headWidth = $(window).width() * 0.70;
-image1X = xStart * .3;
-image2X = xStart * 1.8;
-imageY = yStart * .4;
-imageWidth = headWidth * 0.20;
-imageWidthDual = headWidth * 0.25;
+xStart = X_COOR;
+yStart = Y_COOR;
+headHeight= HEAD_HEIGHT;
+headWidth = HEAD_WIDTH;
+image1X = IMAGE_1_X;
+image2X = IMAGE_2_X;
+imageY = IMAGE_Y;
+imageWidth = IMAGE_WIDTH;
+imageWidthDual = IMAGE_WIDTH_DUAL;
 
 image1A = $(window).width() * 0.25;
 
+//TODO what is prevArtists used for?
 prevArtists = null;
 
 function headSetup(artistNode1, artistNode2) {
-//    var artistImage1 = "imgs/" + getArtistImageName(artistNode1.name) + ".png";
-  //  var artistImage2 = "imgs/" + getArtistImageName(artistNode2.name) + ".png";
-  //
     var gh = addImages(artistNode1, artistNode2);
     addData(gh, artistNode1, artistNode2);
 }
@@ -33,14 +31,6 @@ function addData(gh, node1, node2){
         // TODO update .text with the name of the artist
 		.text(function(d) { return "50 Cent(1)";});
     
-    /*gh.append("svg:a")
-        .attr("xlink:href","https://www.facebook.com/EarlSweatshirtMusic?fref=ts")
-        .attr("class", "head headname")
-		.append("text")
-            .text("-Earl Sweatshirt Facebook").attr("x", image1X)
-		    .attr("y", imageY + imageWidth * 1.3);*/
-
-
     dataArtist2 = gh.append("text")
         .attr("class", "head headname")
 		.attr("x", image2X + imageWidthDual / 2)
@@ -99,13 +89,13 @@ function addImages(node1, node2) {
         .style("stroke-width", "2px");
 
     svgHead.append('clipPath')
-      .attr("id", getArtistImageName(node2.name) + "2")
-      .attr("class", "clippath")
-      .append("circle")
-      .attr("cx",  image2X + imageWidthDual / 2)
-      .attr("cy", imageY + imageWidthDual / 2)
-      .attr("r", imageWidthDual / 2)
-      .attr("clipPathUnits", "userSpaceOnUse"); 
+        .attr("id", getArtistImageName(node2.name) + "2")
+        .attr("class", "clippath")
+        .append("circle")
+        .attr("cx",  image2X + imageWidthDual / 2)
+        .attr("cy", imageY + imageWidthDual / 2)
+        .attr("r", imageWidthDual / 2)
+        .attr("clipPathUnits", "userSpaceOnUse"); 
 
     gh.append("image")
         .attr("xlink:href", artistImage2)
@@ -129,9 +119,9 @@ function addImages(node1, node2) {
         });
         
     gh.append("circle")
-        .attr("id", getArtistImageName(node2.name) + "ring") //function(d) { return getArtistImageName(d.name) + "ring"; })
-        .attr("cx", image2X + imageWidthDual / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
-        .attr("cy", imageY + imageWidthDual / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
+        .attr("id", getArtistImageName(node2.name) + "ring")
+        .attr("cx", image2X + imageWidthDual / 2)
+        .attr("cy", imageY + imageWidthDual / 2) 
         .attr("r", imageWidthDual / 2)
         // preserve size of circle across different regions, because each region has a different scale
         .style("fill", "none")
@@ -142,24 +132,28 @@ function addImages(node1, node2) {
 }
 
 // Shows artist detailed view in head to head fashion only displaying a single artist
+// @param artist, artist node to be displayed
+// @param fromOther, true if going back from other view (not directly from map view)
 function headViewSingleArtist(artist, fromOther) {
+  headStart();
+  
+  // Only blur if we are coming from map view
+  if (!fromOther) {
+      blurBackground();
+  }
 
-    headStart();
-    if (!fromOther) {
-        blurBackground();
-    }
-    var artistFormatted = getArtistImageName(artist.name);
-    var artistImage = "imgs/" + artistFormatted + ".png";
-    var imgWidth = imageWidth * 1.5
+  var artistFormatted = getArtistImageName(artist.name);
+  var artistImage = "imgs/" + artistFormatted + ".png";
+  var imgWidth = imageWidth * 1.5
 
-    svgHead = d3.select("#head")
-		.style("left", xStart + "px")
-		.style("top", yStart + "px")
-		.style("position", "absolute")
-		.append("svg")
-		.attr("width", headWidth)
-		.attr("height", headHeight)
-		.attr("id", "headSVG")
+  svgHead = d3.select("#head")
+	  .style("left", xStart + "px")
+	  .style("top", yStart + "px")
+	  .style("position", "absolute")
+	  .append("svg")
+	  .attr("width", headWidth)
+	  .attr("height", headHeight)
+	  .attr("id", "headSVG")
 
   gh = svgHead.append("g");
 
@@ -168,17 +162,12 @@ function headViewSingleArtist(artist, fromOther) {
 		.attr("width", headWidth)
 		.attr("height", headHeight)
 		.style("fill", "white")
-        .style("background", "#333")
+    .style("background", "#333")
 		.style("stroke", "black")
 		.style("stroke-width", $(window).width() * 0.005)
-        .style("opacity", 0.8);
+    .style("opacity", 0.8);
 
-
-
-
-
-
-var regionAbbrs = ["NE", "S", "SC", "NC", "MW", "W"];
+  var regionAbbrs = ["NE", "S", "SC", "NC", "MW", "W"];
   var regionFullNames = ["North East", "South", "South California", "North California", "MidWest", "Washington"]
   var collabsWithOtherRegion = new Map();
   for (var i = 0; i < regionAbbrs.length; i++) {
@@ -192,54 +181,47 @@ var regionAbbrs = ["NE", "S", "SC", "NC", "MW", "W"];
   var frameWidth = Math.max(headWidth * 0.4, 250);
   var frameHeight = Math.max(headHeight * 0.4, frameWidth + 80);
 
-  var collabsList = $("<div id='collabsList'>");
-    collabsList.css("left", headWidth - collabsWidth + "px")
-        .css("top", /* headHeight * 0.02 + */"0px")
-        .css("width", collabsWidth + "px")
-        .css("height", headHeight - 330 + "px")
-        .css("position", "absolute");
+  var collabsList = $("<div id='collabsList'>").
+    .css("left", headWidth - collabsWidth + "px")
+    .css("top", /* headHeight * 0.02 + */"0px")
+    .css("width", collabsWidth + "px")
+    .css("height", headHeight - 330 + "px")
+    .css("position", "absolute");
 
-  // var ul = $("<ul class='list-group collab'>");
-  //   ul.css("max-height", headHeight - 330 - 10 + "px")
-  //       .css("border", "2px")
-  //       .css("width", collabsWidth + "px")
-  //       .css("border-style", "solid")
-  //       .css("border-width", "3px");
+  var uriList = "";
+  var numListItems = 0;
+  var numSpotifyItems = 0;
+  var collabData = [];
 
-    var uriList = "";
-    var numListItems = 0;
-    var numSpotifyItems = 0;
-    var collabData = [];
+  for (var i = 0; i < singleHeadCollabMap[artist.name].length; i++) { //var track in singleHeadCollabMap[artist.name]) {
+      var trk = singleHeadCollabMap[artist.name][i];
+      
+      if (trk.release_year !== undefined && parseInt(trk.release_year) <= currentYear) {
+        var singleTuple = {};
+        singleTuple["track"] = trk.title;
+        singleTuple["release_title"] = trk.release_title;
+        singleTuple["year"] = trk.release_year;
+        collabData.push(singleTuple);
 
-    for (var i = 0; i < singleHeadCollabMap[artist.name].length; i++) { //var track in singleHeadCollabMap[artist.name]) {
-        var trk = singleHeadCollabMap[artist.name][i];
+        numListItems++;
+
+        // update collaborations with other regions
+        var targetRegion = artistNodes[trk.target].region;
+        var regionCollabCount = collabsWithOtherRegion.get(targetRegion);
+        regionCollabCount++;
+        totalCollaborationsWithOtherRegion++;
+        collabsWithOtherRegion.set(targetRegion, regionCollabCount);
         
-        if (trk.release_year !== undefined && parseInt(trk.release_year) <= currentYear) {
-          var singleTuple = {};
-          singleTuple["track"] = trk.title;
-          singleTuple["release_title"] = trk.release_title;
-          singleTuple["year"] = trk.release_year;
-          collabData.push(singleTuple);
-
-          numListItems++;
-
-          // update collaborations with other regions
-          var targetRegion = artistNodes[trk.target].region;
-          var regionCollabCount = collabsWithOtherRegion.get(targetRegion);
-          regionCollabCount++;
-          totalCollaborationsWithOtherRegion++;
-          collabsWithOtherRegion.set(targetRegion, regionCollabCount);
-          
-          if (trk.spotifyURI !== undefined && numSpotifyItems < 80) {
-            var uriArray = trk.spotifyURI.split(":");
-            uriList += uriArray[2] + ",";
-            numSpotifyItems++;
-          }
+        if (trk.spotifyURI !== undefined && numSpotifyItems < 80) {
+          var uriArray = trk.spotifyURI.split(":");
+          uriList += uriArray[2] + ",";
+          numSpotifyItems++;
         }
+      }
 
-    }
+  }
 
-if (numListItems > 0) {
+  if (numListItems > 0) {
    // column definitions
     var columns = [
         { head: 'Track Title', cl: 'track', html: ƒ('track') },
@@ -296,77 +278,72 @@ if (numListItems > 0) {
 
 
   var collabDivWidth = headWidth;
-    if (uriList !== "") {
-      var spotifyFrame = $("<iframe>");
-      spotifyFrame.attr("src", "https://embed.spotify.com/?uri=spotify:trackset:Collaboration Song Demos:" + uriList)
-                  .attr("frameborder", "0")
-                  .attr("id", "spotifyFrame")
-                  .attr("allowTransparency", "true")
-                  .css("left", headWidth - 250 - 2 + "px")
-                  .css("top", headHeight - 330 - 2 + "px")
-                  .css("width", "250px")
-                  .css("height", "330px")
-                  .css("position", "absolute");
-      $("#head").append(spotifyFrame);
-    }
+  if (uriList !== "") {
+    var spotifyFrame = $("<iframe>");
+    spotifyFrame.attr("src", "https://embed.spotify.com/?uri=spotify:trackset:Collaboration Song Demos:" + uriList)
+                .attr("frameborder", "0")
+                .attr("id", "spotifyFrame")
+                .attr("allowTransparency", "true")
+                .css("left", headWidth - 250 - 2 + "px")
+                .css("top", headHeight - 330 - 2 + "px")
+                .css("width", "250px")
+                .css("height", "330px")
+                .css("position", "absolute");
+    $("#head").append(spotifyFrame);
+  }
 
-    if (numListItems != 0) {
-      collabDivWidth = headWidth - 250;
-
-    }
-
+  if (numListItems != 0) {
+    collabDivWidth = headWidth - 250;
+  }
 
 
 
 
-    var imagePositionX = image1A - imageWidth / 2;
-    if (collabDivWidth === headWidth) {
-      imagePositionX = $(window).width() * 0.47;
-    }
 
-   svgHead.append('clipPath')
-        .attr("id", artistFormatted + "Large")
-        .attr("class", "clippath")
-        .append("circle")
-        .attr("cx", imagePositionX * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
-        .attr("cy", imageY + imageWidth * (3/2) / 2)      
-        .attr("r", (imageWidth * 3/2) / 2)
-        .attr("clipPathUnits", "userSpaceOnUse");
+ var imagePositionX = image1A - imageWidth / 2;
+ if (collabDivWidth === headWidth) {
+   imagePositionX = $(window).width() * 0.47;
+ }
 
-    gh.append("image")
-        .attr("xlink:href", artistImage)
-        .attr("x", imagePositionX * .5)
-        .attr("y", imageY)
-        .attr("width", imageWidth * 3/2)
-        .attr("height", imageWidth * 3/2)
-        // preserve size of circle across different regions, because each region has a different scale
-        .attr("clip-path", function(d) { return "url(#" + artistFormatted + "Large" + ")"; });
+ svgHead.append('clipPath')
+      .attr("id", artistFormatted + "Large")
+      .attr("class", "clippath")
+      .append("circle")
+      .attr("cx", imagePositionX * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
+      .attr("cy", imageY + imageWidth * (3/2) / 2)      
+      .attr("r", (imageWidth * 3/2) / 2)
+      .attr("clipPathUnits", "userSpaceOnUse");
 
-    gh.append("circle")
-        .attr("id", "50_centring") //function(d) { return getArtistImageName(d.name) + "ring"; })
-        .attr("cx", imagePositionX * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
-        .attr("cy", imageY + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
-        .attr("r", (imageWidth * 3/2) / 2)
-        .style("fill", "none")
-        .style("stroke", "#000")
-        .style("stroke-width", "2px");
+  gh.append("image")
+      .attr("xlink:href", artistImage)
+      .attr("x", imagePositionX * .5)
+      .attr("y", imageY)
+      .attr("width", imageWidth * 3/2)
+      .attr("height", imageWidth * 3/2)
+      // preserve size of circle across different regions, because each region has a different scale
+      .attr("clip-path", function(d) { return "url(#" + artistFormatted + "Large" + ")"; });
 
-//    collabsList.append(rapperTitle);
+  gh.append("circle")
+      .attr("id", "50_centring") //function(d) { return getArtistImageName(d.name) + "ring"; })
+      .attr("cx", imagePositionX * .5 + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[0]; })
+      .attr("cy", imageY + imageWidth * (3/2) / 2) //function(d) { xy = getXY(d); if (xy == null) return; return xy[1]; })
+      .attr("r", (imageWidth * 3/2) / 2)
+      .style("fill", "none")
+      .style("stroke", "#000")
+      .style("stroke-width", "2px");
 
-   //FOR EACH LINK ADD ONE OF THESE, OK? COOl
+  var artistCityLeft = imagePositionX * .5 - 40;
+  var artistYearLeft = imagePositionX * .5 + imageWidth * 0.9
 
-   var artistCityLeft = imagePositionX * .5 - 40;
-   var artistYearLeft = imagePositionX * .5 + imageWidth * 0.9
-
-    size = Math.min(5, artist.name.length)
-    if (collabDivWidth === headWidth) {
-     artistCityLeft = headWidth * 0.1;
-     artistYearLeft = headWidth * 0.7;
-     size = 10;
-     if (artist.name.length > 10) {
+  size = Math.min(5, artist.name.length)
+  if (collabDivWidth === headWidth) {
+    artistCityLeft = headWidth * 0.1;
+    artistYearLeft = headWidth * 0.7;
+    size = 10;
+    if (artist.name.length > 10) {
       size = 6;
-     }
     }
+  }
   
     
   
