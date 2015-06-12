@@ -1,10 +1,13 @@
-xStartIntro = $(window).width() * 0.30;
-yStartIntro = $(window).height() * 0.10 
-introHeight = $(window).height() * 0.550;
-introWidth = $(window).width() * 0.50;
-imageWidth = headWidth * 0.20;
+xStartIntro = INTRO_X_COORDINATE;
+yStartIntro = INTRO_Y_COORDINATE;
+introHeight = INTRO_HEIGHT;
+introWidth = INTRO_WIDTH;
+imageWidth = IMAGE_WIDTH;
+
+//Constant used to help set up intro on initial load
 setup = false;
 
+//Bring up the intro box onload of page
 function introSetup() {
     $('.d3-region-tip').remove();
 
@@ -112,6 +115,7 @@ function introSetup() {
     blurBackground();
 }
 
+//Bring up the help dialog box
 function helpBoxUp() {
     if (setup) {
         $("#helpBox").show();
@@ -189,9 +193,9 @@ function helpBoxUp() {
     $(".help").click(function() {
         helpBoxDown();
     });
-    //$("#helpBox").append(legend);
 }
 
+//bring down the help dialog box
 function helpBoxDown() {
     $("#helpBox").hide();
     $(".help").click(function() {
@@ -199,13 +203,10 @@ function helpBoxDown() {
      });
 }
 
+//Function called to remove intro box on exit
 function tearDownIntros() {
     $("#intro").hide();
     unblurBackground();
-    // var content = $('#slider').removeClass("blur");
-    // var content = $('#searchArea').removeClass("blur");
-    // var content = $('#narration').removeClass("blur");
-    // var content = $('#mapContainer').removeClass("blur");
     var regionNode = svg.selectAll('.regionNode');
     addRegionTooltips(regionNode);
 }
