@@ -1018,7 +1018,7 @@ function setUpCurrentArtistNodes(region, x, y, k) {
   // add artist images to each node
   var images = currentArtistNode.append("image")
     .attr("id", function(d) { if (d == nyNode) { return; } return getArtistImageName(d.name) + "_image" })
-    .attr("xlink:href", function(d) { if (d == nyNode) { return; } return "imgs/" + getArtistImageName(d.name) + ".png"; })
+    .attr("xlink:href", function(d) { if (d == nyNode) { return; } return "imgs/thumbnails/" + getArtistImageName(d.name) + ".jpg"; })
     .attr("x", function(d) { if (d == nyNode) { return; } xy = getXY(d); if (xy == null) return; return xy[0] - artistCircleSize / 2; })
     .attr("y", function(d) { if (d == nyNode) { return; } xy = getXY(d); if (xy == null) return; return xy[1] - artistCircleSize / 2; })
     .attr("width", artistCircleSize)
